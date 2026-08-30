@@ -1,0 +1,356 @@
+{
+  "unitId": "es_u1",
+  "title": "Greetings & Basics",
+  "region": "Valle Verde",
+  "languageName": "Spanish",
+  "lessons": [
+    {
+      "lessonId": "es_u1_l1",
+      "title": "¡Hola, Paco!",
+      "exercises": [
+        {
+          "type": "multiple_choice",
+          "prompt": "How do you say \"Hello\"?",
+          "options": ["Hola", "Adiós", "Gracias", "Por favor"],
+          "correctIndex": 0,
+          "explanation": "\"Hola\" is the standard Spanish greeting, used any time of day."
+        },
+        {
+          "type": "match_pairs",
+          "pairs": [["Hola", "Hello"], ["Adiós", "Goodbye"], ["Gracias", "Thank you"], ["Sí", "Yes"]]
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "What does \"Gracias\" mean?",
+          "options": ["Please", "Thank you", "Sorry", "Hello"],
+          "correctIndex": 1,
+          "explanation": "\"Gracias\" means \"thank you\" — say it often!"
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Buenos ___",
+          "answer": "días",
+          "wordBank": ["días", "noches", "tardes", "hola"],
+          "explanation": "\"Buenos días\" means \"good morning\" — used until midday."
+        },
+        {
+          "type": "listening",
+          "text": "¿Cómo estás?",
+          "options": ["How are you?", "What's your name?", "Where are you from?", "How old are you?"],
+          "correctIndex": 0,
+          "explanation": "\"¿Cómo estás?\" is the informal way to ask how someone is doing."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "How do you say \"Good night\"?",
+          "options": ["Buenas noches", "Buenos días", "Buenas tardes", "Hasta luego"],
+          "correctIndex": 0,
+          "explanation": "\"Buenas noches\" is used in the evening and before bed."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Hasta ___",
+          "answer": "luego",
+          "wordBank": ["luego", "hola", "bien", "gracias"],
+          "explanation": "\"Hasta luego\" means \"see you later\"."
+        },
+        {
+          "type": "pronunciation",
+          "expected": "Mucho gusto",
+          "translation": "Nice to meet you",
+          "explanation": "\"Mucho gusto\" literally means \"much pleasure\"."
+        },
+        {
+          "type": "listening",
+          "text": "¡Buenos días!",
+          "options": ["Good morning!", "Good night!", "See you later!", "Welcome!"],
+          "correctIndex": 0,
+          "explanation": "\"Buenos días\" greets people in the morning."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "What does \"Por favor\" mean?",
+          "options": ["Please", "Thank you", "Excuse me", "Of course"],
+          "correctIndex": 0,
+          "explanation": "\"Por favor\" means \"please\" — pair it with \"gracias\"."
+        }
+      ]
+    },
+    {
+      "lessonId": "es_u1_l2",
+      "title": "Numbers 1–10",
+      "exercises": [
+        {
+          "type": "multiple_choice",
+          "prompt": "How do you say \"one\"?",
+          "options": ["uno", "dos", "tres", "cuatro"],
+          "correctIndex": 0,
+          "explanation": "\"Uno\" is the number one."
+        },
+        {
+          "type": "match_pairs",
+          "pairs": [["uno", "one"], ["dos", "two"], ["tres", "three"], ["cuatro", "four"], ["cinco", "five"]]
+        },
+        {
+          "type": "listening",
+          "text": "siete",
+          "options": ["7", "6", "8", "5"],
+          "correctIndex": 0,
+          "explanation": "\"Siete\" is the number seven."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "uno, dos, ___",
+          "answer": "tres",
+          "wordBank": ["tres", "seis", "nueve", "diez"],
+          "explanation": "Counting in order: uno, dos, tres."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "What number is \"diez\"?",
+          "options": ["10", "2", "8", "4"],
+          "correctIndex": 0,
+          "explanation": "\"Diez\" is ten — the end of your first counting set."
+        },
+        {
+          "type": "match_pairs",
+          "pairs": [["seis", "six"], ["siete", "seven"], ["ocho", "eight"], ["nueve", "nine"]]
+        },
+        {
+          "type": "listening",
+          "text": "nueve",
+          "options": ["9", "2", "7", "10"],
+          "correctIndex": 0,
+          "explanation": "\"Nueve\" is the number nine."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "cinco, seis, ___",
+          "answer": "siete",
+          "wordBank": ["siete", "uno", "ocho", "tres"],
+          "explanation": "Counting on: five, six, seven."
+        },
+        {
+          "type": "pronunciation",
+          "expected": "ocho",
+          "translation": "eight",
+          "explanation": "The \"ch\" in \"ocho\" sounds like English \"ch\" in \"chocolate\"."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "How do you say \"five\"?",
+          "options": ["cinco", "nueve", "diez", "tres"],
+          "correctIndex": 0,
+          "explanation": "\"Cinco\" is five — like a high-five, ¡cinco!"
+        }
+      ]
+    },
+    {
+      "lessonId": "es_u1_l3",
+      "title": "Un café, por favor",
+      "exercises": [
+        {
+          "type": "multiple_choice",
+          "prompt": "How do you say \"I want a coffee\"?",
+          "options": ["Quiero un café", "Quiero un té", "Tengo hambre", "La cuenta"],
+          "correctIndex": 0,
+          "explanation": "\"Quiero un café\" — \"quiero\" means \"I want\"."
+        },
+        {
+          "type": "listening",
+          "text": "¿Qué desea?",
+          "options": ["What would you like?", "How are you?", "Where is the café?", "What time is it?"],
+          "correctIndex": 0,
+          "explanation": "Waiters ask \"¿Qué desea?\" — \"what would you like?\""
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Quiero un ___ con leche",
+          "answer": "café",
+          "wordBank": ["café", "pan", "agua", "jugo"],
+          "explanation": "\"Un café con leche\" is coffee with milk — a Spanish classic."
+        },
+        {
+          "type": "match_pairs",
+          "pairs": [["el pan", "bread"], ["el agua", "water"], ["la leche", "milk"], ["el queso", "cheese"]]
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "What does \"La cuenta, por favor\" mean?",
+          "options": ["The check, please", "The menu, please", "A table, please", "The bathroom, please"],
+          "correctIndex": 0,
+          "explanation": "Ask for \"la cuenta\" when you're ready to pay."
+        },
+        {
+          "type": "pronunciation",
+          "expected": "Quiero un café",
+          "translation": "I want a coffee",
+          "explanation": "Roll the single r in \"quiero\" lightly."
+        },
+        {
+          "type": "listening",
+          "text": "Me gusta el pan",
+          "options": ["I like the bread", "I want milk", "The cheese is good", "I don't like water"],
+          "correctIndex": 0,
+          "explanation": "\"Me gusta\" means \"I like\"."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "¿Cuánto ___?",
+          "answer": "cuesta",
+          "wordBank": ["cuesta", "quieres", "gusta", "desea"],
+          "explanation": "\"¿Cuánto cuesta?\" means \"how much does it cost?\""
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "How do you say \"the water\"?",
+          "options": ["el agua", "la leche", "el pan", "el café"],
+          "correctIndex": 0,
+          "explanation": "\"Agua\" is feminine but takes \"el\" in singular — a special case!"
+        },
+        {
+          "type": "match_pairs",
+          "pairs": [["la manzana", "apple"], ["el pollo", "chicken"], ["el arroz", "rice"], ["la sopa", "soup"]]
+        }
+      ]
+    },
+    {
+      "lessonId": "es_u1_l4",
+      "title": "Me llamo Paco",
+      "exercises": [
+        {
+          "type": "multiple_choice",
+          "prompt": "What does \"Me llamo...\" mean?",
+          "options": ["My name is...", "I am from...", "I like...", "I want..."],
+          "correctIndex": 0,
+          "explanation": "\"Me llamo\" literally means \"I call myself\"."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Me ___ Ana",
+          "answer": "llamo",
+          "wordBank": ["llamo", "llama", "gusto", "llamas"],
+          "explanation": "With \"me\" (myself), use \"llamo\" — \"me llamo Ana\"."
+        },
+        {
+          "type": "listening",
+          "text": "¿De dónde eres?",
+          "options": ["Where are you from?", "What's your name?", "How old are you?", "Where do you live?"],
+          "correctIndex": 0,
+          "explanation": "\"¿De dónde eres?\" asks where you come from."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "How do you say \"I am from the United States\"?",
+          "options": ["Soy de los Estados Unidos", "Me llamo Estados Unidos", "Estoy bien", "Tengo veinte años"],
+          "correctIndex": 0,
+          "explanation": "\"Soy de...\" means \"I am from...\"."
+        },
+        {
+          "type": "match_pairs",
+          "pairs": [["el amigo", "friend"], ["la familia", "family"], ["el nombre", "name"], ["la edad", "age"]]
+        },
+        {
+          "type": "pronunciation",
+          "expected": "Me llamo Paco",
+          "translation": "My name is Paco",
+          "explanation": "\"Ll\" sounds like the \"y\" in \"yes\": me YAMO Paco."
+        },
+        {
+          "type": "listening",
+          "text": "Tengo veinte años",
+          "options": ["I am twenty years old", "I have twenty friends", "I want twenty euros", "It is twenty minutes away"],
+          "correctIndex": 0,
+          "explanation": "Age uses \"tengo\" (I have): \"tengo veinte años\"."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "¿Cómo te ___?",
+          "answer": "llamas",
+          "wordBank": ["llamas", "llamo", "gusta", "estás"],
+          "explanation": "Asking someone else: \"¿Cómo te llamas?\" uses \"llamas\"."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "What does \"Mucho gusto\" mean?",
+          "options": ["Nice to meet you", "Good luck", "See you soon", "Of course"],
+          "correctIndex": 0,
+          "explanation": "Say \"mucho gusto\" right after learning someone's name."
+        },
+        {
+          "type": "match_pairs",
+          "pairs": [["él", "he"], ["ella", "she"], ["yo", "I"], ["tú", "you"]]
+        }
+      ]
+    },
+    {
+      "lessonId": "es_u1_l5",
+      "title": "¿Dónde está?",
+      "exercises": [
+        {
+          "type": "multiple_choice",
+          "prompt": "How do you ask \"Where is the bathroom?\"?",
+          "options": ["¿Dónde está el baño?", "¿Cuánto cuesta el baño?", "¿Qué es el baño?", "¿Cómo es el baño?"],
+          "correctIndex": 0,
+          "explanation": "\"¿Dónde está...?\" asks where something is — the traveler's best friend."
+        },
+        {
+          "type": "listening",
+          "text": "Gira a la derecha",
+          "options": ["Turn right", "Turn left", "Go straight", "Stop here"],
+          "correctIndex": 0,
+          "explanation": "\"Derecha\" is right — remember: la derecha."
+        },
+        {
+          "type": "match_pairs",
+          "pairs": [["la calle", "street"], ["la plaza", "plaza"], ["el museo", "museum"], ["la estación", "station"]]
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "El museo está a la ___",
+          "answer": "derecha",
+          "wordBank": ["derecha", "mesa", "puerta", "tienda"],
+          "explanation": "\"A la derecha\" means \"to the right\"."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "What does \"Sigue recto\" mean?",
+          "options": ["Go straight", "Turn around", "Come back", "Sit down"],
+          "correctIndex": 0,
+          "explanation": "\"Sigue recto\" — keep going straight ahead."
+        },
+        {
+          "type": "pronunciation",
+          "expected": "¿Dónde está la estación?",
+          "translation": "Where is the station?",
+          "explanation": "Stress the final syllable: esta-CIÓN."
+        },
+        {
+          "type": "listening",
+          "text": "Está cerca",
+          "options": ["It's nearby", "It's far", "It's closed", "It's expensive"],
+          "correctIndex": 0,
+          "explanation": "\"Cerca\" means nearby; \"lejos\" means far."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "¿___ está el hotel?",
+          "answer": "Dónde",
+          "wordBank": ["Dónde", "Cómo", "Cuándo", "Qué"],
+          "explanation": "\"¿Dónde está...?\" — where is...?"
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "How do you say \"It's far\"?",
+          "options": ["Está lejos", "Está cerca", "Está aquí", "Está bien"],
+          "correctIndex": 0,
+          "explanation": "\"Lejos\" means far — the opposite of \"cerca\"."
+        },
+        {
+          "type": "match_pairs",
+          "pairs": [["el mapa", "map"], ["el tren", "train"], ["el avión", "plane"], ["el taxi", "taxi"]]
+        }
+      ]
+    }
+  ]
+}

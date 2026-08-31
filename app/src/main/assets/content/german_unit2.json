@@ -1,0 +1,303 @@
+{
+  "unitId": "de_u2",
+  "title": "Im Café",
+  "region": "Alpenweg",
+  "languageName": "German",
+  "lessons": [
+    {
+      "lessonId": "de_u2_l1",
+      "title": "Einen Kaffee bestellen",
+      "exercises": [
+        {
+          "type": "multiple_choice",
+          "prompt": "How do you say \"a coffee, please\"?",
+          "options": ["Einen Kaffee, bitte", "Eine Kaffee, bitte", "Ein Kaffee, bitte", "Einem Kaffee, bitte"],
+          "correctIndex": 0,
+          "explanation": "\"Bestellen\" takes the accusative — masculine \"der Kaffee\" becomes \"einen\"."
+        },
+        {
+          "type": "match_pairs",
+          "pairs": [["ein Tee", "a tea"], ["ein Wasser", "a water"], ["ein heißer Schokolade", "a hot chocolate"], ["ein Saft", "a juice"]],
+          "explanation": "Most drink names here are neuter (das Tee-style errors are common — memorize each one)."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "The waiter asks \"Was möchten Sie trinken?\" What does it mean?",
+          "options": ["What would you like to drink?", "Where do you want to go?", "Do you like the food?", "How much do you want?"],
+          "correctIndex": 0,
+          "explanation": "\"Möchten\" = would like — the polite order-taking question."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Ich ___ einen Tee",
+          "answer": "möchte",
+          "wordBank": ["möchte", "muss", "kann", "bin"],
+          "explanation": "\"Ich möchte\" = I would like — softer than \"ich will\" (I want)."
+        },
+        {
+          "type": "listening",
+          "text": "Einen Kaffee mit Milch, bitte",
+          "options": ["A coffee with milk, please", "A coffee without milk, please", "A tea with milk, please", "A coffee with sugar, please"],
+          "correctIndex": 0,
+          "explanation": "\"Mit Milch\" = with milk; \"ohne\" = without."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "How do you order \"for me\" after a friend orders?",
+          "options": ["Für mich auch…", "Ich auch kaufen…", "Mit mir…", "Zu mir…"],
+          "correctIndex": 0,
+          "explanation": "\"Für mich\" = for me — add \"auch\" (too) to copy an order."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Ein Wasser ___ Kohlensäure, bitte",
+          "answer": "ohne",
+          "wordBank": ["ohne", "mit", "für", "von"],
+          "explanation": "\"Ohne Kohlensäure\" = without carbonation — still water."
+        },
+        {
+          "type": "pronunciation",
+          "expected": "Einen Kaffee, bitte!",
+          "translation": "A coffee, please!",
+          "explanation": "\"Einen\" has a clear -n ending: eye-nen."
+        }
+      ]
+    },
+    {
+      "lessonId": "de_u2_l2",
+      "title": "Ich möchte…",
+      "exercises": [
+        {
+          "type": "multiple_choice",
+          "prompt": "What does \"Ich möchte…\" mean?",
+          "options": ["I would like…", "I have…", "I am…", "I must…"],
+          "correctIndex": 0,
+          "explanation": "The polite want-verb in German cafés and shops."
+        },
+        {
+          "type": "match_pairs",
+          "pairs": [["Zum Hieressen", "For here"], ["Zum Mitnehmen", "To take away"], ["Das war's", "That's all"], ["Sonst noch etwas?", "Anything else?"]],
+          "explanation": "\"Zum Mitnehmen\" is the German \"to go\"."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "The cashier asks \"Zum Hieressen oder zum Mitnehmen?\" You want to take away. Answer:",
+          "options": ["Zum Mitnehmen", "Zum Hieressen", "Hier", "Das war's"],
+          "correctIndex": 0,
+          "explanation": "\"Mitnehmen\" = take with you — takeaway."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Ich möchte ___ Brötchen",
+          "answer": "ein",
+          "wordBank": ["ein", "einen", "eine", "einem"],
+          "explanation": "\"Das Brötchen\" is neuter — accusative neuter is still \"ein\"."
+        },
+        {
+          "type": "listening",
+          "text": "Sonst noch etwas?",
+          "options": ["Anything else?", "How do you like it?", "Is that all for you?", "For here or to go?"],
+          "correctIndex": 0,
+          "explanation": "\"Sonst noch etwas?\" = \"anything else?\" — the upsell question."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "How do you say \"That's all, thank you\"?",
+          "options": ["Das war's, danke", "Das ist gut, danke", "Danke schön", "Bitte schön"],
+          "correctIndex": 0,
+          "explanation": "\"Das war's\" (that was it) closes the order like \"c'est tout\" in French."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Eine Flasche ___ , bitte",
+          "answer": "Wasser",
+          "wordBank": ["Wasser", "wässern", "wässrig", "Wässerchen"],
+          "explanation": "\"Eine Flasche Wasser\" = a bottle of water — nouns are capitalized."
+        },
+        {
+          "type": "pronunciation",
+          "expected": "Ich möchte ein Brötchen",
+          "translation": "I would like a bread roll",
+          "explanation": "\"Brötchen\" = BRURT-khen — the ö rounds your lips."
+        }
+      ]
+    },
+    {
+      "lessonId": "de_u2_l3",
+      "title": "Snacks",
+      "exercises": [
+        {
+          "type": "match_pairs",
+          "pairs": [["das Croissant", "the croissant"], ["der Kuchen", "the cake"], ["das Brötchen", "the bread roll"], ["der Salat", "the salad"]],
+          "explanation": "Borrowed foods often keep das (das Croissant); der Kuchen is German through and through."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "What is \"ein Brezel\"?",
+          "options": ["A knotted baked bread", "A fruit tart", "A sausage roll", "A cheese toast"],
+          "correctIndex": 0,
+          "explanation": "The lye-knotted bread — die Brezel, often buttered (Butterbrezel)."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "How do you say \"I'm hungry\"?",
+          "options": ["Ich habe Hunger", "Ich bin Hunger", "Ich habe Durst", "Ich mag Essen"],
+          "correctIndex": 0,
+          "explanation": "\"Hunger haben\" = to have hunger; \"Durst\" is thirst."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Ich nehme ___ Salat",
+          "answer": "einen",
+          "wordBank": ["einen", "ein", "eine", "einem"],
+          "explanation": "\"Nehmen\" takes accusative — \"der Salat\" → \"einen Salat\"."
+        },
+        {
+          "type": "listening",
+          "text": "Ohne Zucker, bitte",
+          "options": ["Without sugar, please", "With sugar, please", "Without milk, please", "Extra sugar, please"],
+          "correctIndex": 0,
+          "explanation": "\"Ohne\" = without; \"Zucker\" = sugar — mit Zucker is the opposite."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "What does \"der Becher\" mean on a snack menu?",
+          "options": ["A cup", "A plate", "A bag", "A spoon"],
+          "correctIndex": 0,
+          "explanation": "\"Der Becher\" = cup — \"ein Becher Kaffee zum Mitnehmen\" = a to-go cup."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Haben Sie ___ mit Schokolade?",
+          "answer": "etwas",
+          "wordBank": ["etwas", "alles", "nichts", "jemand"],
+          "explanation": "\"Etwas\" = something — \"do you have anything with chocolate?\""
+        },
+        {
+          "type": "pronunciation",
+          "expected": "Ich habe Hunger!",
+          "translation": "I'm hungry!",
+          "explanation": "\"Hunger\" sounds like English but with a back-of-throat r."
+        }
+      ]
+    },
+    {
+      "lessonId": "de_u2_l4",
+      "title": "Bezahlen",
+      "exercises": [
+        {
+          "type": "multiple_choice",
+          "prompt": "How do you say \"to pay\"?",
+          "options": ["zahlen", "fragen", "kaufen", "wünschen"],
+          "correctIndex": 0,
+          "explanation": "\"Zahlen\" = to pay; \"die Rechnung\" = the bill itself."
+        },
+        {
+          "type": "match_pairs",
+          "pairs": [["Die Rechnung, bitte", "The bill, please"], ["Wie viel kostet das?", "How much does it cost?"], ["Mit Karte", "By card"], ["In bar", "In cash"]],
+          "explanation": "\"In bar\" = in cash — from \"Bargeld\" (cash)."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "How do you ask for the bill?",
+          "options": ["Die Rechnung, bitte", "Die Karte, bitte", "Das Menu, bitte", "Das Geld, bitte"],
+          "correctIndex": 0,
+          "explanation": "\"Die Rechnung, bitte\" — or just say \"zahlen, bitte\" when they come."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Ich möchte ___ zahlen",
+          "answer": "mit Karte",
+          "wordBank": ["mit Karte", "mit Bar", "auf Rechnung", "in Euro"],
+          "explanation": "\"Mit Karte zahlen\" = pay by card — Germany is still cash-friendly, ask early."
+        },
+        {
+          "type": "listening",
+          "text": "Das macht acht Euro fünfzig",
+          "options": ["That's eight euros fifty", "That's eight euros", "That's fifty euros", "That's eighteen euros"],
+          "correctIndex": 0,
+          "explanation": "\"Das macht…\" = \"that comes to…\" — how Germans announce totals."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "The total is \"acht Euro fünfzig\". How much do you pay?",
+          "options": ["€8.50", "€8.05", "€50.80", "€85.00"],
+          "correctIndex": 0,
+          "explanation": "\"Fünfzig\" = fifty — eight euros and fifty cents."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Stimmt ___ !",
+          "answer": "so",
+          "wordBank": ["so", "gut", "danke", "bitte"],
+          "explanation": "\"Stimmt so!\" = keep the change — literally \"that's correct as it is\"."
+        },
+        {
+          "type": "pronunciation",
+          "expected": "Zahlen, bitte!",
+          "translation": "To pay, please!",
+          "explanation": "\"Z\" starts with \"ts\": TSAH-len."
+        }
+      ]
+    },
+    {
+      "lessonId": "de_u2_l5",
+      "title": "Im Restaurant",
+      "exercises": [
+        {
+          "type": "multiple_choice",
+          "prompt": "How do you ask for \"a table for two\"?",
+          "options": ["Einen Tisch für zwei, bitte", "Ein Tisch für zwei, bitte", "Eine Tisch für zwei, bitte", "Zwei Tische, bitte"],
+          "correctIndex": 0,
+          "explanation": "\"Der Tisch\" is masculine — accusative \"einen Tisch\" after reserving."
+        },
+        {
+          "type": "match_pairs",
+          "pairs": [["die Speisekarte", "the menu"], ["das Tagesgericht", "the dish of the day"], ["der Aperitif", "the before-dinner drink"], ["das Getränk", "the drink"]],
+          "explanation": "\"Speisekarte\" = food card — the German word for menu."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "The waiter asks \"Haben Sie reserviert?\" What does it mean?",
+          "options": ["Do you have a reservation?", "Are you ready to order?", "Do you want dessert?", "Did you like the food?"],
+          "correctIndex": 0,
+          "explanation": "\"Reservieren\" = to reserve — asked at the door."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Ich nehme das ___ des Tages",
+          "answer": "Gericht",
+          "wordBank": ["Gericht", "Gerichte", "Richter", "Küche"],
+          "explanation": "\"Das Gericht\" = the dish — \"Tagesgericht\" is the daily special."
+        },
+        {
+          "type": "listening",
+          "text": "Guten Appetit!",
+          "options": ["Enjoy your meal!", "Welcome back!", "See you tomorrow!", "Have a good trip!"],
+          "correctIndex": 0,
+          "explanation": "\"Guten Appetit!\" = enjoy your meal — reply with the same words."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "How do you compliment the food at the end?",
+          "options": ["Es war sehr lecker!", "Es war sehr schwer!", "Es war sehr spät!", "Es war sehr nah!"],
+          "correctIndex": 0,
+          "explanation": "\"Lecker\" = tasty — \"es war sehr lecker!\" always delights the kitchen."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Ein Tisch für zwei, ___ Abend",
+          "answer": "heute",
+          "wordBank": ["heute", "hier", "heiß", "hin"],
+          "explanation": "\"Heute Abend\" = tonight (this evening) — set phrase for bookings."
+        },
+        {
+          "type": "pronunciation",
+          "expected": "Einen Tisch für zwei, bitte",
+          "translation": "A table for two, please",
+          "explanation": "\"Zwei\" again: tsvai — same as the number two."
+        }
+      ]
+    }
+  ]
+}

@@ -172,7 +172,7 @@ class GeminiLiveClient(private val audioEngine: AudioEngine) {
         }
     }
 
-    /** Barge-in: stop Paco's audio instantly and tell the model the user is talking. */
+    /** Barge-in: stop the tutor's audio instantly and tell the model the user is talking. */
     fun bargeIn() {
         audioEngine.flushPlayback()
         webSocket?.send(

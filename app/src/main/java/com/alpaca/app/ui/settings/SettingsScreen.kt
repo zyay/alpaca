@@ -1,6 +1,7 @@
 package com.alpaca.app.ui.settings
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -15,6 +16,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.automirrored.filled.ArrowForward
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -29,13 +31,16 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.alpaca.app.data.content.CourseLanguage
 import com.alpaca.app.ui.theme.InkMid
-import com.alpaca.app.ui.theme.PacoGreen
+import com.alpaca.app.ui.theme.BrandGreen
 import com.alpaca.app.ui.theme.SunYellow
 
 @Composable
 fun SettingsScreen(
     viewModel: SettingsViewModel,
+    onOpenCourses: () -> Unit,
+    onOpenAchievements: () -> Unit,
     onBack: () -> Unit
 ) {
     val prefs by viewModel.prefs.collectAsStateWithLifecycle()
@@ -58,6 +63,63 @@ fun SettingsScreen(
         SettingsCard {
             SettingRow("Sound effects", prefs.soundEnabled, viewModel::setSound)
             SettingRow("Haptic feedback", prefs.hapticsEnabled, viewModel::setHaptics)
+            SettingRow(
+                "Material You colors",
+                prefs.dynamicColor,
+                viewModel::setDynamicColor
+            )
+        }
+
+        Spacer(Modifier.height(14.dp))
+
+        SettingsCard {
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .clickable(onClick = onOpenAchievements)
+                    .padding(vertical = 6.dp)
+            ) {
+                Text(
+                    text = "Achievements",
+                    style = MaterialTheme.typography.titleMedium,
+                    modifier = Modifier.weight(1f)
+                )
+                Text(
+                    text = "🏅",
+                    style = MaterialTheme.typography.titleMedium
+                )
+                Spacer(Modifier.width(6.dp))
+                Icon(
+                    Icons.AutoMirrored.Filled.ArrowForward,
+                    contentDescription = "Open achievements",
+                    tint = InkMid
+                )
+            }
+            Spacer(Modifier.height(6.dp))
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .clickable(onClick = onOpenCourses)
+                    .padding(vertical = 6.dp)
+            ) {
+                Text(
+                    text = "Course",
+                    style = MaterialTheme.typography.titleMedium,
+                    modifier = Modifier.weight(1f)
+                )
+                Text(
+                    text = CourseLanguage.byId(prefs.currentLanguage).flagEmoji,
+                    style = MaterialTheme.typography.titleMedium
+                )
+                Spacer(Modifier.width(6.dp))
+                Icon(
+                    Icons.AutoMirrored.Filled.ArrowForward,
+                    contentDescription = "Change course",
+                    tint = InkMid
+                )
+            }
         }
 
         Spacer(Modifier.height(14.dp))
@@ -87,7 +149,7 @@ fun SettingsScreen(
 
         Spacer(Modifier.height(24.dp))
         Text(
-            text = "Alpaca v0.1.0 · Made with love in the Andes",
+            text = "Alpaca v0.3.0 · Learn loud. Travel far.",
             style = MaterialTheme.typography.bodyMedium,
             color = InkMid
         )
@@ -124,7 +186,7 @@ private fun SettingRow(label: String, checked: Boolean, onChange: (Boolean) -> U
             onCheckedChange = onChange,
             colors = SwitchDefaults.colors(
                 checkedThumbColor = Color.White,
-                checkedTrackColor = PacoGreen
+                checkedTrackColor = BrandGreen
             )
         )
     }

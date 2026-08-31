@@ -20,7 +20,9 @@ data class UserPrefs(
     val alpacaMax: Boolean = false,
     val onboarded: Boolean = false,
     val currentUnitId: String = "es_u1",
-    val callsMade: Int = 0
+    val callsMade: Int = 0,
+    val dynamicColor: Boolean = false,
+    val currentLanguage: String = "es"
 )
 
 class UserPreferencesStore(private val context: Context) {
@@ -32,6 +34,8 @@ class UserPreferencesStore(private val context: Context) {
         val ONBOARDED = booleanPreferencesKey("onboarded")
         val UNIT = stringPreferencesKey("current_unit")
         val CALLS = intPreferencesKey("calls_made")
+        val DYNAMIC_COLOR = booleanPreferencesKey("dynamic_color")
+        val LANGUAGE = stringPreferencesKey("current_language")
     }
 
     val prefs: Flow<UserPrefs> = context.dataStore.data.map { p ->
@@ -42,7 +46,9 @@ class UserPreferencesStore(private val context: Context) {
             alpacaMax = p[Keys.MAX] ?: false,
             onboarded = p[Keys.ONBOARDED] ?: false,
             currentUnitId = p[Keys.UNIT] ?: "es_u1",
-            callsMade = p[Keys.CALLS] ?: 0
+            callsMade = p[Keys.CALLS] ?: 0,
+            dynamicColor = p[Keys.DYNAMIC_COLOR] ?: false,
+            currentLanguage = p[Keys.LANGUAGE] ?: "es"
         )
     }
 
@@ -53,4 +59,11 @@ class UserPreferencesStore(private val context: Context) {
     suspend fun setOnboarded() = context.dataStore.edit { it[Keys.ONBOARDED] = true }
     suspend fun setCurrentUnit(unitId: String) = context.dataStore.edit { it[Keys.UNIT] = unitId }
     suspend fun incrementCalls() = context.dataStore.edit { it[Keys.CALLS] = (it[Keys.CALLS] ?: 0) + 1 }
+    suspend fun setDynamicColor(enabled: Boolean) = context.dataStore.edit { it[Keys.DYNAMIC_COLOR] = enabled }
+    suspend fun setCurrentLanguage(languageId: String) {
+        context.dataStore.edit {
+            it[Keys.LANGUAGE] = languageId
+            it[Keys.UNIT] = "${languageId}_u1"
+        }
+    }
 }

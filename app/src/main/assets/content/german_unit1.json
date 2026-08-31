@@ -1,0 +1,303 @@
+{
+  "unitId": "de_u1",
+  "title": "Greetings & Basics",
+  "region": "Schwarzwald",
+  "languageName": "German",
+  "lessons": [
+    {
+      "lessonId": "de_u1_l1",
+      "title": "Begrüßungen",
+      "exercises": [
+        {
+          "type": "multiple_choice",
+          "prompt": "How do you say \"Hello\"?",
+          "options": ["Hallo", "Tschüss", "Danke", "Bitte"],
+          "correctIndex": 0,
+          "explanation": "\"Hallo\" works everywhere; \"Guten Tag\" is more formal."
+        },
+        {
+          "type": "match_pairs",
+          "pairs": [["Guten Morgen", "Good morning"], ["Guten Tag", "Good day"], ["Guten Abend", "Good evening"], ["Tschüss", "Bye"]],
+          "explanation": "Germans switch greetings by time of day — Morgen, Tag, Abend."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "What does \"Danke\" mean?",
+          "options": ["Thank you", "Please", "Sorry", "Hello"],
+          "correctIndex": 0,
+          "explanation": "\"Danke\" = thanks; \"danke schön\" = thank you kindly."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "___ Nacht!",
+          "answer": "Gute",
+          "wordBank": ["Gute", "Guten", "Gut", "Gutes"],
+          "explanation": "\"Die Nacht\" is feminine — \"Gute Nacht!\" takes the feminine ending."
+        },
+        {
+          "type": "listening",
+          "text": "Wie geht es dir?",
+          "options": ["How are you? (informal)", "What's your name?", "Where are you from?", "How old are you?"],
+          "correctIndex": 0,
+          "explanation": "\"Wie geht es dir?\" is informal; with \"Ihnen\" it's formal."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "How do you say \"Goodbye\" (casual)?",
+          "options": ["Tschüss", "Guten Tag", "Danke", "Bitte"],
+          "correctIndex": 0,
+          "explanation": "\"Tschüss\" is the friendly everyday bye; \"Auf Wiedersehen\" is formal."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Bis ___ !",
+          "answer": "bald",
+          "wordBank": ["bald", "dann", "gern", "hier"],
+          "explanation": "\"Bis bald\" = \"see you soon\" — literally \"until soon\"."
+        },
+        {
+          "type": "pronunciation",
+          "expected": "Freut mich!",
+          "translation": "Nice to meet you!",
+          "explanation": "Short for \"es freut mich\" (it pleases me) — say \"froyt mikh\"."
+        }
+      ]
+    },
+    {
+      "lessonId": "de_u1_l2",
+      "title": "Die Zahlen",
+      "exercises": [
+        {
+          "type": "match_pairs",
+          "pairs": [["eins", "one"], ["zwei", "two"], ["drei", "three"], ["vier", "four"]],
+          "explanation": "Eins, zwei, drei, vier — the first four numbers."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "What number is \"fünf\"?",
+          "options": ["5", "4", "6", "15"],
+          "correctIndex": 0,
+          "explanation": "\"Fünf\" is five — the umlaut ü sounds like the French \"u\"."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "How do you say \"ten\"?",
+          "options": ["zehn", "sechs", "sieben", "neun"],
+          "correctIndex": 0,
+          "explanation": "\"Zehn\" is ten — the \"z\" sounds like \"ts\"."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Eins, zwei, ___, vier",
+          "answer": "drei",
+          "wordBank": ["drei", "fünf", "zehn", "sechs"],
+          "explanation": "Drei (3) comes after zwei (2) — say \"dry\" with a German r."
+        },
+        {
+          "type": "listening",
+          "text": "Ich habe zehn Euro",
+          "options": ["I have ten euros", "I have two euros", "I need ten euros", "I have twelve euros"],
+          "correctIndex": 0,
+          "explanation": "\"Ich habe\" = I have — \"zehn\" makes it ten euros."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "What does \"sechs\" mean?",
+          "options": ["6", "16", "60", "7"],
+          "correctIndex": 0,
+          "explanation": "\"Sechs\" is six — the \"chs\" sounds like \"ks\"."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Neun, ___, elf",
+          "answer": "zehn",
+          "wordBank": ["zehn", "vier", "drei", "fünf"],
+          "explanation": "Neun (9), zehn (10), elf (11) — ten sits in the middle."
+        },
+        {
+          "type": "pronunciation",
+          "expected": "Zwei Kaffees, bitte",
+          "translation": "Two coffees, please",
+          "explanation": "\"Zwei\" starts with a \"ts\" sound: tsvai."
+        }
+      ]
+    },
+    {
+      "lessonId": "de_u1_l3",
+      "title": "Sich vorstellen",
+      "exercises": [
+        {
+          "type": "multiple_choice",
+          "prompt": "How do you say \"My name is…\"?",
+          "options": ["Ich heiße…", "Ich bin…", "Ich habe…", "Ich wohne…"],
+          "correctIndex": 0,
+          "explanation": "\"Ich heiße\" literally means \"I am called\"; the ß is a sharp \"s\"."
+        },
+        {
+          "type": "match_pairs",
+          "pairs": [["Ich heiße Anna", "My name is Anna"], ["Wie heißt du?", "What's your name?"], ["Und du?", "And you?"], ["Woher kommst du?", "Where are you from?"]],
+          "explanation": "\"Wie heißt du?\" is informal; formal is \"Wie heißen Sie?\""
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "What does \"Ich komme aus Deutschland\" mean?",
+          "options": ["I come from Germany", "I live in Germany", "I like Germany", "I work in Germany"],
+          "correctIndex": 0,
+          "explanation": "\"Kommen aus\" = come from — \"woher kommst du?\" asks exactly that."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Ich ___ Student",
+          "answer": "bin",
+          "wordBank": ["bin", "ist", "habe", "bist"],
+          "explanation": "\"Ich bin\" = I am — professions and roles use sein (to be)."
+        },
+        {
+          "type": "listening",
+          "text": "Ich wohne in Berlin",
+          "options": ["I live in Berlin", "I come from Berlin", "I like Berlin", "I work in Berlin"],
+          "correctIndex": 0,
+          "explanation": "\"Wohnen\" = to live/reside — \"ich wohne in…\" + city."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "Which reply means \"I am twenty years old\"?",
+          "options": ["Ich bin zwanzig Jahre alt", "Ich habe zwanzig Jahre", "Ich bin zwanzig", "Ich zwanzig Jahre"],
+          "correctIndex": 0,
+          "explanation": "German uses sein (to be) for age: \"ich bin … Jahre alt\"."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "___ heißen Sie?",
+          "answer": "Wie",
+          "wordBank": ["Wie", "Wo", "Wer", "Was"],
+          "explanation": "\"Wie heißen Sie?\" — the formal name question for strangers."
+        },
+        {
+          "type": "pronunciation",
+          "expected": "Ich heiße Max, freut mich!",
+          "translation": "My name is Max, nice to meet you!",
+          "explanation": "\"heiße\" sounds like \"high-suh\" — crisp ß, no buzzing z."
+        }
+      ]
+    },
+    {
+      "lessonId": "de_u1_l4",
+      "title": "Höflichkeit",
+      "exercises": [
+        {
+          "type": "multiple_choice",
+          "prompt": "How do you say \"please\"?",
+          "options": ["Bitte", "Danke", "Tschüss", "Entschuldigung"],
+          "correctIndex": 0,
+          "explanation": "\"Bitte\" = please; it also means \"here you go\" and \"pardon?\"."
+        },
+        {
+          "type": "match_pairs",
+          "pairs": [["Entschuldigung", "Excuse me"], ["Es tut mir leid", "I'm sorry"], ["Gern geschehen", "You're welcome"], ["Schönen Tag", "Have a nice day"]],
+          "explanation": "\"Entschuldigung\" doubles as \"excuse me\" and \"sorry\"."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "Someone says \"Danke schön\". What do you answer?",
+          "options": ["Gern geschehen", "Hallo", "Entschuldigung", "Guten Tag"],
+          "correctIndex": 0,
+          "explanation": "\"Gern geschehen\" = gladly done — the classic \"you're welcome\"."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "___ Sie mir bitte helfen?",
+          "answer": "Können",
+          "wordBank": ["Können", "Haben", "Sein", "Wollen"],
+          "explanation": "\"Können Sie mir helfen?\" = \"can you help me?\" — polite with \"bitte\"."
+        },
+        {
+          "type": "listening",
+          "text": "Es tut mir leid",
+          "options": ["I'm sorry", "Thank you", "Good evening", "See you later"],
+          "correctIndex": 0,
+          "explanation": "\"Es tut mir leid\" = \"it does me sorrow\" — a real apology."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "How do you say \"Have a nice day!\" when leaving a shop?",
+          "options": ["Schönen Tag noch!", "Gute Nacht!", "Bis morgen!", "Gern geschehen!"],
+          "correctIndex": 0,
+          "explanation": "\"Schönen Tag noch!\" is the standard shop-departure wish."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Entschuldigung, ___ ist der Bahnhof?",
+          "answer": "wo",
+          "wordBank": ["wo", "wer", "was", "wie"],
+          "explanation": "\"Wo\" = where — \"where is the station?\"."
+        },
+        {
+          "type": "pronunciation",
+          "expected": "Entschuldigung, bitte!",
+          "translation": "Excuse me, please!",
+          "explanation": "Say \"ent-SHOOL-di-goong\" — stress the middle syllable."
+        }
+      ]
+    },
+    {
+      "lessonId": "de_u1_l5",
+      "title": "Erste Sätze",
+      "exercises": [
+        {
+          "type": "multiple_choice",
+          "prompt": "What does \"Wie geht's?\" mean?",
+          "options": ["How's it going?", "What's that?", "Where to?", "Who's there?"],
+          "correctIndex": 0,
+          "explanation": "Short for \"Wie geht es?\" — the casual all-purpose check-in."
+        },
+        {
+          "type": "match_pairs",
+          "pairs": [["Gut, danke", "Good, thanks"], ["Nicht schlecht", "Not bad"], ["Ich bin müde", "I'm tired"], ["Ich habe Hunger", "I'm hungry"]],
+          "explanation": "German says \"I have hunger\" — \"Ich habe Hunger\"."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "How do you answer \"Wie geht's?\" positively?",
+          "options": ["Gut, danke, und dir?", "Schlecht", "Ja, bitte", "Tschüss"],
+          "correctIndex": 0,
+          "explanation": "\"Gut, danke, und dir?\" = good, thanks, and you?"
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Ich spreche ein ___ Deutsch",
+          "answer": "bisschen",
+          "wordBank": ["bisschen", "billig", "bitter", "Bibliothek"],
+          "explanation": "\"Ein bisschen\" = a little — the honest beginner's phrase."
+        },
+        {
+          "type": "listening",
+          "text": "Sprechen Sie Englisch?",
+          "options": ["Do you speak English?", "Are you English?", "Do you like English?", "Where is English spoken?"],
+          "correctIndex": 0,
+          "explanation": "\"Sprechen Sie…?\" asks about language ability, formally."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "Which sentence means \"I understand only a little\"?",
+          "options": ["Ich verstehe nur ein bisschen", "Ich verstehe gar nichts", "Ich spreche gut Deutsch", "Ich weiß es nicht"],
+          "correctIndex": 0,
+          "explanation": "\"Verstehen\" = to understand; \"nur ein bisschen\" = only a little."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Ich ___ aus Österreich",
+          "answer": "komme",
+          "wordBank": ["komme", "kommst", "kommen", "kommt"],
+          "explanation": "\"Ich komme aus…\" — the verb matches ich with the -e ending."
+        },
+        {
+          "type": "pronunciation",
+          "expected": "Gut, danke! Und dir?",
+          "translation": "Good, thanks! And you?",
+          "explanation": "Final \"-e\" stays soft: \"goot, dahn-kuh\"."
+        }
+      ]
+    }
+  ]
+}

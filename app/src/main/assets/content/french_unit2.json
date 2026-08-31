@@ -1,0 +1,303 @@
+{
+  "unitId": "fr_u2",
+  "title": "At the Café",
+  "region": "Côte Lunaire",
+  "languageName": "French",
+  "lessons": [
+    {
+      "lessonId": "fr_u2_l1",
+      "title": "Commander un café",
+      "exercises": [
+        {
+          "type": "multiple_choice",
+          "prompt": "How do you say \"a coffee\"?",
+          "options": ["un café", "un thé", "une eau", "un lait"],
+          "correctIndex": 0,
+          "explanation": "\"Un café\" is masculine; \"un café crème\" is coffee with milk."
+        },
+        {
+          "type": "match_pairs",
+          "pairs": [["un thé", "a tea"], ["une eau", "a water"], ["un chocolat chaud", "a hot chocolate"], ["un jus d'orange", "an orange juice"]],
+          "explanation": "Drinks have genders — \"une eau\" (feminine), \"un thé\" (masculine)."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "The waiter asks \"Qu'est-ce que vous prenez ?\" What does it mean?",
+          "options": ["What will you have?", "Where are you from?", "Do you like it?", "How much is it?"],
+          "correctIndex": 0,
+          "explanation": "Literally \"what do you take?\" — the standard order-taking question."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Je voudrais ___ café, s'il vous plaît",
+          "answer": "un",
+          "wordBank": ["un", "une", "de", "le"],
+          "explanation": "\"Je voudrais\" = \"I would like\" — the polite way to order anything."
+        },
+        {
+          "type": "listening",
+          "text": "Un thé au citron, s'il vous plaît",
+          "options": ["A tea with lemon, please", "A coffee with milk, please", "A hot chocolate, please", "An orange juice, please"],
+          "correctIndex": 0,
+          "explanation": "\"Au citron\" = with lemon — \"au\" means \"with (the)\" for flavors."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "How do you politely get the waiter's attention?",
+          "options": ["S'il vous plaît !", "Attention !", "Regardez !", "Aidez-moi !"],
+          "correctIndex": 0,
+          "explanation": "Adding \"s'il vous plaît\" softens any request; raising your voice doesn't."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Pour ___, un chocolat chaud",
+          "answer": "moi",
+          "wordBank": ["moi", "je", "me", "mon"],
+          "explanation": "\"Pour moi\" = \"for me\" — a super quick way to order after someone else."
+        },
+        {
+          "type": "pronunciation",
+          "expected": "Un café, s'il vous plaît",
+          "translation": "A coffee, please",
+          "explanation": "\"S'il vous plaît\" flows as one breath: seal-voo-pleh."
+        }
+      ]
+    },
+    {
+      "lessonId": "fr_u2_l2",
+      "title": "Au comptoir",
+      "exercises": [
+        {
+          "type": "multiple_choice",
+          "prompt": "What does \"Je voudrais…\" mean?",
+          "options": ["I would like…", "I have…", "I am…", "I must…"],
+          "correctIndex": 0,
+          "explanation": "More polite than \"je veux\" (I want) — always use \"je voudrais\" when ordering."
+        },
+        {
+          "type": "match_pairs",
+          "pairs": [["Ici ou à emporter ?", "Here or to take away?"], ["Sur place", "Eating in"], ["À emporter", "To take away"], ["C'est tout", "That's all"]],
+          "explanation": "You'll hear \"ici ou à emporter ?\" at almost every counter in France."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "The cashier asks \"Sur place ou à emporter ?\" You want to take away. What do you say?",
+          "options": ["À emporter", "Sur place", "Ici", "C'est tout"],
+          "correctIndex": 0,
+          "explanation": "\"À emporter\" = to go, like English \"takeaway\"."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Je voudrais ___ croissant",
+          "answer": "un",
+          "wordBank": ["un", "une", "des", "le"],
+          "explanation": "\"Croissant\" is masculine — \"un croissant\"."
+        },
+        {
+          "type": "listening",
+          "text": "Et avec ceci ?",
+          "options": ["Anything with that?", "How much is this?", "Is this free?", "Who is this for?"],
+          "correctIndex": 0,
+          "explanation": "\"Et avec ceci ?\" = \"and with this?\" — the upsell question at cafés."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "How do you say \"That's all, thank you\"?",
+          "options": ["C'est tout, merci", "C'est bon, merci", "Voilà, merci", "Ça y est, merci"],
+          "correctIndex": 0,
+          "explanation": "\"C'est tout\" closes an order neatly; \"c'est bon\" also works casually."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Une bouteille ___ eau, s'il vous plaît",
+          "answer": "d'eau",
+          "wordBank": ["d'eau", "de l'eau", "de eau", "à eau"],
+          "explanation": "\"Bouteille d'eau\" = bottle of water — \"de\" links a container and its contents."
+        },
+        {
+          "type": "pronunciation",
+          "expected": "Je voudrais un croissant",
+          "translation": "I would like a croissant",
+          "explanation": "Say \"juh voo-dreh\" — the \"ois\" in voudrais sounds like \"oo-dreh\"."
+        }
+      ]
+    },
+    {
+      "lessonId": "fr_u2_l3",
+      "title": "Les snacks",
+      "exercises": [
+        {
+          "type": "match_pairs",
+          "pairs": [["le croissant", "the croissant"], ["le pain au chocolat", "the chocolate pastry"], ["le sandwich", "the sandwich"], ["la salade", "the salad"]],
+          "explanation": "\"Le pain au chocolat\" is chocolate-filled pastry bread — a breakfast icon."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "What is \"un croque-monsieur\"?",
+          "options": ["A grilled ham and cheese sandwich", "A sweet pastry", "A bowl of soup", "A slice of cake"],
+          "correctIndex": 0,
+          "explanation": "A warm ham-and-cheese toast; with a fried egg on top it's a \"croque-madame\"."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "How do you say \"the menu\" (fixed-price set menu)?",
+          "options": ["le menu", "la carte", "l'addition", "le plat"],
+          "correctIndex": 0,
+          "explanation": "\"Menu\" = fixed set meal; \"la carte\" is the full à-la-carte list."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "J'ai ___, je voudrais un sandwich",
+          "answer": "faim",
+          "wordBank": ["faim", "soif", "froid", "chaud"],
+          "explanation": "\"J'ai faim\" = I'm hungry (I have hunger); \"j'ai soif\" = I'm thirsty."
+        },
+        {
+          "type": "listening",
+          "text": "Je prends une salade",
+          "options": ["I'll take a salad", "I like the salad", "I am a salad (nonsense)", "I want the soup"],
+          "correctIndex": 0,
+          "explanation": "\"Je prends\" (I take) is how the French say what they'll eat or drink."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "What does \"sans sucre\" mean?",
+          "options": ["Without sugar", "With sugar", "Without milk", "Very sweet"],
+          "correctIndex": 0,
+          "explanation": "\"Sans\" = without — useful for allergies: \"sans gluten\", \"sans lait\"."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Un thé ___ lait, s'il vous plaît",
+          "answer": "au",
+          "wordBank": ["au", "à la", "du", "des"],
+          "explanation": "\"Thé au lait\" = tea with milk; \"au\" = à + le for masculine nouns."
+        },
+        {
+          "type": "pronunciation",
+          "expected": "Un croissant et un café",
+          "translation": "A croissant and a coffee",
+          "explanation": "The classic French breakfast order — say it like a local."
+        }
+      ]
+    },
+    {
+      "lessonId": "fr_u2_l4",
+      "title": "L'addition",
+      "exercises": [
+        {
+          "type": "multiple_choice",
+          "prompt": "How do you ask for the bill?",
+          "options": ["L'addition, s'il vous plaît", "La carte, s'il vous plaît", "Le menu, s'il vous plaît", "Le prix, s'il vous plaît"],
+          "correctIndex": 0,
+          "explanation": "\"L'addition\" is the bill — in France you must ask for it; it won't come unasked."
+        },
+        {
+          "type": "match_pairs",
+          "pairs": [["C'est combien ?", "How much is it?"], ["Je paie par carte", "I'm paying by card"], ["En espèces", "In cash"], ["Voilà", "Here you go"]],
+          "explanation": "\"C'est combien ?\" works for any price — food, tickets, souvenirs."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "What does \"Je peux payer par carte ?\" mean?",
+          "options": ["Can I pay by card?", "Can I pay in cash?", "Where do I pay?", "Is the card free?"],
+          "correctIndex": 0,
+          "explanation": "\"Par carte\" = by card; \"en espèces\" = in cash."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "C'est combien, ___ ?",
+          "answer": "s'il vous plaît",
+          "wordBank": ["s'il vous plaît", "merci beaucoup", "bonjour", "au revoir"],
+          "explanation": "Politeness formula: question + \"s'il vous plaît\" wins smiles."
+        },
+        {
+          "type": "listening",
+          "text": "Ça fait sept euros cinquante",
+          "options": ["That's seven euros fifty", "That's seven euros", "That's fifty euros", "That's seventeen euros"],
+          "correctIndex": 0,
+          "explanation": "\"Ça fait…\" = \"that comes to…\" — how totals are announced."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "The bill is \"sept euros cinquante\". How much do you pay?",
+          "options": ["€7.50", "€7.05", "€50.70", "€15.00"],
+          "correctIndex": 0,
+          "explanation": "\"Cinquante\" is fifty — so seven euros and fifty cents."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "___ avec la carte",
+          "answer": "Je paie",
+          "wordBank": ["Je paie", "Je paye pas", "Paie moi", "Je paies"],
+          "explanation": "\"Je paie\" (or \"je paye\") = I pay — both spellings are correct."
+        },
+        {
+          "type": "pronunciation",
+          "expected": "L'addition, s'il vous plaît",
+          "translation": "The bill, please",
+          "explanation": "Pronounce \"l'addition\" as \"la-dee-syon\" — three smooth parts."
+        }
+      ]
+    },
+    {
+      "lessonId": "fr_u2_l5",
+      "title": "Au restaurant",
+      "exercises": [
+        {
+          "type": "multiple_choice",
+          "prompt": "You want the full menu list. You ask for…",
+          "options": ["la carte", "le menu", "l'addition", "la note"],
+          "correctIndex": 0,
+          "explanation": "\"La carte, s'il vous plaît\" gets you the à-la-carte menu."
+        },
+        {
+          "type": "match_pairs",
+          "pairs": [["une table pour deux", "a table for two"], ["l'apéritif", "the before-dinner drink"], ["le plat du jour", "the dish of the day"], ["le dessert", "the dessert"]],
+          "explanation": "\"Le plat du jour\" is the fresh daily special — usually great value."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "How do you book \"a table for two tonight\"?",
+          "options": ["Une table pour deux ce soir", "Un table pour deux soir", "Une table pour deux le soir", "Deux tables ce soir"],
+          "correctIndex": 0,
+          "explanation": "\"Une table pour deux\" + \"ce soir\" (tonight) — reservation formula done."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Je voudrais de l'eau ___",
+          "answer": "plate",
+          "wordBank": ["plate", "pétillante", "chaude", "froide"],
+          "explanation": "\"Eau plate\" = still water; \"eau pétillante\" = sparkling."
+        },
+        {
+          "type": "listening",
+          "text": "Vous avez réservé ?",
+          "options": ["Do you have a reservation?", "Do you want dessert?", "Are you ready to order?", "Did you enjoy your meal?"],
+          "correctIndex": 0,
+          "explanation": "\"Vous avez réservé ?\" = \"have you booked?\" — asked at the door."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "The waiter says \"Bon appétit !\" You reply…",
+          "options": ["Merci, bon appétit !", "De rien !", "Pardon !", "Au revoir !"],
+          "correctIndex": 0,
+          "explanation": "Return the wish: \"merci, bon appétit !\" — everyone says it before eating."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "C'était ___ , merci !",
+          "answer": "délicieux",
+          "wordBank": ["délicieux", "difficile", "désolé", "dernier"],
+          "explanation": "\"C'était délicieux\" = \"it was delicious\" — the best compliment to the kitchen."
+        },
+        {
+          "type": "pronunciation",
+          "expected": "Une table pour deux, s'il vous plaît",
+          "translation": "A table for two, please",
+          "explanation": "\"Pour\" sounds like \"por\" — one syllable, open \"o\"."
+        }
+      ]
+    }
+  ]
+}

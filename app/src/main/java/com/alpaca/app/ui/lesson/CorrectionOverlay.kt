@@ -8,6 +8,7 @@ import androidx.compose.animation.fadeIn
 import androidx.compose.animation.slideInVertically
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -17,6 +18,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -31,30 +33,38 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import com.alpaca.app.ui.components.PacoCharacter
-import com.alpaca.app.ui.components.PacoState
+import androidx.compose.ui.unit.sp
 import com.alpaca.app.ui.components.PillButton
+import com.alpaca.app.ui.components.UnlockEasing
+import com.alpaca.app.ui.theme.DangerRed
+import com.alpaca.app.ui.theme.DangerRedDark
 import com.alpaca.app.ui.theme.InkMid
-import com.alpaca.app.ui.theme.PacoGreen
-import com.alpaca.app.ui.theme.PacoGreenLight
+import com.alpaca.app.ui.theme.BrandGreen
+import com.alpaca.app.ui.theme.BrandGreenPale
+import com.alpaca.app.ui.theme.PaperWhite
 import com.alpaca.app.ui.theme.SkyBlue
 
 /**
- * The "spit-take": Paco spits a droplet of water at the screen; the splash
- * clears to reveal the correct answer with a one-line explanation.
+ * The correction splash: a red ✗ stamp pops in, a droplet splat bursts across
+ * the screen, then it clears to reveal the correct answer with a one-line
+ * explanation — no character, just the physics.
  */
 @Composable
 fun CorrectionOverlay(
     correction: LessonViewModel.Correction,
     onContinue: () -> Unit
 ) {
+    val stamp = remember { Animatable(0f) }
     val dropletT = remember { Animatable(0f) }
     var showCard by remember { mutableStateOf(false) }
 
     LaunchedEffect(Unit) {
-        dropletT.animateTo(1f, animationSpec = tween(750, easing = LinearEasing))
+        stamp.animateTo(1f, animationSpec = tween(420, easing = UnlockEasing))
+        dropletT.animateTo(1f, animationSpec = tween(650, easing = LinearEasing))
         showCard = true
     }
 
@@ -72,16 +82,32 @@ fun CorrectionOverlay(
         ) {
             Spacer(Modifier.height(24.dp))
             Box(contentAlignment = Alignment.Center) {
-                PacoCharacter(
-                    state = PacoState.SPIT_TAKE,
-                    modifier = Modifier.size(190.dp)
-                )
                 WaterDroplets(
                     progress = dropletT.value,
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(190.dp)
                 )
+                Box(
+                    modifier = Modifier
+                        .size(120.dp)
+                        .graphicsLayer {
+                            scaleX = stamp.value
+                            scaleY = stamp.value
+                            alpha = stamp.value.coerceIn(0f, 1f)
+                        }
+                        .clip(CircleShape)
+                        .background(DangerRed)
+                        .border(6.dp, DangerRedDark, CircleShape),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Text(
+                        text = "✗",
+                        color = PaperWhite,
+                        fontSize = 60.sp,
+                        fontWeight = FontWeight.ExtraBold
+                    )
+                }
             }
 
             Spacer(Modifier.height(16.dp))
@@ -101,13 +127,13 @@ fun CorrectionOverlay(
                             .fillMaxWidth()
                             .padding(vertical = 12.dp)
                             .clip(RoundedCornerShape(16.dp))
-                            .background(PacoGreenLight)
+                            .background(BrandGreenPale)
                             .padding(20.dp)
                     ) {
                         Text(
                             text = correction.correctText,
                             style = MaterialTheme.typography.headlineMedium,
-                            color = PacoGreen,
+                            color = BrandGreen,
                             textAlign = TextAlign.Center,
                             modifier = Modifier.fillMaxWidth()
                         )
@@ -133,7 +159,7 @@ fun CorrectionOverlay(
     }
 }
 
-/** Water droplets flying out of Paco's mouth toward the viewer. */
+/** Water droplets bursting out of the stamp toward the viewer. */
 @Composable
 private fun WaterDroplets(progress: Float, modifier: Modifier = Modifier) {
     val drops = remember {
@@ -144,8 +170,8 @@ private fun WaterDroplets(progress: Float, modifier: Modifier = Modifier) {
         }
         List(14) {
             floatArrayOf(
-                0.55f + rnd() * 0.08f,   // origin x fraction
-                0.28f + rnd() * 0.08f,   // origin y fraction
+                0.48f + rnd() * 0.08f,   // origin x fraction
+                0.4f + rnd() * 0.08f,    // origin y fraction
                 0.25f + rnd() * 0.45f,   // vx
                 -0.18f + rnd() * 0.22f,  // vy initial (up-ish)
                 0.5f + rnd() * 0.5f      // size scale

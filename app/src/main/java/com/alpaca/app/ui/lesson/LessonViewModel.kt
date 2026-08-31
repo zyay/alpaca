@@ -35,7 +35,8 @@ class LessonViewModel(private val container: AppContainer) : ViewModel() {
         val correction: Correction? = null,
         val justCorrect: Boolean = false,
         val finished: Boolean = false,
-        val outOfEnergy: Boolean = false
+        val outOfEnergy: Boolean = false,
+        val languageTag: String = "es-ES"
     )
 
     private val _state = MutableStateFlow(UiState())
@@ -64,12 +65,16 @@ class LessonViewModel(private val container: AppContainer) : ViewModel() {
             lesson = loaded
             container.progressRepository.recordAttempt(lessonId)
             val user = container.gamificationRepository.currentUser()
+            val langId = loaded.lessonId.substringBefore('_')
+                .takeIf { it.length == 2 && it != loaded.lessonId }
+                ?: prefs.value.currentLanguage
             _state.value = UiState(
                 loading = false,
                 lessonTitle = loaded.title,
                 exercise = loaded.exercises.firstOrNull(),
                 total = loaded.exercises.size,
-                energy = user.fleeceEnergy
+                energy = user.fleeceEnergy,
+                languageTag = com.alpaca.app.data.content.CourseLanguage.byId(langId).speechTag
             )
         }
     }

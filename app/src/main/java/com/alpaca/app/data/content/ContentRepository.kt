@@ -17,27 +17,20 @@ class ContentRepository(private val context: Context) {
     @Volatile
     private var cache: List<CourseUnit>? = null
 
-    suspend fun loadUnits(): List<CourseUnit> = withContext(Dispatchers.IO) {
-        cache?.let { return@withContext it }
-        val units = UNIT_FILES.map { (unitId, file) ->
-            try {
-                val text = context.assets.open(file).bufferedReader().use { it.readText() }
-                json.decodeFromString<CourseUnit>(text)
-            } catch (e: Exception) {
-                Log.e(TAG, "Failed to load unit $unitId", e)
-                null
-            }
-        }.filterNotNull()
-        Log.i(TAG, "Loaded ${units.size} units, ${units.sumOf { it.lessons.size }} lessons")
-        cache = units
-        units
-    }
+    suspend fun loadUnits(languageId: String = CourseLanguage.Spanish.id): List<CourseUnit> =
+        withContext(Dispatchers.IO) {
+            val all = cache ?: loadAllUnits().also { cache = it }
+            all.filter { it.unitId.startsWith("${languageId}_") }
+        }
 
     suspend fun loadUnit(unitId: String): CourseUnit? =
-        loadUnits().firstOrNull { it.unitId == unitId }
+        loadAllUnits().firstOrNull { it.unitId == unitId }
 
     suspend fun findLesson(lessonId: String): Lesson? =
-        loadUnits().asSequence().flatMap { it.lessons }.firstOrNull { it.lessonId == lessonId }
+        loadAllUnits().asSequence().flatMap { it.lessons }.firstOrNull { it.lessonId == lessonId }
+
+    suspend fun unitOfLesson(lessonId: String): CourseUnit? =
+        loadAllUnits().firstOrNull { unit -> unit.lessons.any { it.lessonId == lessonId } }
 
     /**
      * Rebuilds a practice lesson from the learner's logged mistakes.
@@ -55,15 +48,27 @@ class ContentRepository(private val context: Context) {
         )
     }
 
+    private fun loadAllUnits(): List<CourseUnit> {
+        val files = context.assets.list(CONTENT_DIR).orEmpty()
+            .filter { it.endsWith(".json") }
+            .sorted()
+        return files.map { file ->
+            try {
+                val text = context.assets.open("$CONTENT_DIR/$file")
+                    .bufferedReader().use { it.readText() }
+                json.decodeFromString<CourseUnit>(text)
+            } catch (e: Exception) {
+                Log.e(TAG, "Failed to load unit file $file", e)
+                null
+            }
+        }.filterNotNull().also {
+            Log.i(TAG, "Loaded ${it.size} units, ${it.sumOf { u -> u.lessons.size }} lessons")
+        }
+    }
+
     companion object {
         private const val TAG = "Alpaca"
+        private const val CONTENT_DIR = "content"
         const val REVIEW_LESSON_ID = "review"
-        private val UNIT_FILES = listOf(
-            "es_u1" to "content/spanish_unit1.json",
-            "es_u2" to "content/spanish_unit2.json",
-            "es_u3" to "content/spanish_unit3.json",
-            "es_u4" to "content/spanish_unit4.json",
-            "es_u5" to "content/spanish_unit5.json"
-        )
     }
 }

@@ -28,8 +28,8 @@ import androidx.compose.ui.unit.dp
 import com.alpaca.app.data.content.MatchPairsExercise
 import com.alpaca.app.ui.theme.CloudGray
 import com.alpaca.app.ui.theme.DangerRed
-import com.alpaca.app.ui.theme.PacoGreen
-import com.alpaca.app.ui.theme.PacoGreenLight
+import com.alpaca.app.ui.theme.BrandGreen
+import com.alpaca.app.ui.theme.BrandGreenPale
 import com.alpaca.app.ui.theme.SkyBlue
 import com.alpaca.app.util.HapticPlayer
 import kotlinx.coroutines.delay
@@ -134,7 +134,7 @@ private fun PairTile(
     val border by animateColorAsState(
         when {
             wrong -> DangerRed
-            matched -> PacoGreen
+            matched -> BrandGreen
             selected -> SkyBlue
             else -> CloudGray
         },
@@ -142,7 +142,7 @@ private fun PairTile(
     )
     val background by animateColorAsState(
         when {
-            matched -> PacoGreenLight
+            matched -> BrandGreenPale
             selected -> Color(0xFFDDF1FF)
             else -> Color.White
         },
@@ -152,7 +152,7 @@ private fun PairTile(
         text = text,
         style = MaterialTheme.typography.titleMedium,
         textAlign = TextAlign.Center,
-        color = if (matched) PacoGreen else MaterialTheme.colorScheme.onSurface,
+        color = if (matched) BrandGreen else MaterialTheme.colorScheme.onSurface,
         modifier = Modifier
             .fillMaxWidth()
             .clip(shape)

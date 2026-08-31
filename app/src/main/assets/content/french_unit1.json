@@ -1,0 +1,303 @@
+{
+  "unitId": "fr_u1",
+  "title": "Greetings & Basics",
+  "region": "Villages Dorés",
+  "languageName": "French",
+  "lessons": [
+    {
+      "lessonId": "fr_u1_l1",
+      "title": "Salutations",
+      "exercises": [
+        {
+          "type": "multiple_choice",
+          "prompt": "How do you say \"Hello\" (any time of day)?",
+          "options": ["Bonjour", "Au revoir", "Merci", "S'il vous plaît"],
+          "correctIndex": 0,
+          "explanation": "\"Bonjour\" is the standard French greeting, used until the evening."
+        },
+        {
+          "type": "match_pairs",
+          "pairs": [["Bonjour", "Hello"], ["Au revoir", "Goodbye"], ["Merci", "Thank you"], ["Salut", "Hi"]],
+          "explanation": "\"Salut\" is casual — use it with friends, never with strangers."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "What does \"Bonne nuit\" mean?",
+          "options": ["Good night", "Good morning", "Goodbye", "See you"],
+          "correctIndex": 0,
+          "explanation": "\"Bonne nuit\" is said before going to sleep, not as an evening greeting."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "___ soir!",
+          "answer": "Bon",
+          "wordBank": ["Bon", "Bonne", "Bonsoir", "Salut"],
+          "explanation": "\"Bonsoir\" (one word) is the evening greeting — \"bon soir\" as two words is incorrect."
+        },
+        {
+          "type": "listening",
+          "text": "Comment allez-vous ?",
+          "options": ["How are you? (formal)", "What's your name?", "Where are you from?", "How old are you?"],
+          "correctIndex": 0,
+          "explanation": "\"Comment allez-vous ?\" is the formal way to ask how someone is."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "How do you say \"Goodbye\"?",
+          "options": ["Au revoir", "Bonjour", "Merci beaucoup", "Oui"],
+          "correctIndex": 0,
+          "explanation": "\"Au revoir\" literally means \"until we see each other again\"."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Merci ___",
+          "answer": "beaucoup",
+          "wordBank": ["beaucoup", "bonjour", "s'il", "avec"],
+          "explanation": "\"Merci beaucoup\" means \"thank you very much\"."
+        },
+        {
+          "type": "pronunciation",
+          "expected": "Enchanté",
+          "translation": "Nice to meet you",
+          "explanation": "\"Enchanté\" literally means \"enchanted\" — say it when meeting someone."
+        }
+      ]
+    },
+    {
+      "lessonId": "fr_u1_l2",
+      "title": "Les nombres",
+      "exercises": [
+        {
+          "type": "match_pairs",
+          "pairs": [["un", "one"], ["deux", "two"], ["trois", "three"], ["quatre", "four"]],
+          "explanation": "French numbers from one to four: un, deux, trois, quatre."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "What number is \"cinq\"?",
+          "options": ["5", "4", "6", "15"],
+          "correctIndex": 0,
+          "explanation": "\"Cinq\" is five — pronounced like \"sank\"."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "How do you say \"seven\"?",
+          "options": ["sept", "six", "huit", "dix"],
+          "correctIndex": 0,
+          "explanation": "\"Sept\" is seven; the final \"t\" stays silent."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Un, deux, ___, quatre",
+          "answer": "trois",
+          "wordBank": ["trois", "six", "dix", "huit"],
+          "explanation": "The sequence is un, deux, trois — three comes after two."
+        },
+        {
+          "type": "listening",
+          "text": "J'ai dix euros",
+          "options": ["I have ten euros", "I have two euros", "I want ten euros", "I have six euros"],
+          "correctIndex": 0,
+          "explanation": "\"Dix\" is ten — \"j'ai dix euros\" means \"I have ten euros\"."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "What does \"six\" mean in French?",
+          "options": ["6", "16", "60", "7"],
+          "correctIndex": 0,
+          "explanation": "\"Six\" is spelled the same as English but pronounced \"sees\"."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Neuf, ___, onze",
+          "answer": "dix",
+          "wordBank": ["dix", "sept", "trois", "quatre"],
+          "explanation": "Neuf (9), dix (10), onze (11) — ten comes between nine and eleven."
+        },
+        {
+          "type": "pronunciation",
+          "expected": "Trois cafés, s'il vous plaît",
+          "translation": "Three coffees, please",
+          "explanation": "\"Trois\" is three — the \"s\" is silent."
+        }
+      ]
+    },
+    {
+      "lessonId": "fr_u1_l3",
+      "title": "Se présenter",
+      "exercises": [
+        {
+          "type": "multiple_choice",
+          "prompt": "How do you say \"My name is…\"?",
+          "options": ["Je m'appelle…", "J'ai…", "Je suis…", "Je vais…"],
+          "correctIndex": 0,
+          "explanation": "\"Je m'appelle\" literally means \"I call myself\"."
+        },
+        {
+          "type": "match_pairs",
+          "pairs": [["Je m'appelle Marie", "My name is Marie"], ["Et toi ?", "And you?"], ["Enchanté", "Nice to meet you"], ["D'où viens-tu ?", "Where are you from?"]],
+          "explanation": "\"Et toi ?\" bounces a question back informally."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "What does \"Comment tu t'appelles ?\" mean?",
+          "options": ["What's your name? (informal)", "How are you?", "Where do you live?", "How old are you?"],
+          "correctIndex": 0,
+          "explanation": "Literally \"how do you call yourself?\" — informal, for friends."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Je ___ française",
+          "answer": "suis",
+          "wordBank": ["suis", "es", "ai", "va"],
+          "explanation": "\"Je suis\" means \"I am\" — nationality uses être (to be)."
+        },
+        {
+          "type": "listening",
+          "text": "Je viens d'Angleterre",
+          "options": ["I come from England", "I live in England", "I like England", "I work in England"],
+          "correctIndex": 0,
+          "explanation": "\"Je viens de…\" means \"I come from…\"."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "Which reply means \"I am twenty years old\"?",
+          "options": ["J'ai vingt ans", "Je suis vingt", "J'ai deux ans", "Je vingt ans"],
+          "correctIndex": 0,
+          "explanation": "French uses \"avoir\" (to have) for age: \"j'ai vingt ans\" = \"I have twenty years\"."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "___ vous appelez-vous ?",
+          "answer": "Comment",
+          "wordBank": ["Comment", "Combien", "Quand", "Pourquoi"],
+          "explanation": "\"Comment vous appelez-vous ?\" is the formal way to ask someone's name."
+        },
+        {
+          "type": "pronunciation",
+          "expected": "Je m'appelle Alex, enchanté !",
+          "translation": "My name is Alex, nice to meet you!",
+          "explanation": "Link \"m'appelle\" smoothly — French connects words in speech."
+        }
+      ]
+    },
+    {
+      "lessonId": "fr_u1_l4",
+      "title": "La politesse",
+      "exercises": [
+        {
+          "type": "multiple_choice",
+          "prompt": "How do you say \"please\" (formal)?",
+          "options": ["S'il vous plaît", "S'il te plaît", "Merci", "Pardon"],
+          "correctIndex": 0,
+          "explanation": "\"S'il vous plaît\" is formal or plural; \"s'il te plaît\" is for friends."
+        },
+        {
+          "type": "match_pairs",
+          "pairs": [["Pardon", "Sorry"], ["Excusez-moi", "Excuse me"], ["De rien", "You're welcome"], ["Bonne journée", "Have a good day"]],
+          "explanation": "\"De rien\" means \"of nothing\" — the standard reply to merci."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "Someone says \"Merci\". What do you answer?",
+          "options": ["De rien", "Bonjour", "Pardon", "Au revoir"],
+          "correctIndex": 0,
+          "explanation": "\"De rien\", \"je vous en prie\" or \"pas de problème\" all work as \"you're welcome\"."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "___-moi, où est la gare ?",
+          "answer": "Excusez",
+          "wordBank": ["Excusez", "Excuse", "Pardon", "S'il"],
+          "explanation": "\"Excusez-moi\" politely gets attention before asking something."
+        },
+        {
+          "type": "listening",
+          "text": "Je vous en prie",
+          "options": ["You're welcome (formal)", "Please sit down", "I beg your pardon", "See you soon"],
+          "correctIndex": 0,
+          "explanation": "\"Je vous en prie\" is the most formal way to say \"you're welcome\"."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "How do you say \"sorry\"?",
+          "options": ["Désolé", "Merci", "Bonjour", "Voilà"],
+          "correctIndex": 0,
+          "explanation": "\"Désolé\" (or \"désolée\" if you're a woman) means \"sorry\"."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Bonne ___ !",
+          "answer": "journée",
+          "wordBank": ["journée", "nuit", "soir", "matin"],
+          "explanation": "\"Bonne journée\" = \"have a good day\" — said when leaving during daytime."
+        },
+        {
+          "type": "pronunciation",
+          "expected": "Pardon, je suis désolé",
+          "translation": "Sorry, I am sorry",
+          "explanation": "\"Pardon\" is a quick apology; \"désolé\" sounds more sincere."
+        }
+      ]
+    },
+    {
+      "lessonId": "fr_u1_l5",
+      "title": "Premières phrases",
+      "exercises": [
+        {
+          "type": "multiple_choice",
+          "prompt": "What does \"Ça va ?\" mean?",
+          "options": ["How's it going?", "What time is it?", "Where is it?", "Who is it?"],
+          "correctIndex": 0,
+          "explanation": "\"Ça va ?\" literally asks \"it goes?\" — the all-purpose casual check-in."
+        },
+        {
+          "type": "match_pairs",
+          "pairs": [["Ça va bien", "I'm doing well"], ["Comme ci comme ça", "So-so"], ["Je suis fatigué", "I'm tired"], ["J'ai faim", "I'm hungry"]],
+          "explanation": "\"J'ai faim\" uses avoir — French says \"I have hunger\"."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "How do you answer \"Ça va ?\" positively?",
+          "options": ["Ça va bien, merci", "Ça va mal", "Non merci", "Et toi ?"],
+          "correctIndex": 0,
+          "explanation": "\"Ça va bien, merci\" = \"I'm well, thank you\"."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Je suis ___ Angleterre",
+          "answer": "d'",
+          "wordBank": ["d'", "du", "de la", "des"],
+          "explanation": "Before a vowel, \"de + pays\" contracts: \"d'Angleterre\", \"d'Allemagne\"."
+        },
+        {
+          "type": "listening",
+          "text": "Et vous, comment allez-vous ?",
+          "options": ["And you, how are you? (formal)", "And you, what's your name?", "And you, where are you going?", "And you, do you speak French?"],
+          "correctIndex": 0,
+          "explanation": "\"Et vous ?\" returns a question formally; \"et toi ?\" informally."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "Which sentence means \"I speak a little French\"?",
+          "options": ["Je parle un peu français", "Je parle français bien", "Je veux parler français", "Je suis français"],
+          "correctIndex": 0,
+          "explanation": "\"Un peu\" means \"a little\" — a handy honest phrase for beginners."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Parlez-vous ___ ?",
+          "answer": "français",
+          "wordBank": ["français", "France", "anglais", "française"],
+          "explanation": "Languages are lowercase in French: le français, l'anglais, l'allemand."
+        },
+        {
+          "type": "pronunciation",
+          "expected": "Ça va bien, merci !",
+          "translation": "I'm doing well, thank you!",
+          "explanation": "\"Ça\" is pronounced \"sah\" — one crisp syllable."
+        }
+      ]
+    }
+  ]
+}

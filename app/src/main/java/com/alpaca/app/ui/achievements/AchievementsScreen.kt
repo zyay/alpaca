@@ -36,7 +36,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.alpaca.app.ui.theme.CloudGray
 import com.alpaca.app.ui.theme.InkMid
-import com.alpaca.app.ui.theme.PacoGreenLight
+import com.alpaca.app.ui.theme.BrandGreenPale
 
 @Composable
 fun AchievementsScreen(
@@ -80,7 +80,7 @@ private fun BadgeCard(badge: Badge) {
             .fillMaxWidth()
             .aspectRatio(0.85f)
             .clip(RoundedCornerShape(18.dp))
-            .background(if (badge.unlocked) PacoGreenLight else CloudGray.copy(alpha = 0.4f))
+            .background(if (badge.unlocked) BrandGreenPale else CloudGray.copy(alpha = 0.4f))
             .alpha(if (badge.unlocked) 1f else 0.7f)
             .padding(14.dp),
         horizontalAlignment = Alignment.CenterHorizontally
@@ -106,7 +106,7 @@ private fun BadgeCard(badge: Badge) {
         Text(
             text = if (badge.unlocked) "¡Desbloqueado!" else badge.progress,
             style = MaterialTheme.typography.labelLarge,
-            color = if (badge.unlocked) com.alpaca.app.ui.theme.PacoGreen else InkMid,
+            color = if (badge.unlocked) com.alpaca.app.ui.theme.BrandGreen else InkMid,
             modifier = Modifier
                 .clip(RoundedCornerShape(100.dp))
                 .background(Color.White)

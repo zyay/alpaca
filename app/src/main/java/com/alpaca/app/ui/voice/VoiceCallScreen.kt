@@ -46,22 +46,22 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.alpaca.app.BuildConfig
 import com.alpaca.app.gemini.VoiceSessionState
-import com.alpaca.app.ui.components.PacoCharacter
-import com.alpaca.app.ui.components.PacoState
 import com.alpaca.app.ui.components.PillButton
 import com.alpaca.app.ui.theme.CloudGray
 import com.alpaca.app.ui.theme.DangerRed
 import com.alpaca.app.ui.theme.InkMid
-import com.alpaca.app.ui.theme.PacoGreen
-import com.alpaca.app.ui.theme.PacoGreenLight
+import com.alpaca.app.ui.theme.BrandGreen
+import com.alpaca.app.ui.theme.BrandGreenPale
 import com.alpaca.app.ui.theme.PaperWhite
 import com.alpaca.app.ui.theme.SkyBlue
 
@@ -141,7 +141,7 @@ private fun ScenarioPicker(
         }
         Spacer(Modifier.height(4.dp))
         Text(
-            text = "Call a character and practice speaking. Paco plays everyone — interrupt him any time!",
+            text = "Call a character and practice speaking. Play everyone — interrupt any time!",
             style = MaterialTheme.typography.bodyMedium,
             color = InkMid
         )
@@ -231,35 +231,36 @@ private fun CallScreen(
                 Text(
                     text = statusLabel(state),
                     style = MaterialTheme.typography.bodyMedium,
-                    color = PacoGreenLight
+                    color = BrandGreenPale
                 )
             }
         }
 
         Spacer(Modifier.weight(0.5f))
 
-        // Avatar with breathing ring.
+        // Gradient orb with the scenario emoji and a breathing ring.
         Box(contentAlignment = Alignment.Center) {
             Box(
                 modifier = Modifier
                     .size((220f * ringPulse + level * 90f).dp)
                     .clip(CircleShape)
-                    .background(PacoGreen.copy(alpha = 0.16f))
+                    .background(BrandGreen.copy(alpha = 0.16f))
             )
             Box(
                 modifier = Modifier
                     .size(190.dp)
                     .clip(CircleShape)
-                    .background(Color(0xFF1B3A29)),
+                    .background(
+                        Brush.linearGradient(
+                            listOf(Color(0xFF2E8B3F), Color(0xFF1B3A29))
+                        )
+                    )
+                    .border(3.dp, Color(0xFF3FA955), CircleShape),
                 contentAlignment = Alignment.Center
             ) {
-                PacoCharacter(
-                    state = when (state) {
-                        is VoiceSessionState.Speaking -> PacoState.HAPPY
-                        is VoiceSessionState.Error -> PacoState.SAD
-                        else -> PacoState.IDLE
-                    },
-                    modifier = Modifier.size(150.dp)
+                Text(
+                    text = scenario.emoji,
+                    fontSize = 84.sp
                 )
             }
         }
@@ -346,8 +347,8 @@ private fun CallScreen(
 private fun statusLabel(state: VoiceSessionState): String = when (state) {
     VoiceSessionState.Idle -> "Idle"
     VoiceSessionState.Connecting -> "Connecting…"
-    VoiceSessionState.Listening -> "¡Te escucha! Speak in Spanish…"
-    VoiceSessionState.Speaking -> "Paco is talking… interrupt him!"
+    VoiceSessionState.Listening -> "Listening… speak up!"
+    VoiceSessionState.Speaking -> "The tutor is talking… interrupt!"
     is VoiceSessionState.Error -> "Something went wrong"
 }
 
@@ -366,7 +367,7 @@ private fun Waveform(level: Float) {
                     .width(5.dp)
                     .height(h)
                     .clip(RoundedCornerShape(100.dp))
-                    .background(PacoGreen.copy(alpha = 0.55f + level * 0.45f))
+                    .background(BrandGreen.copy(alpha = 0.55f + level * 0.45f))
             )
         }
     }

@@ -10,3 +10,6 @@ captures/
 .externalNativeBuild/
 .cxx/
 *.log
+server/.env*
+server/.gemini-key.local
+.vercel/

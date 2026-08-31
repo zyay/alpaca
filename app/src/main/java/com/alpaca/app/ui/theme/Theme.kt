@@ -10,11 +10,12 @@ import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
 
-// Core neon palette stays fixed; Material You only nudges surface tones on S+.
+// Brand palette is the default so the app reads like its inspiration;
+// Material You is an opt-in toggle that nudges surface tones on S+.
 private val LightColors = lightColorScheme(
-    primary = PacoGreen,
+    primary = BrandGreen,
     onPrimary = PaperWhite,
-    primaryContainer = PacoGreenLight,
+    primaryContainer = BrandGreenPale,
     secondary = SunYellow,
     tertiary = SkyBlue,
     error = DangerRed,
@@ -27,9 +28,9 @@ private val LightColors = lightColorScheme(
 )
 
 private val DarkColors = darkColorScheme(
-    primary = PacoGreen,
+    primary = BrandGreen,
     onPrimary = PaperWhite,
-    primaryContainer = PacoGreenDark,
+    primaryContainer = BrandGreenDeep,
     secondary = SunYellow,
     tertiary = SkyBlue,
     error = DangerRed
@@ -38,7 +39,7 @@ private val DarkColors = darkColorScheme(
 @Composable
 fun AlpacaTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
-    dynamicColor: Boolean = true,
+    dynamicColor: Boolean = false,
     content: @Composable () -> Unit
 ) {
     val colorScheme = when {

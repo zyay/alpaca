@@ -34,7 +34,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.alpaca.app.ui.theme.BronzeFleece
 import com.alpaca.app.ui.theme.InkMid
-import com.alpaca.app.ui.theme.PacoGreenLight
+import com.alpaca.app.ui.theme.BrandGreenPale
 import com.alpaca.app.ui.theme.SunYellow
 
 data class LeaderRow(val name: String, val xp: Int)
@@ -104,7 +104,7 @@ fun LeaderboardScreen(
                     modifier = Modifier
                         .fillMaxWidth()
                         .clip(RoundedCornerShape(14.dp))
-                        .background(if (isUser) PacoGreenLight else Color.White)
+                        .background(if (isUser) BrandGreenPale else Color.White)
                         .padding(horizontal = 14.dp, vertical = 12.dp),
                     verticalAlignment = Alignment.CenterVertically
                 ) {

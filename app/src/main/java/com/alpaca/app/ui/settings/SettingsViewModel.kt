@@ -17,4 +17,6 @@ class SettingsViewModel(private val container: AppContainer) : ViewModel() {
     fun setHaptics(enabled: Boolean) = viewModelScope.launch { container.prefs.setHaptics(enabled) }
     fun setName(name: String) = viewModelScope.launch { container.prefs.setDisplayName(name) }
     fun setMax(enabled: Boolean) = viewModelScope.launch { container.prefs.setAlpacaMax(enabled) }
+    fun setDynamicColor(enabled: Boolean) =
+        viewModelScope.launch { container.prefs.setDynamicColor(enabled) }
 }

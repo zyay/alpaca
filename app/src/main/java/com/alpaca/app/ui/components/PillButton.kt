@@ -25,7 +25,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.alpaca.app.ui.theme.CloudGray
 import com.alpaca.app.ui.theme.InkFaint
-import com.alpaca.app.ui.theme.PacoGreen
+import com.alpaca.app.ui.theme.BrandGreen
 import com.alpaca.app.ui.theme.PaperWhite
 
 /**
@@ -38,7 +38,7 @@ fun PillButton(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
-    color: Color = PacoGreen,
+    color: Color = BrandGreen,
     textColor: Color = PaperWhite,
     fillWidth: Boolean = true
 ) {

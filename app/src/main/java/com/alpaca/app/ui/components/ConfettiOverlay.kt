@@ -13,14 +13,14 @@ import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import com.alpaca.app.ui.theme.HeartPink
-import com.alpaca.app.ui.theme.PacoGreen
+import com.alpaca.app.ui.theme.BrandGreen
 import com.alpaca.app.ui.theme.SkyBlue
 import com.alpaca.app.ui.theme.SunYellow
 import kotlin.math.PI
 import kotlin.math.cos
 import kotlin.math.sin
 
-private val ConfettiPalette = listOf(PacoGreen, SunYellow, SkyBlue, HeartPink, Color(0xFFFF8A3D))
+private val ConfettiPalette = listOf(BrandGreen, SunYellow, SkyBlue, HeartPink, Color(0xFFFF8A3D))
 
 private class Particle(
     val x0: Float,

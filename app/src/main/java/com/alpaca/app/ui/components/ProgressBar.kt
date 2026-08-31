@@ -1,8 +1,7 @@
 package com.alpaca.app.ui.components
 
-import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.animateFloatAsState
-import androidx.compose.animation.core.spring
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxHeight
@@ -27,17 +26,14 @@ fun LessonProgressBar(
 ) {
     val animated by animateFloatAsState(
         fraction.coerceIn(0f, 1f),
-        animationSpec = spring(
-            stiffness = Spring.StiffnessLow,
-            dampingRatio = Spring.DampingRatioLowBouncy
-        ),
+        animationSpec = tween(durationMillis = 320),
         label = "progress"
     )
     val shape = RoundedCornerShape(100.dp)
     Box(
         modifier = modifier
             .fillMaxWidth()
-            .height(14.dp)
+            .height(16.dp)
             .clip(shape)
             .background(CloudGray)
     ) {

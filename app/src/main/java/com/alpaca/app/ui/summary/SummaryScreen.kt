@@ -38,17 +38,17 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.text.font.FontWeight
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import kotlinx.coroutines.flow.map
 import com.alpaca.app.AlpacaApp
 import com.alpaca.app.data.repository.LessonResult
 import com.alpaca.app.ui.components.ConfettiOverlay
-import com.alpaca.app.ui.components.PacoCharacter
-import com.alpaca.app.ui.components.PacoState
+import com.alpaca.app.ui.components.GreetingWordmark
 import com.alpaca.app.ui.components.PillButton
 import com.alpaca.app.ui.theme.InkMid
-import com.alpaca.app.ui.theme.PacoGreen
-import com.alpaca.app.ui.theme.PacoGreenLight
+import com.alpaca.app.ui.theme.BrandGreen
+import com.alpaca.app.ui.theme.BrandGreenPale
 import com.alpaca.app.ui.theme.SunYellow
 import com.alpaca.app.util.HapticPlayer
 import kotlin.math.roundToInt
@@ -90,9 +90,8 @@ fun SummaryScreen(
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Spacer(Modifier.height(12.dp))
-            PacoCharacter(
-                state = if (result.outOfEnergy) PacoState.SAD else PacoState.HAPPY,
-                modifier = Modifier.size(180.dp)
+            GreetingWordmark(
+                style = MaterialTheme.typography.displaySmall.copy(fontWeight = FontWeight.ExtraBold)
             )
             Spacer(Modifier.height(8.dp))
             Text(
@@ -130,13 +129,13 @@ fun SummaryScreen(
                         icon = {
                             Icon(
                                 Icons.Filled.CheckCircle, null,
-                                tint = PacoGreen, modifier = Modifier.size(22.dp)
+                                tint = BrandGreen, modifier = Modifier.size(22.dp)
                             )
                         },
                         label = "Accuracy",
                         value =
                         "${(result.correctCount * 100f / result.totalCount.coerceAtLeast(1)).roundToInt()}%",
-                        background = PacoGreenLight
+                        background = BrandGreenPale
                     )
                     StatCard(
                         icon = {
@@ -223,7 +222,7 @@ private fun CoinsEarnedRow(coins: Int) {
         Icon(Icons.Filled.Stars, null, tint = SunYellow)
         Spacer(Modifier.size(8.dp))
         Text(
-            "+${(coins * animated.value).roundToInt()} Paco Coins",
+            "+${(coins * animated.value).roundToInt()} Coins",
             style = MaterialTheme.typography.titleMedium
         )
     }

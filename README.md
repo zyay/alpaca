@@ -1,38 +1,37 @@
-# Alpaca 🦙
+# Alpaca
 
 **Stop translating. Start talking.**
 
-A Duolingo-style Spanish-learning app for Android — 100% native Kotlin + Jetpack
-Compose — with real-time AI voice roleplay powered by the
+A Duolingo-style multi-language learning app for Android — 100% native Kotlin +
+Jetpack Compose — with real-time AI voice roleplay powered by the
 [Gemini Live API](https://ai.google.dev/gemini-api/docs/live-api).
 
-Meet **Paco**, the neon-green alpaca in a backward cap. He bounces when you're on
-a streak, and when you get an answer wrong he plays his signature move: a
-**spit-take** — a droplet of water splatters the screen, clears, and reveals the
-correct answer with a one-line explanation of *why*.
+When you slip up, a droplet splatters the screen, a red ✗ stamps in, and it
+clears to reveal the correct answer with a one-line explanation of *why*.
+No characters, no fluff — just the physics.
 
-## What's inside v0.2.0
+## What's inside v0.3.0
 
 | Feature | Details |
 |---|---|
-| 🗺️ **The Andes Trail** | Winding gamified lesson path — **5 regions, 25 lessons, 250 exercises** with sequential unit unlocking |
-| 📚 **6 exercise types' worth of content** | multiple choice · match pairs · fill-in-the-blank · listening (TTS) · pronunciation — every wrong-answer exercise carries a one-line grammar explanation |
-| 🔁 **Repaso de errores** | Every mistake is logged; a dedicated review lesson rebuilds exercises from your personal error history |
+| 🌍 **3 courses** | **Spanish** (5 units), **French** (2 units), **German** (2 units) — switch courses from the trail or Settings; Italian, Portuguese and Japanese are marked *coming soon* |
+| 🗺️ **The trail** | Winding gamified lesson path — **9 regions, 45 lessons, ~450 exercises** with sequential unit unlocking per course |
+| 📚 **5 exercise types** | multiple choice · match pairs · fill-in-the-blank · listening (TTS) · pronunciation — every wrong-answer exercise carries a one-line grammar explanation |
+| 🔁 **Mistake review** | Every mistake is logged; a dedicated review lesson rebuilds exercises from your personal error history |
 | 🏅 **Achievements** | 8 unlockable badges (first lesson, streaks, perfect lessons, voice calls, XP milestones) |
-| 🔥 **Gamification** | XP, daily streaks, Paco Coins, Fleece Energy (5 tufts, regrows 1 per 30 min), confetti, spring physics + haptics everywhere |
+| 🔥 **Gamification** | XP, daily streaks, coins, Fleece Energy (5 tufts, regrows 1 per 30 min), confetti, spring physics + haptics everywhere |
 | 🔊 **Sound design** | Zero-asset sound effects via platform `ToneGenerator` (correct/wrong/select/finish), gated by the sound preference |
-| 👋 **Onboarding** | Paco greets you, learns your name, then drops you on the trail |
-| 💬 **Real-World Simulator** | Live voice calls (café, market, hotel, doctor, reservation, ticket, directions, new friend) over the Gemini Multimodal Live API — full-duplex audio, barge-in interruption, scenario personas |
+| 👋 **Onboarding** | Rotating *¡Hola! · Bonjour! · Hallo!* hero, floating flags, learns your name, then drops you on the trail |
+| 💬 **Real-World Simulator** | Live voice calls (coffee, ticket, directions, friend, market, hotel, doctor, restaurant) over the Gemini Multimodal Live API — full-duplex audio, barge-in interruption, language-aware personas |
 | 🔐 **Key-less distribution** | Voice calls authenticate with **short-lived ephemeral tokens** minted by a Vercel serverless function — the raw API key never ships in the APK |
-| 🦙 **Paco, drawn in code** | The mascot is a Canvas-drawn character with 4 animated moods (idle bounce, happy hop, spit-take, sad) — zero image assets |
-| 🎨 **Design** | Material 3 + Material You dynamic color, Duolingo-style pill buttons with hard 3D edges |
+| 🎨 **Design** | Duolingo-grade design system: `#58cc02` brand green, weight-800 headings, pill buttons with hard 3D edges, pulsing current-node marker with a "You" flag pin, gradient-orb voice avatar |
 
 **Voice-chat latency architecture:** `AudioRecord` (16 kHz PCM) → OkHttp
 WebSocket → Gemini Live → `AudioTrack` (24 kHz PCM), all behind an `AudioEngine`
 interface so a later Oboe swap needs no caller changes. Pronunciation scoring
 sits behind a `PronunciationGrader` interface — today it uses on-device
-`SpeechRecognizer`; the seam is ready for a LiteRT model trained on
-[Mozilla Common Voice](https://commonvoice.mozilla.org/).
+`SpeechRecognizer` with per-language locales; the seam is ready for a LiteRT
+model trained on [Mozilla Common Voice](https://commonvoice.mozilla.org/).
 
 ## Try the APK
 
@@ -86,6 +85,15 @@ adb install -r app/build/outputs/apk/debug/app-debug.apk
 Voice testing works best on a physical device; on an emulator enable the
 virtual microphone in AVD settings.
 
+## Adding a course
+
+Drop a `<lang>_unitN.json` file into `app/src/main/assets/content/` following
+the shape of `spanish_unit1.json` (unitId prefix `<lang>_uN`, language-prefixed
+lesson ids), register a `CourseLanguage` in
+`data/content/CourseLanguage.kt`, and the picker, trail, TTS, pronunciation
+grader and voice personas pick it up automatically. Progress is stored per
+lesson id, so new languages need no database migration.
+
 ## Project layout
 
 ```
@@ -93,21 +101,23 @@ app/src/main/java/com/alpaca/app/
 ├── gemini/      Gemini Live WebSocket client + ephemeral-token client
 ├── audio/       AudioEngine, TTS, pronunciation grader, sound effects
 ├── data/        Room, DataStore, mistake log, content models + bundled JSON
-└── ui/          onboarding · trail · lesson · summary · voice · achievements · leaderboard · settings
+└── ui/          onboarding · trail · lesson · summary · voice · achievements · leaderboard · settings · languages
 server/api/      Vercel function: mints Gemini Live ephemeral tokens
 ```
 
 Architecture: MVVM, manual DI (`AppContainer`), coroutines + Flow, type-safe
 Navigation Compose routes, no third-party DI. Content is validated by a JVM
-unit test (`ContentParsingTest`) at build time.
+unit test (`ContentParsingTest`) at build time — it checks every unit parses,
+lesson ids are unique across all languages, and pairs are well-formed.
 
 ## Roadmap
 
 - Real Herd Leagues + friend quests (backend: Firebase or FastAPI)
+- More courses: Italian, Portuguese, Japanese
 - LiteRT pronunciation model trained on Common Voice (GPU delegate; NNAPI is deprecated)
 - Oboe audio engine for lower latency
 - HF-datasets content pipeline (tatoeba/opus100) + RAG for cultural notes
 - Play Billing for **Alpaca Max**, ads on the free tier
 - Play Store release: signing, R8, listing, privacy policy
 
-Made with 🦙 in the Andes.
+Made loud in the Andes.

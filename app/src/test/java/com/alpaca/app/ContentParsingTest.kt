@@ -23,18 +23,37 @@ class ContentParsingTest {
         val dir = File("src/main/assets/content")
         val files = dir.listFiles { f -> f.extension == "json" }.orEmpty()
         assertTrue("No content JSON files found in ${dir.absolutePath}", files.isNotEmpty())
+        assertTrue("Expected at least 9 units, found ${files.size}", files.size >= 9)
 
+        val languages = mutableSetOf<String>()
         for (file in files) {
             val unit = json.decodeFromString<CourseUnit>(file.readText())
-            assertTrue("${unit.unitId} must be an es unit id", unit.unitId.startsWith("es_u"))
+            assertTrue(
+                "${unit.unitId} must match <lang>_uN (e.g. es_u1)",
+                Regex("^[a-z]{2}_u\\d+$").matches(unit.unitId)
+            )
+            languages += unit.unitId.substringBefore('_')
             assertTrue("${unit.unitId} has no lessons", unit.lessons.isNotEmpty())
             for (lesson in unit.lessons) {
                 assertTrue(
                     "${unit.unitId}/${lesson.lessonId} has no exercises",
                     lesson.exercises.isNotEmpty()
                 )
+                assertTrue(
+                    "${lesson.lessonId} must be prefixed by its unit id ${unit.unitId}",
+                    lesson.lessonId.startsWith("${unit.unitId}_")
+                )
             }
         }
+        assertEquals("Expected 3 course languages (es, fr, de)", setOf("es", "fr", "de"), languages)
+    }
+
+    @Test
+    fun noDuplicateUnitIdsAcrossLanguages() {
+        val dir = File("src/main/assets/content")
+        val ids = dir.listFiles { f -> f.extension == "json" }.orEmpty()
+            .map { f -> json.decodeFromString<CourseUnit>(f.readText()).unitId }
+        assertEquals(ids.size, ids.distinct().size)
     }
 
     @Test

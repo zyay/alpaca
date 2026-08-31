@@ -10,7 +10,7 @@ import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlin.coroutines.resume
 
-/** Spanish TTS wrapper used by listening exercises. */
+/** TTS wrapper for listening exercises; the course language is passed per call. */
 class TtsSpeaker(context: Context) {
     private val ready = CompletableDeferred<Boolean>()
     private val engine: TextToSpeech = TextToSpeech(context.applicationContext) { status ->
@@ -18,13 +18,13 @@ class TtsSpeaker(context: Context) {
     }
 
     init {
-        engine.language = SPANISH
         engine.setSpeechRate(0.9f)
     }
 
     /** Suspends until the utterance finishes playing. */
-    suspend fun speak(text: String, rate: Float = 0.9f) {
+    suspend fun speak(text: String, languageTag: String = "es-ES", rate: Float = 0.9f) {
         if (!ready.await()) return
+        engine.language = Locale.forLanguageTag(languageTag)
         engine.setSpeechRate(rate)
         val utteranceId = UUID.randomUUID().toString()
         val resumed = AtomicBoolean(false)
@@ -48,9 +48,5 @@ class TtsSpeaker(context: Context) {
     fun shutdown() {
         engine.stop()
         engine.shutdown()
-    }
-
-    companion object {
-        val SPANISH: Locale = Locale("es", "ES")
     }
 }

@@ -6,7 +6,7 @@
   "lessons": [
     {
       "lessonId": "es_u1_l1",
-      "title": "¡Hola, Paco!",
+      "title": "¡Hola!",
       "exercises": [
         {
           "type": "multiple_choice",
@@ -216,7 +216,7 @@
     },
     {
       "lessonId": "es_u1_l4",
-      "title": "Me llamo Paco",
+      "title": "Me llamo Ana",
       "exercises": [
         {
           "type": "multiple_choice",
@@ -252,9 +252,9 @@
         },
         {
           "type": "pronunciation",
-          "expected": "Me llamo Paco",
-          "translation": "My name is Paco",
-          "explanation": "\"Ll\" sounds like the \"y\" in \"yes\": me YAMO Paco."
+          "expected": "Me llamo Ana",
+          "translation": "My name is Ana",
+          "explanation": "\"Ll\" sounds like the \"y\" in \"yes\": me YAMO Ana."
         },
         {
           "type": "listening",

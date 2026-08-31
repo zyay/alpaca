@@ -32,8 +32,8 @@ import androidx.compose.ui.draw.scale
 import androidx.compose.ui.unit.dp
 import com.alpaca.app.audio.TtsSpeaker
 import com.alpaca.app.data.content.ListeningExercise
-import com.alpaca.app.ui.theme.PacoGreen
-import com.alpaca.app.ui.theme.PacoGreenDark
+import com.alpaca.app.ui.theme.BrandGreen
+import com.alpaca.app.ui.theme.BrandGreenDeep
 import com.alpaca.app.ui.theme.PaperWhite
 import kotlinx.coroutines.launch
 
@@ -41,6 +41,7 @@ import kotlinx.coroutines.launch
 fun ListeningUi(
     exercise: ListeningExercise,
     tts: TtsSpeaker,
+    languageTag: String,
     onCorrect: () -> Unit,
     onWrong: (correctText: String, explanation: String?, mistakeLabel: String) -> Unit,
     onCheckHaptic: (correct: Boolean) -> Unit
@@ -60,7 +61,7 @@ fun ListeningUi(
     fun play(rate: Float) {
         scope.launch {
             speaking = true
-            tts.speak(exercise.text, rate)
+            tts.speak(exercise.text, languageTag, rate)
             speaking = false
         }
     }
@@ -94,7 +95,7 @@ fun ListeningUi(
                     .size(110.dp)
                     .scale(pulse)
                     .clip(CircleShape)
-                    .background(PacoGreen)
+                    .background(BrandGreen)
                     .clickable { play(0.95f) },
                 contentAlignment = Alignment.Center
             ) {
@@ -110,7 +111,7 @@ fun ListeningUi(
                     .padding(start = 150.dp)
                     .size(56.dp)
                     .clip(CircleShape)
-                    .background(PacoGreenDark)
+                    .background(BrandGreenDeep)
                     .clickable { play(0.6f) },
                 contentAlignment = Alignment.Center
             ) {

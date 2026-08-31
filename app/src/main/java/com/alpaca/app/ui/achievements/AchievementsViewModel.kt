@@ -47,7 +47,7 @@ class AchievementsViewModel(container: AppContainer) : ViewModel() {
                             user.streakDays >= 7, "streak ${user.streakDays}"),
                         Badge("💯", "Perfeccionista", "Finish a lesson with zero mistakes",
                             perfect, if (perfect) "done" else "keep trying"),
-                        Badge("💰", "Coleccionista", "Collect 100 Paco Coins",
+                        Badge("💰", "Coleccionista", "Collect 100 Coins",
                             user.coins >= 100, "${user.coins}/100 coins"),
                         Badge("⭐", "Superestrella", "Reach 500 XP",
                             user.xp >= 500, "${user.xp}/500 XP"),

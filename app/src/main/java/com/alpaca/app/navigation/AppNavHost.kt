@@ -13,6 +13,8 @@ import com.alpaca.app.ui.achievements.AchievementsScreen
 import com.alpaca.app.ui.achievements.AchievementsViewModel
 import com.alpaca.app.ui.leaderboard.LeaderboardScreen
 import com.alpaca.app.ui.leaderboard.LeaderboardViewModel
+import com.alpaca.app.ui.languages.LanguagePickerScreen
+import com.alpaca.app.ui.languages.LanguagePickerViewModel
 import com.alpaca.app.ui.lesson.LessonScreen
 import com.alpaca.app.ui.lesson.LessonViewModel
 import com.alpaca.app.ui.onboarding.OnboardingScreen
@@ -50,6 +52,9 @@ data object AchievementsRoute
 @Serializable
 data object SettingsRoute
 
+@Serializable
+data object CoursesRoute
+
 @Composable
 fun AppNavHost(
     app: AlpacaApp,
@@ -83,8 +88,8 @@ fun AppNavHost(
                 onOpenLesson = { lessonId -> navController.navigate(LessonRoute(lessonId)) },
                 onOpenVoice = { navController.navigate(VoiceRoute) },
                 onOpenLeaderboard = { navController.navigate(LeaderboardRoute) },
-                onOpenAchievements = { navController.navigate(AchievementsRoute) },
                 onOpenSettings = { navController.navigate(SettingsRoute) },
+                onOpenCourses = { navController.navigate(CoursesRoute) },
                 haptics = haptics
             )
         }
@@ -133,7 +138,17 @@ fun AppNavHost(
 
         composable<SettingsRoute> {
             val viewModel: SettingsViewModel = viewModel(factory = factory)
-            SettingsScreen(viewModel = viewModel, onBack = { navController.popBackStack() })
+            SettingsScreen(
+                viewModel = viewModel,
+                onOpenCourses = { navController.navigate(CoursesRoute) },
+                onOpenAchievements = { navController.navigate(AchievementsRoute) },
+                onBack = { navController.popBackStack() }
+            )
+        }
+
+        composable<CoursesRoute> {
+            val viewModel: LanguagePickerViewModel = viewModel(factory = factory)
+            LanguagePickerScreen(viewModel = viewModel, onBack = { navController.popBackStack() })
         }
     }
 }

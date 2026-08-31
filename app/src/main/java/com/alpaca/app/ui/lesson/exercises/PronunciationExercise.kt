@@ -40,7 +40,7 @@ import com.alpaca.app.data.content.PronunciationExercise
 import com.alpaca.app.ui.components.PillButton
 import com.alpaca.app.ui.theme.DangerRed
 import com.alpaca.app.ui.theme.InkMid
-import com.alpaca.app.ui.theme.PacoGreen
+import com.alpaca.app.ui.theme.BrandGreen
 import com.alpaca.app.ui.theme.PaperWhite
 import com.alpaca.app.ui.theme.SkyBlue
 import kotlinx.coroutines.launch
@@ -56,6 +56,8 @@ private sealed class MicPhase {
 fun PronunciationUi(
     exercise: PronunciationExercise,
     grader: PronunciationGrader,
+    languageTag: String,
+    languageName: String,
     onCorrect: () -> Unit
 ) {
     var phase by remember { mutableStateOf<MicPhase>(MicPhase.Idle) }
@@ -72,7 +74,7 @@ fun PronunciationUi(
     fun listen() {
         scope.launch {
             phase = MicPhase.Listening
-            val result = grader.listenAndGrade(exercise.expected, "es-ES")
+            val result = grader.listenAndGrade(exercise.expected, languageTag)
             phase = if (result == null) {
                 MicPhase.Unavailable
             } else {
@@ -85,7 +87,7 @@ fun PronunciationUi(
         modifier = Modifier.fillMaxWidth(),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        PromptText("Say it in Spanish")
+        PromptText("Say it in $languageName")
         Text(
             text = exercise.expected,
             style = MaterialTheme.typography.displaySmall,
@@ -125,7 +127,7 @@ fun PronunciationUi(
                 Text(
                     text = if (passed) "¡Muy bien!" else "Almost…",
                     style = MaterialTheme.typography.headlineMedium,
-                    color = if (passed) PacoGreen else DangerRed
+                    color = if (passed) BrandGreen else DangerRed
                 )
                 Text(
                     text = "You said: \"${p.recognized ?: "…"}\"  ·  match ${(p.score * 100).toInt()}%",
@@ -179,7 +181,7 @@ private fun MicButton(pulse: Float, listening: Boolean, onClick: () -> Unit) {
             .size(96.dp)
             .scale(pulse)
             .clip(CircleShape)
-            .background(if (listening) DangerRed else PacoGreen)
+            .background(if (listening) DangerRed else BrandGreen)
             .clickable(enabled = !listening) { onClick() },
         contentAlignment = Alignment.Center
     ) {

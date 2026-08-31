@@ -18,14 +18,16 @@ class ProgressRepository(
 
     suspend fun seedIfNeeded() {
         if (progressDao.count() > 0) return
-        content.loadUnits().forEach { unit ->
-            unit.lessons.forEachIndexed { index, lesson ->
-                progressDao.upsert(
-                    LessonProgressEntity(
-                        lessonId = lesson.lessonId,
-                        status = if (index == 0) LessonStatus.AVAILABLE else LessonStatus.LOCKED
+        com.alpaca.app.data.content.CourseLanguage.available.forEach { language ->
+            content.loadUnits(language.id).forEach { unit ->
+                unit.lessons.forEachIndexed { index, lesson ->
+                    progressDao.upsert(
+                        LessonProgressEntity(
+                            lessonId = lesson.lessonId,
+                            status = if (index == 0) LessonStatus.AVAILABLE else LessonStatus.LOCKED
+                        )
                     )
-                )
+                }
             }
         }
     }
@@ -72,9 +74,7 @@ class ProgressRepository(
                 attempts = current.attempts + 1
             )
         )
-        val unit = content.loadUnits().firstOrNull { u ->
-            u.lessons.any { it.lessonId == lessonId }
-        } ?: return
+        val unit = content.unitOfLesson(lessonId) ?: return
         val nextLessonId = unit.lessons
             .dropWhile { it.lessonId != lessonId }
             .getOrNull(1)?.lessonId

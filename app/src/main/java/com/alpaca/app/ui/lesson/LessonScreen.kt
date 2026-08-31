@@ -1,6 +1,7 @@
 package com.alpaca.app.ui.lesson
 
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.slideInVertically
 import androidx.compose.foundation.background
@@ -14,6 +15,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBarsPadding
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material3.CircularProgressIndicator
@@ -26,6 +28,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -38,13 +41,13 @@ import com.alpaca.app.data.content.PronunciationExercise
 import com.alpaca.app.di.LocalAppContainer
 import com.alpaca.app.ui.components.EnergyHearts
 import com.alpaca.app.ui.components.LessonProgressBar
-import com.alpaca.app.ui.components.PacoState
 import com.alpaca.app.ui.lesson.exercises.FillBlankUi
 import com.alpaca.app.ui.lesson.exercises.ListeningUi
 import com.alpaca.app.ui.lesson.exercises.MatchPairsUi
 import com.alpaca.app.ui.lesson.exercises.MultipleChoiceUi
 import com.alpaca.app.ui.lesson.exercises.PronunciationUi
-import com.alpaca.app.ui.theme.PacoGreen
+import com.alpaca.app.data.content.CourseLanguage
+import com.alpaca.app.ui.theme.BrandGreen
 import com.alpaca.app.ui.theme.PaperWhite
 import com.alpaca.app.util.HapticPlayer
 
@@ -85,7 +88,7 @@ fun LessonScreen(
 
     if (state.loading) {
         Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-            CircularProgressIndicator(color = PacoGreen)
+            CircularProgressIndicator(color = BrandGreen)
         }
         return
     }
@@ -93,94 +96,108 @@ fun LessonScreen(
     val progress =
         (state.index + (if (state.justCorrect) 1 else 0)).toFloat() / state.total.coerceAtLeast(1)
 
-    Column(
+    Box(
         modifier = Modifier
             .fillMaxSize()
             .statusBarsPadding()
             .navigationBarsPadding()
-            .padding(horizontal = 20.dp, vertical = 12.dp)
     ) {
-        Row(verticalAlignment = Alignment.CenterVertically) {
-            IconButton(onClick = onQuit) {
-                Icon(
-                    Icons.Filled.Close, "Quit lesson",
-                    tint = MaterialTheme.colorScheme.onSurfaceVariant
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(horizontal = 20.dp, vertical = 12.dp)
+        ) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                IconButton(onClick = onQuit) {
+                    Icon(
+                        Icons.Filled.Close, "Quit lesson",
+                        tint = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                }
+                LessonProgressBar(
+                    fraction = progress,
+                    modifier = Modifier
+                        .weight(1f)
+                        .padding(horizontal = 10.dp)
                 )
+                EnergyHearts(energy = state.energy)
             }
-            LessonProgressBar(
-                fraction = progress,
-                modifier = Modifier
-                    .weight(1f)
-                    .padding(horizontal = 10.dp)
-            )
-            EnergyHearts(energy = state.energy)
-        }
 
-        Spacer(Modifier.height(20.dp))
+            Spacer(Modifier.height(20.dp))
 
-        Box(modifier = Modifier.weight(1f)) {
-            val exercise = state.exercise
-            if (exercise != null) {
-                androidx.compose.runtime.key(state.index, state.attempt) {
-                    when (exercise) {
-                        is MultipleChoiceExercise -> MultipleChoiceUi(
-                            exercise,
-                            onCorrect = { feedback(true); viewModel.onCorrect() },
-                            onWrong = viewModel::onWrong,
-                            onCheckHaptic = { correct ->
-                                feedback(correct)
-                            }
-                        )
-                        is MatchPairsExercise -> MatchPairsUi(
-                            exercise,
-                            haptics = haptics,
-                            onComplete = { feedback(true); viewModel.onCorrect() }
-                        )
-                        is FillBlankExercise -> FillBlankUi(
-                            exercise,
-                            onCorrect = { feedback(true); viewModel.onCorrect() },
-                            onWrong = viewModel::onWrong,
-                            onCheckHaptic = { correct ->
-                                feedback(correct)
-                            }
-                        )
-                        is ListeningExercise -> ListeningUi(
-                            exercise,
-                            tts = container.ttsSpeaker,
-                            onCorrect = { feedback(true); viewModel.onCorrect() },
-                            onWrong = viewModel::onWrong,
-                            onCheckHaptic = { correct ->
-                                feedback(correct)
-                            }
-                        )
-                        is PronunciationExercise -> PronunciationUi(
-                            exercise,
-                            grader = container.pronunciationGrader,
-                            onCorrect = { feedback(true); viewModel.onCorrect() }
-                        )
+            Box(modifier = Modifier.weight(1f)) {
+                val exercise = state.exercise
+                if (exercise != null) {
+                    androidx.compose.runtime.key(state.index, state.attempt) {
+                        when (exercise) {
+                            is MultipleChoiceExercise -> MultipleChoiceUi(
+                                exercise,
+                                onCorrect = { feedback(true); viewModel.onCorrect() },
+                                onWrong = viewModel::onWrong,
+                                onCheckHaptic = { correct ->
+                                    feedback(correct)
+                                }
+                            )
+                            is MatchPairsExercise -> MatchPairsUi(
+                                exercise,
+                                haptics = haptics,
+                                onComplete = { feedback(true); viewModel.onCorrect() }
+                            )
+                            is FillBlankExercise -> FillBlankUi(
+                                exercise,
+                                onCorrect = { feedback(true); viewModel.onCorrect() },
+                                onWrong = viewModel::onWrong,
+                                onCheckHaptic = { correct ->
+                                    feedback(correct)
+                                }
+                            )
+                            is ListeningExercise -> ListeningUi(
+                                exercise,
+                                tts = container.ttsSpeaker,
+                                languageTag = state.languageTag,
+                                onCorrect = { feedback(true); viewModel.onCorrect() },
+                                onWrong = viewModel::onWrong,
+                                onCheckHaptic = { correct ->
+                                    feedback(correct)
+                                }
+                            )
+                            is PronunciationExercise -> PronunciationUi(
+                                exercise,
+                                grader = container.pronunciationGrader,
+                                languageTag = state.languageTag,
+                                languageName = CourseLanguage.byId(state.languageTag).displayName,
+                                onCorrect = { feedback(true); viewModel.onCorrect() }
+                            )
+                        }
                     }
                 }
             }
         }
-    }
 
-    // Success banner.
-    AnimatedVisibility(
-        visible = state.justCorrect,
-        enter = slideInVertically(initialOffsetY = { it }) + fadeIn()
-    ) {
-        Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .background(PacoGreen)
-                .padding(horizontal = 24.dp, vertical = 20.dp),
-            contentAlignment = Alignment.Center
+        // Duolingo-style bottom feedback banner: flush to the bottom,
+        // 16dp top corners, 200ms slide-up.
+        AnimatedVisibility(
+            visible = state.justCorrect,
+            enter = slideInVertically(
+                animationSpec = tween(200),
+                initialOffsetY = { it }
+            ) + fadeIn(tween(200)),
+            modifier = Modifier.align(Alignment.BottomCenter)
         ) {
-            Text(
-                text = "¡Muy bien!",
-                style = MaterialTheme.typography.headlineMedium,
-                color = PaperWhite
-            )
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .clip(RoundedCornerShape(topStart = 16.dp, topEnd = 16.dp))
+                    .background(BrandGreen)
+                    .padding(horizontal = 24.dp, vertical = 20.dp),
+                contentAlignment = Alignment.Center
+            ) {
+                Text(
+                    text = "¡Muy bien!",
+                    style = MaterialTheme.typography.headlineMedium,
+                    color = PaperWhite
+                )
+            }
         }
     }
 

@@ -46,20 +46,66 @@ class GamificationRepository(private val db: AlpacaDatabase) {
     suspend fun awardLesson(xp: Int, coins: Int): LessonReward {
         val user = currentUser()
         val today = LocalDate.now().toEpochDay()
-        val newStreak = when {
-            user.lastPracticeEpochDay == today -> user.streakDays
-            user.lastPracticeEpochDay == today - 1 -> user.streakDays + 1
-            else -> 1
+        var freezes = user.streakFreezes
+        val gap = if (user.lastPracticeEpochDay < 0) 0L else today - user.lastPracticeEpochDay
+        val newStreak: Int = when {
+            gap <= 0L -> user.streakDays
+            gap == 1L -> user.streakDays + 1
+            else -> {
+                val missed = (gap - 1).toInt()
+                if (user.streakDays > 0 && freezes >= missed) {
+                    freezes -= missed
+                    user.streakDays + 1
+                } else {
+                    if (user.streakDays > 0) freezes = 0
+                    1
+                }
+            }
         }
         userDao.upsert(
             user.copy(
                 xp = user.xp + xp,
                 coins = user.coins + coins,
-                streakDays = newStreak,
-                lastPracticeEpochDay = today
+                streakDays = newStreak.coerceAtLeast(1),
+                lastPracticeEpochDay = today,
+                streakFreezes = freezes
             )
         )
         return LessonReward(xp, coins, newStreak > user.streakDays, newStreak)
+    }
+
+    suspend fun addGems(amount: Int) {
+        if (amount <= 0) return
+        val user = currentUser()
+        userDao.upsert(user.copy(gems = user.gems + amount))
+    }
+
+    /** Spends gems; returns false (and spends nothing) when the balance is short. */
+    suspend fun trySpendGems(amount: Int): Boolean {
+        val user = currentUser()
+        if (user.gems < amount) return false
+        userDao.upsert(user.copy(gems = user.gems - amount))
+        return true
+    }
+
+    suspend fun refillEnergy(): Boolean {
+        val user = currentUser()
+        if (user.fleeceEnergy >= UserEntity.MAX_ENERGY) return false
+        userDao.upsert(user.copy(fleeceEnergy = UserEntity.MAX_ENERGY, energyAnchorEpochMs = 0L))
+        return true
+    }
+
+    suspend fun buyStreakFreeze(): Boolean {
+        val user = currentUser()
+        if (user.streakFreezes >= UserEntity.MAX_FREEZES) return false
+        if (!trySpendGems(UserEntity.FREEZE_PRICE_GEMS)) return false
+        userDao.upsert(currentUser().copy(streakFreezes = user.streakFreezes + 1))
+        return true
+    }
+
+    suspend fun buyEnergyRefill(): Boolean {
+        if (!trySpendGems(UserEntity.REFILL_PRICE_GEMS)) return false
+        return refillEnergy()
     }
 
     private fun UserEntity.withRegen(now: Long): UserEntity {

@@ -2,6 +2,7 @@ package com.alpaca.app.ui.lesson
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.alpaca.app.BuildConfig
 import com.alpaca.app.data.content.ContentRepository
 import com.alpaca.app.data.content.Exercise
 import com.alpaca.app.data.content.Lesson
@@ -102,7 +103,8 @@ class LessonViewModel(private val container: AppContainer) : ViewModel() {
                     container.mistakeRepository.log(originalId, s.index, mistakeLabel)
                 }
             }
-            val remaining = container.gamificationRepository.consumeEnergy()
+            val remaining = if (prefs.value.alpacaMax) s.energy
+                else container.gamificationRepository.consumeEnergy()
             if (remaining <= 0) {
                 finish(outOfEnergy = true)
             } else {
@@ -140,6 +142,18 @@ class LessonViewModel(private val container: AppContainer) : ViewModel() {
         }
     }
 
+    private fun reportLeagueXp(xp: Int) {
+        val baseUrl = BuildConfig.VERCEL_BASE_URL
+        if (baseUrl.isBlank()) return
+        viewModelScope.launch {
+            runCatching {
+                val deviceId = container.prefs.ensureDeviceId()
+                val name = prefs.value.displayName
+                container.leagueClient.reportXp(baseUrl, deviceId, name, xp).getOrThrow()
+            }
+        }
+    }
+
     private fun finish(outOfEnergy: Boolean) {
         val l = lesson ?: return
         val total = l.exercises.size
@@ -148,6 +162,8 @@ class LessonViewModel(private val container: AppContainer) : ViewModel() {
                 val xp = 10 + correctCount
                 val coins = if (mistaken.isEmpty()) 10 else 5
                 val reward = container.gamificationRepository.awardLesson(xp, coins)
+                container.questRepository.recordLesson(xp, coins)
+                reportLeagueXp(xp)
                 val score = if (total > 0) correctCount * 100 / total else 0
                 container.progressRepository.completeLesson(l.lessonId, score)
                 if (isReview) {

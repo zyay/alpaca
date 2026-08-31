@@ -1,0 +1,303 @@
+{
+  "unitId": "it_u2",
+  "title": "At the Café",
+  "region": "Riva Azzurra",
+  "languageName": "Italian",
+  "lessons": [
+    {
+      "lessonId": "it_u2_l1",
+      "title": "Ordinare un caffè",
+      "exercises": [
+        {
+          "type": "multiple_choice",
+          "prompt": "How do you order \"a coffee\" at the bar?",
+          "options": ["Un caffè, per favore", "Il caffè è pronto?", "Dove è il caffè?", "Vorrei vedere il caffè"],
+          "correctIndex": 0,
+          "explanation": "At the bar, \"un caffè\" means an espresso by default."
+        },
+        {
+          "type": "match_pairs",
+          "pairs": [["un caffè", "an espresso"], ["un cappuccino", "a cappuccino"], ["una tisana", "an herbal tea"], ["un succo", "a juice"]],
+          "explanation": "Ordering \"un caffè\" after 11am marks you as a tourist — locals switch to espresso anyway."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "What is \"latte macchiato\"?",
+          "options": ["Milk \"stained\" with coffee", "Coffee with lemon", "Iced coffee", "Coffee with cream"],
+          "correctIndex": 0,
+          "explanation": "\"Macchiato\" means stained/spotted — mostly milk with a splash of coffee."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Vorrei un cappuccino, ___ favore",
+          "answer": "per",
+          "wordBank": ["per", "grazie", "prego", "molto"],
+          "explanation": "\"Vorrei... per favore\" — \"I would like... please\"."
+        },
+        {
+          "type": "listening",
+          "text": "Da portare via",
+          "options": ["To take away", "To drink here", "For the table", "Right away"],
+          "correctIndex": 0,
+          "explanation": "\"Da portare via\" is takeaway; table service costs more at the bar."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "How do you say \"I would like\"?",
+          "options": ["Vorrei", "Voglio", "Vorrò", "Volevo"],
+          "correctIndex": 0,
+          "explanation": "\"Vorrei\" is the conditional — polite, like \"I would like\"."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Un caffè e una ___",
+          "answer": "brioche",
+          "wordBank": ["brioche", "birra", "bistecca", "bibita"],
+          "explanation": "A morning cappuccino comes with a \"brioche\" (cornetto) — the classic breakfast."
+        },
+        {
+          "type": "pronunciation",
+          "expected": "Un caffè lungo, per favore",
+          "translation": "A long coffee, please",
+          "explanation": "\"Lungo\" means long — more water pulled through the espresso."
+        }
+      ]
+    },
+    {
+      "lessonId": "it_u2_l2",
+      "title": "Al bancone",
+      "exercises": [
+        {
+          "type": "multiple_choice",
+          "prompt": "What does \"Al bancone\" mean?",
+          "options": ["At the counter", "At the table", "At the register", "At the door"],
+          "correctIndex": 0,
+          "explanation": "Italians drink coffee standing \"al bancone\" — cheaper than sitting."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Posso pagare con la ___?",
+          "answer": "carta",
+          "wordBank": ["carta", "chiave", "porta", "tazza"],
+          "explanation": "\"Posso pagare con la carta?\" — can I pay by card?"
+        },
+        {
+          "type": "listening",
+          "text": "Sono due euro e cinquanta",
+          "options": ["It's two euros fifty", "It's twenty-five euros", "Two coffees, please", "It's five euros"],
+          "correctIndex": 0,
+          "explanation": "\"Due euro e cinquanta\" — two fifty. Prices are often said without \"cent\"."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "How do you ask for sugar?",
+          "options": ["Dello zucchero, per favore", "Del latte, per favore", "Dell'acqua, per favore", "Del ghiaccio, per favore"],
+          "correctIndex": 0,
+          "explanation": "\"Zucchero\" is sugar, \"latte\" is milk, \"ghiaccio\" is ice."
+        },
+        {
+          "type": "match_pairs",
+          "pairs": [["il tavolo", "table"], ["la tazza", "cup"], ["il bicchiere", "glass"], ["il tovagliolo", "napkin"]],
+          "explanation": "Bar vocabulary: tavolo, tazza, bicchiere, tovagliolo."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "What does \"Quanto costa?\" mean?",
+          "options": ["How much does it cost?", "How long does it take?", "Where is it?", "What is this?"],
+          "correctIndex": 0,
+          "explanation": "\"Quanto costa?\" — the price question, works everywhere."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Il conto, ___",
+          "answer": "per favore",
+          "wordBank": ["per favore", "grazie mille", "subito", "arrivederci"],
+          "explanation": "\"Il conto, per favore\" — the check, please."
+        },
+        {
+          "type": "pronunciation",
+          "expected": "Posso avere il conto?",
+          "translation": "May I have the check?",
+          "explanation": "\"Posso avere...?\" — may I have...? The polite request pattern."
+        }
+      ]
+    },
+    {
+      "lessonId": "it_u2_l3",
+      "title": "Gli spuntini",
+      "exercises": [
+        {
+          "type": "match_pairs",
+          "pairs": [["il panino", "sandwich"], ["la focaccia", "focaccia bread"], ["l'insalata", "salad"], ["la merenda", "afternoon snack"]],
+          "explanation": "\"Merenda\" is the Italian afternoon snack — kids' favorite time of day."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "What is a \"tramezzino\"?",
+          "options": ["A crustless triangle sandwich", "A type of pasta", "A small pizza", "A fried rice ball"],
+          "correctIndex": 0,
+          "explanation": "\"Tramezzino\" comes from English \"tramezzino\" = in-between — the bar sandwich."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Vorrei un ___ alla ricotta",
+          "answer": "cornetto",
+          "wordBank": ["cornetto", "caffè", "panino", "gelato"],
+          "explanation": "\"Cornetto\" means little horn — the Italian croissant, often filled with ricotta or cream."
+        },
+        {
+          "type": "listening",
+          "text": "Qualcosa di dolce?",
+          "options": ["Something sweet?", "Something salty?", "Something to drink?", "Something hot?"],
+          "correctIndex": 0,
+          "explanation": "\"Dolce\" means sweet — also the word for dessert."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "What is \"arancina\"?",
+          "options": ["A fried Sicilian rice ball", "An orange juice", "A small orange cake", "An almond biscuit"],
+          "correctIndex": 0,
+          "explanation": "\"Arancina\" — little orange — a fried rice ball with ragù, a Sicilian classic."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Sono vegetariano, senza ___",
+          "answer": "carne",
+          "wordBank": ["carne", "formaggio", "pane", "uova"],
+          "explanation": "\"Senza carne\" — without meat. \"Formaggio\" is cheese."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "How do you say \"The food is delicious!\"?",
+          "options": ["È delizioso!", "È pronto!", "È caro!", "È abbastanza!"],
+          "correctIndex": 0,
+          "explanation": "\"È delizioso!\" — the compliment every cook wants to hear."
+        },
+        {
+          "type": "pronunciation",
+          "expected": "Che buono!",
+          "translation": "How good!",
+          "explanation": "\"Che buono!\" — say it with feeling; Italians appreciate it."
+        }
+      ]
+    },
+    {
+      "lessonId": "it_u2_l4",
+      "title": "Il conto",
+      "exercises": [
+        {
+          "type": "multiple_choice",
+          "prompt": "How do you ask for the check?",
+          "options": ["Il conto, per favore", "Il conto è salato", "Posso ordinare?", "Quanto tempo?"],
+          "correctIndex": 0,
+          "explanation": "\"Il conto\" — the bill. Ask when you're ready to leave."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Pagherò in ___",
+          "answer": "contanti",
+          "wordBank": ["contanti", "carta", "banca", "sacchetto"],
+          "explanation": "\"In contanti\" — in cash. \"Con la carta\" is by card."
+        },
+        {
+          "type": "listening",
+          "text": "Posso pagare?",
+          "options": ["Can I pay?", "Can I sit here?", "Can I order?", "Can you help me?"],
+          "correctIndex": 0,
+          "explanation": "\"Posso pagare?\" — said at the register, cash desk (la cassa)."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "What does \"Il servizio è incluso\" mean?",
+          "options": ["Service charge is included", "Service is free forever", "The waiter is included", "Tips are illegal"],
+          "correctIndex": 0,
+          "explanation": "Coperto/servizio on the bill = table charge; tipping beyond that is optional."
+        },
+        {
+          "type": "match_pairs",
+          "pairs": [["la cassa", "cash register"], ["il resto", "change"], ["la mancia", "tip"], ["lo scontrino", "receipt"]],
+          "explanation": "Paying vocabulary: cassa, resto, mancia, scontrino."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Mi può dare del ___?",
+          "answer": "resto",
+          "wordBank": ["resto", "conto", "scontrino", "soldi"],
+          "explanation": "\"Il resto\" — your change. Check it before leaving."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "What is a \"mancia\"?",
+          "options": ["A tip", "A menu", "A receipt", "A discount"],
+          "correctIndex": 0,
+          "explanation": "\"Mancia\" is a tip — rounding up is the local custom."
+        },
+        {
+          "type": "pronunciation",
+          "expected": "Tengo tutto",
+          "translation": "Keep the change",
+          "explanation": "\"Tengo tutto\" — I keep... wait, here: you let them keep it all as a tip."
+        }
+      ]
+    },
+    {
+      "lessonId": "it_u2_l5",
+      "title": "Al ristorante",
+      "exercises": [
+        {
+          "type": "multiple_choice",
+          "prompt": "A table for two, please — how do you say it?",
+          "options": ["Un tavolo per due, per favore", "Due tavoli, per favore", "Il tavolo è per due", "Paghiamo per due"],
+          "correctIndex": 0,
+          "explanation": "\"Un tavolo per due\" — a table for two. The first phrase you need."
+        },
+        {
+          "type": "match_pairs",
+          "pairs": [["l'antipasto", "starter"], ["il primo", "first course (pasta)"], ["il secondo", "main course"], ["il dolce", "dessert"]],
+          "explanation": "A full Italian meal runs antipasto → primo → secondo → dolce."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Vorrei la ___ margherita",
+          "answer": "pizza",
+          "wordBank": ["pizza", "pasta", "minestra", "bistecca"],
+          "explanation": "\"Pizza margherita\" — tomato, mozzarella, basil, like the Italian flag."
+        },
+        {
+          "type": "listening",
+          "text": "Per me, il pesce",
+          "options": ["For me, the fish", "For me, the meat", "For me, the soup", "For me, the salad"],
+          "correctIndex": 0,
+          "explanation": "\"Per me\" — for me — is how you state your order at the table."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "What does \"Mangio solo pesce\" mean?",
+          "options": ["I only eat fish", "I only eat meat", "I eat everything", "I am not hungry"],
+          "correctIndex": 0,
+          "explanation": "\"Pesce\" is fish, \"carne\" is meat — say this to avoid surprises."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Una bottiglia di vino ___",
+          "answer": "rosso",
+          "wordBank": ["rosso", "bianco", "acqua", "birra"],
+          "explanation": "\"Vino rosso\" is red wine; \"bianco\" is white."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "How do you compliment the waiter at the end?",
+          "options": ["Tutto era ottimo", "Il conto, grazie", "Arrivederci", "Dov'è il bagno?"],
+          "correctIndex": 0,
+          "explanation": "\"Tutto era ottimo\" — everything was excellent. \"Ottimo\" = outstanding."
+        },
+        {
+          "type": "pronunciation",
+          "expected": "Il menù, per favore",
+          "translation": "The menu, please",
+          "explanation": "\"Menù\" is masculine but ends in -ù with the accent — borrowed from French."
+        }
+      ]
+    }
+  ]
+}

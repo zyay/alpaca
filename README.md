@@ -10,18 +10,22 @@ When you slip up, a droplet splatters the screen, a red ✗ stamps in, and it
 clears to reveal the correct answer with a one-line explanation of *why*.
 No characters, no fluff — just the physics.
 
-## What's inside v0.3.0
+## What's inside v0.4.0
 
 | Feature | Details |
 |---|---|
-| 🌍 **3 courses** | **Spanish** (5 units), **French** (2 units), **German** (2 units) — switch courses from the trail or Settings; Italian, Portuguese and Japanese are marked *coming soon* |
-| 🗺️ **The trail** | Winding gamified lesson path — **9 regions, 45 lessons, ~450 exercises** with sequential unit unlocking per course |
+| 🌍 **5 courses** | **Spanish** (5 units), **French** (2), **German** (2), **Italian** (2), **Portuguese** (2) — switch courses from the trail or Settings; Japanese is *coming soon* |
+| 🗺️ **The trail** | Winding gamified lesson path — **13 regions, 65 lessons, ~650 exercises** with sequential unit unlocking per course |
 | 📚 **5 exercise types** | multiple choice · match pairs · fill-in-the-blank · listening (TTS) · pronunciation — every wrong-answer exercise carries a one-line grammar explanation |
+| 💎 **Gems & daily quests** | 3 deterministic quests per day (XP / lessons / coins); claim gems, spend them in the gem shop |
+| ❄️ **Streak Freeze** | Buy up to 2 freezes (200 gems) — a missed day no longer kills your streak; or refill all fleece hearts for 350 gems |
+| 🏟️ **Real online leagues** | Anonymous weekly XP race on a Redis-backed Vercel endpoint — top 30 standings, your live rank, promotion zone, resets Monday 00:00 UTC; offline builds fall back to a local practice herd |
+| 🛒 **Alpaca Max billing** | Play Billing subscription (`alpaca_max_monthly`) for unlimited fleece energy, wired end-to-end (see [docs/playstore-listing.md](docs/playstore-listing.md)) |
 | 🔁 **Mistake review** | Every mistake is logged; a dedicated review lesson rebuilds exercises from your personal error history |
 | 🏅 **Achievements** | 8 unlockable badges (first lesson, streaks, perfect lessons, voice calls, XP milestones) |
 | 🔥 **Gamification** | XP, daily streaks, coins, Fleece Energy (5 tufts, regrows 1 per 30 min), confetti, spring physics + haptics everywhere |
 | 🔊 **Sound design** | Zero-asset sound effects via platform `ToneGenerator` (correct/wrong/select/finish), gated by the sound preference |
-| 👋 **Onboarding** | Rotating *¡Hola! · Bonjour! · Hallo!* hero, floating flags, learns your name, then drops you on the trail |
+| 👋 **Onboarding** | Rotating *¡Hola! · Bonjour! · Hallo! · Ciao! · Olá!* hero, floating flags, learns your name, then drops you on the trail |
 | 💬 **Real-World Simulator** | Live voice calls (coffee, ticket, directions, friend, market, hotel, doctor, restaurant) over the Gemini Multimodal Live API — full-duplex audio, barge-in interruption, language-aware personas |
 | 🔐 **Key-less distribution** | Voice calls authenticate with **short-lived ephemeral tokens** minted by a Vercel serverless function — the raw API key never ships in the APK |
 | 🎨 **Design** | Duolingo-grade design system: `#58cc02` brand green, weight-800 headings, pill buttons with hard 3D edges, pulsing current-node marker with a "You" flag pin, gradient-orb voice avatar |
@@ -100,9 +104,11 @@ lesson id, so new languages need no database migration.
 app/src/main/java/com/alpaca/app/
 ├── gemini/      Gemini Live WebSocket client + ephemeral-token client
 ├── audio/       AudioEngine, TTS, pronunciation grader, sound effects
-├── data/        Room, DataStore, mistake log, content models + bundled JSON
-└── ui/          onboarding · trail · lesson · summary · voice · achievements · leaderboard · settings · languages
-server/api/      Vercel function: mints Gemini Live ephemeral tokens
+├── billing/     Play Billing manager (Alpaca Max subscription)
+├── data/        Room, DataStore, leagues, quests, mistake log, content models + bundled JSON
+└── ui/          onboarding · trail · lesson · summary · voice · quests · achievements · leaderboard · settings · languages
+server/api/      Vercel functions: ephemeral token minting + weekly league (Redis REST)
+docs/            Play Store listing draft + privacy policy
 ```
 
 Architecture: MVVM, manual DI (`AppContainer`), coroutines + Flow, type-safe
@@ -110,14 +116,21 @@ Navigation Compose routes, no third-party DI. Content is validated by a JVM
 unit test (`ContentParsingTest`) at build time — it checks every unit parses,
 lesson ids are unique across all languages, and pairs are well-formed.
 
+## Leagues backend
+
+`GET/POST /api/league` on the Vercel project stores weekly XP in any Redis
+REST instance (Vercel KV or Upstash — same protocol). Configure either pair of
+env vars on the project and the leaderboard goes live; without them the
+endpoint reports `{ available: false }` and the app shows its offline
+practice-herd preview. Week windows are ISO weeks, Monday 00:00 UTC.
+
 ## Roadmap
 
-- Real Herd Leagues + friend quests (backend: Firebase or FastAPI)
-- More courses: Italian, Portuguese, Japanese
+- Japanese course
+- Friend quests + league promotion/demotion tiers
 - LiteRT pronunciation model trained on Common Voice (GPU delegate; NNAPI is deprecated)
 - Oboe audio engine for lower latency
 - HF-datasets content pipeline (tatoeba/opus100) + RAG for cultural notes
-- Play Billing for **Alpaca Max**, ads on the free tier
-- Play Store release: signing, R8, listing, privacy policy
+- Play Store release (signing + listing docs are ready in `docs/`)
 
 Made loud in the Andes.

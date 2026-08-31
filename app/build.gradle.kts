@@ -20,6 +20,13 @@ val geminiModelId: String = localProps.getProperty("GEMINI_MODEL_ID") ?: "gemini
 // Deployment of server/ (Vercel) that mints short-lived Live tokens. Empty = local-key dev mode.
 val vercelBaseUrl: String = localProps.getProperty("VERCEL_BASE_URL", "") ?: ""
 
+// Release signing lives in local.properties (gitignored). Absent keys mean
+// the local release build stays unsigned — CI never builds release.
+val keystoreFile: String? = localProps.getProperty("ALPACA_KEYSTORE_FILE")
+val keystorePassword: String? = localProps.getProperty("ALPACA_KEYSTORE_PASSWORD")
+val keystoreAlias: String? = localProps.getProperty("ALPACA_KEY_ALIAS")
+val keystoreKeyPassword: String? = localProps.getProperty("ALPACA_KEY_PASSWORD")
+
 android {
     namespace = "com.alpaca.app"
     compileSdk = 36
@@ -28,8 +35,8 @@ android {
         applicationId = "com.alpaca.app"
         minSdk = 28
         targetSdk = 36
-        versionCode = 3
-        versionName = "0.3.0"
+        versionCode = 4
+        versionName = "0.4.0"
     }
 
     buildTypes {
@@ -39,11 +46,20 @@ android {
             buildConfigField("String", "VERCEL_BASE_URL", "\"$vercelBaseUrl\"")
         }
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
+            isShrinkResources = true
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
             buildConfigField("String", "GEMINI_API_KEY", "\"$geminiApiKey\"")
             buildConfigField("String", "GEMINI_MODEL_ID", "\"$geminiModelId\"")
             buildConfigField("String", "VERCEL_BASE_URL", "\"$vercelBaseUrl\"")
+            if (keystoreFile != null && keystorePassword != null && keystoreAlias != null) {
+                signingConfig = signingConfigs.create("release") {
+                    storeFile = rootProject.file(keystoreFile)
+                    storePassword = keystorePassword
+                    keyAlias = keystoreAlias
+                    keyPassword = keystoreKeyPassword ?: keystorePassword
+                }
+            }
         }
     }
 
@@ -88,6 +104,7 @@ dependencies {
     implementation(libs.datastore.preferences)
     implementation(libs.kotlinx.serialization.json)
     implementation(libs.okhttp)
+    implementation(libs.billing.ktx)
     implementation(libs.coroutines.android)
 
     testImplementation(libs.junit)

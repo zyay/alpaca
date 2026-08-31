@@ -141,7 +141,7 @@ fun OnboardingScreen(
 
 @Composable
 private fun FloatingFlagChips() {
-    val flags = listOf("🇪🇸", "🇫🇷", "🇩🇪")
+    val flags = listOf("🇪🇸", "🇫🇷", "🇩🇪", "🇮🇹", "🇵🇹")
     val transition = rememberInfiniteTransition(label = "flags")
     val bob by transition.animateFloat(
         initialValue = 0f,

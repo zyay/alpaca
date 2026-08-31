@@ -1,0 +1,303 @@
+{
+  "unitId": "pt_u1",
+  "title": "Greetings & Basics",
+  "region": "Vale do Douro",
+  "languageName": "Portuguese",
+  "lessons": [
+    {
+      "lessonId": "pt_u1_l1",
+      "title": "Saudações",
+      "exercises": [
+        {
+          "type": "multiple_choice",
+          "prompt": "How do you say \"Hello\"?",
+          "options": ["Olá", "Adeus", "Obrigado", "Por favor"],
+          "correctIndex": 0,
+          "explanation": "\"Olá\" is the standard Portuguese hello."
+        },
+        {
+          "type": "match_pairs",
+          "pairs": [["Bom dia", "Good morning"], ["Boa tarde", "Good afternoon"], ["Boa noite", "Good night"], ["Até logo", "See you later"]],
+          "explanation": "Time-of-day greetings change at lunch and after dinner."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "A woman says \"thank you\" in Portugal with...",
+          "options": ["Obrigada", "Obrigado", "Por favor", "De nada"],
+          "correctIndex": 0,
+          "explanation": "\"Obrigado/a\" agrees with the speaker: women say \"obrigada\", men \"obrigado\"."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "___ noite!",
+          "answer": "Boa",
+          "wordBank": ["Boa", "Bom", "Olá", "Adeus"],
+          "explanation": "\"Noite\" is feminine, so the greeting is \"Boa noite\" — \"Bom\" is for masculine \"dia\"."
+        },
+        {
+          "type": "listening",
+          "text": "Como está?",
+          "options": ["How are you? (formal)", "What's your name?", "Where are you from?", "How old are you?"],
+          "correctIndex": 0,
+          "explanation": "\"Como está?\" is the polite form; with friends, \"Como estás?\"."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "How do you say \"Goodbye\"?",
+          "options": ["Adeus", "Olá", "Sim", "Prazer"],
+          "correctIndex": 0,
+          "explanation": "\"Adeus\" — literally \"to God\" — is the full goodbye; \"tchau\" is casual."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Até ___!",
+          "answer": "amanhã",
+          "wordBank": ["amanhã", "ontem", "hoje", "nunca"],
+          "explanation": "\"Até amanhã\" — see you tomorrow. \"Até logo\" is see you later."
+        },
+        {
+          "type": "pronunciation",
+          "expected": "Prazer em conhecê-lo",
+          "translation": "Pleased to meet you",
+          "explanation": "\"Prazer\" alone also works — it means \"pleasure\"."
+        }
+      ]
+    },
+    {
+      "lessonId": "pt_u1_l2",
+      "title": "Os números",
+      "exercises": [
+        {
+          "type": "match_pairs",
+          "pairs": [["um", "one"], ["dois", "two"], ["três", "three"], ["quatro", "four"]],
+          "explanation": "Portuguese numbers one to four: um, dois, três, quatro."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "What number is \"cinco\"?",
+          "options": ["5", "4", "6", "15"],
+          "correctIndex": 0,
+          "explanation": "\"Cinco\" is five — note the nasal \"-in-\" sound."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "How do you say \"seven\"?",
+          "options": ["sete", "seis", "oito", "dez"],
+          "correctIndex": 0,
+          "explanation": "\"Sete\" is seven — like \"set\" with an -ee."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Um, dois, ___, quatro",
+          "answer": "três",
+          "wordBank": ["três", "cinco", "dez", "oito"],
+          "explanation": "The sequence is um, dois, três — three comes after two."
+        },
+        {
+          "type": "listening",
+          "text": "Tenho dez euros",
+          "options": ["I have ten euros", "I have two euros", "I want ten euros", "I have six euros"],
+          "correctIndex": 0,
+          "explanation": "\"Tenho dez euros\" — \"tenho\" means both \"I have\" (things and age)."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "What does \"seis\" mean?",
+          "options": ["6", "16", "60", "7"],
+          "correctIndex": 0,
+          "explanation": "\"Seis\" is six — careful, it sounds close to \"sete\" (7)."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Nove, ___, onze",
+          "answer": "dez",
+          "wordBank": ["dez", "sete", "três", "quatro"],
+          "explanation": "Nove (9), dez (10), onze (11) — ten sits in the middle."
+        },
+        {
+          "type": "pronunciation",
+          "expected": "Três cafés, por favor",
+          "translation": "Three coffees, please",
+          "explanation": "Numbers + \"por favor\" — the core ordering combo."
+        }
+      ]
+    },
+    {
+      "lessonId": "pt_u1_l3",
+      "title": "Apresentar-se",
+      "exercises": [
+        {
+          "type": "multiple_choice",
+          "prompt": "What does \"Chamo-me Ana\" mean?",
+          "options": ["My name is Ana", "I am from Porto", "I like Ana", "Call Ana"],
+          "correctIndex": 0,
+          "explanation": "European Portuguese says \"chamo-me\" — literally \"I call me\"."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "O meu nome ___ João",
+          "answer": "é",
+          "wordBank": ["é", "e", "sou", "está"],
+          "explanation": "\"O meu nome é...\" — my name is... \"é\" is \"is\" with an accent."
+        },
+        {
+          "type": "listening",
+          "text": "De onde és?",
+          "options": ["Where are you from?", "What's your name?", "How old are you?", "Where do you live?"],
+          "correctIndex": 0,
+          "explanation": "\"De onde és?\" asks your origin — informal \"tu\" form."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "How do you say \"I am Portuguese\"?",
+          "options": ["Sou português", "Chamo-me português", "Estou bem", "Tenho vinte anos"],
+          "correctIndex": 0,
+          "explanation": "\"Sou\" = I am (permanent traits): \"sou português\"."
+        },
+        {
+          "type": "match_pairs",
+          "pairs": [["o nome", "name"], ["o amigo", "friend"], ["a família", "family"], ["a idade", "age"]],
+          "explanation": "Portuguese nouns take o/a: \"o nome\", \"a família\"."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "How do you say your age? \"Tenho vinte ___\"",
+          "options": ["anos", "ano", "anos e", "vezes"],
+          "correctIndex": 0,
+          "explanation": "Age uses \"ter\" (to have): \"tenho vinte anos\" — I have twenty years."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Muito ___!",
+          "answer": "prazer",
+          "wordBank": ["prazer", "gosto", "obrigado", "por"],
+          "explanation": "\"Muito prazer!\" — much pleasure, nice to meet you."
+        },
+        {
+          "type": "pronunciation",
+          "expected": "Sou de Lisboa",
+          "translation": "I am from Lisbon",
+          "explanation": "\"Sou de + city\" — the simple origin pattern."
+        }
+      ]
+    },
+    {
+      "lessonId": "pt_u1_l4",
+      "title": "A cortesia",
+      "exercises": [
+        {
+          "type": "multiple_choice",
+          "prompt": "How do you say \"Please\"?",
+          "options": ["Por favor", "Obrigado", "Desculpe", "De nada"],
+          "correctIndex": 0,
+          "explanation": "\"Por favor\" works for please in every situation."
+        },
+        {
+          "type": "match_pairs",
+          "pairs": [["Obrigado", "Thank you"], ["De nada", "You're welcome"], ["Desculpe", "Sorry"], ["Com licença", "Excuse me"]],
+          "explanation": "\"Com licença\" is for passing through; \"Desculpe\" is for sorry."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "Someone says \"Obrigado!\" — what do you reply?",
+          "options": ["De nada", "Por favor", "Adeus", "Sim"],
+          "correctIndex": 0,
+          "explanation": "\"De nada\" — \"of nothing\" — the standard you're welcome."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Muito ___!",
+          "answer": "obrigado",
+          "wordBank": ["obrigado", "obrigada", "bom", "feliz"],
+          "explanation": "\"Muito obrigado\" — thank you very much (masculine form)."
+        },
+        {
+          "type": "listening",
+          "text": "Com licença, onde é a casa de banho?",
+          "options": ["Excuse me, where is the bathroom?", "What time is it?", "Where are you from?", "Can you help me?"],
+          "correctIndex": 0,
+          "explanation": "\"Casa de banho\" — bathroom. A life-saving phrase."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "What does \"Não faz mal\" mean?",
+          "options": ["No problem / it doesn't matter", "It's bad", "Don't eat that", "No thanks"],
+          "correctIndex": 0,
+          "explanation": "\"Não faz mal\" — literally \"it does no harm\" — how apologies are waved off."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Que ___ são?",
+          "answer": "horas",
+          "wordBank": ["horas", "hora", "dia", "tempo"],
+          "explanation": "\"Que horas são?\" — what time is it? Always plural \"horas\"."
+        },
+        {
+          "type": "pronunciation",
+          "expected": "Com licença",
+          "translation": "Excuse me",
+          "explanation": "\"Com licença\" — with your permission — squeeze past politely."
+        }
+      ]
+    },
+    {
+      "lessonId": "pt_u1_l5",
+      "title": "Primeiras frases",
+      "exercises": [
+        {
+          "type": "listening",
+          "text": "Não sei",
+          "options": ["I don't know", "I don't want it", "I don't understand", "I'm not hungry"],
+          "correctIndex": 0,
+          "explanation": "\"Não sei\" — the honest answer to most questions in a new city."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "How do you say \"I don't understand\"?",
+          "options": ["Não compreendo", "Não sei", "Não quero", "Não falo"],
+          "correctIndex": 0,
+          "explanation": "\"Não compreendo\" — from \"compreender\" (to understand)."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Fala ___?",
+          "answer": "inglês",
+          "wordBank": ["inglês", "português", "bem", "eu"],
+          "explanation": "\"Fala inglês?\" — do you speak English? Note the accent on \"inglês\"."
+        },
+        {
+          "type": "match_pairs",
+          "pairs": [["Sim", "Yes"], ["Não", "No"], ["Talvez", "Maybe"], ["Claro", "Of course"]],
+          "explanation": "\"Claro\" — clear! — is the confident \"of course\"."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "What does \"Falo um pouco de português\" mean?",
+          "options": ["I speak a little Portuguese", "I speak Portuguese well", "I don't speak Portuguese", "I am learning Portuguese"],
+          "correctIndex": 0,
+          "explanation": "\"Um pouco\" — a little. Locals light up when you try."
+        },
+        {
+          "type": "listening",
+          "text": "Que giro!",
+          "options": ["How cute/nice!", "How expensive!", "Where is it?", "What time is it?"],
+          "correctIndex": 0,
+          "explanation": "\"Que giro!\" — how cute! — Portugal's favorite exclamation."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Sou ___ aqui",
+          "answer": "turista",
+          "wordBank": ["turista", "estudante", "empregado", "médico"],
+          "explanation": "\"Sou turista aqui\" — I am a tourist here."
+        },
+        {
+          "type": "pronunciation",
+          "expected": "Estou a aprender português",
+          "translation": "I am learning Portuguese",
+          "explanation": "European Portuguese uses \"estar a + infinitive\" for the -ing form."
+        }
+      ]
+    }
+  ]
+}

@@ -18,6 +18,8 @@ import com.alpaca.app.ui.languages.LanguagePickerViewModel
 import com.alpaca.app.ui.lesson.LessonScreen
 import com.alpaca.app.ui.lesson.LessonViewModel
 import com.alpaca.app.ui.onboarding.OnboardingScreen
+import com.alpaca.app.ui.quests.QuestsScreen
+import com.alpaca.app.ui.quests.QuestsViewModel
 import com.alpaca.app.ui.settings.SettingsScreen
 import com.alpaca.app.ui.settings.SettingsViewModel
 import com.alpaca.app.ui.summary.SummaryScreen
@@ -55,6 +57,9 @@ data object SettingsRoute
 @Serializable
 data object CoursesRoute
 
+@Serializable
+data object QuestsRoute
+
 @Composable
 fun AppNavHost(
     app: AlpacaApp,
@@ -90,6 +95,7 @@ fun AppNavHost(
                 onOpenLeaderboard = { navController.navigate(LeaderboardRoute) },
                 onOpenSettings = { navController.navigate(SettingsRoute) },
                 onOpenCourses = { navController.navigate(CoursesRoute) },
+                onOpenQuests = { navController.navigate(QuestsRoute) },
                 haptics = haptics
             )
         }
@@ -149,6 +155,15 @@ fun AppNavHost(
         composable<CoursesRoute> {
             val viewModel: LanguagePickerViewModel = viewModel(factory = factory)
             LanguagePickerScreen(viewModel = viewModel, onBack = { navController.popBackStack() })
+        }
+
+        composable<QuestsRoute> {
+            val viewModel: QuestsViewModel = viewModel(factory = factory)
+            QuestsScreen(
+                viewModel = viewModel,
+                onBack = { navController.popBackStack() },
+                haptics = haptics
+            )
         }
     }
 }

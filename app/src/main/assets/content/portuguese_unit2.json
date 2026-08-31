@@ -1,0 +1,303 @@
+{
+  "unitId": "pt_u2",
+  "title": "No Café",
+  "region": "Costa Atlântica",
+  "languageName": "Portuguese",
+  "lessons": [
+    {
+      "lessonId": "pt_u2_l1",
+      "title": "Pedir um café",
+      "exercises": [
+        {
+          "type": "multiple_choice",
+          "prompt": "In Portugal, \"um café\" at the counter is...",
+          "options": ["An espresso (bica)", "A large latte", "Instant coffee", "Decaf only"],
+          "correctIndex": 0,
+          "explanation": "A straight espresso is \"um café\" or \"uma bica\" in Lisbon (\"cimbalino\" in Porto)."
+        },
+        {
+          "type": "match_pairs",
+          "pairs": [["um café", "an espresso"], ["um galão", "milk coffee in a glass"], ["um cappuccino", "a cappuccino"], ["um chá", "a tea"]],
+          "explanation": "\"Galão\" is Portugal's iconic milky coffee — breakfast in a glass."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "How do you say \"I would like\"?",
+          "options": ["Queria", "Quero muito", "Quererei", "Quis"],
+          "correctIndex": 0,
+          "explanation": "\"Queria\" — literally \"I wanted\" — is the polite way to order."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Um ___ de nata, por favor",
+          "answer": "pastel",
+          "wordBank": ["pastel", "pão", "sopa", "salada"],
+          "explanation": "\"Pastel de nata\" is the custard tart — order it with everything."
+        },
+        {
+          "type": "listening",
+          "text": "Para levar",
+          "options": ["To take away", "To drink here", "For the table", "Right away"],
+          "correctIndex": 0,
+          "explanation": "\"Para levar\" — takeaway; \"para aqui\" means to stay."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "How do you say \"with milk\"?",
+          "options": ["com leite", "com açúcar", "com gelo", "com água"],
+          "correctIndex": 0,
+          "explanation": "\"Com leite\" — with milk. \"Meia de leite\" is half coffee, half milk."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Quer ___ café?",
+          "answer": "um",
+          "wordBank": ["um", "dois", "dez", "cem"],
+          "explanation": "\"Quer um café?\" — would you like a coffee? Hospitality in one line."
+        },
+        {
+          "type": "pronunciation",
+          "expected": "Um café, por favor",
+          "translation": "A coffee, please",
+          "explanation": "The first phrase every café visit needs."
+        }
+      ]
+    },
+    {
+      "lessonId": "pt_u2_l2",
+      "title": "No balcão",
+      "exercises": [
+        {
+          "type": "multiple_choice",
+          "prompt": "What does \"No balcão\" mean?",
+          "options": ["At the counter", "At the table", "At the register", "At the door"],
+          "correctIndex": 0,
+          "explanation": "Counter service \"no balcão\" is cheaper than table service in Portugal."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Posso pagar com ___?",
+          "answer": "cartão",
+          "wordBank": ["cartão", "chave", "porta", "chávena"],
+          "explanation": "\"Posso pagar com cartão?\" — can I pay by card?"
+        },
+        {
+          "type": "listening",
+          "text": "São dois euros e cinquenta",
+          "options": ["It's two euros fifty", "It's twenty-five euros", "Two coffees, please", "It's five euros"],
+          "correctIndex": 0,
+          "explanation": "\"Dois euros e cinquenta\" — two fifty. Prices drop the word \"centavos\"."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "How do you ask for sugar?",
+          "options": ["Açúcar, por favor", "Leite, por favor", "Água, por favor", "Gelo, por favor"],
+          "correctIndex": 0,
+          "explanation": "\"Açúcar\" is sugar — Portuguese coffee is often taken sweet."
+        },
+        {
+          "type": "match_pairs",
+          "pairs": [["a mesa", "table"], ["a chávena", "cup"], ["o copo", "glass"], ["o guardanapo", "napkin"]],
+          "explanation": "Café vocabulary: mesa, chávena, copo, guardanapo."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "What does \"Quanto custa?\" mean?",
+          "options": ["How much does it cost?", "How long does it take?", "Where is it?", "What is this?"],
+          "correctIndex": 0,
+          "explanation": "\"Quanto custa?\" — the universal price question."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "A ___, por favor",
+          "answer": "conta",
+          "wordBank": ["conta", "porta", "garrafa", "colher"],
+          "explanation": "\"A conta, por favor\" — the check, please."
+        },
+        {
+          "type": "pronunciation",
+          "expected": "Pode trazer a conta?",
+          "translation": "Can you bring the check?",
+          "explanation": "\"Pode trazer...?\" — can you bring...? The polite request form."
+        }
+      ]
+    },
+    {
+      "lessonId": "pt_u2_l3",
+      "title": "Os lanches",
+      "exercises": [
+        {
+          "type": "match_pairs",
+          "pairs": [["a torrada", "toast"], ["o pão", "bread"], ["o queijo", "cheese"], ["o presunto", "ham"]],
+          "explanation": "Classic café snacks: torrada com queijo e presunto."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "What is a \"pastel de nata\"?",
+          "options": ["A custard tart with cinnamon", "A meat pastry", "A codfish cake", "An almond cookie"],
+          "correctIndex": 0,
+          "explanation": "\"Pastel de nata\" — the Lisbon custard tart, dusted with cinnamon."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Um sumo de ___ natural",
+          "answer": "laranja",
+          "wordBank": ["laranja", "macarrão", "batata", "cebola"],
+          "explanation": "\"Sumo de laranja natural\" — fresh orange juice, pressed on the spot."
+        },
+        {
+          "type": "listening",
+          "text": "Algo doce?",
+          "options": ["Something sweet?", "Something salty?", "Something to drink?", "Something hot?"],
+          "correctIndex": 0,
+          "explanation": "\"Doce\" means sweet — also the word for dessert."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "What is a \"rissol\"?",
+          "options": ["A fried shrimp roll", "A rice pudding", "A bread roll", "A green soup"],
+          "correctIndex": 0,
+          "explanation": "\"Rissol\" — a crispy fried roll with shrimp, a café counter staple."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Sou vegetariano, sem ___",
+          "answer": "carne",
+          "wordBank": ["carne", "queijo", "pão", "ovos"],
+          "explanation": "\"Sem carne\" — without meat. \"Queijo\" is cheese."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "How do you say \"Delicious!\"?",
+          "options": ["Está delicioso!", "Está pronto!", "É caro!", "Chega!"],
+          "correctIndex": 0,
+          "explanation": "\"Está delicioso!\" — the best compliment for a baker."
+        },
+        {
+          "type": "pronunciation",
+          "expected": "Que bom!",
+          "translation": "How good!",
+          "explanation": "\"Que bom!\" — say it warmly; Portuguese bakers deserve it."
+        }
+      ]
+    },
+    {
+      "lessonId": "pt_u2_l4",
+      "title": "A conta",
+      "exercises": [
+        {
+          "type": "multiple_choice",
+          "prompt": "How do you ask for the check?",
+          "options": ["A conta, por favor", "A conta é alta", "Posso sentar?", "Quanto tempo?"],
+          "correctIndex": 0,
+          "explanation": "\"A conta, por favor\" — ask when you're ready to pay."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Vou pagar em ___",
+          "answer": "dinheiro",
+          "wordBank": ["dinheiro", "cartão", "banco", "saco"],
+          "explanation": "\"Em dinheiro\" — in cash. \"Com cartão\" is by card."
+        },
+        {
+          "type": "listening",
+          "text": "Posso pagar?",
+          "options": ["Can I pay?", "Can I sit here?", "Can I order?", "Can you help me?"],
+          "correctIndex": 0,
+          "explanation": "\"Posso pagar?\" — said at the register (a caixa)."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "What is a \"gorjeta\"?",
+          "options": ["A tip", "A menu", "A receipt", "A discount"],
+          "correctIndex": 0,
+          "explanation": "\"Gorjeta\" is a tip — rounding up is the Portuguese way."
+        },
+        {
+          "type": "match_pairs",
+          "pairs": [["a caixa", "cash register"], ["o troco", "change"], ["o talão", "receipt"], ["o desconto", "discount"]],
+          "explanation": "Paying vocabulary: caixa, troco, talão, desconto."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Pode dar-me o ___?",
+          "answer": "troco",
+          "wordBank": ["troco", "conta", "talão", "dinheiro"],
+          "explanation": "\"O troco\" — your change. Count it before you go."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "What does \"O talão, por favor\" ask for?",
+          "options": ["The receipt", "The menu", "The bill", "The card machine"],
+          "correctIndex": 0,
+          "explanation": "\"Talão\" — the printed receipt you may need for expenses."
+        },
+        {
+          "type": "pronunciation",
+          "expected": "Fique com o troco",
+          "translation": "Keep the change",
+          "explanation": "\"Fique com o troco\" — keep it, a small gorjeta."
+        }
+      ]
+    },
+    {
+      "lessonId": "pt_u2_l5",
+      "title": "No restaurante",
+      "exercises": [
+        {
+          "type": "multiple_choice",
+          "prompt": "A table for two, please — how do you say it?",
+          "options": ["Uma mesa para dois, por favor", "Duas mesas, por favor", "A mesa é para dois", "Pagamos para dois"],
+          "correctIndex": 0,
+          "explanation": "\"Uma mesa para dois\" — a table for two. The first phrase at the door."
+        },
+        {
+          "type": "match_pairs",
+          "pairs": [["a sopa", "soup"], ["o peixe", "fish"], ["a carne", "meat"], ["a sobremesa", "dessert"]],
+          "explanation": "Portuguese menus run from \"sopa\" to \"sobremesa\" — often the same day's \"prato do dia\"."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "O prato do ___ é bacalhau",
+          "answer": "dia",
+          "wordBank": ["dia", "mês", "ano", "noite"],
+          "explanation": "\"Prato do dia\" — dish of the day — usually the best value."
+        },
+        {
+          "type": "listening",
+          "text": "Para mim, o frango",
+          "options": ["For me, the chicken", "For me, the fish", "For me, the soup", "For me, the salad"],
+          "correctIndex": 0,
+          "explanation": "\"Para mim\" — for me — states your order at the table."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "What is \"bacalhau\"?",
+          "options": ["Salted cod", "Grilled sardines", "Pork roll", "Rice with seafood"],
+          "correctIndex": 0,
+          "explanation": "\"Bacalhau\" — salted cod — Portugal's national dish, said to have 365 recipes."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Um copo de vinho ___",
+          "answer": "tinto",
+          "wordBank": ["tinto", "branco", "água", "cerveja"],
+          "explanation": "\"Vinho tinto\" is red wine; \"branco\" is white."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "How do you compliment the restaurant at the end?",
+          "options": ["Estava tudo muito bom", "A conta, por favor", "Adeus", "Onde fica a saída?"],
+          "correctIndex": 0,
+          "explanation": "\"Estava tudo muito bom\" — everything was very good. Say it as you leave."
+        },
+        {
+          "type": "pronunciation",
+          "expected": "O menu, por favor",
+          "translation": "The menu, please",
+          "explanation": "\"Menu\" or \"ementa\" — both get you the card."
+        }
+      ]
+    }
+  ]
+}

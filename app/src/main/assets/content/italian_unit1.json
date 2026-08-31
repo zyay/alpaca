@@ -1,0 +1,303 @@
+{
+  "unitId": "it_u1",
+  "title": "Greetings & Basics",
+  "region": "Colline Toscane",
+  "languageName": "Italian",
+  "lessons": [
+    {
+      "lessonId": "it_u1_l1",
+      "title": "Saluti",
+      "exercises": [
+        {
+          "type": "multiple_choice",
+          "prompt": "How do you say \"Hello\"?",
+          "options": ["Ciao", "Arrivederci", "Grazie", "Prego"],
+          "correctIndex": 0,
+          "explanation": "\"Ciao\" works as both hello and goodbye — the most versatile Italian greeting."
+        },
+        {
+          "type": "match_pairs",
+          "pairs": [["Ciao", "Hello"], ["Buongiorno", "Good morning"], ["Grazie", "Thank you"], ["Prego", "You're welcome"]],
+          "explanation": "\"Prego\" is the standard reply when someone says \"grazie\"."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "What does \"Buonanotte\" mean?",
+          "options": ["Good night", "Good morning", "Good evening", "See you soon"],
+          "correctIndex": 0,
+          "explanation": "\"Buonanotte\" is said before going to sleep; for an evening greeting use \"Buonasera\"."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "___ sera!",
+          "answer": "Buona",
+          "wordBank": ["Buona", "Buon", "Ciao", "Notte"],
+          "explanation": "\"Buonasera\" is the evening greeting — \"sera\" is feminine, so it takes \"Buona\"."
+        },
+        {
+          "type": "listening",
+          "text": "Come stai?",
+          "options": ["How are you?", "What's your name?", "Where are you from?", "How old are you?"],
+          "correctIndex": 0,
+          "explanation": "\"Come stai?\" is the informal way to ask how someone is doing."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "How do you say \"Goodbye\" (formally)?",
+          "options": ["Arrivederci", "Ciao", "Salve", "Presto"],
+          "correctIndex": 0,
+          "explanation": "\"Arrivederci\" literally means \"until we see each other again\"."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "A ___!",
+          "answer": "presto",
+          "wordBank": ["presto", "dopo", "subito", "mai"],
+          "explanation": "\"A presto\" means \"see you soon\" — a warm way to end a chat."
+        },
+        {
+          "type": "pronunciation",
+          "expected": "Molto piacere",
+          "translation": "Nice to meet you",
+          "explanation": "\"Molto piacere\" literally means \"much pleasure\"."
+        }
+      ]
+    },
+    {
+      "lessonId": "it_u1_l2",
+      "title": "I numeri",
+      "exercises": [
+        {
+          "type": "match_pairs",
+          "pairs": [["uno", "one"], ["due", "two"], ["tre", "three"], ["quattro", "four"]],
+          "explanation": "Italian numbers from one to four: uno, due, tre, quattro."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "What number is \"cinque\"?",
+          "options": ["5", "4", "6", "15"],
+          "correctIndex": 0,
+          "explanation": "\"Cinque\" is five — pronounced \"CHEEN-kweh\"."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "How do you say \"eight\"?",
+          "options": ["otto", "sette", "sei", "nove"],
+          "correctIndex": 0,
+          "explanation": "\"Otto\" is eight — like the name Otto."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Uno, due, ___, quattro",
+          "answer": "tre",
+          "wordBank": ["tre", "cinque", "dieci", "sei"],
+          "explanation": "The sequence is uno, due, tre — three comes after two."
+        },
+        {
+          "type": "listening",
+          "text": "Ho dieci euro",
+          "options": ["I have ten euros", "I have two euros", "I want ten euros", "I have six euros"],
+          "correctIndex": 0,
+          "explanation": "\"Dieci\" is ten — \"ho dieci euro\" means \"I have ten euros\"."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "What does \"sei\" mean in Italian?",
+          "options": ["6", "16", "60", "you are"],
+          "correctIndex": 0,
+          "explanation": "As a number \"sei\" is six; it also means \"you are\" — context decides."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Nove, ___, undici",
+          "answer": "dieci",
+          "wordBank": ["dieci", "sette", "tre", "quattro"],
+          "explanation": "Nove (9), dieci (10), undici (11) — ten sits between nine and eleven."
+        },
+        {
+          "type": "pronunciation",
+          "expected": "Tre caffè, per favore",
+          "translation": "Three coffees, please",
+          "explanation": "Numbers + \"per favore\" is all you need to order in groups."
+        }
+      ]
+    },
+    {
+      "lessonId": "it_u1_l3",
+      "title": "Presentarsi",
+      "exercises": [
+        {
+          "type": "multiple_choice",
+          "prompt": "What does \"Mi chiamo Marco\" mean?",
+          "options": ["My name is Marco", "I am from Rome", "I like Marco", "Call Marco"],
+          "correctIndex": 0,
+          "explanation": "\"Mi chiamo\" literally means \"I call myself\"."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Piacere, ___ Anna",
+          "answer": "mi",
+          "wordBank": ["mi", "ti", "si", "io"],
+          "explanation": "\"Piacere, mi chiamo Anna\" — \"mi\" is the reflexive \"myself\"."
+        },
+        {
+          "type": "listening",
+          "text": "Di dove sei?",
+          "options": ["Where are you from?", "What's your name?", "How old are you?", "Where do you live?"],
+          "correctIndex": 0,
+          "explanation": "\"Di dove sei?\" asks where you come from."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "How do you say \"I am from Italy\"?",
+          "options": ["Sono dell'Italia", "Mi chiamo Italia", "Sto bene", "Ho vent'anni"],
+          "correctIndex": 0,
+          "explanation": "\"Sono\" means \"I am\" — \"sono dell'Italia\" states your origin."
+        },
+        {
+          "type": "match_pairs",
+          "pairs": [["il nome", "name"], ["l'amico", "friend"], ["la famiglia", "family"], ["l'età", "age"]],
+          "explanation": "Italian nouns take il/la/lo: \"il nome\" (masculine), \"la famiglia\" (feminine)."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "What does \"Vent'anni\" mean?",
+          "options": ["Twenty years", "Two years", "Twelve years", "Thirty years"],
+          "correctIndex": 0,
+          "explanation": "\"Vent'anni\" is \"venti anni\" contracted — twenty years old."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Ho ___ anni",
+          "answer": "venti",
+          "wordBank": ["venti", "due", "dodici", "trenta"],
+          "explanation": "Age uses \"avere\" (to have): \"ho venti anni\" = I am twenty."
+        },
+        {
+          "type": "pronunciation",
+          "expected": "Sono di Milano",
+          "translation": "I am from Milan",
+          "explanation": "\"Sono di + city\" is the simplest way to say where you're from."
+        }
+      ]
+    },
+    {
+      "lessonId": "it_u1_l4",
+      "title": "La cortesia",
+      "exercises": [
+        {
+          "type": "multiple_choice",
+          "prompt": "How do you say \"Please\"?",
+          "options": ["Per favore", "Grazie", "Scusa", "Prego"],
+          "correctIndex": 0,
+          "explanation": "\"Per favore\" literally means \"for favor\" — the standard \"please\"."
+        },
+        {
+          "type": "match_pairs",
+          "pairs": [["Grazie", "Thank you"], ["Prego", "You're welcome"], ["Scusa", "Sorry"], ["Salute", "Bless you"]],
+          "explanation": "\"Salute!\" is said when someone sneezes — it also means \"health!\" as a toast."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "Someone says \"Grazie!\" — what do you reply?",
+          "options": ["Prego", "Ciao", "Scusa", "Buongiorno"],
+          "correctIndex": 0,
+          "explanation": "\"Prego\" is the polite reply to thanks — \"you're welcome\"."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "___ mille!",
+          "answer": "Grazie",
+          "wordBank": ["Grazie", "Prego", "Scusa", "Ciao"],
+          "explanation": "\"Grazie mille\" means \"a thousand thanks\" — thank you very much."
+        },
+        {
+          "type": "listening",
+          "text": "Mi scusi, dov'è il bagno?",
+          "options": ["Excuse me, where is the bathroom?", "What time is it?", "Where are you from?", "Can you help me?"],
+          "correctIndex": 0,
+          "explanation": "\"Mi scusi\" is the formal \"excuse me\"; \"scusa\" is informal."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "What does \"Non c'è problema\" mean?",
+          "options": ["No problem", "There is no bread", "I don't know", "Come in"],
+          "correctIndex": 0,
+          "explanation": "\"Non c'è problema\" is how Italians wave off an apology."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Scusa, ___ ora è?",
+          "answer": "che",
+          "wordBank": ["che", "chi", "come", "dove"],
+          "explanation": "\"Scusa, che ora è?\" asks the time — \"che\" means \"what\"."
+        },
+        {
+          "type": "pronunciation",
+          "expected": "Permesso",
+          "translation": "May I come through?",
+          "explanation": "Say \"Permesso\" when squeezing past people — very polite."
+        }
+      ]
+    },
+    {
+      "lessonId": "it_u1_l5",
+      "title": "Prime frasi",
+      "exercises": [
+        {
+          "type": "listening",
+          "text": "Non lo so",
+          "options": ["I don't know", "I don't want it", "I don't understand", "I'm not hungry"],
+          "correctIndex": 0,
+          "explanation": "\"Non lo so\" — \"lo\" replaces the unstated thing you don't know."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "How do you say \"I don't understand\"?",
+          "options": ["Non capisco", "Non lo so", "Non voglio", "Non parlo"],
+          "correctIndex": 0,
+          "explanation": "\"Non capisco\" comes from \"capire\" (to understand)."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Parli ___?",
+          "answer": "inglese",
+          "wordBank": ["inglese", "italiano", "bene", "io"],
+          "explanation": "\"Parli inglese?\" — do you speak English? A survival phrase."
+        },
+        {
+          "type": "match_pairs",
+          "pairs": [["Sì", "Yes"], ["No", "No"], ["Forse", "Maybe"], ["Certo", "Of course"]],
+          "explanation": "\"Certo\" literally means \"certainly\" — a confident \"of course\"."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "What does \"Parlo un po' d'italiano\" mean?",
+          "options": ["I speak a little Italian", "I speak Italian well", "I don't speak Italian", "I am learning Italian"],
+          "correctIndex": 0,
+          "explanation": "\"Un po'\" is short for \"un poco\" — a little."
+        },
+        {
+          "type": "listening",
+          "text": "Che bello!",
+          "options": ["How beautiful!", "How expensive!", "Where is it?", "What time is it?"],
+          "correctIndex": 0,
+          "explanation": "\"Che bello!\" is an exclamation — \"how nice/beautiful!\""
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Sono ___ qui",
+          "answer": "turista",
+          "wordBank": ["turista", "studente", "cameriere", "dottore"],
+          "explanation": "\"Sono turista qui\" — I am a tourist here."
+        },
+        {
+          "type": "pronunciation",
+          "expected": "Sto imparando l'italiano",
+          "translation": "I am learning Italian",
+          "explanation": "\"Sto + -ando\" is the present progressive — I am learning."
+        }
+      ]
+    }
+  ]
+}

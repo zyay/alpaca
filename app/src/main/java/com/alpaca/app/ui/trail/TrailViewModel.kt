@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.alpaca.app.data.content.CourseLanguage
 import com.alpaca.app.data.db.entities.LessonStatus
+import com.alpaca.app.data.db.entities.QuestEntity
 import com.alpaca.app.data.db.entities.UserEntity
 import com.alpaca.app.di.AppContainer
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -38,9 +39,11 @@ class TrailViewModel(private val container: AppContainer) : ViewModel() {
         val selectedUnitId: String = "es_u1",
         val nodes: List<NodeUi> = emptyList(),
         val user: UserEntity? = null,
-        val mistakeCount: Int = 0
+        val mistakeCount: Int = 0,
+        val quests: List<QuestEntity> = emptyList()
     ) {
         val selectedUnit: UnitTab? get() = units.firstOrNull { it.unitId == selectedUnitId }
+        val claimableQuests: Int get() = quests.count { it.isComplete && !it.claimed }
     }
 
     private val _state = MutableStateFlow(UiState())
@@ -52,9 +55,12 @@ class TrailViewModel(private val container: AppContainer) : ViewModel() {
             combine(
                 container.progressRepository.observeProgress(),
                 container.gamificationRepository.observeUser(),
-                container.mistakeRepository.observeCount()
-            ) { progress, user, mistakes -> Triple(progress, user, mistakes) }
-                .flatMapLatest { (progress, user, mistakes) ->
+                container.mistakeRepository.observeCount(),
+                container.questRepository.observeQuests()
+            ) { progress, user, mistakes, quests ->
+                Quad(progress, user, mistakes, quests)
+            }
+                .flatMapLatest { (progress, user, mistakes, quests) ->
                     container.prefs.prefs.map { prefs ->
                         val language = CourseLanguage.byId(prefs.currentLanguage)
                         val units = container.contentRepository.loadUnits(language.id)
@@ -93,7 +99,8 @@ class TrailViewModel(private val container: AppContainer) : ViewModel() {
                             selectedUnitId = selected?.unitId ?: "${language.id}_u1",
                             nodes = nodeUi,
                             user = user,
-                            mistakeCount = mistakes
+                            mistakeCount = mistakes,
+                            quests = quests
                         )
                     }
                 }
@@ -105,3 +112,5 @@ class TrailViewModel(private val container: AppContainer) : ViewModel() {
         viewModelScope.launch { container.prefs.setCurrentUnit(unitId) }
     }
 }
+
+private data class Quad<A, B, C, D>(val first: A, val second: B, val third: C, val fourth: D)

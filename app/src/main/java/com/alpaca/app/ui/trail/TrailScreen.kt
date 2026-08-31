@@ -29,7 +29,10 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowForward
+import androidx.compose.material.icons.filled.AcUnit
+import androidx.compose.material.icons.filled.Diamond
 import androidx.compose.material.icons.filled.EmojiEvents
+import androidx.compose.material.icons.filled.Flag
 import androidx.compose.material.icons.filled.KeyboardArrowDown
 import androidx.compose.material.icons.filled.LocalFireDepartment
 import androidx.compose.material.icons.filled.Lock
@@ -82,6 +85,7 @@ fun TrailScreen(
     onOpenLeaderboard: () -> Unit,
     onOpenSettings: () -> Unit,
     onOpenCourses: () -> Unit,
+    onOpenQuests: () -> Unit,
     haptics: HapticPlayer?
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
@@ -191,6 +195,19 @@ fun TrailScreen(
                 StatChip(
                     icon = {
                         Icon(
+                            Icons.Filled.Diamond, null,
+                            tint = GemPurple, modifier = Modifier.size(20.dp)
+                        )
+                    },
+                    value = "${user?.gems ?: 0}",
+                    onClick = {
+                        haptics?.light()
+                        onOpenQuests()
+                    }
+                )
+                StatChip(
+                    icon = {
+                        Icon(
                             Icons.AutoMirrored.Filled.ArrowForward, null,
                             tint = SkyBlue, modifier = Modifier.size(20.dp)
                         )
@@ -205,6 +222,35 @@ fun TrailScreen(
                 ) {
                     EnergyHearts(energy = user?.fleeceEnergy ?: 5)
                 }
+                if ((user?.streakFreezes ?: 0) > 0) {
+                    StatChip(
+                        icon = {
+                            Icon(
+                                Icons.Filled.AcUnit, null,
+                                tint = SkyBlue, modifier = Modifier.size(20.dp)
+                            )
+                        },
+                        value = "${user?.streakFreezes ?: 0}",
+                        onClick = {
+                            haptics?.light()
+                            onOpenQuests()
+                        }
+                    )
+                }
+            }
+
+            // Daily quests banner.
+            if (state.quests.isNotEmpty()) {
+                QuestBanner(
+                    claimed = state.quests.count { it.claimed },
+                    claimable = state.claimableQuests,
+                    total = state.quests.size,
+                    onClick = {
+                        haptics?.light()
+                        onOpenQuests()
+                    },
+                    modifier = Modifier.padding(top = 14.dp)
+                )
             }
 
             // Weekly streak dots.
@@ -480,16 +526,64 @@ private fun UnitChip(tab: TrailViewModel.UnitTab, selected: Boolean, onClick: ()
 }
 
 @Composable
-private fun StatChip(icon: @Composable () -> Unit, value: String) {
+private fun StatChip(icon: @Composable () -> Unit, value: String, onClick: (() -> Unit)? = null) {
     Row(
         modifier = Modifier
             .clip(RoundedCornerShape(100.dp))
             .background(Color.White)
+            .then(
+                if (onClick != null) Modifier.clickable(onClick = onClick) else Modifier
+            )
             .padding(horizontal = 12.dp, vertical = 8.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
         icon()
         Spacer(Modifier.width(6.dp))
         Text(value, style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.ExtraBold)
+    }
+}
+
+@Composable
+private fun QuestBanner(
+    claimed: Int,
+    claimable: Int,
+    total: Int,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier
+) {
+    Row(
+        modifier = modifier
+            .fillMaxWidth()
+            .clip(RoundedCornerShape(16.dp))
+            .background(Color.White)
+            .border(2.dp, if (claimable > 0) BrandGreen else CloudGray, RoundedCornerShape(16.dp))
+            .clickable(onClick = onClick)
+            .padding(horizontal = 14.dp, vertical = 12.dp),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Icon(Icons.Filled.Flag, null, tint = StreakOrange, modifier = Modifier.size(22.dp))
+        Spacer(Modifier.width(10.dp))
+        Column(Modifier.weight(1f)) {
+            Text(
+                text = "Daily quests",
+                style = MaterialTheme.typography.titleSmall,
+                fontWeight = FontWeight.ExtraBold
+            )
+            Text(
+                text = if (claimable > 0) {
+                    "$claimable reward${if (claimable > 1) "s" else ""} ready to claim!"
+                } else {
+                    "Every day brings new gem rewards"
+                },
+                style = MaterialTheme.typography.bodySmall,
+                color = if (claimable > 0) BrandGreen else InkMid
+            )
+        }
+        Text(
+            text = "$claimed/$total",
+            style = MaterialTheme.typography.titleSmall,
+            fontWeight = FontWeight.ExtraBold,
+            color = InkFaint
+        )
     }
 }

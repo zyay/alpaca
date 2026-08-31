@@ -18,13 +18,13 @@ data class CourseLanguage(
         val Spanish = CourseLanguage("es", "Spanish", "Español", "🇪🇸", "es-ES")
         val French = CourseLanguage("fr", "French", "Français", "🇫🇷", "fr-FR")
         val German = CourseLanguage("de", "German", "Deutsch", "🇩🇪", "de-DE")
+        val Italian = CourseLanguage("it", "Italian", "Italiano", "🇮🇹", "it-IT")
+        val Portuguese = CourseLanguage("pt", "Portuguese", "Português", "🇵🇹", "pt-PT")
 
-        val available = listOf(Spanish, French, German)
+        val available = listOf(Spanish, French, German, Italian, Portuguese)
 
         // Shown locked in the course picker, Duolingo-style.
         val comingSoon = listOf(
-            CourseLanguage("it", "Italian", "Italiano", "🇮🇹", "it-IT"),
-            CourseLanguage("pt", "Portuguese", "Português", "🇵🇹", "pt-PT"),
             CourseLanguage("ja", "Japanese", "日本語", "🇯🇵", "ja-JP")
         )
 

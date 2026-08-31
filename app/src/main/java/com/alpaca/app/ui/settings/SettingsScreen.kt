@@ -31,10 +31,14 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.alpaca.app.BuildConfig
 import com.alpaca.app.data.content.CourseLanguage
+import com.alpaca.app.ui.components.PillButton
+import com.alpaca.app.ui.theme.InkFaint
 import com.alpaca.app.ui.theme.InkMid
 import com.alpaca.app.ui.theme.BrandGreen
 import com.alpaca.app.ui.theme.SunYellow
+import android.app.Activity
 
 @Composable
 fun SettingsScreen(
@@ -44,6 +48,8 @@ fun SettingsScreen(
     onBack: () -> Unit
 ) {
     val prefs by viewModel.prefs.collectAsStateWithLifecycle()
+    val billing by viewModel.billing.collectAsStateWithLifecycle()
+    val context = androidx.compose.ui.platform.LocalContext.current
 
     Column(
         modifier = Modifier
@@ -129,27 +135,60 @@ fun SettingsScreen(
                 Column(Modifier.weight(1f)) {
                     Text("Alpaca Max", style = MaterialTheme.typography.titleMedium)
                     Text(
-                        "Unlimited fleece, unlimited voice chats, no ads. (Preview toggle — " +
-                            "billing ships with the Play Store release.)",
+                        text = if (prefs.alpacaMax) {
+                            "Unlimited fleece energy is active. Happy trails!"
+                        } else {
+                            "Unlimited fleece energy — never wait for hearts again."
+                        },
                         style = MaterialTheme.typography.bodyMedium,
                         color = InkMid
                     )
                 }
-                Spacer(Modifier.width(12.dp))
-                Switch(
-                    checked = prefs.alpacaMax,
-                    onCheckedChange = viewModel::setMax,
-                    colors = SwitchDefaults.colors(
-                        checkedThumbColor = Color.White,
-                        checkedTrackColor = SunYellow
+                if (BuildConfig.DEBUG) {
+                    Spacer(Modifier.width(12.dp))
+                    Switch(
+                        checked = prefs.alpacaMax,
+                        onCheckedChange = viewModel::setMax,
+                        colors = SwitchDefaults.colors(
+                            checkedThumbColor = Color.White,
+                            checkedTrackColor = SunYellow
+                        )
                     )
+                }
+            }
+            if (!prefs.alpacaMax) {
+                Spacer(Modifier.height(12.dp))
+                PillButton(
+                    text = when {
+                        billing.connected && billing.priceText != null ->
+                            "Upgrade · ${billing.priceText}/month"
+                        billing.connected -> "Upgrade to Max"
+                        else -> "Available on Google Play"
+                    },
+                    enabled = billing.connected,
+                    color = SunYellow,
+                    textColor = Color(0xFF3B3000),
+                    onClick = {
+                        val activity = context as? Activity
+                        if (activity == null || !viewModel.buyMax(activity)) {
+                            viewModel.restorePurchases()
+                        }
+                    }
+                )
+            }
+            if (BuildConfig.DEBUG) {
+                Spacer(Modifier.height(6.dp))
+                Text(
+                    text = "Debug build: the toggle previews Max without billing.",
+                    style = MaterialTheme.typography.bodySmall,
+                    color = InkFaint
                 )
             }
         }
 
         Spacer(Modifier.height(24.dp))
         Text(
-            text = "Alpaca v0.3.0 · Learn loud. Travel far.",
+            text = "Alpaca v0.4.0 · Learn loud. Travel far.",
             style = MaterialTheme.typography.bodyMedium,
             color = InkMid
         )

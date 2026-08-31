@@ -9,7 +9,9 @@ import androidx.datastore.preferences.core.intPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
+import java.util.UUID
 
 private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "alpaca_prefs")
 
@@ -22,7 +24,8 @@ data class UserPrefs(
     val currentUnitId: String = "es_u1",
     val callsMade: Int = 0,
     val dynamicColor: Boolean = false,
-    val currentLanguage: String = "es"
+    val currentLanguage: String = "es",
+    val deviceId: String = ""
 )
 
 class UserPreferencesStore(private val context: Context) {
@@ -36,6 +39,7 @@ class UserPreferencesStore(private val context: Context) {
         val CALLS = intPreferencesKey("calls_made")
         val DYNAMIC_COLOR = booleanPreferencesKey("dynamic_color")
         val LANGUAGE = stringPreferencesKey("current_language")
+        val DEVICE_ID = stringPreferencesKey("device_id")
     }
 
     val prefs: Flow<UserPrefs> = context.dataStore.data.map { p ->
@@ -48,7 +52,8 @@ class UserPreferencesStore(private val context: Context) {
             currentUnitId = p[Keys.UNIT] ?: "es_u1",
             callsMade = p[Keys.CALLS] ?: 0,
             dynamicColor = p[Keys.DYNAMIC_COLOR] ?: false,
-            currentLanguage = p[Keys.LANGUAGE] ?: "es"
+            currentLanguage = p[Keys.LANGUAGE] ?: "es",
+            deviceId = p[Keys.DEVICE_ID] ?: ""
         )
     }
 
@@ -65,5 +70,16 @@ class UserPreferencesStore(private val context: Context) {
             it[Keys.LANGUAGE] = languageId
             it[Keys.UNIT] = "${languageId}_u1"
         }
+    }
+
+    /** Stable anonymous id for league play; minted on first use. */
+    suspend fun ensureDeviceId(): String {
+        val existing = context.dataStore.data.first()[Keys.DEVICE_ID]
+        if (!existing.isNullOrEmpty()) return existing
+        val fresh = UUID.randomUUID().toString()
+        context.dataStore.edit { prefs ->
+            prefs[Keys.DEVICE_ID] = prefs[Keys.DEVICE_ID] ?: fresh
+        }
+        return fresh
     }
 }

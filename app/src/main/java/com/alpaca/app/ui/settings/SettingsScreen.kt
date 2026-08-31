@@ -265,7 +265,7 @@ fun SettingsScreen(
 
         Spacer(Modifier.height(24.dp))
         Text(
-            text = "Alpaca v0.9.0 · Learn loud. Travel far.",
+            text = "Alpaca v0.9.1 · Learn loud. Travel far.",
             style = MaterialTheme.typography.bodyMedium,
             color = alpacaSecondaryText()
         )

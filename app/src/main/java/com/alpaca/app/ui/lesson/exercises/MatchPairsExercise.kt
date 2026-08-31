@@ -22,14 +22,13 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.alpaca.app.data.content.MatchPairsExercise
 import com.alpaca.app.ui.theme.alpacaCardBorder
+import com.alpaca.app.ui.theme.alpacaCard
 import com.alpaca.app.ui.theme.DangerRed
 import com.alpaca.app.ui.theme.BrandGreen
-import com.alpaca.app.ui.theme.BrandGreenPale
 import com.alpaca.app.ui.theme.SkyBlue
 import com.alpaca.app.util.HapticPlayer
 import kotlinx.coroutines.delay
@@ -142,9 +141,9 @@ private fun PairTile(
     )
     val background by animateColorAsState(
         when {
-            matched -> BrandGreenPale
-            selected -> Color(0xFFDDF1FF)
-            else -> Color.White
+            matched -> BrandGreen.copy(alpha = 0.22f)
+            selected -> SkyBlue.copy(alpha = 0.16f)
+            else -> alpacaCard()
         },
         label = "tile-bg"
     )

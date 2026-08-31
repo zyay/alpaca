@@ -20,6 +20,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.alpaca.app.ui.components.PillButton
+import com.alpaca.app.ui.theme.alpacaCard
 import com.alpaca.app.ui.theme.alpacaCardBorder
 import com.alpaca.app.ui.theme.SkyBlue
 
@@ -67,7 +68,7 @@ fun OptionCard(
 ) {
     val shape = RoundedCornerShape(14.dp)
     val borderColor = if (selected) SkyBlue else alpacaCardBorder()
-    val background = if (selected) Color(0xFFDDF1FF) else Color.White
+    val background = if (selected) SkyBlue.copy(alpha = 0.16f) else alpacaCard()
     Column(
         modifier = modifier
             .fillMaxWidth()

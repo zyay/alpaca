@@ -68,7 +68,7 @@ fun FillBlankUi(
         Box(
             modifier = Modifier
                 .clip(RoundedCornerShape(12.dp))
-                .background(if (picked != null) Color(0xFFDDF1FF) else alpacaCard())
+                .background(if (picked != null) SkyBlue.copy(alpha = 0.16f) else alpacaCard())
                 .border(
                     2.dp,
                     if (picked != null) SkyBlue else alpacaCardBorder(),

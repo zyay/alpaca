@@ -10,7 +10,9 @@ When you slip up, a droplet splatters the screen, a red ✗ stamps in, and it
 clears to reveal the correct answer with a one-line explanation of *why*.
 No characters, no fluff — just the physics.
 
-## What's inside v0.9.0
+## What's inside v0.9.1
+
+Dark-mode polish: the lesson exercises (answer cards, fill-blank slot, match-pair tiles) now follow the theme like every other screen — selected tints stay Duolingo blue in light mode and melt into the dark palette at night.
 
 | Feature | Details |
 |---|---|

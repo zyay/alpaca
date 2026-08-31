@@ -17,6 +17,9 @@ interface LessonProgressDao {
     @Query("SELECT COUNT(*) FROM lesson_progress")
     suspend fun count(): Int
 
+    @Query("SELECT COUNT(*) FROM lesson_progress WHERE lessonId LIKE :languagePrefix || '%'")
+    suspend fun countForLanguage(languagePrefix: String): Int
+
     @Upsert
     suspend fun upsert(entity: LessonProgressEntity)
 }

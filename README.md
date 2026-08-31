@@ -10,13 +10,17 @@ When you slip up, a droplet splatters the screen, a red ✗ stamps in, and it
 clears to reveal the correct answer with a one-line explanation of *why*.
 No characters, no fluff — just the physics.
 
-## What's inside v0.5.0
+## What's inside v0.6.0
 
 | Feature | Details |
 |---|---|
-| 🌍 **5 courses** | **Spanish** (5 units), **French** (2), **German** (2), **Italian** (2), **Portuguese** (2) — switch courses from the trail or Settings; Japanese is *coming soon* |
-| 🗺️ **The trail** | Winding gamified lesson path — **13 regions, 65 lessons, ~650 exercises** with sequential unit unlocking per course |
+| 🌍 **7 courses** | **Spanish** (5 units), **English** (3), **French** (2), **German** (2), **Italian** (2), **Portuguese** (2), **Russian** (2) — switch courses from the trail or Settings; Japanese is *coming soon* |
+| 🗺️ **The trail** | Winding gamified lesson path — **18 regions, 90 lessons, ~900 exercises** with sequential unit unlocking per course |
 | 📚 **5 exercise types** | multiple choice · match pairs · fill-in-the-blank · listening (TTS) · pronunciation — every wrong-answer exercise carries a one-line grammar explanation |
+| 🎙️ **Word-level pronunciation scoring** | Diacritic-folding (café≈cafe, Straße≈strasse, ё≈е) + word-alignment grading that shows exactly which words were clear (green) and which to retry (red) |
+| 💬 **Real-World Simulator** | Live voice calls (coffee, ticket, directions, friend, market, hotel, doctor, restaurant) over the Gemini Multimodal Live API — full-duplex audio, barge-in interruption, **live captions for both speakers**, one-shot auto-reconnect on network drops |
+| 🎚️ **Difficulty levels & voices** | Beginner / Confident / Advanced personas (vocabulary, pace, correction style) and 4 tutor voices — persisted per device |
+| 🧠 **Post-call AI coach** | After each call the transcript goes to a Gemini text model that returns strengths, 3 concrete improvements and vocabulary to remember — with a graceful fallback when the backend is unavailable |
 | 👤 **Accounts (optional)** | Email + password sign-up/log-in via the Vercel backend — scrypt-hashed passwords, opaque 30-day sessions; signed-in users race leagues under their account identity, guests stay anonymous |
 | 💎 **Gems & daily quests** | 3 deterministic quests per day (XP / lessons / coins); claim gems, spend them in the gem shop |
 | ❄️ **Streak Freeze** | Buy up to 2 freezes (200 gems) — a missed day no longer kills your streak; or refill all fleece hearts for 350 gems |
@@ -26,10 +30,9 @@ No characters, no fluff — just the physics.
 | 🏅 **Achievements** | 8 unlockable badges (first lesson, streaks, perfect lessons, voice calls, XP milestones) |
 | 🔥 **Gamification** | XP, daily streaks, coins, Fleece Energy (5 tufts, regrows 1 per 30 min), confetti, spring physics + haptics everywhere |
 | 🔊 **Sound design** | Zero-asset sound effects via platform `ToneGenerator` (correct/wrong/select/finish), gated by the sound preference |
-| 👋 **Onboarding** | Rotating *¡Hola! · Bonjour! · Hallo! · Ciao! · Olá!* hero, floating flags, learns your name, then drops you on the trail |
-| 💬 **Real-World Simulator** | Live voice calls (coffee, ticket, directions, friend, market, hotel, doctor, restaurant) over the Gemini Multimodal Live API — full-duplex audio, barge-in interruption, language-aware personas |
+| 👋 **Onboarding** | Rotating seven-language hero, floating flags, learns your name, then drops you on the trail |
 | 🔐 **Key-less distribution** | Voice calls authenticate with **short-lived ephemeral tokens** minted by a Vercel serverless function — the raw API key never ships in the APK |
-| 🎨 **Design** | Duolingo-grade design system: `#58cc02` brand green, weight-800 headings, pill buttons with hard 3D edges, pulsing current-node marker with a "You" flag pin, gradient-orb voice avatar |
+| 🎨 **Design** | Duolingo-grade design system: `#58cc02` brand green, weight-800 headings, pill buttons with hard 3D edges, gradient-orb voice avatar, **full dark palette**, adaptive launcher icon (speech-bubble wordmark, monochrome-ready), branded splash screen, slide+fade navigation transitions |
 
 **Voice-chat latency architecture:** `AudioRecord` (16 kHz PCM) → OkHttp
 WebSocket → Gemini Live → `AudioTrack` (24 kHz PCM), all behind an `AudioEngine`
@@ -108,9 +111,9 @@ app/src/main/java/com/alpaca/app/
 ├── gemini/      Gemini Live WebSocket client + ephemeral-token client
 ├── audio/       AudioEngine, TTS, pronunciation grader, sound effects
 ├── billing/     Play Billing manager (Alpaca Max subscription)
-├── data/        Room, DataStore, auth client, leagues, quests, mistake log, content models + bundled JSON
+├── data/        Room, DataStore, auth + coach clients, leagues, quests, mistake log, content models + bundled JSON
 └── ui/          onboarding · trail · lesson · summary · voice · quests · achievements · leaderboard · auth · settings · languages
-server/api/      Vercel functions: ephemeral token minting + accounts (email/password) + weekly league (Redis REST)
+server/api/      Vercel functions: ephemeral token minting + AI coach + accounts (email/password) + weekly league (Redis REST)
 docs/            Play Store listing draft + privacy policy
 ```
 
@@ -138,6 +141,16 @@ token in DataStore and sends it as a bearer header on league calls, so a
 signed-in user keeps one league identity across devices and reinstalls.
 Without Redis configured every auth endpoint degrades to
 `{ available: false }` and the app stays in guest mode.
+
+## AI coach backend
+
+`POST /api/coach` forwards the post-call transcript to a Gemini text model
+(`GEMINI_COACH_MODEL`, default `gemini-flash-latest`) and returns structured
+feedback: strengths, three concrete improvements and vocabulary with
+translations. It uses the same `GEMINI_API_KEY` as token minting; if the key is
+missing or the model call fails the endpoint returns 503/502 and the app shows
+a graceful fallback. Transcripts are processed in memory only — nothing from a
+call is stored.
 
 ## Roadmap
 

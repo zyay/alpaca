@@ -11,8 +11,14 @@ data class SetupRequest(val setup: Setup)
 data class Setup(
     val model: String,
     val generationConfig: GenerationConfig,
-    val systemInstruction: SystemInstruction? = null
+    val systemInstruction: SystemInstruction? = null,
+    val outputAudioTranscription: AudioTranscriptionConfig? = null,
+    val inputAudioTranscription: AudioTranscriptionConfig? = null
 )
+
+// Serializes to {} — the Live API takes an empty config object.
+@Serializable
+data class AudioTranscriptionConfig(val unused: String? = null)
 
 @Serializable
 data class GenerationConfig(
@@ -71,8 +77,13 @@ data class SetupComplete(val unused: String? = null)
 data class ServerContent(
     val modelTurn: ModelTurn? = null,
     val turnComplete: Boolean? = null,
-    val interrupted: Boolean? = null
+    val interrupted: Boolean? = null,
+    val outputTranscription: TextSegment? = null,
+    val inputTranscription: TextSegment? = null
 )
+
+@Serializable
+data class TextSegment(val text: String? = null)
 
 @Serializable
 data class ModelTurn(val parts: List<Part> = emptyList())

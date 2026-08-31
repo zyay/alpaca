@@ -1,0 +1,303 @@
+{
+  "unitId": "ru_u2",
+  "title": "Каждый день",
+  "region": "Байкал",
+  "languageName": "Russian",
+  "lessons": [
+    {
+      "lessonId": "ru_u2_l1",
+      "title": "В кафе",
+      "exercises": [
+        {
+          "type": "multiple_choice",
+          "prompt": "How do you politely ask for tea?",
+          "options": ["Дайте, пожалуйста, чай", "Чай сейчас!", "Я чай хочу давать", "Чай есть в меня"],
+          "correctIndex": 0,
+          "explanation": "\"Дайте, пожалуйста, + accusative\" is the standard counter order."
+        },
+        {
+          "type": "match_pairs",
+          "pairs": [["вода", "water"], ["хлеб", "bread"], ["суп", "soup"], ["счёт", "the bill"]],
+          "explanation": "Café basics — \"счёт, пожалуйста\" is how you ask to pay."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Я ___ кофе, спасибо",
+          "answer": "хочу",
+          "wordBank": ["хочу", "хочет", "хотят", "хотел"],
+          "explanation": "\"Я хочу\" — I want (я form). Polite alternative: \"Я бы хотел\" — I would like."
+        },
+        {
+          "type": "listening",
+          "text": "Что вы порекомендуете?",
+          "options": ["What do you recommend?", "What did you order?", "Where is the menu?", "Is the soup hot?"],
+          "correctIndex": 0,
+          "explanation": "\"Порекомендовать\" = to recommend — ask this and waiters light up."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "The waiter says \"Что будете пить?\". What does he ask?",
+          "options": ["What will you drink?", "What did you eat?", "Do you like it here?", "Are you ready to pay?"],
+          "correctIndex": 0,
+          "explanation": "\"Что будете пить?\" — literally \"what will you drink?\"."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "___, можно меню?",
+          "answer": "Извините",
+          "wordBank": ["Извините", "Спасибо", "Пока", "Привет"],
+          "explanation": "\"Извините, можно меню?\" — excuse me, may I have the menu?"
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "How do you ask for the bill?",
+          "options": ["Можно счёт?", "Где деньги?", "Я плачу нет", "Счёт есть?"],
+          "correctIndex": 0,
+          "explanation": "\"Можно счёт?\" — may I have the bill? Short, polite, universal."
+        },
+        {
+          "type": "pronunciation",
+          "expected": "Мне кофе без сахара, пожалуйста",
+          "translation": "A coffee without sugar, please",
+          "explanation": "\"Без + genitive\" = without: без сахара, без молока."
+        }
+      ]
+    },
+    {
+      "lessonId": "ru_u2_l2",
+      "title": "Дорога и город",
+      "exercises": [
+        {
+          "type": "match_pairs",
+          "pairs": [["направо", "to the right"], ["налево", "to the left"], ["прямо", "straight ahead"], ["назад", "back"]],
+          "explanation": "Four direction words that cover 90% of street navigation."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "How do you ask \"Where is the station?\"",
+          "options": ["Где вокзал?", "Куда вокзал?", "Когда вокзал?", "Что вокзал?"],
+          "correctIndex": 0,
+          "explanation": "\"Где\" = where — the question word for every location."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Идите ___, потом направо",
+          "answer": "прямо",
+          "wordBank": ["прямо", "привет", "рядом", "назад"],
+          "explanation": "\"Идите прямо, потом направо\" — go straight, then right. Classic directions."
+        },
+        {
+          "type": "listening",
+          "text": "Это далеко отсюда?",
+          "options": ["Is it far from here?", "Is it near the station?", "Is it expensive?", "Is it open now?"],
+          "correctIndex": 0,
+          "explanation": "\"Далеко\" = far; \"близко\" = near. \"Отсюда\" = from here."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "What does \"рядом\" mean?",
+          "options": ["Nearby", "Far away", "Behind", "Upstairs"],
+          "correctIndex": 0,
+          "explanation": "\"Музей рядом\" — the museum is close by. Pair it with \"в двух минутах\"."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Поверните ___ на светофоре",
+          "answer": "налево",
+          "wordBank": ["налево", "прямо", "назад", "рядом"],
+          "explanation": "\"Поверните налево на светофоре\" — turn left at the traffic light."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "Someone answers \"Пятнадцать минут пешком\". How far is it?",
+          "options": ["A 15-minute walk", "15 km by bus", "15 stops by metro", "15 minutes by car"],
+          "correctIndex": 0,
+          "explanation": "\"Пешком\" = on foot — the word that tells you no transport is needed."
+        },
+        {
+          "type": "pronunciation",
+          "expected": "Скажите, где здесь метро?",
+          "translation": "Tell me, where is the metro here?",
+          "explanation": "Metro stations are marked with a red М — the easiest thing to spot in any city."
+        }
+      ]
+    },
+    {
+      "lessonId": "ru_u2_l3",
+      "title": "Время и дни",
+      "exercises": [
+        {
+          "type": "match_pairs",
+          "pairs": [["сегодня", "today"], ["завтра", "tomorrow"], ["вчера", "yesterday"], ["сейчас", "now"]],
+          "explanation": "Time anchors: вчера — сегодня — завтра. Learn them as a family."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "What does \"Который час?\" mean?",
+          "options": ["What time is it?", "Which hour is long?", "When does it open?", "How many hours?"],
+          "correctIndex": 0,
+          "explanation": "\"Который час?\" is THE way to ask the time."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Встретимся ___!",
+          "answer": "завтра",
+          "wordBank": ["завтра", "вчера", "сейчас", "никогда"],
+          "explanation": "\"Встретимся завтра\" — let's meet tomorrow. \"Вчера\" would break causality."
+        },
+        {
+          "type": "listening",
+          "text": "Сейчас три часа",
+          "options": ["It is three o'clock", "It is two o'clock", "It's three in the morning", "Three hours ago"],
+          "correctIndex": 0,
+          "explanation": "\"Сейчас три часа\" — it's three o'clock now."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "Which day is \"суббота\"?",
+          "options": ["Saturday", "Sunday", "Monday", "Friday"],
+          "correctIndex": 0,
+          "explanation": "\"Суббота\" is Saturday; \"воскресенье\" is Sunday."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Я работаю ___ понедельника по пятницу",
+          "answer": "с",
+          "wordBank": ["с", "в", "на", "к"],
+          "explanation": "\"С понедельника по пятницу\" — from Monday to Friday. The \"с\" = from."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "What does \"на этой неделе\" mean?",
+          "options": ["This week", "Next week", "Last week", "Every week"],
+          "correctIndex": 0,
+          "explanation": "\"На этой неделе\" = this week; swap to \"на следующей\" for next week."
+        },
+        {
+          "type": "pronunciation",
+          "expected": "Давайте встретимся в три часа",
+          "translation": "Let's meet at three o'clock",
+          "explanation": "\"Давайте + infinitive\" — let's do something. The great Russian suggestion-maker."
+        }
+      ]
+    },
+    {
+      "lessonId": "ru_u2_l4",
+      "title": "Покупки",
+      "exercises": [
+        {
+          "type": "multiple_choice",
+          "prompt": "How do you ask the price?",
+          "options": ["Сколько это стоит?", "Как много это?", "Где цена много?", "Стоит сколько-нибудь?"],
+          "correctIndex": 0,
+          "explanation": "\"Сколько это стоит?\" — how much does it cost? Your shopping survival phrase."
+        },
+        {
+          "type": "match_pairs",
+          "pairs": [["дорого", "expensive"], ["дёшево", "cheap"], ["скидка", "discount"], ["касса", "cash register"]],
+          "explanation": "\"Скидка\" is the magic word on every Russian shop window."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Это слишком ___ для меня",
+          "answer": "дорого",
+          "wordBank": ["дорого", "дёшево", "бесплатно", "рядом"],
+          "explanation": "\"Слишком дорого\" — too expensive. The haggling opener."
+        },
+        {
+          "type": "listening",
+          "text": "Оплата картой или наличными?",
+          "options": ["By card or in cash?", "Do you have a bag?", "Do you need a receipt?", "Is this on sale?"],
+          "correctIndex": 0,
+          "explanation": "\"Наличными\" = cash, \"картой\" = by card. The question at every till."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "What does \"Пробейте, пожалуйста\" mean at the till?",
+          "options": ["Please ring it up / scan it", "Please give a discount", "Please wrap it up", "Please close the shop"],
+          "correctIndex": 0,
+          "explanation": "From \"пробить чек\" — to process a receipt. Very useful, very local."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "У вас есть ___ поменьше?",
+          "answer": "размер",
+          "wordBank": ["размер", "цена", "цвет", "вкус"],
+          "explanation": "\"Есть размер поменьше?\" — do you have a smaller size? Swap \"побольше\" for bigger."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "The seller says \"К сожалению, закончилось\". Bad news — what happened?",
+          "options": ["It's sold out", "It's too expensive", "The shop is closing", "It's broken"],
+          "correctIndex": 0,
+          "explanation": "\"Закончилось\" = ran out / sold out. \"К сожалению\" = unfortunately."
+        },
+        {
+          "type": "pronunciation",
+          "expected": "Можно попробовать?",
+          "translation": "May I try it on / taste it?",
+          "explanation": "\"Можно + infinitive\" is the universal may-I pattern."
+        }
+      ]
+    },
+    {
+      "lessonId": "ru_u2_l5",
+      "title": "Глаголы и вещи",
+      "exercises": [
+        {
+          "type": "match_pairs",
+          "pairs": [["говорить", "to speak"], ["читать", "to read"], ["писать", "to write"], ["работать", "to work"]],
+          "explanation": "Russian -ать verbs are regular: говорю, читаешь, пишет, работаем…"
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "What does \"Я хочу домой\" mean?",
+          "options": ["I want to go home", "I am at home", "I like my home", "Home is far"],
+          "correctIndex": 0,
+          "explanation": "\"Домой\" = homeward — direction, not location. \"Дома\" = at home."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Я люблю ___ книги вечером",
+          "answer": "читать",
+          "wordBank": ["читать", "читаю", "читал", "прочитал"],
+          "explanation": "After \"люблю\" use the infinitive: люблю читать, люблю гулять."
+        },
+        {
+          "type": "listening",
+          "text": "Мой телефон разрядился",
+          "options": ["My phone battery died", "I lost my phone", "I broke my phone", "My phone is new"],
+          "correctIndex": 0,
+          "explanation": "\"Разрядиться\" = run out of battery — a modern essential."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "Which word means \"key\"?",
+          "options": ["ключ", "книга", "окно", "дверь"],
+          "correctIndex": 0,
+          "explanation": "\"У меня нет ключа\" — I don't have the key. The worst sentence in any language."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Где мой ___? Я хочу позвонить",
+          "answer": "телефон",
+          "wordBank": ["телефон", "ключ", "хлеб", "стол"],
+          "explanation": "\"Позвонить\" = to make a call — you need the телефон for that."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "\"Мне надо работать\" means…",
+          "options": ["I have to work", "I like to work", "I finished working", "I found work"],
+          "correctIndex": 0,
+          "explanation": "\"Мне надо + infinitive\" = I have to. Swap to \"хочу\" for want."
+        },
+        {
+          "type": "pronunciation",
+          "expected": "Давайте погуляем в парке",
+          "translation": "Let's take a walk in the park",
+          "explanation": "\"Погуляем\" — let's stroll — Russians take their parks very seriously."
+        }
+      ]
+    }
+  ]
+}

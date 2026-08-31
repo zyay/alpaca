@@ -4,13 +4,16 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.alpaca.app.BuildConfig
 import com.alpaca.app.data.content.CourseLanguage
+import com.alpaca.app.data.coach.CoachClient
 import com.alpaca.app.di.AppContainer
 import com.alpaca.app.gemini.GeminiLiveClient
 import com.alpaca.app.gemini.VoiceSessionState
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
 class VoiceCallViewModel(private val container: AppContainer) : ViewModel() {
@@ -22,6 +25,24 @@ class VoiceCallViewModel(private val container: AppContainer) : ViewModel() {
         val blurb: String,
         val tail: String
     )
+
+    enum class Level(val id: String, val label: String, val blurb: String) {
+        BEGINNER("beginner", "Beginner", "Very slow, short sentences, hints in English"),
+        CONFIDENT("confident", "Confident", "Natural pace, everyday phrases only"),
+        ADVANCED("advanced", "Advanced", "Full-speed, idiomatic, mistakes corrected directly");
+
+        companion object {
+            fun fromId(id: String): Level =
+                entries.firstOrNull { it.id == id } ?: BEGINNER
+        }
+    }
+
+    sealed interface CoachUiState {
+        data object Idle : CoachUiState
+        data object Loading : CoachUiState
+        data class Ready(val feedback: CoachClient.CoachFeedback) : CoachUiState
+        data object Unavailable : CoachUiState
+    }
 
     // Language-neutral roleplay setups; the persona prefix localizes them.
     val scenarios = listOf(
@@ -95,15 +116,24 @@ class VoiceCallViewModel(private val container: AppContainer) : ViewModel() {
 
     val sessionState: StateFlow<VoiceSessionState> = client.state
     val playbackLevel: StateFlow<Float> = container.audioEngine.playbackLevel
+    val transcript: StateFlow<List<GeminiLiveClient.TranscriptEntry>> = client.transcript
+    val sessionEnding: StateFlow<Boolean> = client.sessionEnding
+    val settings: StateFlow<com.alpaca.app.data.datastore.UserPrefs> =
+        container.prefs.prefs.stateIn(viewModelScope, SharingStarted.Eagerly, com.alpaca.app.data.datastore.UserPrefs())
 
     private val _noCredentials = MutableStateFlow(false)
     val noCredentials: StateFlow<Boolean> = _noCredentials
 
+    private val _coachState = MutableStateFlow<CoachUiState>(CoachUiState.Idle)
+    val coachState: StateFlow<CoachUiState> = _coachState
+
     private var bargeInJob: Job? = null
+    private var lastCall: Pair<Scenario, CourseLanguage>? = null
 
     fun start(scenario: Scenario) {
         viewModelScope.launch {
-            val language = CourseLanguage.byId(container.prefs.prefs.first().currentLanguage)
+            val prefs = container.prefs.prefs.first()
+            val language = CourseLanguage.byId(prefs.currentLanguage)
             val creds = resolveCredentials()
             if (creds == null) {
                 _noCredentials.value = true
@@ -111,11 +141,14 @@ class VoiceCallViewModel(private val container: AppContainer) : ViewModel() {
                 return@launch
             }
             _noCredentials.value = false
+            _coachState.value = CoachUiState.Idle
+            lastCall = scenario to language
             container.prefs.incrementCalls()
             client.connect(
                 wsUrl = creds.first,
                 modelId = creds.second,
-                systemPrompt = persona(language) + scenario.tail,
+                systemPrompt = persona(language, Level.fromId(prefs.voiceLevel)) + scenario.tail,
+                voiceName = prefs.voiceName,
                 scope = viewModelScope
             )
             startBargeInMonitor()
@@ -162,6 +195,55 @@ class VoiceCallViewModel(private val container: AppContainer) : ViewModel() {
         client.disconnect()
     }
 
+    /** Snapshot the transcript before disconnect wipes it, then ask the backend for feedback. */
+    fun finishAndCoach() {
+        val (scenario, language) = lastCall ?: return
+        val entries = client.transcript.value
+        client.disconnect()
+        bargeInJob?.cancel()
+        if (entries.none { !it.isTutor }) {
+            _coachState.value = CoachUiState.Unavailable
+            return
+        }
+        _coachState.value = CoachUiState.Loading
+        viewModelScope.launch {
+            val baseUrl = BuildConfig.VERCEL_BASE_URL
+            if (baseUrl.isBlank()) {
+                _coachState.value = CoachUiState.Unavailable
+                return@launch
+            }
+            val prefs = container.prefs.prefs.first()
+            val request = CoachClient.CoachRequest(
+                language = language.displayName,
+                level = Level.fromId(prefs.voiceLevel).id,
+                scenario = scenario.title,
+                transcript = entries.map {
+                    CoachClient.CoachRequest.Line(
+                        role = if (it.isTutor) "tutor" else "user",
+                        text = it.text
+                    )
+                }
+            )
+            _coachState.value = container.coachClient.fetch(baseUrl, request)
+                .fold(
+                    onSuccess = { CoachUiState.Ready(it) },
+                    onFailure = { CoachUiState.Unavailable }
+                )
+        }
+    }
+
+    fun resetCoach() {
+        _coachState.value = CoachUiState.Idle
+    }
+
+    fun setLevel(level: Level) {
+        viewModelScope.launch { container.prefs.setVoiceLevel(level.id) }
+    }
+
+    fun setVoice(voice: String) {
+        viewModelScope.launch { container.prefs.setVoiceName(voice) }
+    }
+
     override fun onCleared() {
         client.disconnect()
         super.onCleared()
@@ -170,11 +252,28 @@ class VoiceCallViewModel(private val container: AppContainer) : ViewModel() {
     companion object {
         private const val BARGE_IN_RMS = 0.08f
 
-        private fun persona(language: CourseLanguage): String =
-            "You are a friendly native ${language.displayName} tutor inside Alpaca, a " +
-                "${language.displayName}-learning app. The learner is an English speaker at " +
-                "A1-A2 level. Speak ONLY in simple ${language.displayName}, at most two short " +
-                "sentences per turn. If they make a mistake, gently repeat the correct form, " +
-                "then continue the conversation. Stay in character at all times. "
+        private fun persona(language: CourseLanguage, level: Level): String {
+            val base = "You are a friendly native ${language.displayName} tutor inside Alpaca, a " +
+                "${language.displayName}-learning app. Stay in character at all times. "
+            return when (level) {
+                Level.BEGINNER -> base +
+                    "The learner is an English speaker at A1 level. Speak ONLY in very simple " +
+                    "${language.displayName}, at most one or two short sentences per turn, slowly " +
+                    "and clearly. If they make a mistake, gently repeat the correct form, then " +
+                    "continue the conversation. After a difficult word you may add a short English " +
+                    "hint in parentheses. "
+                Level.CONFIDENT -> base +
+                    "The learner is an English speaker at A2-B1 level. Speak ONLY in " +
+                    "${language.displayName} at a natural pace, at most two or three short sentences " +
+                    "per turn, using everyday phrases. If they make a mistake, model the correct " +
+                    "form naturally in your reply. "
+                Level.ADVANCED -> base +
+                    "The learner is an English speaker at B1-B2 level. Speak ONLY in " +
+                    "${language.displayName} at full conversational speed with idiomatic, native " +
+                    "phrasing. Keep the conversation flowing across several exchanges. When they " +
+                    "make a mistake, correct it explicitly and briefly explain the rule before " +
+                    "moving on. "
+            }
+        }
     }
 }

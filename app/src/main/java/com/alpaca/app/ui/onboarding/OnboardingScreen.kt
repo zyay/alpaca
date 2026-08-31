@@ -71,7 +71,7 @@ fun OnboardingScreen(
     }
 
     val hello = if (name.isBlank()) {
-        "Bite-sized lessons in Spanish, French and German. Real conversations, zero fear of mistakes."
+        "Bite-sized lessons in seven languages. Real conversations, zero fear of mistakes."
     } else {
         "¡Mucho gusto, $name! Let's get you talking."
     }
@@ -141,7 +141,7 @@ fun OnboardingScreen(
 
 @Composable
 private fun FloatingFlagChips() {
-    val flags = listOf("🇪🇸", "🇫🇷", "🇩🇪", "🇮🇹", "🇵🇹")
+    val flags = listOf("🇪🇸", "🇫🇷", "🇩🇪", "🇮🇹", "🇵🇹", "🇺🇸", "🇷🇺")
     val transition = rememberInfiniteTransition(label = "flags")
     val bob by transition.animateFloat(
         initialValue = 0f,
@@ -152,12 +152,12 @@ private fun FloatingFlagChips() {
         ),
         label = "flag-bob"
     )
-    Row(horizontalArrangement = Arrangement.spacedBy(22.dp)) {
+    Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
         flags.forEachIndexed { i, flag ->
             val dy = sin(bob + i * (2f * PI.toFloat() / flags.size)) * 7f
             Text(
                 text = flag,
-                fontSize = 44.sp,
+                fontSize = 32.sp,
                 modifier = Modifier.offset { IntOffset(0, dy.roundToInt()) }
             )
         }

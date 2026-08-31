@@ -1,0 +1,303 @@
+{
+  "unitId": "en_u1",
+  "title": "Everyday Foundations",
+  "region": "The Cotswolds",
+  "languageName": "English",
+  "lessons": [
+    {
+      "lessonId": "en_u1_l1",
+      "title": "Greetings",
+      "exercises": [
+        {
+          "type": "multiple_choice",
+          "prompt": "Which greeting fits a job interview?",
+          "options": ["Good morning", "Hey!", "Yo!", "Hiya!"],
+          "correctIndex": 0,
+          "explanation": "\"Good morning/afternoon\" is the safe formal choice; \"hey\" and \"yo\" are only for friends."
+        },
+        {
+          "type": "match_pairs",
+          "pairs": [["Hello", "Neutral, always fine"], ["Hey", "Casual, friends only"], ["Good afternoon", "Formal, daytime"], ["Cheers", "Thanks (British)"]],
+          "explanation": "\"Cheers\" doubles as thanks AND goodbye in British English."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "What does \"How's it going?\" mean?",
+          "options": ["How are you?", "Where are you going?", "What is happening here?", "Which way is it?"],
+          "correctIndex": 0,
+          "explanation": "\"How's it going?\" is a casual \"how are you?\" — the answer is \"Fine, thanks\", not a direction."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "___ morning, everyone!",
+          "answer": "Good",
+          "wordBank": ["Good", "Nice", "Fine", "Well"],
+          "explanation": "Time greetings are fixed phrases: Good morning, Good afternoon, Good evening."
+        },
+        {
+          "type": "listening",
+          "text": "Long time no see!",
+          "options": ["I haven't seen you in ages", "I see you every day", "See you tomorrow", "I can't see it"],
+          "correctIndex": 0,
+          "explanation": "\"Long time no see!\" greets someone you haven't met for a while."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "Someone greets you with \"How do you do?\". What is the traditional reply?",
+          "options": ["How do you do?", "I do my job", "Yes, I do", "I am doing well at work"],
+          "correctIndex": 0,
+          "explanation": "It's a very formal set phrase — the classic reply is simply repeating \"How do you do?\""
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "See you ___!",
+          "answer": "later",
+          "wordBank": ["later", "latter", "last", "latest"],
+          "explanation": "\"See you later\" = goodbye. \"Latter\" is the second of two things — a classic mix-up."
+        },
+        {
+          "type": "pronunciation",
+          "expected": "Nice to meet you",
+          "translation": "A friendly phrase when meeting someone new",
+          "explanation": "Say \"Nice to meet you\" the first time, \"Nice to see you\" for people you already know."
+        }
+      ]
+    },
+    {
+      "lessonId": "en_u1_l2",
+      "title": "Numbers & Time",
+      "exercises": [
+        {
+          "type": "match_pairs",
+          "pairs": [["a couple", "2"], ["a dozen", "12"], ["a score", "20"], ["a fortnight", "2 weeks"]],
+          "explanation": "\"A fortnight\" (fourteen nights) is standard British English for two weeks."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "What time is \"quarter past six\"?",
+          "options": ["6:15", "6:30", "5:45", "6:45"],
+          "correctIndex": 0,
+          "explanation": "\"Quarter past\" = 15 minutes after the hour. \"Quarter to\" = 15 minutes before."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "The film starts at \"half past nine\". When is that?",
+          "options": ["9:30", "9:00", "8:30", "10:00"],
+          "correctIndex": 0,
+          "explanation": "\"Half past nine\" = 9:30. British speakers also say \"nine thirty\"."
+        },
+        {
+          "type": "listening",
+          "text": "The train leaves at twenty to eight",
+          "options": ["7:40", "8:20", "7:20", "8:40"],
+          "correctIndex": 0,
+          "explanation": "\"Twenty to eight\" = 20 minutes before 8 = 7:40."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "What does \"noon\" mean?",
+          "options": ["12:00 midday", "12:00 at night", "1:00 in the afternoon", "Sunset"],
+          "correctIndex": 0,
+          "explanation": "\"Noon\" is 12:00 midday; \"midnight\" is 12:00 at night."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "I'll be there in ___ an hour",
+          "answer": "half",
+          "wordBank": ["half", "quarter", "third", "some"],
+          "explanation": "\"Half an hour\" = 30 minutes — note the word order: half an hour, not a half hour."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "The meeting is ___ Monday morning",
+          "answer": "on",
+          "wordBank": ["on", "in", "at", "to"],
+          "explanation": "Days take ON (on Monday), months take IN (in July), clock times take AT (at 6)."
+        },
+        {
+          "type": "pronunciation",
+          "expected": "It's quarter to five",
+          "translation": "Saying 4:45 the traditional way",
+          "explanation": "\"Quarter to five\" = fifteen minutes before five o'clock."
+        }
+      ]
+    },
+    {
+      "lessonId": "en_u1_l3",
+      "title": "Introducing Yourself",
+      "exercises": [
+        {
+          "type": "multiple_choice",
+          "prompt": "Which is a natural reply to \"How are you?\"?",
+          "options": ["Not bad, thanks!", "I'm agree", "I have 25 years", "Yes, please"],
+          "correctIndex": 0,
+          "explanation": "Watch the classic learner errors: English says \"I agree\" (no I'm) and \"I'm 25\" (not I have 25 years)."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Hi, I'm Anna. Nice to ___ you!",
+          "answer": "meet",
+          "wordBank": ["meet", "make", "know", "find"],
+          "explanation": "\"Nice to meet you\" is for first meetings; \"Nice to see you again\" afterwards."
+        },
+        {
+          "type": "match_pairs",
+          "pairs": [["What do you do?", "Asks about your job"], ["Where are you from?", "Asks your origin"], ["What brings you here?", "Asks why you came"], ["How old are you?", "Asks your age"]],
+          "explanation": "\"What do you do?\" is about work — not about what you are doing right now."
+        },
+        {
+          "type": "listening",
+          "text": "I'm from Slovakia, but I live in London",
+          "options": ["She is Slovak and lives in London", "She is visiting London", "She lives in Slovakia", "She moved from London"],
+          "correctIndex": 0,
+          "explanation": "\"I'm from X, but I live in Y\" is the standard way to give origin + current city."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "\"What do you do?\" asks about…",
+          "options": ["your job", "your hobby at this moment", "your travel destination", "your opinion"],
+          "correctIndex": 0,
+          "explanation": "In introductions it means \"what is your profession?\" — answer with \"I'm a…\" or \"I work in…\"."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Sorry, I didn't ___ that — could you repeat it?",
+          "answer": "catch",
+          "wordBank": ["catch", "capture", "hold", "take"],
+          "explanation": "\"I didn't catch that\" is the polite way to say you didn't hear someone."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "How do you say your age in English?",
+          "options": ["I'm 25", "I have 25 years", "I make 25 years", "I count 25 years"],
+          "correctIndex": 0,
+          "explanation": "English uses BE for age (I'm 25), unlike many languages that use HAVE."
+        },
+        {
+          "type": "pronunciation",
+          "expected": "I'm learning English",
+          "translation": "Explaining that you study the language",
+          "explanation": "Add \"I've been learning for two years\" to sound more fluent."
+        }
+      ]
+    },
+    {
+      "lessonId": "en_u1_l4",
+      "title": "Politeness",
+      "exercises": [
+        {
+          "type": "multiple_choice",
+          "prompt": "Which is the most polite request?",
+          "options": ["Could you help me, please?", "Help me!", "You must help me.", "Give me a hand now."],
+          "correctIndex": 0,
+          "explanation": "\"Could you… please?\" softens a request; the imperative (\"Help me!\") sounds like an order."
+        },
+        {
+          "type": "match_pairs",
+          "pairs": [["Excuse me", "Before you interrupt"], ["Sorry", "After a mistake"], ["Please", "With a request"], ["Pardon?", "I didn't hear you"]],
+          "explanation": "Rule of thumb: \"excuse me\" comes first, \"sorry\" comes after."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "___ me, is this seat taken?",
+          "answer": "Excuse",
+          "wordBank": ["Excuse", "Sorry", "Pardon", "Apologize"],
+          "explanation": "\"Excuse me\" opens politely when interrupting or asking a stranger."
+        },
+        {
+          "type": "listening",
+          "text": "Would you mind opening the window?",
+          "options": ["A polite request to open it", "A question about the weather", "An offer to help", "A complaint about noise"],
+          "correctIndex": 0,
+          "explanation": "\"Would you mind + -ing?\" is a very polite request, not a real question about feelings."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "Someone says \"Thank you\". What do you reply?",
+          "options": ["You're welcome", "Please", "Excuse me", "I apologize"],
+          "correctIndex": 0,
+          "explanation": "\"You're welcome\" is standard; British speakers often say \"No problem\" or \"Cheers\"."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Sorry I'm late — I ___ traffic on the way",
+          "answer": "hit",
+          "wordBank": ["hit", "knocked", "crashed", "bumped"],
+          "explanation": "\"To hit traffic\" means to get stuck in it — a natural idiom, not a car accident!"
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "Someone asks \"Would you mind waiting?\" and you reply \"Not at all\". What did you mean?",
+          "options": ["I'm happy to wait", "I refuse to wait", "I'm in a hurry", "Please don't wait"],
+          "correctIndex": 0,
+          "explanation": "\"Not at all\" = \"no, I don't mind\" = yes, I'll wait. Confusing but very common."
+        },
+        {
+          "type": "pronunciation",
+          "expected": "Excuse me, could you repeat that?",
+          "translation": "Politely asking someone to say it again",
+          "explanation": "The magic trio: \"Excuse me… could you… please?\" works everywhere."
+        }
+      ]
+    },
+    {
+      "lessonId": "en_u1_l5",
+      "title": "Small Talk",
+      "exercises": [
+        {
+          "type": "listening",
+          "text": "Lovely weather today, isn't it?",
+          "options": ["A comment about the weather", "A question about plans", "A complaint about rain", "An invitation"],
+          "correctIndex": 0,
+          "explanation": "Weather talk is the classic ice-breaker — reply \"Yes, beautiful!\" and the chat has started."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "Complete the tag question: \"It's cold today, ___?\"",
+          "options": ["isn't it", "is it", "isn't cold", "no"],
+          "correctIndex": 0,
+          "explanation": "Tag questions flip the verb: positive sentence → negative tag (It's cold, isn't it?)."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "What do you ___ of this city?",
+          "answer": "make",
+          "wordBank": ["make", "do", "think", "take"],
+          "explanation": "\"What do you make of…?\" asks for an opinion — a very native-sounding phrase."
+        },
+        {
+          "type": "match_pairs",
+          "pairs": [["What's up?", "Casual how-are-you"], ["How have you been?", "Asking about recent life"], ["Long time no see!", "Greeting after a gap"], ["Take care!", "Friendly goodbye"]],
+          "explanation": "\"What's up?\" needs no real answer — \"Not much, you?\" is perfect."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "What does \"Break a leg!\" mean?",
+          "options": ["Good luck!", "Stop dancing", "Sit down", "Be careful"],
+          "correctIndex": 0,
+          "explanation": "It's said for good luck, especially before performances — never wish someone literal luck on stage."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "How's it ___?",
+          "answer": "going",
+          "wordBank": ["going", "doing", "making", "walking"],
+          "explanation": "\"How's it going?\" — the reply is \"It's going well\" or just \"Good!\"."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "Which is a safe small-talk opener in the UK?",
+          "options": ["Talking about the weather", "Asking someone's salary", "Asking someone's age", "Asking about religion"],
+          "correctIndex": 0,
+          "explanation": "Weather, travel and food are safe; salary, age and religion are too personal for strangers."
+        },
+        {
+          "type": "pronunciation",
+          "expected": "Lovely weather today, isn't it?",
+          "translation": "The classic small-talk opener",
+          "explanation": "The \"isn't it?\" tag rises at the end — it invites the other person to agree."
+        }
+      ]
+    }
+  ]
+}

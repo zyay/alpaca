@@ -43,6 +43,8 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.alpaca.app.data.db.entities.QuestEntity
 import com.alpaca.app.data.db.entities.UserEntity
 import com.alpaca.app.data.repository.QuestRepository
+import com.alpaca.app.ui.components.EmptyStateCard
+import com.alpaca.app.ui.components.LoadingView
 import com.alpaca.app.ui.components.PillButton
 import com.alpaca.app.ui.theme.BrandGreen
 import com.alpaca.app.ui.theme.CloudGray
@@ -116,7 +118,14 @@ fun QuestsScreen(
         Spacer(Modifier.height(12.dp))
 
         if (state.loading) {
-            Text("Loading…", color = InkFaint, style = MaterialTheme.typography.bodyLarge)
+            LoadingView("Loading quests…")
+        } else if (state.quests.isEmpty()) {
+            EmptyStateCard(
+                emoji = "🏆",
+                title = "All quests complete",
+                blurb = "New quests unlock tomorrow — keep your streak alive!",
+                modifier = Modifier.padding(vertical = 12.dp)
+            )
         }
         state.quests.forEach { quest ->
             QuestCard(

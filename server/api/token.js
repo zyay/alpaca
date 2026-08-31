@@ -16,6 +16,8 @@ const FIELD_MASK = [
   "setup.model",
   "setup.generationConfig",
   "setup.systemInstruction",
+  "setup.outputAudioTranscription",
+  "setup.inputAudioTranscription",
 ];
 const TOKEN_TTL_MS = 15 * 60 * 1000;
 

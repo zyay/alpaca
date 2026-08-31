@@ -1,5 +1,10 @@
 package com.alpaca.app.navigation
 
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.slideInHorizontally
+import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -78,7 +83,15 @@ fun AppNavHost(
     NavHost(
         navController = navController,
         startDestination = if (onboarded) TrailRoute else OnboardingRoute,
-        modifier = modifier
+        modifier = modifier,
+        enterTransition = {
+            slideInHorizontally(tween(260)) { it / 4 } + fadeIn(tween(260))
+        },
+        exitTransition = { fadeOut(tween(200)) },
+        popEnterTransition = { fadeIn(tween(220)) },
+        popExitTransition = {
+            slideOutHorizontally(tween(240)) { it / 4 } + fadeOut(tween(240))
+        }
     ) {
         composable<OnboardingRoute> {
             OnboardingScreen(

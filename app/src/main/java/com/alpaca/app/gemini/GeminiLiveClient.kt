@@ -19,14 +19,15 @@ import okhttp3.WebSocket
 import okhttp3.WebSocketListener
 
 /**
- * Prototype client for the Gemini Multimodal Live API over a direct WebSocket.
- * The API key is passed per-connect and never persisted. Production should swap
- * this for a server-issued ephemeral token instead of `?key=` auth.
+ * Client for the Gemini Multimodal Live API over a direct WebSocket, authenticated
+ * by a server-issued ephemeral token (or a raw dev key via [wsUrlWithKey]).
  *
  * Message shapes verified against https://ai.google.dev/gemini-api/docs/live-api
  * at build time; the Live API was in preview and schemas may drift.
  */
 class GeminiLiveClient(private val audioEngine: AudioEngine) {
+
+    data class TranscriptEntry(val isTutor: Boolean, val text: String)
 
     private val httpClient = OkHttpClient.Builder()
         .readTimeout(0, TimeUnit.MILLISECONDS)
@@ -41,17 +42,42 @@ class GeminiLiveClient(private val audioEngine: AudioEngine) {
     private val _state = MutableStateFlow<VoiceSessionState>(VoiceSessionState.Idle)
     val state: StateFlow<VoiceSessionState> = _state
 
+    /** Rolling conversation transcript for live captions and the post-call coach. */
+    private val _transcript = MutableStateFlow<List<TranscriptEntry>>(emptyList())
+    val transcript: StateFlow<List<TranscriptEntry>> = _transcript
+
+    /** True once the server signals goAway (load-balanced disconnect imminent). */
+    private val _sessionEnding = MutableStateFlow(false)
+    val sessionEnding: StateFlow<Boolean> = _sessionEnding
+
     @Volatile
     var muted: Boolean = false
 
     private var webSocket: WebSocket? = null
     private var scope: CoroutineScope? = null
     private var micJob: Job? = null
+    private var lastConnectParams: Array<String>? = null
+    private var reconnectAttempted = false
+    private var tutorTurnHasTranscription = false
+    private var turnSealed = false
 
-    fun connect(wsUrl: String, modelId: String, systemPrompt: String, scope: CoroutineScope) {
+    fun connect(
+        wsUrl: String,
+        modelId: String,
+        systemPrompt: String,
+        voiceName: String,
+        scope: CoroutineScope
+    ) {
         disconnect()
+        lastConnectParams = arrayOf(wsUrl, modelId, systemPrompt, voiceName)
+        reconnectAttempted = false
         this.scope = scope
+        openSocket(wsUrl, modelId, systemPrompt, voiceName)
+    }
+
+    private fun openSocket(wsUrl: String, modelId: String, systemPrompt: String, voiceName: String) {
         _state.value = VoiceSessionState.Connecting
+        _sessionEnding.value = false
 
         val request = Request.Builder().url(wsUrl).build()
         webSocket = httpClient.newWebSocket(
@@ -64,10 +90,12 @@ class GeminiLiveClient(private val audioEngine: AudioEngine) {
                             generationConfig = GenerationConfig(
                                 responseModalities = listOf("AUDIO"),
                                 speechConfig = SpeechConfig(
-                                    voiceConfig = VoiceConfig(PrebuiltVoiceConfig(VOICE))
+                                    voiceConfig = VoiceConfig(PrebuiltVoiceConfig(voiceName))
                                 )
                             ),
-                            systemInstruction = SystemInstruction(listOf(TextPart(systemPrompt)))
+                            systemInstruction = SystemInstruction(listOf(TextPart(systemPrompt))),
+                            outputAudioTranscription = AudioTranscriptionConfig(),
+                            inputAudioTranscription = AudioTranscriptionConfig()
                         )
                     )
                     webSocket.send(json.encodeToString(setup))
@@ -79,9 +107,19 @@ class GeminiLiveClient(private val audioEngine: AudioEngine) {
 
                 override fun onFailure(webSocket: WebSocket, t: Throwable, response: Response?) {
                     Log.e(TAG, "Live socket failure code=${response?.code}", t)
+                    // Mid-call network drop: one silent reconnect before giving up.
+                    val params = lastConnectParams
+                    if (response == null && params != null && !reconnectAttempted &&
+                        _state.value.let { it is VoiceSessionState.Listening || it is VoiceSessionState.Speaking }
+                    ) {
+                        reconnectAttempted = true
+                        Log.w(TAG, "Abnormal close — reconnecting once")
+                        openSocket(params[0], params[1], params[2], params[3])
+                        return
+                    }
                     _state.value = VoiceSessionState.Error(
                         when (response?.code) {
-                            400, 401, 403 -> "Google rejected the API key. Rotate it and update local.properties."
+                            400, 401, 403 -> "Google rejected the session. Check the token backend / GEMINI key."
                             404 -> "Model \"$modelId\" not found. Update GEMINI_MODEL_ID (see ai.google.dev Live API docs)."
                             null -> "Connection lost: ${t.message ?: "network error"}"
                             else -> "Connection failed (${response.code}): ${t.message ?: ""}"
@@ -123,26 +161,69 @@ class GeminiLiveClient(private val audioEngine: AudioEngine) {
         }
 
         if (message.setupComplete != null) {
+            reconnectAttempted = false
             audioEngine.startPlayback()
             startMicStreaming()
             _state.value = VoiceSessionState.Listening
             return
         }
 
+        message.goAway?.let {
+            Log.w(TAG, "goAway received, timeLeft=${it.timeLeft}")
+            _sessionEnding.value = true
+        }
+
         message.serverContent?.let { content ->
             if (content.interrupted == true) {
                 audioEngine.flushPlayback()
             }
+            content.outputTranscription?.text?.let { segment ->
+                tutorTurnHasTranscription = true
+                appendTranscript(isTutor = true, segment)
+            }
+            content.inputTranscription?.text?.let { segment ->
+                appendTranscript(isTutor = false, segment)
+            }
             content.modelTurn?.parts?.forEach { part ->
-                val inline = part.inlineData ?: return@forEach
-                val pcm = Base64.decode(inline.data, Base64.DEFAULT)
-                audioEngine.queuePlayback(pcm)
-                _state.value = VoiceSessionState.Speaking
+                val inline = part.inlineData
+                if (inline != null) {
+                    val pcm = Base64.decode(inline.data, Base64.DEFAULT)
+                    audioEngine.queuePlayback(pcm)
+                    _state.value = VoiceSessionState.Speaking
+                } else if (part.text != null && !tutorTurnHasTranscription) {
+                    // Fallback when the server skips transcription segments.
+                    appendTranscript(isTutor = true, part.text ?: "")
+                }
             }
             if (content.turnComplete == true) {
                 _state.value = VoiceSessionState.Listening
+                tutorTurnHasTranscription = false
+                sealTranscriptTurn()
             }
         }
+    }
+
+    /** Transcription segments stream in pieces — extend the tail entry until the turn completes. */
+    private fun appendTranscript(isTutor: Boolean, segment: String) {
+        if (segment.isBlank()) return
+        val current = _transcript.value
+        val tail = current.lastOrNull()
+        val updated = if (!turnSealed && tail != null && tail.isTutor == isTutor) {
+            current.dropLast(1) + tail.copy(text = (tail.text + segment).trim())
+        } else {
+            turnSealed = false
+            current + TranscriptEntry(isTutor, segment.trim())
+        }
+        _transcript.value = if (updated.size > MAX_TRANSCRIPT_ENTRIES) {
+            updated.takeLast(MAX_TRANSCRIPT_ENTRIES)
+        } else {
+            updated
+        }
+    }
+
+    /** Start the next message on a fresh entry so speaker turns never merge. */
+    private fun sealTranscriptTurn() {
+        turnSealed = true
     }
 
     private fun startMicStreaming() {
@@ -190,6 +271,10 @@ class GeminiLiveClient(private val audioEngine: AudioEngine) {
         webSocket?.close(1000, "session end")
         webSocket = null
         _state.value = VoiceSessionState.Idle
+        _sessionEnding.value = false
+        _transcript.value = emptyList()
+        tutorTurnHasTranscription = false
+        turnSealed = false
     }
 
     private fun stopMicAndAudio() {
@@ -198,12 +283,14 @@ class GeminiLiveClient(private val audioEngine: AudioEngine) {
 
     companion object {
         private const val TAG = "GeminiLive"
+        private const val MAX_TRANSCRIPT_ENTRIES = 40
         private const val LIVE_ENDPOINT =
             "wss://generativelanguage.googleapis.com/ws/google.ai.generativelanguage.v1beta.GenerativeService.BidiGenerateContent"
 
         /** Local-dev fallback: direct connection authenticated by a raw API key. */
         fun wsUrlWithKey(apiKey: String): String = "$LIVE_ENDPOINT?key=$apiKey"
 
-        private const val VOICE = "Kore"
+        val availableVoices = listOf("Kore", "Puck", "Aoede", "Charon")
+        const val DEFAULT_VOICE = "Kore"
     }
 }

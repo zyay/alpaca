@@ -35,6 +35,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.alpaca.app.ui.components.EmptyStateCard
+import com.alpaca.app.ui.components.LoadingView
 import com.alpaca.app.ui.components.PillButton
 import com.alpaca.app.ui.theme.BrandGreen
 import com.alpaca.app.ui.theme.BrandGreenPale
@@ -111,7 +113,17 @@ fun LeaderboardScreen(
         }
 
         if (state.loading) {
-            Text("Loading the herd…", color = InkFaint, style = MaterialTheme.typography.bodyLarge)
+            LoadingView("Loading the herd…")
+            return@Column
+        }
+
+        if (state.entries.isEmpty()) {
+            EmptyStateCard(
+                emoji = "🏁",
+                title = "The herd is empty",
+                blurb = "Earn XP in any lesson to join this week's race.",
+                modifier = Modifier.weight(1f)
+            )
             return@Column
         }
 

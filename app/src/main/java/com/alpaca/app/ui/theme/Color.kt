@@ -33,6 +33,13 @@ val PaperWhite = Color(0xFFFFFFFF)
 val CloudGray = Color(0xFFE5E5E5)
 val MistGray = Color(0xFFF7F7F7)
 
+// Dark scheme canvas and elevated tones (Duolingo dark palette).
+val NightBg = Color(0xFF131F24)
+val NightSurface = Color(0xFF1F2B32)
+val NightSurfaceHigh = Color(0xFF37464F)
+val NightText = Color(0xFFF1F7FB)
+val NightTextMid = Color(0xFFB7C6CF)
+
 val BronzeFleece = Color(0xFFCD7F32)
 val SilverFleece = Color(0xFFB8B8B8)
 val GoldFleece = Color(0xFFFFD700)

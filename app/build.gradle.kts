@@ -35,8 +35,8 @@ android {
         applicationId = "com.alpaca.app"
         minSdk = 28
         targetSdk = 36
-        versionCode = 5
-        versionName = "0.5.0"
+        versionCode = 6
+        versionName = "0.6.0"
     }
 
     buildTypes {
@@ -96,6 +96,7 @@ dependencies {
     implementation(libs.lifecycle.viewmodel.compose)
     implementation(libs.lifecycle.runtime.compose)
     implementation(libs.core.ktx)
+    implementation(libs.core.splashscreen)
 
     implementation(libs.room.runtime)
     implementation(libs.room.ktx)

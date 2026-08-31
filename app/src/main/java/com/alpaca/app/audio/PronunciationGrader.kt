@@ -8,6 +8,7 @@ import android.os.Looper
 import android.speech.RecognitionListener
 import android.speech.RecognizerIntent
 import android.speech.SpeechRecognizer
+import java.text.Normalizer
 import java.util.concurrent.atomic.AtomicBoolean
 import kotlin.coroutines.resume
 import kotlinx.coroutines.suspendCancellableCoroutine
@@ -19,11 +20,21 @@ import kotlinx.coroutines.suspendCancellableCoroutine
  */
 class PronunciationGrader(private val context: Context) {
 
-    data class Grade(val recognized: String, val score: Float)
+    data class WordGrade(val word: String, val score: Float, val ok: Boolean)
+
+    data class Grade(
+        val recognized: String,
+        val score: Float,
+        val words: List<WordGrade> = emptyList()
+    )
 
     suspend fun listenAndGrade(expected: String, languageTag: String): Grade? {
         val recognized = listen(languageTag) ?: return null
-        return Grade(recognized, similarity(expected, recognized))
+        return Grade(
+            recognized = recognized,
+            score = detailedScore(expected, recognized),
+            words = gradeWords(expected, recognized)
+        )
     }
 
     private suspend fun listen(languageTag: String): String? = suspendCancellableCoroutine { cont ->
@@ -77,6 +88,8 @@ class PronunciationGrader(private val context: Context) {
     }
 
     companion object {
+        private const val WORD_MATCH_THRESHOLD = 0.75f
+
         fun similarity(expected: String, recognized: String): Float {
             val a = normalize(expected)
             val b = normalize(recognized)
@@ -85,8 +98,83 @@ class PronunciationGrader(private val context: Context) {
             return (1f - distance.toFloat() / maxOf(a.length, b.length, 1)).coerceIn(0f, 1f)
         }
 
-        private fun normalize(s: String): String =
-            s.lowercase().replace(Regex("[¿?¡!.,;:]"), "").replace(Regex("\\s+"), " ").trim()
+        /** Blend of whole-phrase and word-alignment similarity; words drive the feedback UI. */
+        fun detailedScore(expected: String, recognized: String): Float {
+            val charScore = similarity(expected, recognized)
+            val words = gradeWords(expected, recognized)
+            if (words.isEmpty()) return charScore
+            val wordScore = words.map { it.score }.average().toFloat()
+            return (0.5f * charScore + 0.5f * wordScore).coerceIn(0f, 1f)
+        }
+
+        /**
+         * Aligns expected and recognized words with an edit-distance DP whose
+         * substitution cost is 1 - word similarity, so a near-miss ("perro" vs
+         * "pero") still pairs with its intended word instead of cascading.
+         */
+        fun gradeWords(expected: String, recognized: String): List<WordGrade> {
+            val e = tokenize(expected)
+            val r = tokenize(recognized)
+            if (e.isEmpty()) return emptyList()
+            if (r.isEmpty()) return e.map { WordGrade(it, 0f, false) }
+
+            val m = e.size
+            val n = r.size
+            val dp = Array(m + 1) { FloatArray(n + 1) }
+            for (i in 1..m) dp[i][0] = dp[i - 1][0] + 1f
+            for (j in 1..n) dp[0][j] = dp[0][j - 1] + 1f
+            for (i in 1..m) {
+                for (j in 1..n) {
+                    val sub = dp[i - 1][j - 1] + (1f - wordSimilarity(e[i - 1], r[j - 1]))
+                    dp[i][j] = minOf(sub, dp[i - 1][j] + 1f, dp[i][j - 1] + 1f)
+                }
+            }
+
+            val grades = ArrayList<WordGrade>(m)
+            var i = m
+            var j = n
+            while (i > 0 || j > 0) {
+                when {
+                    i > 0 && j > 0 &&
+                        dp[i][j] == dp[i - 1][j - 1] + (1f - wordSimilarity(e[i - 1], r[j - 1])) -> {
+                        val score = wordSimilarity(e[i - 1], r[j - 1])
+                        grades += WordGrade(e[i - 1], score, score >= WORD_MATCH_THRESHOLD)
+                        i--; j--
+                    }
+                    i > 0 && dp[i][j] == dp[i - 1][j] + 1f -> {
+                        grades += WordGrade(e[i - 1], 0f, false)
+                        i--
+                    }
+                    j > 0 -> j--
+                    else -> break
+                }
+            }
+            return grades.reversed()
+        }
+
+        private fun tokenize(s: String): List<String> =
+            normalize(s).split(' ').filter { it.isNotEmpty() }
+
+        private fun wordSimilarity(a: String, b: String): Float {
+            val distance = levenshtein(a, b)
+            return (1f - distance.toFloat() / maxOf(a.length, b.length, 1)).coerceIn(0f, 1f)
+        }
+
+        /**
+         * Lowercase, strip punctuation and fold diacritics so "café" matches
+         * "cafe" and a recognizer that drops accents is not punished. ß folds
+         * to ss; Cyrillic е/ё merge (Russian text normally omits ё anyway).
+         */
+        private fun normalize(s: String): String {
+            val folded = Normalizer.normalize(s.lowercase(), Normalizer.Form.NFD)
+                .replace(Regex("\\p{Mn}+"), "")
+                .replace("ß", "ss")
+                .replace("ё", "е")
+            return folded
+                .replace(Regex("[\\p{Punct}¿¡«»„“”]"), "")
+                .replace(Regex("\\s+"), " ")
+                .trim()
+        }
 
         private fun levenshtein(a: String, b: String): Int {
             val dp = IntArray(b.length + 1) { it }

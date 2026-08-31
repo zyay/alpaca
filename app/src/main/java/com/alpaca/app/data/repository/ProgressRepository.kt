@@ -17,8 +17,10 @@ class ProgressRepository(
         progressDao.observeAll().map { rows -> rows.associateBy { it.lessonId } }
 
     suspend fun seedIfNeeded() {
-        if (progressDao.count() > 0) return
         com.alpaca.app.data.content.CourseLanguage.available.forEach { language ->
+            // Skip languages the user already has rows for — this also seeds
+            // courses added after their first install (e.g. English, Russian).
+            if (progressDao.countForLanguage(language.id) > 0) return@forEach
             content.loadUnits(language.id).forEach { unit ->
                 unit.lessons.forEachIndexed { index, lesson ->
                     progressDao.upsert(

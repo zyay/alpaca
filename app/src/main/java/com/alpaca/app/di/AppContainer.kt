@@ -9,6 +9,7 @@ import com.alpaca.app.audio.SoundPlayer
 import com.alpaca.app.audio.TtsSpeaker
 import com.alpaca.app.billing.BillingManager
 import com.alpaca.app.data.auth.AuthClient
+import com.alpaca.app.data.coach.CoachClient
 import com.alpaca.app.data.content.ContentRepository
 import com.alpaca.app.data.datastore.UserPreferencesStore
 import com.alpaca.app.data.db.AlpacaDatabase
@@ -32,6 +33,7 @@ class AppContainer(context: Context) {
     val questRepository = QuestRepository(database)
     val leagueClient = LeagueClient()
     val authClient = AuthClient()
+    val coachClient = CoachClient()
     val billingManager = BillingManager(appContext, prefs)
 
     val ttsSpeaker = TtsSpeaker(appContext)

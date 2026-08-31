@@ -18,7 +18,7 @@ import com.alpaca.app.ui.theme.BrandGreen
 import com.alpaca.app.ui.theme.CtaGradientTop
 import kotlin.math.floor
 
-private val greetings = listOf("¡Hola!", "Bonjour!", "Hallo!", "Ciao!", "Olá!")
+private val greetings = listOf("¡Hola!", "Bonjour!", "Hallo!", "Ciao!", "Olá!", "Hello!", "Привет!")
 
 /** Duolingo-style unlock easing: back-out overshoot. */
 val UnlockEasing = CubicBezierEasing(0.34f, 1.56f, 0.64f, 1f)

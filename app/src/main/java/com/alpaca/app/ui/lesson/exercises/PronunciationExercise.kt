@@ -48,7 +48,11 @@ import kotlinx.coroutines.launch
 private sealed class MicPhase {
     data object Idle : MicPhase()
     data object Listening : MicPhase()
-    data class Result(val recognized: String?, val score: Float) : MicPhase()
+    data class Result(
+        val recognized: String?,
+        val score: Float,
+        val words: List<PronunciationGrader.WordGrade> = emptyList()
+    ) : MicPhase()
     data object Unavailable : MicPhase()
 }
 
@@ -78,7 +82,7 @@ fun PronunciationUi(
             phase = if (result == null) {
                 MicPhase.Unavailable
             } else {
-                MicPhase.Result(result.recognized, result.score)
+                MicPhase.Result(result.recognized, result.score, result.words)
             }
         }
     }
@@ -136,6 +140,27 @@ fun PronunciationUi(
                     textAlign = TextAlign.Center,
                     modifier = Modifier.padding(top = 8.dp)
                 )
+                if (!passed && p.words.any { !it.ok }) {
+                    Spacer(Modifier.height(12.dp))
+                    Row(
+                        horizontalArrangement = Arrangement.spacedBy(6.dp, Alignment.CenterHorizontally),
+                        modifier = Modifier.fillMaxWidth()
+                    ) {
+                        p.words.forEach { word ->
+                            Text(
+                                text = word.word,
+                                style = MaterialTheme.typography.bodyMedium,
+                                color = if (word.ok) BrandGreen else DangerRed
+                            )
+                        }
+                    }
+                    Text(
+                        text = "Green words were clear — focus on the red ones.",
+                        style = MaterialTheme.typography.bodySmall,
+                        color = InkMid,
+                        modifier = Modifier.padding(top = 4.dp)
+                    )
+                }
                 Spacer(Modifier.height(20.dp))
                 if (passed) {
                     PillButton(text = "Continue", onClick = onCorrect)

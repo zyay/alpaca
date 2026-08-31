@@ -1,0 +1,305 @@
+{
+  "unitId": "en_u3",
+  "title": "Sound Like a Local",
+  "region": "Manhattan",
+  "languageName": "English",
+  "lessons": [
+    {
+      "lessonId": "en_u3_l1",
+      "title": "Phrasal Verbs I",
+      "exercises": [
+        {
+          "type": "match_pairs",
+          "pairs": [["give up", "Stop trying"], ["wake up", "Stop sleeping"], ["pick up", "Collect / learn casually"], ["put off", "Postpone"]],
+          "explanation": "Phrasal verbs change meaning with the particle — memorize them as whole units."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "\"We've run out of milk\" means…",
+          "options": ["There is no milk left", "We spilled the milk", "We bought too much milk", "The milk went outside"],
+          "correctIndex": 0,
+          "explanation": "\"Run out of + thing\" = the supply is finished."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Don't ___ up! You're almost there.",
+          "answer": "give",
+          "wordBank": ["give", "take", "put", "get"],
+          "explanation": "\"Give up\" = quit. \"Don't give up\" is the classic encouragement."
+        },
+        {
+          "type": "listening",
+          "text": "The meeting was called off",
+          "options": ["The meeting was cancelled", "The meeting was moved", "The meeting started", "Everyone was called"],
+          "correctIndex": 0,
+          "explanation": "\"Call off\" = cancel (a meeting, event, search)."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "\"I'm looking after my sister's dog\" means…",
+          "options": ["I'm taking care of the dog", "I'm searching behind the dog", "I'm watching the dog leave", "I sold the dog"],
+          "correctIndex": 0,
+          "explanation": "\"Look after\" = care for. \"Look for\" = search. Different particles, different lives."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Can you ___ me up at the airport?",
+          "answer": "pick",
+          "wordBank": ["pick", "take", "bring", "lift"],
+          "explanation": "\"Pick someone up\" = collect them by car. \"Take up\" means start a hobby!"
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "She ___ up speaking Spanish from watching TV shows.",
+          "options": ["picked", "took", "brought", "gave"],
+          "correctIndex": 0,
+          "explanation": "\"Pick up a language/skill\" = learn it casually, without formal study."
+        },
+        {
+          "type": "pronunciation",
+          "expected": "Let's sort it out tomorrow",
+          "translation": "We'll resolve the problem later",
+          "explanation": "\"Sort out\" = fix or organize — the most useful phrasal verb in British English."
+        }
+      ]
+    },
+    {
+      "lessonId": "en_u3_l2",
+      "title": "Phrasal Verbs II",
+      "exercises": [
+        {
+          "type": "match_pairs",
+          "pairs": [["hit it off", "Become friends instantly"], ["drop by", "Visit briefly"], ["eat out", "Dine at a restaurant"], ["catch up", "Get the latest news"]],
+          "explanation": "\"We hit it off\" describes instant chemistry — friendships or romance."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "\"Let's touch base next week\" means…",
+          "options": ["Let's check in briefly next week", "Let's meet at the baseball field", "Let's never talk again", "Let's sign the contract"],
+          "correctIndex": 0,
+          "explanation": "Business slang from baseball: \"touch base\" = make brief contact."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Feel free to ___ by whenever you're in town",
+          "answer": "drop",
+          "wordBank": ["drop", "fall", "pass", "stop"],
+          "explanation": "\"Drop by / drop in\" = visit informally, no appointment needed."
+        },
+        {
+          "type": "listening",
+          "text": "I need to catch up on my emails",
+          "options": ["There's a backlog to deal with", "The emails are too fast", "The emails were caught", "I need to send one email"],
+          "correctIndex": 0,
+          "explanation": "\"Catch up on\" = deal with accumulated work or news."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "\"The plan fell through\" means…",
+          "options": ["The plan failed", "The plan fell down the stairs", "The plan worked perfectly", "The plan was rescheduled"],
+          "correctIndex": 0,
+          "explanation": "\"Fall through\" = fail to happen — deals, plans and deals falling through."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "We should ___ up over coffee sometime",
+          "answer": "catch",
+          "wordBank": ["catch", "take", "put", "bring"],
+          "explanation": "\"Catch up with someone\" = talk after time apart — the friendliest invitation."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "\"He ended up moving to Berlin\" means…",
+          "options": ["He eventually moved there (surprisingly)", "He finished moving boxes", "He moved to the end of Berlin", "He refused to move"],
+          "correctIndex": 0,
+          "explanation": "\"End up + -ing\" = the final result, often different from the original plan."
+        },
+        {
+          "type": "pronunciation",
+          "expected": "It turns out we both know Priya",
+          "translation": "Discovering a surprising fact",
+          "explanation": "\"It turns out…\" introduces a discovery — perfect conversation glue."
+        }
+      ]
+    },
+    {
+      "lessonId": "en_u3_l3",
+      "title": "Tricky Pairs",
+      "exercises": [
+        {
+          "type": "match_pairs",
+          "pairs": [["borrow", "Take temporarily"], ["lend", "Give temporarily"], ["rent", "Pay to use"], ["owe", "Must give back"]],
+          "explanation": "Direction matters: you BORROW from someone, someone LENDS to you."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "Which word fits: \"___ of the two answers is correct\"?",
+          "options": ["Neither", "None", "No one", "Nothing"],
+          "correctIndex": 0,
+          "explanation": "\"Neither\" for exactly two things; \"none\" for three or more."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "The library is over ___, next to the bank",
+          "answer": "there",
+          "wordBank": ["there", "their", "they're", "theirs"],
+          "explanation": "there = place, their = possessive, they're = they are. The classic trio."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "\"Actually\" means…",
+          "options": ["in fact (surprising correction)", "currently", "really soon", "at this moment"],
+          "correctIndex": 0,
+          "explanation": "False friend alert: \"actually\" ≠ \"currently\". \"Currently\" is the word for now."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Everyone passed the exam ___ Pierre",
+          "answer": "except",
+          "wordBank": ["except", "accept", "expect", "access"],
+          "explanation": "\"Except\" = not including; \"accept\" = receive willingly. Same sound, different job."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "Which sentence is correct?",
+          "options": ["I must remember to bring my passport", "I must remember to take my passport to me", "I must remind my passport", "I must remember me the passport"],
+          "correctIndex": 0,
+          "explanation": "\"Remember to do\" ≠ \"remind\". You remind a PERSON; you remember a THING."
+        },
+        {
+          "type": "listening",
+          "text": "I usually work from home on Fridays",
+          "options": ["Every Friday is a home-office day", "One Friday was special", "He never works at home", "He works at the office"],
+          "correctIndex": 0,
+          "explanation": "\"Usually\" marks a habit; present simple describes routines."
+        },
+        {
+          "type": "pronunciation",
+          "expected": "I'd like to borrow your pen for a second",
+          "translation": "Politely asking to use something briefly",
+          "explanation": "Stress \"borrow\" and \"second\" — the rhythm carries the politeness."
+        }
+      ]
+    },
+    {
+      "lessonId": "en_u3_l4",
+      "title": "Articles & Small Words",
+      "exercises": [
+        {
+          "type": "multiple_choice",
+          "prompt": "Which is correct?",
+          "options": ["She is a doctor at a hospital in the city centre", "She is doctor at hospital in city centre", "She is the doctor at a hospital in the city centre", "She is an doctor at the hospital"],
+          "correctIndex": 0,
+          "explanation": "Professions take \"a\" (a doctor); \"the city centre\" is specific because every city has one."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "I've lived here ___ 2019",
+          "answer": "since",
+          "wordBank": ["since", "for", "during", "from"],
+          "explanation": "\"Since\" + point in time (since 2019); \"for\" + duration (for five years)."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "Which is correct?",
+          "options": ["I need to do some shopping", "I need to make some shopping", "I need to go for shopping", "I must to do shopping"],
+          "correctIndex": 0,
+          "explanation": "Classic DO/MAKE split: you DO shopping, homework, business; you MAKE mistakes, plans, coffee."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "She plays ___ piano beautifully",
+          "answer": "the",
+          "wordBank": ["the", "a", "an", "some"],
+          "explanation": "Musical instruments take \"the\": play the piano, the guitar, the violin."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "Which is correct?",
+          "options": ["How much time do we have?", "How many time do we have?", "How much times do we have?", "How many much time?"],
+          "correctIndex": 0,
+          "explanation": "\"Time\" (duration) is uncountable → how MUCH. Countable hours take \"many\"."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "There aren't ___ chairs for everyone",
+          "answer": "enough",
+          "wordBank": ["enough", "too", "very", "much"],
+          "explanation": "\"Enough\" after adjectives (cold enough) but before nouns: enough chairs."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "Which question is correct?",
+          "options": ["What does it mean?", "What means it?", "What it means?", "What does it means?"],
+          "correctIndex": 0,
+          "explanation": "Questions need DO-support: What does it mean? — and the main verb stays bare."
+        },
+        {
+          "type": "pronunciation",
+          "expected": "I've been working here for three years",
+          "translation": "Describing ongoing experience",
+          "explanation": "\"I've been + -ing + for/since\" is the workhorse of interviews."
+        }
+      ]
+    },
+    {
+      "lessonId": "en_u3_l5",
+      "title": "Professional Polish",
+      "exercises": [
+        {
+          "type": "multiple_choice",
+          "prompt": "Which email opener is professionally neutral?",
+          "options": ["Hi Marta,", "Yo Marta,", "Dear Madame, most esteemed,", "Hey!!"],
+          "correctIndex": 0,
+          "explanation": "\"Hi + name,\" is the modern default; save \"Dear Ms Novak\" for very formal letters."
+        },
+        {
+          "type": "match_pairs",
+          "pairs": [["I'm afraid", "Softens bad news"], ["As discussed", "Refers to earlier agreement"], ["At your earliest convenience", "Whenever you can"], ["Please find attached", "Points to an attachment"]],
+          "explanation": "\"I'm afraid the deadline moved\" — English hides bad news behind softeners."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Thanks for your email — ___ to hear from you",
+          "answer": "great",
+          "wordBank": ["great", "big", "high", "tall"],
+          "explanation": "\"Great to hear from you\" is the standard warm reply opener."
+        },
+        {
+          "type": "listening",
+          "text": "Let's circle back on this next week",
+          "options": ["We'll return to this topic next week", "We must walk in a circle", "This is finished forever", "Let's cancel the project"],
+          "correctIndex": 0,
+          "explanation": "\"Circle back\" = revisit later — corporate English, but everywhere now."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "You disagree in a meeting. The professional phrasing is…",
+          "options": ["I see it a bit differently — could I share my view?", "You are wrong and I am right.", "No. Never. Absolutely not.", "That idea is terrible."],
+          "correctIndex": 0,
+          "explanation": "English professional culture softens disagreement, then gives the reason."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Could you ___ me a hand with the report?",
+          "answer": "give",
+          "wordBank": ["give", "make", "do", "take"],
+          "explanation": "\"Give someone a hand\" = help them. Fixed collocation with give."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "Which closing fits a normal work email?",
+          "options": ["Best regards,", "Love,", "Eternally yours,", "BYE."],
+          "correctIndex": 0,
+          "explanation": "\"Best regards\" / \"Best,\" are the safe universal sign-offs; \"Love\" is for family only."
+        },
+        {
+          "type": "pronunciation",
+          "expected": "Thanks for your time — I look forward to hearing from you",
+          "translation": "The polished end to any meeting or interview",
+          "explanation": "This one sentence closes interviews, emails and calls — learn it by heart."
+        }
+      ]
+    }
+  ]
+}

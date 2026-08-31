@@ -29,7 +29,9 @@ data class UserPrefs(
     val authToken: String = "",
     val authUserId: String = "",
     val authEmail: String = "",
-    val authName: String = ""
+    val authName: String = "",
+    val voiceLevel: String = "beginner",
+    val voiceName: String = "Kore"
 ) {
     val signedIn: Boolean get() = authToken.isNotEmpty()
 }
@@ -50,6 +52,8 @@ class UserPreferencesStore(private val context: Context) {
         val AUTH_USER_ID = stringPreferencesKey("auth_user_id")
         val AUTH_EMAIL = stringPreferencesKey("auth_email")
         val AUTH_NAME = stringPreferencesKey("auth_name")
+        val VOICE_LEVEL = stringPreferencesKey("voice_level")
+        val VOICE_NAME = stringPreferencesKey("voice_name")
     }
 
     val prefs: Flow<UserPrefs> = context.dataStore.data.map { p ->
@@ -67,7 +71,9 @@ class UserPreferencesStore(private val context: Context) {
             authToken = p[Keys.AUTH_TOKEN] ?: "",
             authUserId = p[Keys.AUTH_USER_ID] ?: "",
             authEmail = p[Keys.AUTH_EMAIL] ?: "",
-            authName = p[Keys.AUTH_NAME] ?: ""
+            authName = p[Keys.AUTH_NAME] ?: "",
+            voiceLevel = p[Keys.VOICE_LEVEL] ?: "beginner",
+            voiceName = p[Keys.VOICE_NAME] ?: "Kore"
         )
     }
 
@@ -78,6 +84,8 @@ class UserPreferencesStore(private val context: Context) {
     suspend fun setOnboarded() = context.dataStore.edit { it[Keys.ONBOARDED] = true }
     suspend fun setCurrentUnit(unitId: String) = context.dataStore.edit { it[Keys.UNIT] = unitId }
     suspend fun incrementCalls() = context.dataStore.edit { it[Keys.CALLS] = (it[Keys.CALLS] ?: 0) + 1 }
+    suspend fun setVoiceLevel(level: String) = context.dataStore.edit { it[Keys.VOICE_LEVEL] = level }
+    suspend fun setVoiceName(voice: String) = context.dataStore.edit { it[Keys.VOICE_NAME] = voice }
     suspend fun setDynamicColor(enabled: Boolean) = context.dataStore.edit { it[Keys.DYNAMIC_COLOR] = enabled }
     suspend fun setCurrentLanguage(languageId: String) {
         context.dataStore.edit {

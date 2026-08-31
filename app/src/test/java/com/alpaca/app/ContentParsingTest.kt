@@ -23,7 +23,7 @@ class ContentParsingTest {
         val dir = File("src/main/assets/content")
         val files = dir.listFiles { f -> f.extension == "json" }.orEmpty()
         assertTrue("No content JSON files found in ${dir.absolutePath}", files.isNotEmpty())
-        assertTrue("Expected at least 13 units, found ${files.size}", files.size >= 13)
+        assertTrue("Expected at least 18 units, found ${files.size}", files.size >= 18)
 
         val languages = mutableSetOf<String>()
         for (file in files) {
@@ -46,8 +46,8 @@ class ContentParsingTest {
             }
         }
         assertEquals(
-            "Expected 5 course languages (es, fr, de, it, pt)",
-            setOf("es", "fr", "de", "it", "pt"),
+            "Expected 7 course languages (es, fr, de, it, pt, en, ru)",
+            setOf("es", "fr", "de", "it", "pt", "en", "ru"),
             languages
         )
     }

@@ -32,7 +32,13 @@ You can erase everything at any time by clearing the app's data or uninstalling.
    minted by the same backend. Alpaca's server never stores your audio; Google
    processes it under [Google's terms](https://ai.google.dev/gemini-api/terms).
    The feature is off until you open the Speak screen.
-4. **Purchases.** Subscription state is managed by Google Play Billing. Alpaca
+4. **Post-call AI coach (optional feature).** When you finish a voice call, the
+   text transcript of that conversation is sent to Alpaca's backend, which
+   forwards it to Google's Gemini API to produce learning feedback (strengths,
+   suggestions, vocabulary). The transcript is processed in memory only and is
+   not stored by Alpaca or the backend. Coaching is skipped automatically if
+   the backend is unavailable or the call had no speech.
+5. **Purchases.** Subscription state is managed by Google Play Billing. Alpaca
    never sees your payment details.
 
 ## What Alpaca never does

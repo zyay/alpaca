@@ -1,0 +1,303 @@
+{
+  "unitId": "en_u2",
+  "title": "Daily Life",
+  "region": "New England",
+  "languageName": "English",
+  "lessons": [
+    {
+      "lessonId": "en_u2_l1",
+      "title": "At the Café",
+      "exercises": [
+        {
+          "type": "multiple_choice",
+          "prompt": "How do you order coffee politely at a counter?",
+          "options": ["Could I have a latte, please?", "Give me latte.", "I want that you make coffee.", "Latte is needed by me."],
+          "correctIndex": 0,
+          "explanation": "\"Could I have…, please?\" is the natural counter order in every English-speaking café."
+        },
+        {
+          "type": "match_pairs",
+          "pairs": [["to stay", "Drink here"], ["to go", "Takeaway"], ["a refill", "A free top-up"], ["the bill", "What you pay"]],
+          "explanation": "US cafés say \"to go\"; in the UK you'd ask for it \"to take away\"."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "I'll have a cappuccino ___ a croissant, please",
+          "answer": "and",
+          "wordBank": ["and", "or", "but", "with"],
+          "explanation": "\"I'll have X and Y\" is how you add items to an order."
+        },
+        {
+          "type": "listening",
+          "text": "Anything else for you today?",
+          "options": ["The server asks if you want more", "The server asks for payment", "A question about your day", "An offer of a table"],
+          "correctIndex": 0,
+          "explanation": "Reply \"No, that's all, thanks\" or add one more item."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "The waiter asks \"Eating in or taking away?\". You want to sit down. You say…",
+          "options": ["Eating in, please", "Taking away, please", "No, thanks", "I am eat"],
+          "correctIndex": 0,
+          "explanation": "The two options are exact opposites — pick the one that matches your plan."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Could we get the ___, please?",
+          "answer": "bill",
+          "wordBank": ["bill", "note", "paper", "ticket"],
+          "explanation": "It's \"the bill\" in the UK and \"the check\" in the US — both work everywhere."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "What does \"It's on me\" mean?",
+          "options": ["I'm paying for you", "It's on top of the table", "You owe me money", "It belongs to me"],
+          "correctIndex": 0,
+          "explanation": "\"It's on me\" = I'll pay — a friendly treat, often said with a smile."
+        },
+        {
+          "type": "pronunciation",
+          "expected": "Could I have a flat white, please?",
+          "translation": "Ordering a coffee at the counter",
+          "explanation": "Keep the rising, friendly tone — politeness in English lives in the melody."
+        }
+      ]
+    },
+    {
+      "lessonId": "en_u2_l2",
+      "title": "Getting Around",
+      "exercises": [
+        {
+          "type": "match_pairs",
+          "pairs": [["Go straight ahead", "Continue forward"], ["Turn left", "To the left side"], ["It's on your right", "On the right-hand side"], ["Around the corner", "Very close, on the next street"]],
+          "explanation": "\"Around the corner\" also means \"soon\" for time: the weekend is just around the corner."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "Someone says \"Take the second left\". What do you do?",
+          "options": ["Turn left at the second street", "Walk two blocks straight", "Take the first left", "Turn right twice"],
+          "correctIndex": 0,
+          "explanation": "\"Take the second left\" counts streets — skip the first, turn at the second."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Excuse me, how do I ___ to the station?",
+          "answer": "get",
+          "wordBank": ["get", "arrive", "reach", "come"],
+          "explanation": "\"How do I get to…?\" is the standard asking-directions phrase; \"arrive\" needs \"at\"."
+        },
+        {
+          "type": "listening",
+          "text": "It's about a ten-minute walk from here",
+          "options": ["It takes 10 minutes on foot", "It is 10 km away", "The walk costs ten", "The bus takes 10 minutes"],
+          "correctIndex": 0,
+          "explanation": "\"A ten-minute walk\" — note the singular minute even though it's ten."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "Which question asks about distance?",
+          "options": ["How far is it?", "How long is it?", "How much is it?", "How big is it?"],
+          "correctIndex": 0,
+          "explanation": "\"How far?\" = distance. \"How long?\" = time. \"How much?\" = price."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "You can buy a ticket ___ the machine",
+          "answer": "from",
+          "wordBank": ["from", "of", "by", "since"],
+          "explanation": "You buy things FROM a place or a person — from the machine, from the kiosk."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "A bus conductor says \"Mind the gap\". What should you do?",
+          "options": ["Watch the space between train and platform", "Close the door", "Be quiet", "Hold your bag"],
+          "correctIndex": 0,
+          "explanation": "The famous London Underground warning — \"mind\" here means \"pay attention to\"."
+        },
+        {
+          "type": "pronunciation",
+          "expected": "Excuse me, how do I get to the museum?",
+          "translation": "Asking a stranger for directions",
+          "explanation": "\"Excuse me\" first, then the question — never skip the opener with strangers."
+        }
+      ]
+    },
+    {
+      "lessonId": "en_u2_l3",
+      "title": "Shopping & Money",
+      "exercises": [
+        {
+          "type": "multiple_choice",
+          "prompt": "You're just looking, not buying yet. You tell the shop assistant…",
+          "options": ["I'm just browsing, thanks", "I'm just buying", "Leave me immediately", "Give me everything"],
+          "correctIndex": 0,
+          "explanation": "\"Just browsing\" politely means not-yet-buying — assistants back off when they hear it."
+        },
+        {
+          "type": "match_pairs",
+          "pairs": [["a bargain", "Very good price"], ["pricey", "Expensive"], ["on sale", "Discounted"], ["receipt", "Proof of purchase"]],
+          "explanation": "\"On sale\" in the US means discounted — but \"for sale\" means available to buy."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Do you take ___ cards?",
+          "answer": "credit",
+          "wordBank": ["credit", "creditable", "creditor", "accredit"],
+          "explanation": "\"Do you take credit cards?\" — or simply \"Can I pay by card?\""
+        },
+        {
+          "type": "listening",
+          "text": "It comes to twenty-three fifty",
+          "options": ["The total is 23.50", "The total is 2,350", "You get 23 back", "It costs 50.23"],
+          "correctIndex": 0,
+          "explanation": "Prices are said in pairs: \"twenty-three fifty\" = 23.50."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "\"It's a bit pricey\" means…",
+          "options": ["It's quite expensive", "It's cheap", "It's broken", "It's popular"],
+          "correctIndex": 0,
+          "explanation": "\"A bit pricey\" softens \"expensive\" — classic British understatement."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "I'd like to ___ these shoes, please — size 42",
+          "answer": "try",
+          "wordBank": ["try", "test", "prove", "attempt"],
+          "explanation": "\"Try on\" clothes and shoes before buying — ask for a different size if needed."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "The shop asks \"How would you like to pay?\". Which answer fits?",
+          "options": ["By card, please", "Yes, I would like", "I pay yesterday", "Money is fine"],
+          "correctIndex": 0,
+          "explanation": "Answer with the method: by card, in cash — never just \"yes\"."
+        },
+        {
+          "type": "pronunciation",
+          "expected": "Could I get a refund, please?",
+          "translation": "Asking for your money back",
+          "explanation": "Keep the receipt — refunds usually need proof of purchase."
+        }
+      ]
+    },
+    {
+      "lessonId": "en_u2_l4",
+      "title": "Weather & Seasons",
+      "exercises": [
+        {
+          "type": "match_pairs",
+          "pairs": [["drizzling", "Light rain"], ["pouring", "Heavy rain"], ["freezing", "Very cold"], ["muggy", "Warm and humid"]],
+          "explanation": "English has many rain words — \"drizzle\" and \"pour\" are opposites in strength."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "It's \"chucking it down\" outside. What's happening?",
+          "options": ["It's raining hard", "The sun is out", "It's snowing", "It's windy"],
+          "correctIndex": 0,
+          "explanation": "British slang: \"chucking it down\" / \"tipping down\" = very heavy rain."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Take an umbrella — it might ___ later",
+          "answer": "rain",
+          "wordBank": ["rain", "raining", "rains", "rained"],
+          "explanation": "After \"might/may/could\" use the bare infinitive: it might rain (no -ing, no -s)."
+        },
+        {
+          "type": "listening",
+          "text": "It's supposed to clear up this afternoon",
+          "options": ["The sky will get sunnier", "It will rain more", "It will get colder", "The wind will stop"],
+          "correctIndex": 0,
+          "explanation": "\"Clear up\" = the clouds go away. \"Supposed to\" = expected to."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "Which reply agrees with \"Terrible weather today, right?\"",
+          "options": ["Tell me about it!", "Tell it to me!", "I tell about it.", "Yes, wonderful!"],
+          "correctIndex": 0,
+          "explanation": "\"Tell me about it!\" = I completely agree. It's empathy, not a request for information."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "It's ___ cold to swim today",
+          "answer": "too",
+          "wordBank": ["too", "very", "so", "enough"],
+          "explanation": "\"Too cold\" = more cold than acceptable. \"Very cold\" is just a fact — \"too\" blocks the action."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "What season is \"autumn\" in American English?",
+          "options": ["fall — both words mean autumn", "spring", "summer", "They are different seasons"],
+          "correctIndex": 0,
+          "explanation": "\"Autumn\" (British) = \"fall\" (American). Both are understood everywhere."
+        },
+        {
+          "type": "pronunciation",
+          "expected": "It looks like rain is on the way",
+          "translation": "Predicting the weather politely",
+          "explanation": "\"It looks like + clause\" is the standard way to forecast without certainty."
+        }
+      ]
+    },
+    {
+      "lessonId": "en_u2_l5",
+      "title": "Making Plans",
+      "exercises": [
+        {
+          "type": "multiple_choice",
+          "prompt": "Which is a natural way to suggest meeting?",
+          "options": ["How about grabbing a coffee sometime?", "We will do coffee in future time.", "I propose the drinking of coffee.", "Coffee is possible for us."],
+          "correctIndex": 0,
+          "explanation": "\"How about + -ing?\" is the go-to suggestion pattern between friends."
+        },
+        {
+          "type": "match_pairs",
+          "pairs": [["Are you free on Friday?", "Asking availability"], ["Let's pencil it in", "Tentative plan"], ["I'll take a rain check", "Maybe later"], ["It's a date", "Confirmed plan"]],
+          "explanation": "\"A rain check\" means postponing — nothing to do with weather."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Let's ___ up this weekend — it's been ages!",
+          "answer": "meet",
+          "wordBank": ["meet", "meeting", "met", "meets"],
+          "explanation": "\"Let's + bare infinitive\" for suggestions: let's meet, let's go, let's eat."
+        },
+        {
+          "type": "listening",
+          "text": "Does Saturday work for you?",
+          "options": ["Is Saturday a good day for you?", "What happens on Saturday?", "Do you work on Saturday?", "Is Saturday the deadline?"],
+          "correctIndex": 0,
+          "explanation": "\"Does X work for you?\" asks if a day or time suits someone."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "You need to postpone. What do you say?",
+          "options": ["Something's come up — can we reschedule?", "I cancel you.", "The thing has arrived.", "No Saturday."],
+          "correctIndex": 0,
+          "explanation": "\"Something's come up\" = an unexpected obligation — the polite standard for cancelling."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "I'm looking ___ to it!",
+          "answer": "forward",
+          "wordBank": ["forward", "forwards", "front", "ahead"],
+          "explanation": "\"Look forward to + noun/-ing\" expresses happy anticipation — a must-know phrase."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "\"I'm tied up all week\" means…",
+          "options": ["I'm busy all week", "I'm on holiday", "I'm tied to a chair", "I'm free after 5"],
+          "correctIndex": 0,
+          "explanation": "\"Tied up\" = busy, unavailable. Pair it with \"but I'm free on Friday\" to offer an alternative."
+        },
+        {
+          "type": "pronunciation",
+          "expected": "Are you free for dinner on Thursday?",
+          "translation": "Inviting someone to dinner",
+          "explanation": "\"Are you free + time?\" is the softest way to open an invitation."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,303 @@
+{
+  "unitId": "ru_u1",
+  "title": "Первые слова",
+  "region": "Золотое кольцо",
+  "languageName": "Russian",
+  "lessons": [
+    {
+      "lessonId": "ru_u1_l1",
+      "title": "Приветствия",
+      "exercises": [
+        {
+          "type": "multiple_choice",
+          "prompt": "Как сказать \"Hello\" по-русски (формально)?",
+          "options": ["Здравствуйте", "Привет", "Пока", "Спасибо"],
+          "correctIndex": 0,
+          "explanation": "\"Здравствуйте\" — formal hello; \"Привет\" is only for friends."
+        },
+        {
+          "type": "match_pairs",
+          "pairs": [["Привет", "Hi (informal)"], ["Здравствуйте", "Hello (formal)"], ["Доброе утро", "Good morning"], ["Пока", "Bye (informal)"]],
+          "explanation": "Russian has a strict formal/informal split — start with \"вы\" and formal forms."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "What does \"Добрый вечер\" mean?",
+          "options": ["Good evening", "Good night", "Good morning", "See you tomorrow"],
+          "correctIndex": 0,
+          "explanation": "\"Добрый вечер\" is the evening greeting; \"Доброй ночи\" is said before sleep."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "___ день!",
+          "answer": "Добрый",
+          "wordBank": ["Добрый", "Доброе", "Добрая", "Хороший"],
+          "explanation": "\"Добрый день\" — \"день\" is masculine, so it takes \"Добрый\"."
+        },
+        {
+          "type": "listening",
+          "text": "Как дела?",
+          "options": ["How are you?", "What's your name?", "Where are you from?", "How old are you?"],
+          "correctIndex": 0,
+          "explanation": "\"Как дела?\" is the everyday \"how are you?\" — reply \"Хорошо, спасибо!\""
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "How do you say \"Goodbye\" (formally)?",
+          "options": ["До свидания", "Пока", "Привет", "Ладно"],
+          "correctIndex": 0,
+          "explanation": "\"До свидания\" literally means \"until we meet again\" — the formal goodbye."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "___! Как жизнь?",
+          "answer": "Привет",
+          "wordBank": ["Привет", "Здравствуйте", "До свидания", "Спасибо"],
+          "explanation": "\"Как жизнь?\" (how's life?) is casual, so it pairs with the casual \"Привет\"."
+        },
+        {
+          "type": "pronunciation",
+          "expected": "Очень приятно",
+          "translation": "Nice to meet you",
+          "explanation": "Literally \"very pleasant\" — the standard phrase when meeting someone."
+        }
+      ]
+    },
+    {
+      "lessonId": "ru_u1_l2",
+      "title": "Числа",
+      "exercises": [
+        {
+          "type": "match_pairs",
+          "pairs": [["один", "one"], ["два", "two"], ["три", "three"], ["четыре", "four"]],
+          "explanation": "Russian numbers: один, два, три, четыре — Cyrillic чт = \"f\" sound."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "Какое число \"пять\"?",
+          "options": ["5", "3", "9", "15"],
+          "correctIndex": 0,
+          "explanation": "\"Пять\" is five — the soft ь makes the final т soft."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "How do you say \"eight\"?",
+          "options": ["восемь", "семь", "шесть", "девять"],
+          "correctIndex": 0,
+          "explanation": "\"Восемь\" is eight — \"семь\" (seven) and \"восемь\" love to swap places."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Один, два, ___, четыре",
+          "answer": "три",
+          "wordBank": ["три", "пять", "десять", "шесть"],
+          "explanation": "The sequence: один, два, три — three comes after two."
+        },
+        {
+          "type": "listening",
+          "text": "Мне тридцать лет",
+          "options": ["I am thirty years old", "I am thirteen years old", "I have three years", "I am twenty years old"],
+          "correctIndex": 0,
+          "explanation": "\"Тридцать\" is thirty; \"тринадцать\" is thirteen — stress and word length differ."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "What does \"сколько\" mean?",
+          "options": ["How much / how many", "When", "Why", "Where"],
+          "correctIndex": 0,
+          "explanation": "\"Сколько это стоит?\" — how much does it cost? Your shopping survival word."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Девять, ___, одиннадцать",
+          "answer": "десять",
+          "wordBank": ["десять", "семь", "три", "пять"],
+          "explanation": "Девять (9), десять (10), одиннадцать (11) — ten sits in the middle."
+        },
+        {
+          "type": "pronunciation",
+          "expected": "Два кофе, пожалуйста",
+          "translation": "Two coffees, please",
+          "explanation": "Numbers + \"пожалуйста\" is all you need to order in Russian."
+        }
+      ]
+    },
+    {
+      "lessonId": "ru_u1_l3",
+      "title": "Знакомство",
+      "exercises": [
+        {
+          "type": "multiple_choice",
+          "prompt": "What does \"Меня зовут Анна\" mean?",
+          "options": ["My name is Anna", "I am from Anna", "I like Anna", "Call Anna"],
+          "correctIndex": 0,
+          "explanation": "\"Меня зовут\" literally means \"they call me\" — the standard introduction."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "___ вас зовут?",
+          "answer": "Как",
+          "wordBank": ["Как", "Кто", "Что", "Где"],
+          "explanation": "\"Как вас зовут?\" — what is your name (formal \"вас\"). With friends: \"Как тебя зовут?\""
+        },
+        {
+          "type": "listening",
+          "text": "Откуда вы?",
+          "options": ["Where are you from?", "What's your name?", "How old are you?", "Where do you live?"],
+          "correctIndex": 0,
+          "explanation": "\"Откуда вы?\" asks your origin — answer \"Я из Словакии\"."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "How do you say \"I am from Russia\"?",
+          "options": ["Я из России", "Я в России", "Я Россию", "Мне Россия"],
+          "correctIndex": 0,
+          "explanation": "\"Из + genitive\" gives your origin: Я из России, Я из Германии."
+        },
+        {
+          "type": "match_pairs",
+          "pairs": [["имя", "name"], ["друг", "friend"], ["семья", "family"], ["работа", "work"]],
+          "explanation": "Core introduction vocabulary — note \"друг\" is the word for friend."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "What does \"Мне двадцать лет\" mean?",
+          "options": ["I am twenty years old", "I have twenty children", "Twenty years ago", "I live at twenty"],
+          "correctIndex": 0,
+          "explanation": "Russian age uses \"мне … лет\" — literally \"to me there are twenty years\"."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Я ___ русский язык",
+          "answer": "изучаю",
+          "wordBank": ["изучаю", "изучил", "учить", "учёба"],
+          "explanation": "\"Я изучаю русский\" — I study Russian (present tense, ongoing)."
+        },
+        {
+          "type": "pronunciation",
+          "expected": "Я живу в Москве",
+          "translation": "I live in Moscow",
+          "explanation": "\"в + prepositional case\" gives location: в Москве, в Лондоне."
+        }
+      ]
+    },
+    {
+      "lessonId": "ru_u1_l4",
+      "title": "Вежливость",
+      "exercises": [
+        {
+          "type": "multiple_choice",
+          "prompt": "How do you say \"Thank you\"?",
+          "options": ["Спасибо", "Пожалуйста", "Извините", "Привет"],
+          "correctIndex": 0,
+          "explanation": "\"Спасибо\" comes from \"спаси Бог\" — God save you. Shortened over centuries."
+        },
+        {
+          "type": "match_pairs",
+          "pairs": [["Спасибо", "Thank you"], ["Пожалуйста", "Please / you're welcome"], ["Извините", "Excuse me / sorry"], ["Не за что", "Don't mention it"]],
+          "explanation": "\"Пожалуйста\" doubles as \"please\" AND the reply to thanks."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "Someone says \"Спасибо!\" — what do you reply?",
+          "options": ["Пожалуйста", "Спасибо", "Здравствуйте", "До свидания"],
+          "correctIndex": 0,
+          "explanation": "\"Пожалуйста\" is the all-purpose reply — or \"Не за что\" (it's nothing)."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "___, где вокзал?",
+          "answer": "Извините",
+          "wordBank": ["Извините", "Спасибо", "Привет", "Пожалуйста"],
+          "explanation": "\"Извините\" opens politely when interrupting a stranger."
+        },
+        {
+          "type": "listening",
+          "text": "Скажите, пожалуйста, где метро?",
+          "options": ["Please tell me where the metro is", "Do you like the metro?", "Where are you going?", "Is the metro far?"],
+          "correctIndex": 0,
+          "explanation": "\"Скажите, пожалуйста\" — please tell me — the magic question opener."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "What does \"Не за что\" mean?",
+          "options": ["Don't mention it / my pleasure", "Not today", "No money", "Never mind, goodbye"],
+          "correctIndex": 0,
+          "explanation": "Literally \"for nothing\" — the humble reply to \"спасибо\"."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "___ большое!",
+          "answer": "Спасибо",
+          "wordBank": ["Спасибо", "Пожалуйста", "Извините", "Привет"],
+          "explanation": "\"Спасибо большое\" = thank you very much — big thanks."
+        },
+        {
+          "type": "pronunciation",
+          "expected": "Будьте добры, помогите мне",
+          "translation": "Please be so kind as to help me",
+          "explanation": "\"Будьте добры\" is a very polite way to ask a stranger for help."
+        }
+      ]
+    },
+    {
+      "lessonId": "ru_u1_l5",
+      "title": "Первые фразы",
+      "exercises": [
+        {
+          "type": "listening",
+          "text": "Я не понимаю",
+          "options": ["I don't understand", "I don't know", "I don't want it", "I'm not hungry"],
+          "correctIndex": 0,
+          "explanation": "\"Я не понимаю\" — your most important survival phrase."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "How do you ask \"Do you speak English?\"",
+          "options": ["Вы говорите по-английски?", "Вы говорите в английский?", "Вы английский говорите нет?", "Вы есть английский?"],
+          "correctIndex": 0,
+          "explanation": "\"Говорить по-+ dative\" = speak a language: по-английски, по-русски."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Я ___ немножко по-русски",
+          "answer": "говорю",
+          "wordBank": ["говорю", "говорить", "говорит", "говорили"],
+          "explanation": "\"Я говорю\" — I speak (я form). \"Немножко\" = a little bit."
+        },
+        {
+          "type": "match_pairs",
+          "pairs": [["Да", "Yes"], ["Нет", "No"], ["Может быть", "Maybe"], ["Конечно", "Of course"]],
+          "explanation": "\"Конечно\" — certainly — a confident Russian \"of course\"."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "What does \"Повторите, пожалуйста\" mean?",
+          "options": ["Please repeat", "Please speak louder", "Please write it", "Please wait"],
+          "correctIndex": 0,
+          "explanation": "\"Повторите, пожалуйста\" + \"медленнее\" (slower) = your lesson-survival combo."
+        },
+        {
+          "type": "listening",
+          "text": "Это очень интересно!",
+          "options": ["That's very interesting!", "That's very difficult!", "That's not important", "That's expensive!"],
+          "correctIndex": 0,
+          "explanation": "\"Интересно\" = interesting; \"сложно\" = difficult. Don't mix them."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Я здесь ___",
+          "answer": "турист",
+          "wordBank": ["турист", "студент", "врач", "друг"],
+          "explanation": "\"Я здесь турист\" — I'm a tourist here. \"Студент\" would make you a student."
+        },
+        {
+          "type": "pronunciation",
+          "expected": "Я учу русский язык",
+          "translation": "I am learning Russian",
+          "explanation": "This sentence opens a hundred friendly conversations in Russia."
+        }
+      ]
+    }
+  ]
+}

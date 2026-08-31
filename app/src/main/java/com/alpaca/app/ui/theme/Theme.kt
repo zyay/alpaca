@@ -31,9 +31,20 @@ private val DarkColors = darkColorScheme(
     primary = BrandGreen,
     onPrimary = PaperWhite,
     primaryContainer = BrandGreenDeep,
+    onPrimaryContainer = PaperWhite,
     secondary = SunYellow,
+    onSecondary = InkDark,
     tertiary = SkyBlue,
-    error = DangerRed
+    onTertiary = InkDark,
+    error = DangerRed,
+    onError = PaperWhite,
+    background = NightBg,
+    onBackground = NightText,
+    surface = NightSurface,
+    onSurface = NightText,
+    surfaceVariant = NightSurfaceHigh,
+    onSurfaceVariant = NightTextMid,
+    outline = NightSurfaceHigh
 )
 
 @Composable

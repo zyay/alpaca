@@ -40,6 +40,11 @@ You can erase everything at any time by clearing the app's data or uninstalling.
    the backend is unavailable or the call had no speech.
 5. **Purchases.** Subscription state is managed by Google Play Billing. Alpaca
    never sees your payment details.
+6. **Update checks.** At most every six hours the app sends an anonymous,
+   unauthenticated request to `api.github.com` to read the latest release's
+   version tag. No account, device identifier or usage data is attached. When
+   you choose to update, the new APK is downloaded directly from GitHub and
+   handed to the Android system installer.
 
 ## What Alpaca never does
 

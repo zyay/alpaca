@@ -10,7 +10,7 @@ When you slip up, a droplet splatters the screen, a red ✗ stamps in, and it
 clears to reveal the correct answer with a one-line explanation of *why*.
 No characters, no fluff — just the physics.
 
-## What's inside v0.6.0
+## What's inside v0.7.0
 
 | Feature | Details |
 |---|---|
@@ -21,6 +21,7 @@ No characters, no fluff — just the physics.
 | 💬 **Real-World Simulator** | Live voice calls (coffee, ticket, directions, friend, market, hotel, doctor, restaurant) over the Gemini Multimodal Live API — full-duplex audio, barge-in interruption, **live captions for both speakers**, one-shot auto-reconnect on network drops |
 | 🎚️ **Difficulty levels & voices** | Beginner / Confident / Advanced personas (vocabulary, pace, correction style) and 4 tutor voices — persisted per device |
 | 🧠 **Post-call AI coach** | After each call the transcript goes to a Gemini text model that returns strengths, 3 concrete improvements and vocabulary to remember — with a graceful fallback when the backend is unavailable |
+| 🔄 **Self-updater** | Checks GitHub releases for a newer version (max every 6 h), shows an update banner on the trail and a version card in Settings, then downloads the new APK via the system DownloadManager and hands it to the Android installer — sideloaded installs stay current with zero fuss |
 | 👤 **Accounts (optional)** | Email + password sign-up/log-in via the Vercel backend — scrypt-hashed passwords, opaque 30-day sessions; signed-in users race leagues under their account identity, guests stay anonymous |
 | 💎 **Gems & daily quests** | 3 deterministic quests per day (XP / lessons / coins); claim gems, spend them in the gem shop |
 | ❄️ **Streak Freeze** | Buy up to 2 freezes (200 gems) — a missed day no longer kills your streak; or refill all fleece hearts for 350 gems |
@@ -45,6 +46,9 @@ model trained on [Mozilla Common Voice](https://commonvoice.mozilla.org/).
 
 Grab `app-debug.apk` from the
 [latest release](https://github.com/zyay/alpaca/releases/latest) and install it.
+Afterwards the app keeps itself current: it checks GitHub for newer releases
+(at most every 6 h) and offers a one-tap download + install from the trail
+banner or Settings → App version.
 Everything except live voice chat works out of the box; the app is fully usable
 as a guest — accounts and online leagues light up once the backend has Redis
 (see below).

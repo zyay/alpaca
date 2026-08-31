@@ -18,11 +18,12 @@ import com.alpaca.app.data.repository.GamificationRepository
 import com.alpaca.app.data.repository.MistakeRepository
 import com.alpaca.app.data.repository.ProgressRepository
 import com.alpaca.app.data.repository.QuestRepository
+import com.alpaca.app.data.update.UpdateClient
 import com.alpaca.app.gemini.GeminiLiveClient
 import com.alpaca.app.gemini.TokenClient
 
 class AppContainer(context: Context) {
-    private val appContext = context.applicationContext
+    val appContext = context.applicationContext
 
     val database = AlpacaDatabase.create(appContext)
     val prefs = UserPreferencesStore(appContext)
@@ -34,6 +35,7 @@ class AppContainer(context: Context) {
     val leagueClient = LeagueClient()
     val authClient = AuthClient()
     val coachClient = CoachClient()
+    val updateClient = UpdateClient()
     val billingManager = BillingManager(appContext, prefs)
 
     val ttsSpeaker = TtsSpeaker(appContext)

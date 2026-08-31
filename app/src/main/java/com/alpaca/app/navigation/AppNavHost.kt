@@ -7,6 +7,7 @@ import androidx.compose.animation.slideInHorizontally
 import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -32,6 +33,7 @@ import com.alpaca.app.ui.settings.SettingsViewModel
 import com.alpaca.app.ui.summary.SummaryScreen
 import com.alpaca.app.ui.trail.TrailScreen
 import com.alpaca.app.ui.trail.TrailViewModel
+import com.alpaca.app.ui.update.UpdateViewModel
 import com.alpaca.app.ui.voice.VoiceCallScreen
 import com.alpaca.app.ui.voice.VoiceCallViewModel
 import com.alpaca.app.util.HapticPlayer
@@ -79,6 +81,12 @@ fun AppNavHost(
 ) {
     val navController = rememberNavController()
     val factory = LocalViewModelFactory.current
+    // Activity-scoped so the trail banner and the Settings card share one
+    // update state (check result, download progress, pending install).
+    val updateViewModel: UpdateViewModel = viewModel(
+        viewModelStoreOwner = LocalContext.current as androidx.activity.ComponentActivity,
+        factory = factory
+    )
 
     NavHost(
         navController = navController,
@@ -108,6 +116,7 @@ fun AppNavHost(
             val viewModel: TrailViewModel = viewModel(factory = factory)
             TrailScreen(
                 viewModel = viewModel,
+                updateViewModel = updateViewModel,
                 onOpenLesson = { lessonId -> navController.navigate(LessonRoute(lessonId)) },
                 onOpenVoice = { navController.navigate(VoiceRoute) },
                 onOpenLeaderboard = { navController.navigate(LeaderboardRoute) },
@@ -164,6 +173,7 @@ fun AppNavHost(
             val viewModel: SettingsViewModel = viewModel(factory = factory)
             SettingsScreen(
                 viewModel = viewModel,
+                updateViewModel = updateViewModel,
                 onOpenCourses = { navController.navigate(CoursesRoute) },
                 onOpenAchievements = { navController.navigate(AchievementsRoute) },
                 onOpenAccount = { navController.navigate(AuthRoute) },

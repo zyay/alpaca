@@ -6,6 +6,7 @@ import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.intPreferencesKey
+import androidx.datastore.preferences.core.longPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
 import kotlinx.coroutines.flow.Flow
@@ -31,7 +32,8 @@ data class UserPrefs(
     val authEmail: String = "",
     val authName: String = "",
     val voiceLevel: String = "beginner",
-    val voiceName: String = "Kore"
+    val voiceName: String = "Kore",
+    val lastUpdateCheck: Long = 0
 ) {
     val signedIn: Boolean get() = authToken.isNotEmpty()
 }
@@ -54,6 +56,7 @@ class UserPreferencesStore(private val context: Context) {
         val AUTH_NAME = stringPreferencesKey("auth_name")
         val VOICE_LEVEL = stringPreferencesKey("voice_level")
         val VOICE_NAME = stringPreferencesKey("voice_name")
+        val LAST_UPDATE_CHECK = longPreferencesKey("last_update_check")
     }
 
     val prefs: Flow<UserPrefs> = context.dataStore.data.map { p ->
@@ -73,7 +76,8 @@ class UserPreferencesStore(private val context: Context) {
             authEmail = p[Keys.AUTH_EMAIL] ?: "",
             authName = p[Keys.AUTH_NAME] ?: "",
             voiceLevel = p[Keys.VOICE_LEVEL] ?: "beginner",
-            voiceName = p[Keys.VOICE_NAME] ?: "Kore"
+            voiceName = p[Keys.VOICE_NAME] ?: "Kore",
+            lastUpdateCheck = p[Keys.LAST_UPDATE_CHECK] ?: 0L
         )
     }
 
@@ -86,6 +90,7 @@ class UserPreferencesStore(private val context: Context) {
     suspend fun incrementCalls() = context.dataStore.edit { it[Keys.CALLS] = (it[Keys.CALLS] ?: 0) + 1 }
     suspend fun setVoiceLevel(level: String) = context.dataStore.edit { it[Keys.VOICE_LEVEL] = level }
     suspend fun setVoiceName(voice: String) = context.dataStore.edit { it[Keys.VOICE_NAME] = voice }
+    suspend fun setLastUpdateCheck(atMs: Long) = context.dataStore.edit { it[Keys.LAST_UPDATE_CHECK] = atMs }
     suspend fun setDynamicColor(enabled: Boolean) = context.dataStore.edit { it[Keys.DYNAMIC_COLOR] = enabled }
     suspend fun setCurrentLanguage(languageId: String) {
         context.dataStore.edit {

@@ -37,6 +37,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.alpaca.app.BuildConfig
 import com.alpaca.app.data.content.CourseLanguage
 import com.alpaca.app.ui.components.PillButton
+import com.alpaca.app.ui.update.UpdateSettingsSection
 import com.alpaca.app.ui.theme.CloudGray
 import com.alpaca.app.ui.theme.InkFaint
 import com.alpaca.app.ui.theme.InkMid
@@ -47,6 +48,7 @@ import android.app.Activity
 @Composable
 fun SettingsScreen(
     viewModel: SettingsViewModel,
+    updateViewModel: com.alpaca.app.ui.update.UpdateViewModel,
     onOpenCourses: () -> Unit,
     onOpenAchievements: () -> Unit,
     onOpenAccount: () -> Unit,
@@ -254,9 +256,15 @@ fun SettingsScreen(
             }
         }
 
+        Spacer(Modifier.height(14.dp))
+
+        SettingsCard {
+            UpdateSettingsSection(updateViewModel)
+        }
+
         Spacer(Modifier.height(24.dp))
         Text(
-            text = "Alpaca v0.6.0 · Learn loud. Travel far.",
+            text = "Alpaca v0.7.0 · Learn loud. Travel far.",
             style = MaterialTheme.typography.bodyMedium,
             color = InkMid
         )

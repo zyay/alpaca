@@ -63,6 +63,7 @@ import com.alpaca.app.data.db.entities.LessonStatus
 import com.alpaca.app.data.db.entities.UserEntity
 import com.alpaca.app.ui.components.EnergyHearts
 import com.alpaca.app.ui.components.PillButton
+import com.alpaca.app.ui.update.UpdateBanner
 import com.alpaca.app.ui.theme.BrandGreen
 import com.alpaca.app.ui.theme.CloudGray
 import com.alpaca.app.ui.theme.GemPurple
@@ -80,6 +81,7 @@ private val UnitColors = listOf(BrandGreen, SkyBlue, GemPurple, StreakOrange, He
 @Composable
 fun TrailScreen(
     viewModel: TrailViewModel,
+    updateViewModel: com.alpaca.app.ui.update.UpdateViewModel,
     onOpenLesson: (String) -> Unit,
     onOpenVoice: () -> Unit,
     onOpenLeaderboard: () -> Unit,
@@ -120,6 +122,10 @@ fun TrailScreen(
             }
 
             Spacer(Modifier.height(10.dp))
+
+            UpdateBanner(updateViewModel)
+
+            Spacer(Modifier.height(8.dp))
 
             // Current course switcher.
             Row(

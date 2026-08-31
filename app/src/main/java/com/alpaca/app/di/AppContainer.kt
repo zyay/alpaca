@@ -5,13 +5,16 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.alpaca.app.audio.PlatformAudioEngine
 import com.alpaca.app.audio.PronunciationGrader
+import com.alpaca.app.audio.SoundPlayer
 import com.alpaca.app.audio.TtsSpeaker
 import com.alpaca.app.data.content.ContentRepository
 import com.alpaca.app.data.datastore.UserPreferencesStore
 import com.alpaca.app.data.db.AlpacaDatabase
 import com.alpaca.app.data.repository.GamificationRepository
+import com.alpaca.app.data.repository.MistakeRepository
 import com.alpaca.app.data.repository.ProgressRepository
 import com.alpaca.app.gemini.GeminiLiveClient
+import com.alpaca.app.gemini.TokenClient
 
 class AppContainer(context: Context) {
     private val appContext = context.applicationContext
@@ -21,11 +24,14 @@ class AppContainer(context: Context) {
     val contentRepository = ContentRepository(appContext)
     val progressRepository = ProgressRepository(database, contentRepository)
     val gamificationRepository = GamificationRepository(database)
+    val mistakeRepository = MistakeRepository(database)
 
     val ttsSpeaker = TtsSpeaker(appContext)
     val audioEngine = PlatformAudioEngine()
     val pronunciationGrader = PronunciationGrader(appContext)
+    val soundPlayer = SoundPlayer(appContext)
     val geminiClient = GeminiLiveClient(audioEngine)
+    val tokenClient = TokenClient()
 
     suspend fun init() {
         progressRepository.seedIfNeeded()

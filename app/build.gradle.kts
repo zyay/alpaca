@@ -16,7 +16,9 @@ val localProps = Properties().apply {
 val geminiApiKey: String = localProps.getProperty("GEMINI_API_KEY", "") ?: ""
 // Model IDs for the Live API change frequently — verify current supported models at
 // https://ai.google.dev/gemini-api/docs/live-api and override via GEMINI_MODEL_ID in local.properties.
-val geminiModelId: String = localProps.getProperty("GEMINI_MODEL_ID") ?: "gemini-live-25-flash-preview"
+val geminiModelId: String = localProps.getProperty("GEMINI_MODEL_ID") ?: "gemini-3.1-flash-live-preview"
+// Deployment of server/ (Vercel) that mints short-lived Live tokens. Empty = local-key dev mode.
+val vercelBaseUrl: String = localProps.getProperty("VERCEL_BASE_URL", "") ?: ""
 
 android {
     namespace = "com.alpaca.app"
@@ -26,20 +28,22 @@ android {
         applicationId = "com.alpaca.app"
         minSdk = 28
         targetSdk = 36
-        versionCode = 1
-        versionName = "0.1.0"
+        versionCode = 2
+        versionName = "0.2.0"
     }
 
     buildTypes {
         debug {
             buildConfigField("String", "GEMINI_API_KEY", "\"$geminiApiKey\"")
             buildConfigField("String", "GEMINI_MODEL_ID", "\"$geminiModelId\"")
+            buildConfigField("String", "VERCEL_BASE_URL", "\"$vercelBaseUrl\"")
         }
         release {
             isMinifyEnabled = false
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
             buildConfigField("String", "GEMINI_API_KEY", "\"$geminiApiKey\"")
             buildConfigField("String", "GEMINI_MODEL_ID", "\"$geminiModelId\"")
+            buildConfigField("String", "VERCEL_BASE_URL", "\"$vercelBaseUrl\"")
         }
     }
 
@@ -85,4 +89,6 @@ dependencies {
     implementation(libs.kotlinx.serialization.json)
     implementation(libs.okhttp)
     implementation(libs.coroutines.android)
+
+    testImplementation(libs.junit)
 }

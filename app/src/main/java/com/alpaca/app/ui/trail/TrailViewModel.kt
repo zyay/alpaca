@@ -2,7 +2,6 @@ package com.alpaca.app.ui.trail
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.alpaca.app.data.content.CourseUnit
 import com.alpaca.app.data.db.entities.LessonStatus
 import com.alpaca.app.data.db.entities.UserEntity
 import com.alpaca.app.di.AppContainer
@@ -19,11 +18,24 @@ class TrailViewModel(private val container: AppContainer) : ViewModel() {
         val status: LessonStatus
     )
 
-    data class UiState(
-        val unit: CourseUnit? = null,
-        val nodes: List<NodeUi> = emptyList(),
-        val user: UserEntity? = null
+    data class UnitTab(
+        val unitId: String,
+        val title: String,
+        val region: String,
+        val unlocked: Boolean,
+        val completed: Int,
+        val total: Int
     )
+
+    data class UiState(
+        val units: List<UnitTab> = emptyList(),
+        val selectedUnitId: String = "es_u1",
+        val nodes: List<NodeUi> = emptyList(),
+        val user: UserEntity? = null,
+        val mistakeCount: Int = 0
+    ) {
+        val selectedUnit: UnitTab? get() = units.firstOrNull { it.unitId == selectedUnitId }
+    }
 
     private val _state = MutableStateFlow(UiState())
     val state: StateFlow<UiState> = _state
@@ -31,25 +43,54 @@ class TrailViewModel(private val container: AppContainer) : ViewModel() {
     init {
         viewModelScope.launch {
             container.progressRepository.seedIfNeeded()
-            val unit = container.contentRepository.loadUnit()
+            val units = container.contentRepository.loadUnits()
             combine(
                 container.progressRepository.observeProgress(),
-                container.gamificationRepository.observeUser()
-            ) { progress, user ->
-                UiState(
-                    unit = unit,
-                    nodes = unit.lessons.map { lesson ->
+                container.gamificationRepository.observeUser(),
+                container.prefs.prefs,
+                container.mistakeRepository.observeCount()
+            ) { progress, user, prefs, mistakes ->
+                val tabs = units.map { unit ->
+                    UnitTab(
+                        unitId = unit.unitId,
+                        title = unit.title,
+                        region = unit.region,
+                        unlocked = container.progressRepository.unitUnlocked(
+                            units, progress, unit.unitId
+                        ),
+                        completed = unit.lessons.count {
+                            progress[it.lessonId]?.status == LessonStatus.COMPLETE
+                        },
+                        total = unit.lessons.size
+                    )
+                }
+                val selected = tabs.firstOrNull { it.unitId == prefs.currentUnitId }
+                    ?: tabs.firstOrNull { it.unlocked }
+                    ?: tabs.firstOrNull()
+                val nodeUi = if (selected == null) emptyList() else
+                    units.first { it.unitId == selected.unitId }.lessons.map { lesson ->
                         NodeUi(
                             lessonId = lesson.lessonId,
                             title = lesson.title,
                             status = container.progressRepository.effectiveStatus(
-                                unit, progress, lesson.lessonId
+                                units.first { it.unitId == selected.unitId },
+                                progress,
+                                lesson.lessonId
                             )
                         )
-                    },
-                    user = user
+                    }
+                UiState(
+                    units = tabs,
+                    selectedUnitId = selected?.unitId ?: "es_u1",
+                    nodes = nodeUi,
+                    user = user,
+                    mistakeCount = mistakes
                 )
             }.collect { _state.value = it }
         }
+    }
+
+    fun selectUnit(unitId: String) {
+        viewModelScope.launch { container.prefs.setCurrentUnit(unitId) }
     }
 }

@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.alpaca.app.BuildConfig
 import com.alpaca.app.di.AppContainer
+import com.alpaca.app.gemini.GeminiLiveClient
 import com.alpaca.app.gemini.VoiceSessionState
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -56,6 +57,42 @@ class VoiceCallViewModel(private val container: AppContainer) : ViewModel() {
             prompt = SCENARIO_PREFIX +
                 "Scenario: you and the user just met at a language exchange in Madrid. " +
                 "Introduce yourself and ask about their name, where they are from, and what they like."
+        ),
+        Scenario(
+            id = "market",
+            title = "Shopping at the mercado",
+            emoji = "🍎",
+            blurb = "Buy fruit and vegetables, ask prices, count money.",
+            prompt = SCENARIO_PREFIX +
+                "Scenario: you run a fruit stall at the Mercado de la Cebada. " +
+                "The user buys fruit. Offer items, say prices per kilo, weigh produce, and chat a little."
+        ),
+        Scenario(
+            id = "hotel",
+            title = "Hotel check-in",
+            emoji = "🏨",
+            blurb = "You have a booking under your name and questions about breakfast.",
+            prompt = SCENARIO_PREFIX +
+                "Scenario: you are a hotel receptionist in Sevilla. " +
+                "Check the user in, confirm the booking name, mention breakfast times and the wifi password."
+        ),
+        Scenario(
+            id = "doctor",
+            title = "At the pharmacy",
+            emoji = "💊",
+            blurb = "You feel bad and need medicine. Describe symptoms.",
+            prompt = SCENARIO_PREFIX +
+                "Scenario: you are a pharmacist in Valencia. The user feels unwell. " +
+                "Ask what hurts (me duele…), recommend simple over-the-counter help and dosing."
+        ),
+        Scenario(
+            id = "reservation",
+            title = "Booking a table by phone",
+            emoji = "📞",
+            blurb = "Call a restaurant for tonight: how many people, at what time.",
+            prompt = SCENARIO_PREFIX +
+                "Scenario: you answer the phone at a restaurant in Granada. " +
+                "Take the user's reservation: how many people (cuántas personas), what time, and a name."
         )
     )
 
@@ -64,24 +101,49 @@ class VoiceCallViewModel(private val container: AppContainer) : ViewModel() {
     val sessionState: StateFlow<VoiceSessionState> = client.state
     val playbackLevel: StateFlow<Float> = container.audioEngine.playbackLevel
 
-    private val _noKey = MutableStateFlow(false)
-    val noKey: StateFlow<Boolean> = _noKey
+    private val _noCredentials = MutableStateFlow(false)
+    val noCredentials: StateFlow<Boolean> = _noCredentials
 
     private var bargeInJob: Job? = null
 
     fun start(scenario: Scenario) {
-        if (BuildConfig.GEMINI_API_KEY.isBlank()) {
-            _noKey.value = true
-            return
+        viewModelScope.launch {
+            val creds = resolveCredentials()
+            if (creds == null) {
+                _noCredentials.value = true
+                client.disconnect()
+                return@launch
+            }
+            _noCredentials.value = false
+            container.prefs.incrementCalls()
+            client.connect(
+                wsUrl = creds.first,
+                modelId = creds.second,
+                systemPrompt = scenario.prompt,
+                scope = viewModelScope
+            )
+            startBargeInMonitor()
         }
-        _noKey.value = false
-        client.connect(
-            apiKey = BuildConfig.GEMINI_API_KEY,
-            modelId = BuildConfig.GEMINI_MODEL_ID,
-            systemPrompt = scenario.prompt,
-            scope = viewModelScope
-        )
-        startBargeInMonitor()
+    }
+
+    /**
+     * Preferred: short-lived token from the Vercel backend (raw key never ships).
+     * Fallback: local raw key from local.properties, development only.
+     */
+    private suspend fun resolveCredentials(): Pair<String, String>? {
+        val baseUrl = BuildConfig.VERCEL_BASE_URL
+        if (baseUrl.isNotBlank()) {
+            container.tokenClient.fetch(baseUrl).getOrNull()?.let { c ->
+                return c.wsUrl to c.modelId
+            }
+            // Token backend unreachable: fall through only if a local key exists.
+        }
+        val key = BuildConfig.GEMINI_API_KEY
+        return if (key.isNotBlank()) {
+            GeminiLiveClient.wsUrlWithKey(key) to BuildConfig.GEMINI_MODEL_ID
+        } else {
+            null
+        }
     }
 
     private fun startBargeInMonitor() {

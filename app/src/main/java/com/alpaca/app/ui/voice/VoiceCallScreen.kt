@@ -173,7 +173,7 @@ private fun ScenarioPicker(
         }
         Spacer(Modifier.height(12.dp))
         Text(
-            text = "Voice chat uses ${BuildConfig.GEMINI_MODEL_ID} via the Gemini Live API.",
+            text = "Voice calls run through the Gemini Live API with short-lived backend tokens.",
             style = MaterialTheme.typography.bodyMedium,
             color = InkMid,
             textAlign = TextAlign.Center,
@@ -191,7 +191,7 @@ private fun CallScreen(
 ) {
     val state by viewModel.sessionState.collectAsStateWithLifecycle()
     val level by viewModel.playbackLevel.collectAsStateWithLifecycle()
-    val noKey by viewModel.noKey.collectAsStateWithLifecycle()
+    val noCredentials by viewModel.noCredentials.collectAsStateWithLifecycle()
     var muted by remember { mutableStateOf(false) }
 
     val transition = rememberInfiniteTransition(label = "ring")
@@ -290,10 +290,10 @@ private fun CallScreen(
             else -> Unit
         }
 
-        if (noKey) {
+        if (noCredentials) {
             Text(
-                text = "No Gemini API key found. Rotate your key in Google AI Studio, then set " +
-                    "GEMINI_API_KEY in local.properties and rebuild.",
+                text = "No live credentials available. Either the Alpaca token backend is unreachable " +
+                    "or no GEMINI_API_KEY is set locally for development.",
                 style = MaterialTheme.typography.bodyMedium,
                 color = Color(0xFFFFE28A),
                 textAlign = TextAlign.Center

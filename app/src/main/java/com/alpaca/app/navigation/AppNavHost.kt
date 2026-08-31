@@ -9,10 +9,13 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.toRoute
 import com.alpaca.app.AlpacaApp
 import com.alpaca.app.di.LocalViewModelFactory
+import com.alpaca.app.ui.achievements.AchievementsScreen
+import com.alpaca.app.ui.achievements.AchievementsViewModel
 import com.alpaca.app.ui.leaderboard.LeaderboardScreen
 import com.alpaca.app.ui.leaderboard.LeaderboardViewModel
 import com.alpaca.app.ui.lesson.LessonScreen
 import com.alpaca.app.ui.lesson.LessonViewModel
+import com.alpaca.app.ui.onboarding.OnboardingScreen
 import com.alpaca.app.ui.settings.SettingsScreen
 import com.alpaca.app.ui.settings.SettingsViewModel
 import com.alpaca.app.ui.summary.SummaryScreen
@@ -22,6 +25,9 @@ import com.alpaca.app.ui.voice.VoiceCallScreen
 import com.alpaca.app.ui.voice.VoiceCallViewModel
 import com.alpaca.app.util.HapticPlayer
 import kotlinx.serialization.Serializable
+
+@Serializable
+data object OnboardingRoute
 
 @Serializable
 data object TrailRoute
@@ -39,12 +45,16 @@ data object VoiceRoute
 data object LeaderboardRoute
 
 @Serializable
+data object AchievementsRoute
+
+@Serializable
 data object SettingsRoute
 
 @Composable
 fun AppNavHost(
     app: AlpacaApp,
     haptics: HapticPlayer?,
+    onboarded: Boolean,
     modifier: Modifier = Modifier
 ) {
     val navController = rememberNavController()
@@ -52,9 +62,20 @@ fun AppNavHost(
 
     NavHost(
         navController = navController,
-        startDestination = TrailRoute,
+        startDestination = if (onboarded) TrailRoute else OnboardingRoute,
         modifier = modifier
     ) {
+        composable<OnboardingRoute> {
+            OnboardingScreen(
+                container = app.container,
+                onDone = {
+                    navController.navigate(TrailRoute) {
+                        popUpTo(OnboardingRoute) { inclusive = true }
+                    }
+                }
+            )
+        }
+
         composable<TrailRoute> {
             val viewModel: TrailViewModel = viewModel(factory = factory)
             TrailScreen(
@@ -62,6 +83,7 @@ fun AppNavHost(
                 onOpenLesson = { lessonId -> navController.navigate(LessonRoute(lessonId)) },
                 onOpenVoice = { navController.navigate(VoiceRoute) },
                 onOpenLeaderboard = { navController.navigate(LeaderboardRoute) },
+                onOpenAchievements = { navController.navigate(AchievementsRoute) },
                 onOpenSettings = { navController.navigate(SettingsRoute) },
                 haptics = haptics
             )
@@ -102,6 +124,11 @@ fun AppNavHost(
         composable<LeaderboardRoute> {
             val viewModel: LeaderboardViewModel = viewModel(factory = factory)
             LeaderboardScreen(viewModel = viewModel, onBack = { navController.popBackStack() })
+        }
+
+        composable<AchievementsRoute> {
+            val viewModel: AchievementsViewModel = viewModel(factory = factory)
+            AchievementsScreen(viewModel = viewModel, onBack = { navController.popBackStack() })
         }
 
         composable<SettingsRoute> {

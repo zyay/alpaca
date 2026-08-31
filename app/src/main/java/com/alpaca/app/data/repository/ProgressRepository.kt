@@ -1,7 +1,6 @@
 package com.alpaca.app.data.repository
 
 import com.alpaca.app.data.content.ContentRepository
-import com.alpaca.app.data.content.CourseUnit
 import com.alpaca.app.data.db.AlpacaDatabase
 import com.alpaca.app.data.db.entities.LessonProgressEntity
 import com.alpaca.app.data.db.entities.LessonStatus
@@ -19,23 +18,24 @@ class ProgressRepository(
 
     suspend fun seedIfNeeded() {
         if (progressDao.count() > 0) return
-        val unit = content.loadUnit()
-        unit.lessons.forEachIndexed { index, lesson ->
-            progressDao.upsert(
-                LessonProgressEntity(
-                    lessonId = lesson.lessonId,
-                    status = if (index == 0) LessonStatus.AVAILABLE else LessonStatus.LOCKED
+        content.loadUnits().forEach { unit ->
+            unit.lessons.forEachIndexed { index, lesson ->
+                progressDao.upsert(
+                    LessonProgressEntity(
+                        lessonId = lesson.lessonId,
+                        status = if (index == 0) LessonStatus.AVAILABLE else LessonStatus.LOCKED
+                    )
                 )
-            )
+            }
         }
     }
 
     /**
-     * Trail state is derived: lessons unlock strictly in order, so the effective
-     * status never depends on stale rows alone.
+     * Trail state is derived: lessons unlock strictly in order within their unit,
+     * so the effective status never depends on stale rows alone.
      */
     fun effectiveStatus(
-        unit: CourseUnit,
+        unit: com.alpaca.app.data.content.CourseUnit,
         progress: Map<String, LessonProgressEntity>,
         lessonId: String
     ): LessonStatus {
@@ -51,8 +51,19 @@ class ProgressRepository(
         }
     }
 
+    fun unitUnlocked(
+        units: List<com.alpaca.app.data.content.CourseUnit>,
+        progress: Map<String, LessonProgressEntity>,
+        unitId: String
+    ): Boolean {
+        val index = units.indexOfFirst { it.unitId == unitId }
+        if (index <= 0) return true
+        val previous = units[index - 1]
+        return previous.lessons.all { progress[it.lessonId]?.status == LessonStatus.COMPLETE }
+    }
+
     suspend fun completeLesson(lessonId: String, scorePercent: Int) {
-        val unit = content.loadUnit()
+        if (lessonId == ContentRepository.REVIEW_LESSON_ID) return
         val current = progressDao.get(lessonId) ?: LessonProgressEntity(lessonId)
         progressDao.upsert(
             current.copy(
@@ -61,6 +72,9 @@ class ProgressRepository(
                 attempts = current.attempts + 1
             )
         )
+        val unit = content.loadUnits().firstOrNull { u ->
+            u.lessons.any { it.lessonId == lessonId }
+        } ?: return
         val nextLessonId = unit.lessons
             .dropWhile { it.lessonId != lessonId }
             .getOrNull(1)?.lessonId
@@ -73,7 +87,11 @@ class ProgressRepository(
     }
 
     suspend fun recordAttempt(lessonId: String) {
+        if (lessonId == ContentRepository.REVIEW_LESSON_ID) return
         val current = progressDao.get(lessonId) ?: LessonProgressEntity(lessonId)
         progressDao.upsert(current.copy(attempts = current.attempts + 1))
     }
+
+    suspend fun completedLessonCount(progress: Map<String, LessonProgressEntity>): Int =
+        progress.values.count { it.status == LessonStatus.COMPLETE }
 }

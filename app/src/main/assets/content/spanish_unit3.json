@@ -1,0 +1,353 @@
+{
+  "unitId": "es_u3",
+  "title": "Viajes y Transporte",
+  "region": "Camino del Sol",
+  "languageName": "Spanish",
+  "lessons": [
+    {
+      "lessonId": "es_u3_l1",
+      "title": "En el aeropuerto",
+      "exercises": [
+        {
+          "type": "multiple_choice",
+          "prompt": "How do you say \"boarding pass\"?",
+          "options": ["la tarjeta de embarque", "el equipaje facturado", "la puerta de salida", "el vuelo retrasado"],
+          "correctIndex": 0,
+          "explanation": "\"Embarque\" relates to boarding — ¡buena suerte en el vuelo!"
+        },
+        {
+          "type": "listening",
+          "text": "¿Dónde está la puerta veintidós?",
+          "options": ["Where is gate 22?", "When does flight 22 leave?", "Who is at the gate?", "Is gate 22 open?"],
+          "correctIndex": 0,
+          "explanation": "\"Puerta\" means gate at an airport (and door elsewhere)."
+        },
+        {
+          "type": "match_pairs",
+          "pairs": [["el pasaporte", "passport"], ["la maleta", "suitcase"], ["el vuelo", "flight"], ["la salida", "departure"]]
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Vengo a ___ de mano",
+          "answer": "equipaje",
+          "wordBank": ["equipaje", "pasaporte", "billete", "asiento"],
+          "explanation": "\"Equipaje de mano\" is carry-on luggage."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "The screen says \"Vuelo cancelado\" — what happened?",
+          "options": ["The flight is cancelled", "The flight is early", "The flight is full", "The flight has landed"],
+          "correctIndex": 0,
+          "explanation": "\"Cancelado\" = cancelled; \"retrasado\" = delayed."
+        },
+        {
+          "type": "pronunciation",
+          "expected": "Facturo una maleta",
+          "translation": "I'm checking one suitcase",
+          "explanation": "\"Facturar\" = to check in baggage."
+        },
+        {
+          "type": "listening",
+          "text": "Es un vuelo directo",
+          "options": ["It's a direct flight", "It's a delayed flight", "It's a domestic flight", "It's a night flight"],
+          "correctIndex": 0,
+          "explanation": "\"Directo\" vs \"con escala\" (with a layover)."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "¿A qué ___ sale el autobús?",
+          "answer": "hora",
+          "wordBank": ["hora", "puerta", "ventanilla", "avenida"],
+          "explanation": "\"¿A qué hora…?\" = at what time."
+        },
+        {
+          "type": "match_pairs",
+          "pairs": [["la llegada", "arrival"], ["el aterrizaje", "landing"], ["la ventanilla", "window seat"], ["el pasillo", "aisle"]]
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "How do you ask \"Where is baggage claim?\"",
+          "options": ["¿Dónde está la recogida de equipaje?", "¿Dónde facturo?", "¿Dónde está la aduana?", "¿Dónde compro un billete?"],
+          "correctIndex": 0,
+          "explanation": "\"Recogida de equipaje\" — baggage claim."
+        }
+      ]
+    },
+    {
+      "lessonId": "es_u3_l2",
+      "title": "En el tren",
+      "exercises": [
+        {
+          "type": "multiple_choice",
+          "prompt": "What does \"un billete de ida y vuelta\" mean?",
+          "options": ["A round-trip ticket", "A one-way ticket", "A bus pass", "A reserved seat"],
+          "correctIndex": 0,
+          "explanation": "\"Ida\" = outbound, \"vuelta\" = return."
+        },
+        {
+          "type": "listening",
+          "text": "El tren sale con retraso",
+          "options": ["The train is leaving late", "The train has arrived", "The train is full", "The train leaves at nine"],
+          "correctIndex": 0,
+          "explanation": "\"Con retraso\" = delayed."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Andén cinco, ___ a Barcelona",
+          "answer": "tren",
+          "wordBank": ["tren", "autobús", "metro", "avión"],
+          "explanation": "\"Andén\" is the platform."
+        },
+        {
+          "type": "match_pairs",
+          "pairs": [["el billete", "ticket"], ["la máquina expendedora", "ticket machine"], ["el tren de alta velocidad", "high-speed train"], ["el viaje", "journey"]]
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "How do you say \"I missed the train\"?",
+          "options": ["He perdido el tren", "He comprado el tren", "Espero el tren", "El tren está lleno"],
+          "correctIndex": 0,
+          "explanation": "\"Perder\" = to lose / to miss (transport)."
+        },
+        {
+          "type": "pronunciation",
+          "expected": "Un billete para Sevilla",
+          "translation": "A ticket to Seville",
+          "explanation": "\"Para\" + destination works like \"to\"."
+        },
+        {
+          "type": "listening",
+          "text": "Próxima parada: Goya",
+          "options": ["Next stop: Goya", "Last stop: Goya", "Change at Goya", "Mind the gap at Goya"],
+          "correctIndex": 0,
+          "explanation": "\"Próxima parada\" — the metro announcement you'll hear everywhere."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Tengo que ___ de tren en Atocha",
+          "answer": "cambiar",
+          "wordBank": ["cambiar", "subir", "bajar", "salir"],
+          "explanation": "\"Cambiar de tren\" = to change trains."
+        },
+        {
+          "type": "match_pairs",
+          "pairs": [["subir", "to go up / board"], ["bajar", "to go down / get off"], ["el asiento", "seat"], ["el equipaje", "luggage"]]
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "\"¿Este tren va a Valencia?\" — you're asking…",
+          "options": ["if the train goes to Valencia", "when the train arrives", "where the café is", "how much the ticket costs"],
+          "correctIndex": 0,
+          "explanation": "\"Ir a + place\" = to go to a place."
+        }
+      ]
+    },
+    {
+      "lessonId": "es_u3_l3",
+      "title": "En la ciudad",
+      "exercises": [
+        {
+          "type": "multiple_choice",
+          "prompt": "How do you say \"the city hall\"?",
+          "options": ["el ayuntamiento", "la iglesia", "el banco", "la farmacia"],
+          "correctIndex": 0,
+          "explanation": "\"Ayuntamiento\" — town hall, seen on old buildings everywhere."
+        },
+        {
+          "type": "listening",
+          "text": "Gire a la izquierda en la rotonda",
+          "options": ["Turn left at the roundabout", "Turn right at the corner", "Go straight to the bridge", "Stop at the traffic light"],
+          "correctIndex": 0,
+          "explanation": "\"Rotonda\" = roundabout; Spain loves them."
+        },
+        {
+          "type": "match_pairs",
+          "pairs": [["la farmacia", "pharmacy"], ["el banco", "bank"], ["la iglesia", "church"], ["el parque", "park"]]
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "El ___ pasa cada diez minutos",
+          "answer": "autobús",
+          "wordBank": ["autobús", "semáforo", "túnel", "puente"],
+          "explanation": "\"Autobús\" (or \"guagua\" in the Canary Islands!)."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "What does \"Está al lado de la plaza\" mean?",
+          "options": ["It's next to the square", "It's under the bridge", "It's across the street", "It's in the park"],
+          "correctIndex": 0,
+          "explanation": "\"Al lado de\" = next to."
+        },
+        {
+          "type": "pronunciation",
+          "expected": "¿Me puede decir cómo llego al museo?",
+          "translation": "Can you tell me how to get to the museum?",
+          "explanation": "A long but golden phrase for asking directions."
+        },
+        {
+          "type": "listening",
+          "text": "Cruce el puente y siga recto",
+          "options": ["Cross the bridge and keep straight", "Turn around the plaza", "Take the tunnel on the left", "Stop before the square"],
+          "correctIndex": 0,
+          "explanation": "\"Cruzar\" = to cross."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "El museo está ___ la catedral",
+          "answer": "frente a",
+          "wordBank": ["frente a", "debajo de", "encima de", "dentro de"],
+          "explanation": "\"Frente a\" = in front of / opposite."
+        },
+        {
+          "type": "match_pairs",
+          "pairs": [["el semáforo", "traffic light"], ["la acera", "sidewalk"], ["la esquina", "corner"], ["el cruce", "intersection"]]
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "How do you say \"it's a five-minute walk\"?",
+          "options": ["Está a cinco minutos andando", "Tengo cinco minutos", "El autobús sale en cinco", "Camina muy rápido"],
+          "correctIndex": 0,
+          "explanation": "\"Andando\" = on foot."
+        }
+      ]
+    },
+    {
+      "lessonId": "es_u3_l4",
+      "title": "Conduciendo",
+      "exercises": [
+        {
+          "type": "multiple_choice",
+          "prompt": "What does \"¡Cuidado!\" warn you about?",
+          "options": ["Watch out!", "Good luck!", "How nice!", "See you!"],
+          "correctIndex": 0,
+          "explanation": "\"Cuidado\" = care — watch out!"
+        },
+        {
+          "type": "listening",
+          "text": "No se puede aparcar aquí",
+          "options": ["You can't park here", "You can't drive here", "The car is parked", "Parking is free here"],
+          "correctIndex": 0,
+          "explanation": "\"Aparcar\" = to park (\"estacionar\" also works)."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Reduzca la ___; hay un colegio",
+          "answer": "velocidad",
+          "wordBank": ["velocidad", "marcha", "llave", "gasolina"],
+          "explanation": "\"Reducir la velocidad\" = slow down."
+        },
+        {
+          "type": "match_pairs",
+          "pairs": [["la gasolina", "petrol"], ["el taller", "garage"], ["la rueda", "wheel"], ["el cinturón", "seatbelt"]]
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "The sign says \"Peaje\" — you must…",
+          "options": ["pay a toll", "show your license", "stop completely", "yield to pedestrians"],
+          "correctIndex": 0,
+          "explanation": "\"Peaje\" = toll on Spanish motorways."
+        },
+        {
+          "type": "pronunciation",
+          "expected": "¿Dónde hay una gasolinera?",
+          "translation": "Where is a petrol station?",
+          "explanation": "\"Gasolinera\" — petrol station."
+        },
+        {
+          "type": "listening",
+          "text": "El depósito está casi vacío",
+          "options": ["The tank is almost empty", "The trunk is full", "The tyre is flat", "The engine is hot"],
+          "correctIndex": 0,
+          "explanation": "\"Depósito\" = fuel tank; \"rueda pinchada\" = flat tyre."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Ponga ___ el coche en la cuesta",
+          "answer": "freno de mano",
+          "wordBank": ["freno de mano", "marcha atrás", "intermitente", "limpiaparabrisas"],
+          "explanation": "Handbrake: the hill-saver."
+        },
+        {
+          "type": "match_pairs",
+          "pairs": [["el intermitente", "indicator"], ["el manillar", "handlebars"], ["la bocina", "horn"], ["el parabrisas", "windscreen"]]
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "How do you say \"I've got a flat tyre\"?",
+          "options": ["Tengo una rueda pinchada", "Tengo el depósito lleno", "Se me ha acabado la gasolina", "El coche no arranca"],
+          "correctIndex": 0,
+          "explanation": "Learn it before you need it!"
+        }
+      ]
+    },
+    {
+      "lessonId": "es_u3_l5",
+      "title": "De vacaciones",
+      "exercises": [
+        {
+          "type": "multiple_choice",
+          "prompt": "How do you say \"I'd like to book a room\"?",
+          "options": ["Quisiera reservar una habitación", "Tengo una reserva", "¿Hay parking?", "Quiero pagar ahora"],
+          "correctIndex": 0,
+          "explanation": "\"Quisiera\" is the polite \"I'd like\"."
+        },
+        {
+          "type": "listening",
+          "text": "Tenemos una reserva a nombre de García",
+          "options": ["We have a booking under García", "We lost your booking", "The room is ready", "Breakfast is included"],
+          "correctIndex": 0,
+          "explanation": "\"A nombre de\" = in the name of."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "¿A qué hora es el ___?",
+          "answer": "check-out",
+          "wordBank": ["check-out", "desayuno", "ascensor", "pasillo"],
+          "explanation": "Yes, hotels say \"el check-out\" — or \"la salida\"."
+        },
+        {
+          "type": "match_pairs",
+          "pairs": [["la playa", "beach"], ["la montaña", "mountain"], ["el sol", "sun"], ["la sombrilla", "parasol"]]
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "What does \"¡Qué vistas!\" mean?",
+          "options": ["What a view!", "What tourists!", "What a price!", "What weather!"],
+          "correctIndex": 0,
+          "explanation": "Sigh it loudly at every viewpoint — \"¡qué vistas!\""
+        },
+        {
+          "type": "pronunciation",
+          "expected": "¿Está incluida la piscina?",
+          "translation": "Is the pool included?",
+          "explanation": "The essential hotel question."
+        },
+        {
+          "type": "listening",
+          "text": "La toalla está mojada",
+          "options": ["The towel is wet", "The room is cold", "The sea is calm", "The bed is soft"],
+          "correctIndex": 0,
+          "explanation": "\"Mojado/mojada\" = wet."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Hoy hacemos ___ guiada por la ciudad",
+          "answer": "una",
+          "wordBank": ["una", "dos", "la", "sin"],
+          "explanation": "\"Una visita guiada\" = a guided tour."
+        },
+        {
+          "type": "match_pairs",
+          "pairs": [["el recuerdo", "souvenir"], ["la foto", "photo"], ["el billete de autobús", "bus ticket"], ["el mapa", "map"]]
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "How do you say \"Have a good trip!\"?",
+          "options": ["¡Buen viaje!", "¡Buena suerte!", "¡Buen provecho!", "¡Hasta pronto!"],
+          "correctIndex": 0,
+          "explanation": "\"Buen viaje\" is what locals shout as you leave."
+        }
+      ]
+    }
+  ]
+}

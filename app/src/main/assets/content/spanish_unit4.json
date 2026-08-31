@@ -1,0 +1,353 @@
+{
+  "unitId": "es_u4",
+  "title": "Tiempo y Clima",
+  "region": "Nevado Azul",
+  "languageName": "Spanish",
+  "lessons": [
+    {
+      "lessonId": "es_u4_l1",
+      "title": "Las horas",
+      "exercises": [
+        {
+          "type": "multiple_choice",
+          "prompt": "How do you ask \"What time is it?\"",
+          "options": ["¿Qué hora es?", "¿Cuándo es?", "¿Cómo va?", "¿A qué viene?"],
+          "correctIndex": 0,
+          "explanation": "\"¿Qué hora es?\" — the classic."
+        },
+        {
+          "type": "listening",
+          "text": "Son las tres y media",
+          "options": ["It's 3:30", "It's 3:15", "It's 2:30", "It's half past four"],
+          "correctIndex": 0,
+          "explanation": "\"Y media\" = and a half."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Son las cinco ___ cuarto",
+          "answer": "y",
+          "wordBank": ["y", "a", "en", "de"],
+          "explanation": "\"Y cuarto\" = quarter past."
+        },
+        {
+          "type": "match_pairs",
+          "pairs": [["la una", "1 o'clock"], ["las dos", "2 o'clock"], ["las doce", "12 o'clock"], ["el mediodía", "midday"]]
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "What does \"a las ocho de la tarde\" mean?",
+          "options": ["at 8 p.m.", "at 8 a.m.", "in eight evenings", "eight times late"],
+          "correctIndex": 0,
+          "explanation": "\"De la tarde\" pins it to the evening."
+        },
+        {
+          "type": "pronunciation",
+          "expected": "Son las siete de la mañana",
+          "translation": "It's 7 a.m.",
+          "explanation": "Time-telling always starts with \"son las…\" (except una)."
+        },
+        {
+          "type": "listening",
+          "text": "Me levanto a las siete",
+          "options": ["I get up at seven", "I go to bed at seven", "I eat at seven", "I run at seven"],
+          "correctIndex": 0,
+          "explanation": "\"Levantarse\" = to get up."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "La cita es ___ las nueve",
+          "answer": "a",
+          "wordBank": ["a", "en", "por", "sobre"],
+          "explanation": "Clock times take \"a las\"."
+        },
+        {
+          "type": "match_pairs",
+          "pairs": [["temprano", "early"], ["tarde", "late"], ["ahora", "now"], ["luego", "later"]]
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "How do you say \"See you at noon\"?",
+          "options": ["Hasta el mediodía", "Buenas noches", "Hasta mañana", "Buenos días"],
+          "correctIndex": 0,
+          "explanation": "\"Mediodía\" is midday — Spain runs on it."
+        }
+      ]
+    },
+    {
+      "lessonId": "es_u4_l2",
+      "title": "Los días de la semana",
+      "exercises": [
+        {
+          "type": "match_pairs",
+          "pairs": [["lunes", "Monday"], ["martes", "Tuesday"], ["miércoles", "Wednesday"], ["jueves", "Thursday"]]
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "Which day comes after viernes?",
+          "options": ["sábado", "domingo", "lunes", "jueves"],
+          "correctIndex": 0,
+          "explanation": "Sábado follows viernes; domingo ends the week."
+        },
+        {
+          "type": "listening",
+          "text": "El museo cierra los lunes",
+          "options": ["The museum closes on Mondays", "The museum opens on Mondays", "It closed last Monday", "Mondays are busy"],
+          "correctIndex": 0,
+          "explanation": "\"Los lunes\" = on Mondays (note: no preposition needed)."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Hoy es ___ y mañana martes",
+          "answer": "lunes",
+          "wordBank": ["lunes", "viernes", "domingo", "ayer"],
+          "explanation": "If tomorrow is martes, today is lunes."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "What does \"el fin de semana\" mean?",
+          "options": ["the weekend", "the end of the month", "next week", "holiday season"],
+          "correctIndex": 0,
+          "explanation": "The most important two days of the calendar."
+        },
+        {
+          "type": "pronunciation",
+          "expected": "¿Qué haces el miércoles?",
+          "translation": "What are you doing on Wednesday?",
+          "explanation": "Stress: MIÉR-coles."
+        },
+        {
+          "type": "listening",
+          "text": "El jueves tengo una reunión",
+          "options": ["I have a meeting on Thursday", "I have a party on Thursday", "The meeting was Tuesday", "Thursday is free"],
+          "correctIndex": 0,
+          "explanation": "\"Reunión\" = meeting."
+        },
+        {
+          "type": "match_pairs",
+          "pairs": [["ayer", "yesterday"], ["hoy", "today"], ["mañana", "tomorrow"], ["la semana que viene", "next week"]]
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Cada ___ voy al gimnasio",
+          "answer": "martes",
+          "wordBank": ["martes", "noche", "café", "parque"],
+          "explanation": "\"Cada + day\" = every …"
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "How do you say \"on the weekend, we relax\"?",
+          "options": ["El fin de semana descansamos", "La semana trabajamos", "El lunes corremos", "Hoy estudio"],
+          "correctIndex": 0,
+          "explanation": "Spanish often drops \"en\" — just \"el fin de semana\"."
+        }
+      ]
+    },
+    {
+      "lessonId": "es_u4_l3",
+      "title": "Los meses y fechas",
+      "exercises": [
+        {
+          "type": "match_pairs",
+          "pairs": [["enero", "January"], ["febrero", "February"], ["marzo", "March"], ["abril", "April"]]
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "How are Spanish dates written?",
+          "options": ["el 5 de mayo", "mayo 5", "5 mayo el", "de mayo 5"],
+          "correctIndex": 0,
+          "explanation": "\"Day + de + month\" — no \"th\" endings."
+        },
+        {
+          "type": "listening",
+          "text": "Mi cumpleaños es en agosto",
+          "options": ["My birthday is in August", "My anniversary is in August", "I was born nine years ago", "August is hot"],
+          "correctIndex": 0,
+          "explanation": "Months use \"en\": en agosto."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "La fiesta es el ___ de junio",
+          "answer": "veintitrés",
+          "wordBank": ["veintitrés", "dos mil", "quince minutos", "primer"],
+          "explanation": "Dates use cardinal numbers, not ordinals (mostly)."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "Which season is \"el otoño\"?",
+          "options": ["autumn", "spring", "winter", "summer"],
+          "correctIndex": 0,
+          "explanation": "primavera, verano, otoño, invierno."
+        },
+        {
+          "type": "pronunciation",
+          "expected": "Estamos a doce de octubre",
+          "translation": "It's the 12th of October",
+          "explanation": "\"Estar a + date\" is how you say the date."
+        },
+        {
+          "type": "listening",
+          "text": "Las vacaciones empiezan en julio",
+          "options": ["Holiday starts in July", "Work starts in July", "July is very cold", "We left in June"],
+          "correctIndex": 0,
+          "explanation": "\"Empezar\" = to begin."
+        },
+        {
+          "type": "match_pairs",
+          "pairs": [["el año", "year"], ["la década", "decade"], ["el siglo", "century"], ["el aniversario", "anniversary"]]
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Nos vemos dentro de ___ semanas",
+          "answer": "dos",
+          "wordBank": ["dos", "las", "cada", "muy"],
+          "explanation": "\"Dentro de\" = in (time from now)."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "What does \"el año pasado\" mean?",
+          "options": ["last year", "next year", "this year", "every year"],
+          "correctIndex": 0,
+          "explanation": "\"Pasado\" = past; \"próximo\" = next."
+        }
+      ]
+    },
+    {
+      "lessonId": "es_u4_l4",
+      "title": "El clima",
+      "exercises": [
+        {
+          "type": "multiple_choice",
+          "prompt": "How do you say \"It's raining\"?",
+          "options": ["Está lloviendo", "Hace lluvia", "Es lluvioso", "Llueve mucho ayer"],
+          "correctIndex": 0,
+          "explanation": "\"Estar lloviendo\" = it's raining right now."
+        },
+        {
+          "type": "listening",
+          "text": "Hace mucho frío hoy",
+          "options": ["It's very cold today", "It's very hot today", "I'm cold-hearted", "Today has wind"],
+          "correctIndex": 0,
+          "explanation": "Weather uses \"hacer\": hace frío/calor."
+        },
+        {
+          "type": "match_pairs",
+          "pairs": [["el sol", "sun"], ["la lluvia", "rain"], ["el viento", "wind"], ["la nieve", "snow"]]
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Mañana está ___ de sol",
+          "answer": "nublado",
+          "wordBank": ["nublado", "mojado", "helado", "lleno"],
+          "explanation": "\"Nublado\" = cloudy."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "\"Hace buen tiempo\" means…",
+          "options": ["the weather is nice", "it's good timing", "they have time", "it takes long"],
+          "correctIndex": 0,
+          "explanation": "\"Tiempo\" = time AND weather. Context wins."
+        },
+        {
+          "type": "pronunciation",
+          "expected": "¿Va a llover?",
+          "translation": "Is it going to rain?",
+          "explanation": "\"Ir a + infinitive\" = going to …"
+        },
+        {
+          "type": "listening",
+          "text": "Hay niebla en la carretera",
+          "options": ["There is fog on the road", "There is ice on the road", "The road is closed", "It's clear outside"],
+          "correctIndex": 0,
+          "explanation": "\"Hay\" = there is/are; \"niebla\" = fog."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "En invierno puede ___ nieve",
+          "answer": "nevar",
+          "wordBank": ["nevar", "llover", "helar", "salir"],
+          "explanation": "\"Puede nevar\" = it may snow."
+        },
+        {
+          "type": "match_pairs",
+          "pairs": [["el paraguas", "umbrella"], ["las gafas de sol", "sunglasses"], ["el cortavientos", "windbreaker"], ["la crema solar", "suncream"]]
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "How do you say \"What's the weather like?\"",
+          "options": ["¿Qué tiempo hace?", "¿Qué horas son?", "¿Cómo está el tiempo muerto?", "¿Dónde llueve?"],
+          "correctIndex": 0,
+          "explanation": "Ask \"¿Qué tiempo hace?\" — never about the dead time."
+        }
+      ]
+    },
+    {
+      "lessonId": "es_u4_l5",
+      "title": "Rutinas diarias",
+      "exercises": [
+        {
+          "type": "multiple_choice",
+          "prompt": "What does \"me ducho\" mean?",
+          "options": ["I shower", "I dream", "I doubt", "I dance"],
+          "correctIndex": 0,
+          "explanation": "Reflexive verb: ducharse."
+        },
+        {
+          "type": "listening",
+          "text": "Desayuno café con tostadas",
+          "options": ["I have coffee and toast for breakfast", "I eat dinner late", "I buy bread daily", "The café opens at dawn"],
+          "correctIndex": 0,
+          "explanation": "\"Desayunar\" = to have breakfast."
+        },
+        {
+          "type": "match_pairs",
+          "pairs": [["cepillarse los dientes", "to brush teeth"], ["acostarse", "to go to bed"], ["levantarse", "to get up"], ["bañarse", "to bathe"]]
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "___ la cama por la mañana",
+          "answer": "Hago",
+          "wordBank": ["Hago", "Doy", "Voy", "Tengo"],
+          "explanation": "\"Hacer la cama\" = to make the bed."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "\"Salgo del trabajo a las seis\" — when do you leave work?",
+          "options": ["at six", "at five", "at ten", "at four"],
+          "correctIndex": 0,
+          "explanation": "\"Salir de\" = to leave/exit."
+        },
+        {
+          "type": "pronunciation",
+          "expected": "Normalmente ceno a las nueve",
+          "translation": "I usually have dinner at nine",
+          "explanation": "Spaniards eat dinner late — nine is normal!"
+        },
+        {
+          "type": "listening",
+          "text": "A veces paseo por el parque",
+          "options": ["Sometimes I walk in the park", "I always run marathons", "The park is far away", "I walk to work"],
+          "correctIndex": 0,
+          "explanation": "\"A veces\" = sometimes; \"pasear\" = to stroll."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "___ a casa en metro",
+          "answer": "Vuelvo",
+          "wordBank": ["Vuelvo", "Suena", "Pierdo", "Tengo"],
+          "explanation": "\"Volver a casa\" = to return home."
+        },
+        {
+          "type": "match_pairs",
+          "pairs": [["siempre", "always"], ["nunca", "never"], ["a menudo", "often"], ["todos los días", "every day"]]
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "How do you say \"I take a nap\"?",
+          "options": ["Echo una siesta", "Duermo poco", "Descanso el pie", "Cierro los libros"],
+          "correctIndex": 0,
+          "explanation": "\"Echar una siesta\" — a national treasure."
+        }
+      ]
+    }
+  ]
+}

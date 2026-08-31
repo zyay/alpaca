@@ -48,13 +48,12 @@ class GeminiLiveClient(private val audioEngine: AudioEngine) {
     private var scope: CoroutineScope? = null
     private var micJob: Job? = null
 
-    fun connect(apiKey: String, modelId: String, systemPrompt: String, scope: CoroutineScope) {
+    fun connect(wsUrl: String, modelId: String, systemPrompt: String, scope: CoroutineScope) {
         disconnect()
         this.scope = scope
         _state.value = VoiceSessionState.Connecting
 
-        val url = LIVE_ENDPOINT + "?key=$apiKey"
-        val request = Request.Builder().url(url).build()
+        val request = Request.Builder().url(wsUrl).build()
         webSocket = httpClient.newWebSocket(
             request,
             object : WebSocketListener() {
@@ -201,6 +200,10 @@ class GeminiLiveClient(private val audioEngine: AudioEngine) {
         private const val TAG = "GeminiLive"
         private const val LIVE_ENDPOINT =
             "wss://generativelanguage.googleapis.com/ws/google.ai.generativelanguage.v1beta.GenerativeService.BidiGenerateContent"
+
+        /** Local-dev fallback: direct connection authenticated by a raw API key. */
+        fun wsUrlWithKey(apiKey: String): String = "$LIVE_ENDPOINT?key=$apiKey"
+
         private const val VOICE = "Kore"
     }
 }

@@ -11,14 +11,19 @@ a streak, and when you get an answer wrong he plays his signature move: a
 **spit-take** — a droplet of water splatters the screen, clears, and reveals the
 correct answer with a one-line explanation of *why*.
 
-## What's inside v0.1.0
+## What's inside v0.2.0
 
 | Feature | Details |
 |---|---|
-| 🗺️ **The Andes Trail** | Winding gamified lesson path with sequential unlocking and persistent progress (Room) |
-| 📚 **5 full lessons** | Greetings · Numbers · Ordering food · Introductions · Directions — 50 exercises, 5 types: multiple choice, match pairs, fill-in-the-blank, listening (TTS), pronunciation |
+| 🗺️ **The Andes Trail** | Winding gamified lesson path — **5 regions, 25 lessons, 250 exercises** with sequential unit unlocking |
+| 📚 **6 exercise types' worth of content** | multiple choice · match pairs · fill-in-the-blank · listening (TTS) · pronunciation — every wrong-answer exercise carries a one-line grammar explanation |
+| 🔁 **Repaso de errores** | Every mistake is logged; a dedicated review lesson rebuilds exercises from your personal error history |
+| 🏅 **Achievements** | 8 unlockable badges (first lesson, streaks, perfect lessons, voice calls, XP milestones) |
 | 🔥 **Gamification** | XP, daily streaks, Paco Coins, Fleece Energy (5 tufts, regrows 1 per 30 min), confetti, spring physics + haptics everywhere |
-| 💬 **Real-World Simulator** | Live voice calls with Paco (café, train station, directions, new friend) over the Gemini Multimodal Live API — full-duplex audio, barge-in interruption, scenario personas |
+| 🔊 **Sound design** | Zero-asset sound effects via platform `ToneGenerator` (correct/wrong/select/finish), gated by the sound preference |
+| 👋 **Onboarding** | Paco greets you, learns your name, then drops you on the trail |
+| 💬 **Real-World Simulator** | Live voice calls (café, market, hotel, doctor, reservation, ticket, directions, new friend) over the Gemini Multimodal Live API — full-duplex audio, barge-in interruption, scenario personas |
+| 🔐 **Key-less distribution** | Voice calls authenticate with **short-lived ephemeral tokens** minted by a Vercel serverless function — the raw API key never ships in the APK |
 | 🦙 **Paco, drawn in code** | The mascot is a Canvas-drawn character with 4 animated moods (idle bounce, happy hop, spit-take, sad) — zero image assets |
 | 🎨 **Design** | Material 3 + Material You dynamic color, Duolingo-style pill buttons with hard 3D edges |
 
@@ -35,25 +40,48 @@ Grab `app-debug.apk` from the
 [latest release](https://github.com/zyay/alpaca/releases/latest) and install it.
 Everything except live voice chat works out of the box.
 
-To enable voice calls:
+### Voice calls — the safe path (recommended)
 
-1. Get a key from [Google AI Studio](https://aistudio.google.com/apikey).
-2. Create `local.properties` in the project root:
-   ```properties
-   sdk.dir=C\:\\Users\\you\\AppData\\Local\\Android\\Sdk
-   GEMINI_API_KEY=your_key_here
-   ```
-3. Build and install (needs JDK 17+ — Android Studio's JBR works):
-   ```bash
-   export JAVA_HOME="C:/Program Files/Android/Android Studio/jbr"   # or your JDK 17+
-   ./gradlew assembleDebug
-   adb install -r app/build/outputs/apk/debug/app-debug.apk
-   ```
+Voice calls need a Gemini Live credential. The clean way is the bundled Vercel
+token server, so no key ever reaches the APK:
 
-> **Security:** the prototype ships the key in `BuildConfig` from
-> `local.properties` (gitignored) for convenience. Production must use a
-> backend-issued ephemeral token instead — never embed a real key in a
-> distributed app.
+```bash
+cd server
+vercel login
+vercel                       # link the project
+vercel env add GEMINI_API_KEY production   # paste your key when prompted
+vercel deploy --prod
+```
+
+Then in the project root's `local.properties`:
+
+```properties
+sdk.dir=C\:\\Users\\you\\AppData\\Local\\Android\\Sdk
+VERCEL_BASE_URL=https://your-project.vercel.app
+```
+
+Rebuild, and the app mints a single-use token (15 min TTL) per call session.
+See [server/README.md](server/README.md).
+
+### Voice calls — local-dev fallback
+
+For quick device testing you can skip the backend and bake a key into
+`BuildConfig` (debug builds only, `local.properties` is gitignored — never
+commit or redistribute the resulting APK):
+
+```properties
+GEMINI_API_KEY=your_key_here
+```
+
+Get a key at [Google AI Studio](https://aistudio.google.com/apikey).
+
+Build:
+
+```bash
+export JAVA_HOME="C:/Program Files/Android/Android Studio/jbr"   # or your JDK 17+
+./gradlew assembleDebug
+adb install -r app/build/outputs/apk/debug/app-debug.apk
+```
 
 Voice testing works best on a physical device; on an emulator enable the
 virtual microphone in AVD settings.
@@ -62,14 +90,16 @@ virtual microphone in AVD settings.
 
 ```
 app/src/main/java/com/alpaca/app/
-├── gemini/      Gemini Live WebSocket client + protocol (the spicy part)
-├── audio/       AudioEngine, TTS, pronunciation grader
-├── data/        Room, DataStore, content models + bundled JSON lessons
-└── ui/          trail · lesson · summary · voice · leaderboard · settings
+├── gemini/      Gemini Live WebSocket client + ephemeral-token client
+├── audio/       AudioEngine, TTS, pronunciation grader, sound effects
+├── data/        Room, DataStore, mistake log, content models + bundled JSON
+└── ui/          onboarding · trail · lesson · summary · voice · achievements · leaderboard · settings
+server/api/      Vercel function: mints Gemini Live ephemeral tokens
 ```
 
 Architecture: MVVM, manual DI (`AppContainer`), coroutines + Flow, type-safe
-Navigation Compose routes, no third-party DI.
+Navigation Compose routes, no third-party DI. Content is validated by a JVM
+unit test (`ContentParsingTest`) at build time.
 
 ## Roadmap
 

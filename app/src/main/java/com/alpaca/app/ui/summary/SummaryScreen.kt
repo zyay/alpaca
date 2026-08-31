@@ -39,6 +39,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import kotlinx.coroutines.flow.map
 import com.alpaca.app.AlpacaApp
 import com.alpaca.app.data.repository.LessonResult
 import com.alpaca.app.ui.components.ConfettiOverlay
@@ -64,8 +65,18 @@ fun SummaryScreen(
         return
     }
 
+    val container = com.alpaca.app.di.LocalAppContainer.current
+    val soundEnabled by androidx.compose.runtime.remember(container) {
+        container.prefs.prefs.map { it.soundEnabled }
+    }.collectAsStateWithLifecycle(initialValue = true)
+
     LaunchedEffect(Unit) {
-        if (!result.outOfEnergy) haptics?.celebrate() else haptics?.wrongBuzz()
+        if (!result.outOfEnergy) {
+            haptics?.celebrate()
+            if (soundEnabled) container.soundPlayer.finish()
+        } else {
+            haptics?.wrongBuzz()
+        }
     }
 
     Box(modifier = Modifier.fillMaxSize()) {

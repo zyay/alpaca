@@ -2,17 +2,25 @@ package com.alpaca.app.ui.lesson
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.alpaca.app.data.content.ContentRepository
 import com.alpaca.app.data.content.Exercise
 import com.alpaca.app.data.content.Lesson
+import com.alpaca.app.data.db.entities.MistakeEntity
 import com.alpaca.app.data.db.entities.UserEntity
+import com.alpaca.app.data.datastore.UserPrefs
 import com.alpaca.app.data.repository.LessonResult
 import com.alpaca.app.di.AppContainer
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
 class LessonViewModel(private val container: AppContainer) : ViewModel() {
+
+    val prefs: StateFlow<UserPrefs> =
+        container.prefs.prefs.stateIn(viewModelScope, SharingStarted.Eagerly, UserPrefs())
 
     data class Correction(val correctText: String, val explanation: String?)
 
@@ -37,13 +45,22 @@ class LessonViewModel(private val container: AppContainer) : ViewModel() {
     var resultSink: (LessonResult) -> Unit = {}
 
     private var lesson: Lesson? = null
+    private var isReview = false
+    private var reviewMistakes: List<MistakeEntity> = emptyList()
     private var correctCount = 0
     private val mistaken = mutableListOf<String>()
 
     fun start(lessonId: String) {
         if (lesson != null) return
         viewModelScope.launch {
-            val loaded = container.contentRepository.findLesson(lessonId) ?: return@launch
+            val review = lessonId == ContentRepository.REVIEW_LESSON_ID
+            val loaded = if (review) {
+                reviewMistakes = container.mistakeRepository.recent(12)
+                container.contentRepository.buildReviewLesson(reviewMistakes)
+            } else {
+                container.contentRepository.findLesson(lessonId)
+            } ?: return@launch
+            isReview = review
             lesson = loaded
             container.progressRepository.recordAttempt(lessonId)
             val user = container.gamificationRepository.currentUser()
@@ -73,6 +90,13 @@ class LessonViewModel(private val container: AppContainer) : ViewModel() {
         if (s.correction != null || s.finished) return
         viewModelScope.launch {
             mistaken.add(mistakeLabel)
+            if (!isReview) {
+                val l = lesson
+                val originalId = l?.lessonId?.takeIf { it != ContentRepository.REVIEW_LESSON_ID }
+                if (originalId != null) {
+                    container.mistakeRepository.log(originalId, s.index, mistakeLabel)
+                }
+            }
             val remaining = container.gamificationRepository.consumeEnergy()
             if (remaining <= 0) {
                 finish(outOfEnergy = true)
@@ -121,6 +145,9 @@ class LessonViewModel(private val container: AppContainer) : ViewModel() {
                 val reward = container.gamificationRepository.awardLesson(xp, coins)
                 val score = if (total > 0) correctCount * 100 / total else 0
                 container.progressRepository.completeLesson(l.lessonId, score)
+                if (isReview) {
+                    container.mistakeRepository.consume(reviewMistakes)
+                }
                 resultSink(
                     LessonResult(
                         lessonId = l.lessonId,

@@ -59,6 +59,20 @@ fun LessonScreen(
     val container = LocalAppContainer.current
     val state by viewModel.state.collectAsStateWithLifecycle()
     val app = LocalContext.current.applicationContext as AlpacaApp
+    val prefs by viewModel.prefs.collectAsStateWithLifecycle()
+
+    LaunchedEffect(prefs.soundEnabled) {
+        container.soundPlayer.enabled = prefs.soundEnabled
+    }
+
+    fun feedback(correct: Boolean) {
+        if (prefs.hapticsEnabled) {
+            if (correct) haptics?.correctThud() else haptics?.wrongBuzz()
+        }
+        if (prefs.soundEnabled) {
+            if (correct) container.soundPlayer.correct() else container.soundPlayer.wrong()
+        }
+    }
 
     LaunchedEffect(Unit) {
         viewModel.resultSink = { app.lastLessonResult = it }
@@ -111,38 +125,38 @@ fun LessonScreen(
                     when (exercise) {
                         is MultipleChoiceExercise -> MultipleChoiceUi(
                             exercise,
-                            onCorrect = { haptics?.correctThud(); viewModel.onCorrect() },
+                            onCorrect = { feedback(true); viewModel.onCorrect() },
                             onWrong = viewModel::onWrong,
                             onCheckHaptic = { correct ->
-                                if (correct) haptics?.correctThud() else haptics?.wrongBuzz()
+                                feedback(correct)
                             }
                         )
                         is MatchPairsExercise -> MatchPairsUi(
                             exercise,
                             haptics = haptics,
-                            onComplete = { haptics?.correctThud(); viewModel.onCorrect() }
+                            onComplete = { feedback(true); viewModel.onCorrect() }
                         )
                         is FillBlankExercise -> FillBlankUi(
                             exercise,
-                            onCorrect = { haptics?.correctThud(); viewModel.onCorrect() },
+                            onCorrect = { feedback(true); viewModel.onCorrect() },
                             onWrong = viewModel::onWrong,
                             onCheckHaptic = { correct ->
-                                if (correct) haptics?.correctThud() else haptics?.wrongBuzz()
+                                feedback(correct)
                             }
                         )
                         is ListeningExercise -> ListeningUi(
                             exercise,
                             tts = container.ttsSpeaker,
-                            onCorrect = { haptics?.correctThud(); viewModel.onCorrect() },
+                            onCorrect = { feedback(true); viewModel.onCorrect() },
                             onWrong = viewModel::onWrong,
                             onCheckHaptic = { correct ->
-                                if (correct) haptics?.correctThud() else haptics?.wrongBuzz()
+                                feedback(correct)
                             }
                         )
                         is PronunciationExercise -> PronunciationUi(
                             exercise,
                             grader = container.pronunciationGrader,
-                            onCorrect = { haptics?.correctThud(); viewModel.onCorrect() }
+                            onCorrect = { feedback(true); viewModel.onCorrect() }
                         )
                     }
                 }
@@ -172,7 +186,7 @@ fun LessonScreen(
 
     // Spit-take correction overlay.
     state.correction?.let { correction ->
-        LaunchedEffect(correction) { haptics?.wrongBuzz() }
+        LaunchedEffect(correction) { feedback(false) }
         CorrectionOverlay(correction = correction, onContinue = viewModel::dismissCorrection)
     }
 }

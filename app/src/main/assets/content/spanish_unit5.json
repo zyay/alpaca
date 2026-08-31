@@ -1,0 +1,353 @@
+{
+  "unitId": "es_u5",
+  "title": "Familia y Casa",
+  "region": "Lago Esmeralda",
+  "languageName": "Spanish",
+  "lessons": [
+    {
+      "lessonId": "es_u5_l1",
+      "title": "La familia",
+      "exercises": [
+        {
+          "type": "match_pairs",
+          "pairs": [["la madre", "mother"], ["el padre", "father"], ["la hermana", "sister"], ["el hermano", "brother"]]
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "Who is \"mi abuela\"?",
+          "options": ["my grandmother", "my aunt", "my cousin", "my daughter"],
+          "correctIndex": 0,
+          "explanation": "abuelo/abuela = grandparents."
+        },
+        {
+          "type": "listening",
+          "text": "Tengo dos tíos y una prima",
+          "options": ["I have two uncles and a cousin", "I have two cousins and an aunt", "My uncle has one daughter", "I live with my grandparents"],
+          "correctIndex": 0,
+          "explanation": "\"Tío/tía\" = uncle/aunt; \"primo/prima\" = cousin."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Los ___ de mi madre son mis abuelos",
+          "answer": "padres",
+          "wordBank": ["padres", "hijos", "tíos", "vecinos"],
+          "explanation": "\"Padres\" = parents (not \"fathers\"!). Both meanings share the word."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "How do you say \"my wife\"?",
+          "options": ["mi mujer", "mi hija", "mi hermana", "mi nieta"],
+          "correctIndex": 0,
+          "explanation": "\"Mujer\" = woman AND wife."
+        },
+        {
+          "type": "pronunciation",
+          "expected": "¿Cómo se llama tu hermano?",
+          "translation": "What's your brother's name?",
+          "explanation": "\"¿Cómo se llama…?\" asks someone's name politely."
+        },
+        {
+          "type": "listening",
+          "text": "Mis hijos son gemelos",
+          "options": ["My kids are twins", "My sons are tall", "My daughters study", "I have no children"],
+          "correctIndex": 0,
+          "explanation": "\"Gemelos\" = twins (identical vibes included)."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "El marido de mi hermana es mi ___",
+          "answer": "cuñado",
+          "wordBank": ["cuñado", "sobrino", "primo", "tío"],
+          "explanation": "\"Cuñado\" = brother-in-law."
+        },
+        {
+          "type": "match_pairs",
+          "pairs": [["el hijo", "son"], ["la hija", "daughter"], ["el nieto", "grandson"], ["la sobrina", "niece"]]
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "What does \"somos una familia grande\" mean?",
+          "options": ["We are a big family", "We are a loud family", "We have a big house", "We eat a lot"],
+          "correctIndex": 0,
+          "explanation": "\"Grande\" = big — expect Christmas to be crowded."
+        }
+      ]
+    },
+    {
+      "lessonId": "es_u5_l2",
+      "title": "En casa",
+      "exercises": [
+        {
+          "type": "match_pairs",
+          "pairs": [["la cocina", "kitchen"], ["el dormitorio", "bedroom"], ["el baño", "bathroom"], ["el salón", "living room"]]
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "Where do you sleep?",
+          "options": ["en el dormitorio", "en la cocina", "en el garaje", "en el balcón"],
+          "correctIndex": 0,
+          "explanation": "Dormitorio = bedroom (\"dormir\" = to sleep)."
+        },
+        {
+          "type": "listening",
+          "text": "Las llaves están en la mesa",
+          "options": ["The keys are on the table", "The glasses are in the drawer", "The mail is on the floor", "The plants need water"],
+          "correctIndex": 0,
+          "explanation": "\"Llaves\" = keys. Memorize this one first."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "En el ___ hay un sofá y la tele",
+          "answer": "salón",
+          "wordBank": ["salón", "pasillo", "sótano", "patio"],
+          "explanation": "The living room: where the whole family argues about the remote."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "How do you say \"the window\"?",
+          "options": ["la ventana", "la puerta", "la pared", "el techo"],
+          "correctIndex": 0,
+          "explanation": "ventana, puerta (door), pared (wall), techo (ceiling)."
+        },
+        {
+          "type": "pronunciation",
+          "expected": "Voy a mi cuarto",
+          "translation": "I'm going to my room",
+          "explanation": "\"Cuarto\" is another word for bedroom."
+        },
+        {
+          "type": "listening",
+          "text": "El gato está debajo de la cama",
+          "options": ["The cat is under the bed", "The dog is on the couch", "The mat is by the door", "The cat sleeps outside"],
+          "correctIndex": 0,
+          "explanation": "\"Debajo de\" = under; \"encima de\" = on top of."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Abre la ___ que hace calor",
+          "answer": "ventana",
+          "wordBank": ["ventana", "nevera", "caja", "puerta"],
+          "explanation": "When it's hot: open the window (or \"el balcón\")."
+        },
+        {
+          "type": "match_pairs",
+          "pairs": [["la cama", "bed"], ["la nevera", "fridge"], ["el armario", "wardrobe"], ["la alfombra", "rug"]]
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "What is \"el jardín\"?",
+          "options": ["the garden", "the kitchen", "the attic", "the garage"],
+          "correctIndex": 0,
+          "explanation": "Jardín = garden — home of the barbecue."
+        }
+      ]
+    },
+    {
+      "lessonId": "es_u5_l3",
+      "title": "Mascotas",
+      "exercises": [
+        {
+          "type": "match_pairs",
+          "pairs": [["el perro", "dog"], ["el gato", "cat"], ["el pájaro", "bird"], ["el pez", "fish"]]
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "How do you say \"I have a dog called Coco\"?",
+          "options": ["Tengo un perro que se llama Coco", "Soy un perro Coco", "Me gusta Coco el gato", "Mi perro viene"],
+          "correctIndex": 0,
+          "explanation": "\"Que se llama\" = who is called."
+        },
+        {
+          "type": "listening",
+          "text": "Mi gata está embarazada",
+          "options": ["My cat is pregnant", "My cat is sick", "My dog is adopted", "My cat is grey"],
+          "correctIndex": 0,
+          "explanation": "Cats have kittens: \"gatitos\"."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Al perro le encanta ___ la pelota",
+          "answer": "traer",
+          "wordBank": ["traer", "comer", "perder", "vender"],
+          "explanation": "\"Traer la pelota\" = fetch!"
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "\"Come, niño, ¡que eres grande!\" is what you tell…",
+          "options": ["a pet while feeding it", "a child at school", "a waiter", "your grandfather"],
+          "correctIndex": 0,
+          "explanation": "The classic Spanish phrase for coaxing any animal (or toddler)."
+        },
+        {
+          "type": "pronunciation",
+          "expected": "Paseo al perro dos veces al día",
+          "translation": "I walk the dog twice a day",
+          "explanation": "\"Pasear al perro\" = to walk the dog."
+        },
+        {
+          "type": "listening",
+          "text": "El veterinario abre a las nueve",
+          "options": ["The vet opens at nine", "The vet closed today", "The pet is nine years old", "The bear is nearby"],
+          "correctIndex": 0,
+          "explanation": "\"Oso\" = bear. \"Hueso\" = bone. Don't mix them up."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "El conejo come ___",
+          "answer": "zanahorias",
+          "wordBank": ["zanahorias", "piedras", "libros", "llaves"],
+          "explanation": "Rabbits (\"conejos\") and carrots, obviously."
+        },
+        {
+          "type": "match_pairs",
+          "pairs": [["el hueso", "bone"], ["la correa", "leash"], ["el pienso", "pet food"], ["la jaula", "cage"]]
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "Your neighbour's dog barks all night. You say…",
+          "options": ["¡El perro ladra toda la noche!", "¡El gato araña el sofá!", "¡Los pájaros cantan!", "¡El pez nada rápido!"],
+          "correctIndex": 0,
+          "explanation": "\"Ladrar\" = to bark. Every Spaniard knows this complaint."
+        }
+      ]
+    },
+    {
+      "lessonId": "es_u5_l4",
+      "title": "Tareas de casa",
+      "exercises": [
+        {
+          "type": "match_pairs",
+          "pairs": [["fregar los platos", "to wash dishes"], ["barrer el suelo", "to sweep the floor"], ["hacer la colada", "to do the laundry"], ["pasar la aspiradora", "to vacuum"]]
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "What needs \"tender la ropa\"?",
+          "options": ["hanging the washing", "setting the table", "walking the dog", "cleaning the windows"],
+          "correctIndex": 0,
+          "explanation": "\"Tender\" = to hang out (washing)."
+        },
+        {
+          "type": "listening",
+          "text": "Me toca fregar hoy",
+          "options": ["It's my turn to wash up today", "I must mop the floor", "Today I clean the oven", "Nobody cooks today"],
+          "correctIndex": 0,
+          "explanation": "\"Me toca\" = it's my turn — flat-sharing essential."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Pon la mesa; yo ___ la cocina después",
+          "answer": "recogo",
+          "wordBank": ["recogo", "como", "veo", "duermo"],
+          "explanation": "\"Recoger\" = to tidy up."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "How do you say \"the bin\" / \"trash can\"?",
+          "options": ["la papelera / el cubo de basura", "la lavadora", "el tendedero", "la escoba"],
+          "correctIndex": 0,
+          "explanation": "Recycling in Spain: papelera is everywhere."
+        },
+        {
+          "type": "pronunciation",
+          "expected": "La lavadora está rota",
+          "translation": "The washing machine is broken",
+          "explanation": "\"Roto/rota\" = broken — pair it with any appliance."
+        },
+        {
+          "type": "listening",
+          "text": "Cambia las sábanas esta semana",
+          "options": ["Change the sheets this week", "Wash the towels today", "Buy a new blanket", "Clean the sofa"],
+          "correctIndex": 0,
+          "explanation": "\"Sábanas\" = bed sheets."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Pasa la ___ por el pasillo",
+          "answer": "fregona",
+          "wordBank": ["fregona", "cortina", "alfombra", "llave"],
+          "explanation": "\"Fregona\" = mop. Feel the shine."
+        },
+        {
+          "type": "match_pairs",
+          "pairs": [["el estropajo", "sponge"], ["la escoba", "broom"], ["la cubeta", "bucket"], ["el estante", "shelf"]]
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "\"Ordena tu cuarto\" means…",
+          "options": ["tidy your room", "turn off the light", "open the window", "answer the phone"],
+          "correctIndex": 0,
+          "explanation": "\"Ordenar\" = to tidy — every kid's least favourite verb."
+        }
+      ]
+    },
+    {
+      "lessonId": "es_u5_l5",
+      "title": "Sentimientos",
+      "exercises": [
+        {
+          "type": "multiple_choice",
+          "prompt": "How do you say \"I'm happy\"?",
+          "options": ["Estoy contento/a", "Tengo contenta", "Soy contento hoy comer", "Me gusta contento"],
+          "correctIndex": 0,
+          "explanation": "\"Estar + adjective\" for temporary feelings."
+        },
+        {
+          "type": "match_pairs",
+          "pairs": [["feliz", "happy"], ["triste", "sad"], ["enfadado", "angry"], ["cansado", "tired"]]
+        },
+        {
+          "type": "listening",
+          "text": "Tengo mucho sueño",
+          "options": ["I'm very sleepy", "I have a dream", "I'm very bored", "I need a nap spot"],
+          "correctIndex": 0,
+          "explanation": "Feelings often use \"tener\": sueño, hambre, miedo, prisa."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Estoy ___ porque mañana es el examen",
+          "answer": "nervioso",
+          "wordBank": ["nervioso", "delgado", "gris", "temprano"],
+          "explanation": "\"Nervioso\" before exams — universal."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "Your friend says \"¡Qué guay!\" — they think something is…",
+          "options": ["cool", "ugly", "strange", "expensive"],
+          "correctIndex": 0,
+          "explanation": "\"Guay\" = cool. Spanish teens approve."
+        },
+        {
+          "type": "pronunciation",
+          "expected": "Me alegro mucho de verte",
+          "translation": "I'm so glad to see you",
+          "explanation": "Warm, polite, instantly likeable."
+        },
+        {
+          "type": "listening",
+          "text": "No me siento bien",
+          "options": ["I don't feel well", "I don't sit there", "I feel great", "I'm not seated"],
+          "correctIndex": 0,
+          "explanation": "\"Sentirse\" = to feel (inside)."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Tengo ___ de la película de miedo",
+          "answer": "miedo",
+          "wordBank": ["miedo", "hambre", "prisa", "suerte"],
+          "explanation": "\"Tener miedo\" = to be scared."
+        },
+        {
+          "type": "match_pairs",
+          "pairs": [["orgulloso", "proud"], ["sorprendido", "surprised"], ["aburrido", "bored"], ["preocupado", "worried"]]
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "How do you cheer someone up?",
+          "options": ["¡Ánimo, todo irá bien!", "¡Cuidado, viene un coche!", "¡Silencio, la película!", "¡Despacio, la sopa!"],
+          "correctIndex": 0,
+          "explanation": "\"¡Ánimo!\" = chin up — the verbal hug."
+        }
+      ]
+    }
+  ]
+}

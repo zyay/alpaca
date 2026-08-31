@@ -1,0 +1,353 @@
+{
+  "unitId": "es_u2",
+  "title": "Comida y Compras",
+  "region": "Mercado Antigua",
+  "languageName": "Spanish",
+  "lessons": [
+    {
+      "lessonId": "es_u2_l1",
+      "title": "En el mercado",
+      "exercises": [
+        {
+          "type": "multiple_choice",
+          "prompt": "How do you say \"the apple\"?",
+          "options": ["la manzana", "el pan", "la leche", "el queso"],
+          "correctIndex": 0,
+          "explanation": "\"Manzana\" is feminine: la manzana."
+        },
+        {
+          "type": "match_pairs",
+          "pairs": [["el pescado", "fish"], ["la carne", "meat"], ["la fruta", "fruit"], ["la verdura", "vegetables"]]
+        },
+        {
+          "type": "listening",
+          "text": "Necesito tomates",
+          "options": ["I need tomatoes", "I have tomatoes", "Do you like tomatoes?", "Where are the tomatoes?"],
+          "correctIndex": 0,
+          "explanation": "\"Necesito\" means \"I need\" — essential for shopping."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "¿Cuánto cuesta el ___?",
+          "answer": "pollo",
+          "wordBank": ["pollo", "agua", "leche", "hora"],
+          "explanation": "\"Pollo\" is chicken — ¿Cuánto cuesta el pollo?"
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "What does \"Está muy barato\" mean?",
+          "options": ["It's very cheap", "It's very fresh", "It's too expensive", "It's sold out"],
+          "correctIndex": 0,
+          "explanation": "\"Barato\" is cheap; \"caro\" is expensive."
+        },
+        {
+          "type": "pronunciation",
+          "expected": "Un kilo de manzanas",
+          "translation": "One kilo of apples",
+          "explanation": "Stall vendors love \"un kilo de…\"."
+        },
+        {
+          "type": "listening",
+          "text": "La fruta está fresca",
+          "options": ["The fruit is fresh", "The fish is fried", "The bread is warm", "The milk is cold"],
+          "correctIndex": 0,
+          "explanation": "\"Fresca\" describes fresh food."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Me da dos ___ de pan, por favor",
+          "answer": "barras",
+          "wordBank": ["barras", "kilos", "litros", "copas"],
+          "explanation": "Bread is counted in \"barras\" — loaves."
+        },
+        {
+          "type": "match_pairs",
+          "pairs": [["el vendedor", "seller"], ["el cliente", "customer"], ["la bolsa", "bag"], ["el precio", "price"]]
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "How do you ask \"Do you take cards?\"",
+          "options": ["¿Aceptan tarjetas?", "¿Tiene bolsas?", "¿Dónde pago?", "¿Está abierto?"],
+          "correctIndex": 0,
+          "explanation": "\"¿Aceptan tarjetas?\" — do you accept cards?"
+        }
+      ]
+    },
+    {
+      "lessonId": "es_u2_l2",
+      "title": "En el restaurante",
+      "exercises": [
+        {
+          "type": "multiple_choice",
+          "prompt": "What does \"La mesa para dos\" mean?",
+          "options": ["A table for two", "The menu for two", "Two coffees, please", "The check for two"],
+          "correctIndex": 0,
+          "explanation": "\"Mesa\" is table — use it when walking in."
+        },
+        {
+          "type": "listening",
+          "text": "¿Me trae la carta?",
+          "options": ["Can you bring me the menu?", "Can I have the bill?", "Where is the bathroom?", "Is it reserved?"],
+          "correctIndex": 0,
+          "explanation": "\"La carta\" is the menu."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "De primero, ___ una ensalada",
+          "answer": "quiero",
+          "wordBank": ["quiero", "tengo", "voy", "soy"],
+          "explanation": "\"De primero…\" orders your first course."
+        },
+        {
+          "type": "match_pairs",
+          "pairs": [["el entrante", "starter"], ["el postre", "dessert"], ["el camarero", "waiter"], ["la propina", "tip"]]
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "How do you say \"I'm vegetarian\"?",
+          "options": ["Soy vegetariano/a", "Tengo hambre", "Me gusta el pollo", "No como pan"],
+          "correctIndex": 0,
+          "explanation": "\"Soy vegetariano\" (male) / \"vegetariana\" (female)."
+        },
+        {
+          "type": "pronunciation",
+          "expected": "Para mí, la paella",
+          "translation": "For me, the paella",
+          "explanation": "The double-l in \"paella\" is a soft \"y\" sound: pa-YA."
+        },
+        {
+          "type": "listening",
+          "text": "Está delicioso",
+          "options": ["It's delicious", "It's disgusting", "It's cold", "It's ready"],
+          "correctIndex": 0,
+          "explanation": "Compliment the cook: \"¡Está delicioso!\""
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "¿Me ___ la cuenta?",
+          "answer": "trae",
+          "wordBank": ["trae", "das", "vas", "hay"],
+          "explanation": "\"¿Me trae la cuenta?\" — bring me the bill, please."
+        },
+        {
+          "type": "match_pairs",
+          "pairs": [["desayuno", "breakfast"], ["comida", "lunch"], ["cena", "dinner"], ["merienda", "snack"]]
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "What does \"Sin gluten\" mean on a menu?",
+          "options": ["Gluten-free", "With gluten", "No sugar", "Extra cheese"],
+          "correctIndex": 0,
+          "explanation": "\"Sin\" means without — sin gluten, sin cebolla…"
+        }
+      ]
+    },
+    {
+      "lessonId": "es_u2_l3",
+      "title": "Bebidas y gustos",
+      "exercises": [
+        {
+          "type": "multiple_choice",
+          "prompt": "How do you say \"I like wine\"?",
+          "options": ["Me gusta el vino", "Tengo vino", "Quiero agua", "El vino es malo"],
+          "correctIndex": 0,
+          "explanation": "\"Me gusta + item\" expresses what you like."
+        },
+        {
+          "type": "match_pairs",
+          "pairs": [["el vino", "wine"], ["la cerveza", "beer"], ["el zumo", "juice"], ["el té", "tea"]]
+        },
+        {
+          "type": "listening",
+          "text": "Prefiero un refresco",
+          "options": ["I prefer a soft drink", "I want another beer", "The juice is fresh", "Water, please"],
+          "correctIndex": 0,
+          "explanation": "\"Refresco\" is a soft drink; \"prefiero\" = I prefer."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Un café ___ solo, por favor",
+          "answer": "cortado",
+          "wordBank": ["cortado", "leche", "agua", "jugo"],
+          "explanation": "\"Cortado\" is espresso cut with a little milk."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "\"¿Con hielo o sin hielo?\" — the waiter asks about…",
+          "options": ["Ice", "Sugar", "Milk", "Lemon"],
+          "correctIndex": 0,
+          "explanation": "\"Hielo\" is ice; \"azúcar\" is sugar."
+        },
+        {
+          "type": "pronunciation",
+          "expected": "Un agua con gas",
+          "translation": "A sparkling water",
+          "explanation": "\"Con gas\" = with bubbles; \"sin gas\" = still."
+        },
+        {
+          "type": "listening",
+          "text": "No me gusta el pescado",
+          "options": ["I don't like fish", "I like the fish", "The fish is gone", "No more fish"],
+          "correctIndex": 0,
+          "explanation": "\"No me gusta…\" politely declines food."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "¿___ te gusta más, el té o el café?",
+          "answer": "qué",
+          "wordBank": ["qué", "cómo", "cuándo", "dónde"],
+          "explanation": "\"¿Qué te gusta más…?\" asks which you prefer."
+        },
+        {
+          "type": "match_pairs",
+          "pairs": [["caliente", "hot"], ["frío", "cold"], ["dulce", "sweet"], ["salado", "salty"]]
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "How do you say \"another round, please\"?",
+          "options": ["Otra ronda, por favor", "La cuenta, por favor", "Sin prisa, por favor", "Muy bien, por favor"],
+          "correctIndex": 0,
+          "explanation": "\"Otra ronda\" — the bar toast that keeps friends happy."
+        }
+      ]
+    },
+    {
+      "lessonId": "es_u2_l4",
+      "title": "En la tienda",
+      "exercises": [
+        {
+          "type": "multiple_choice",
+          "prompt": "What does \"¿Tienen una talla más grande?\" mean?",
+          "options": ["Do you have a bigger size?", "Is it on sale?", "Can I try it on?", "Do you take cash?"],
+          "correctIndex": 0,
+          "explanation": "\"Talla\" is clothing size."
+        },
+        {
+          "type": "listening",
+          "text": "Está de rebajas",
+          "options": ["It's on sale", "It's closed", "It's broken", "It's brand new"],
+          "correctIndex": 0,
+          "explanation": "\"Rebajas\" — the magic word for discounts."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "¿Cuánto ___ esta camisa?",
+          "answer": "vale",
+          "wordBank": ["vale", "cuesta", "tiene", "hace"],
+          "explanation": "\"¿Cuánto vale?\" and \"¿Cuánto cuesta?\" both ask the price."
+        },
+        {
+          "type": "match_pairs",
+          "pairs": [["la camisa", "shirt"], ["los zapatos", "shoes"], ["el abrigo", "coat"], ["el gorro", "hat"]]
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "How do you ask to try something on?",
+          "options": ["¿Puedo probármelo?", "¿Puedo pagarlo?", "¿Puedo verlo?", "¿Puedo cambiarlo?"],
+          "correctIndex": 0,
+          "explanation": "\"Probar\" = to try; probármelo = try it on myself."
+        },
+        {
+          "type": "pronunciation",
+          "expected": "Busco un regalo",
+          "translation": "I'm looking for a gift",
+          "explanation": "\"J\" in Spanish sounds like English \"h\": hus-go."
+        },
+        {
+          "type": "listening",
+          "text": "No aceptan tarjetas aquí",
+          "options": ["They don't take cards here", "They accept cash only tomorrow", "The card is expired", "Pay at the register"],
+          "correctIndex": 0,
+          "explanation": "Small shops often want \"efectivo\" — cash."
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Los ___ están en la segunda planta",
+          "answer": "probadores",
+          "wordBank": ["probadores", "precios", "puelos", "puertas"],
+          "explanation": "\"Probadores\" are fitting rooms."
+        },
+        {
+          "type": "match_pairs",
+          "pairs": [["abierto", "open"], ["cerrado", "closed"], ["cara", "expensive (f.)"], ["barato", "cheap (m.)"]]
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "What does \"¿Le puedo ayudar en algo?\" mean?",
+          "options": ["Can I help you with something?", "Can I take your payment?", "Do you work here?", "Where are you going?"],
+          "correctIndex": 0,
+          "explanation": "The classic shop assistant greeting."
+        }
+      ]
+    },
+    {
+      "lessonId": "es_u2_l5",
+      "title": "Recetas y cocina",
+      "exercises": [
+        {
+          "type": "multiple_choice",
+          "prompt": "How do you say \"I'm cooking\"?",
+          "options": ["Estoy cocinando", "Estoy comiendo", "Voy a la cocina", "Me gusta cocinar"],
+          "correctIndex": 0,
+          "explanation": "\"Estar + gerund\" describes what's happening now."
+        },
+        {
+          "type": "listening",
+          "text": "Añade un poco de sal",
+          "options": ["Add a little salt", "Take out the salt", "Pass the pepper", "Taste the soup"],
+          "correctIndex": 0,
+          "explanation": "\"Añadir\" = to add; \"sal\" = salt."
+        },
+        {
+          "type": "match_pairs",
+          "pairs": [["el aceite", "oil"], ["la sal", "salt"], ["el ajo", "garlic"], ["la cebolla", "onion"]]
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Hierve el ___ cinco minutos",
+          "answer": "arroz",
+          "wordBank": ["arroz", "pan", "vino", "aceite"],
+          "explanation": "\"Arroz\" is rice — Spain's other staple."
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "What does \"Está para chuparse los dedos\" mean?",
+          "options": ["It's finger-licking good", "The fingers are dirty", "It needs more salt", "Wash your hands"],
+          "correctIndex": 0,
+          "explanation": "A famous idiom for delicious food."
+        },
+        {
+          "type": "pronunciation",
+          "expected": "La tortilla de patatas",
+          "translation": "The Spanish omelette",
+          "explanation": "Single t is a soft stop; the \"ll\" sounds like \"y\"."
+        },
+        {
+          "type": "listening",
+          "text": "El horno está caliente",
+          "options": ["The oven is hot", "The soup is cold", "The coffee is boiling", "The kitchen is clean"],
+          "correctIndex": 0,
+          "explanation": "\"Horno\" is oven — the H is pronounced!"
+        },
+        {
+          "type": "fill_blank",
+          "sentence": "Primero, ___ las cebollas",
+          "answer": "fríe",
+          "wordBank": ["fríe", "come", "bebe", "lees"],
+          "explanation": "\"Freír\" = to fry; imperative \"fríe\"."
+        },
+        {
+          "type": "match_pairs",
+          "pairs": [["cocer", "to boil"], ["asar", "to roast"], ["cortar", "to cut"], ["mezclar", "to mix"]]
+        },
+        {
+          "type": "multiple_choice",
+          "prompt": "What is \"tapas\"?",
+          "options": ["Small plates shared with drinks", "A soup", "A dessert", "A type of bread"],
+          "correctIndex": 0,
+          "explanation": "Tapas culture: small dishes, big joy."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "name": "alpaca-token-server",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Mints short-lived Gemini Live ephemeral tokens so the raw API key never ships in the APK.",
+  "engines": {
+    "node": ">=18"
+  }
+}

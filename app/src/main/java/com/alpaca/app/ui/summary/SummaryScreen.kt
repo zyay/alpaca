@@ -35,15 +35,18 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.text.font.FontWeight
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.map
 import com.alpaca.app.AlpacaApp
 import com.alpaca.app.data.repository.LessonResult
 import com.alpaca.app.ui.components.ConfettiOverlay
+import com.alpaca.app.ui.components.CountUpText
 import com.alpaca.app.ui.components.GreetingWordmark
 import com.alpaca.app.ui.components.PillButton
 import com.alpaca.app.ui.theme.InkMid
@@ -115,6 +118,7 @@ fun SummaryScreen(
             if (!result.outOfEnergy) {
                 Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
                     StatCard(
+                        index = 0,
                         icon = {
                             Icon(
                                 Icons.Filled.Stars, null,
@@ -126,6 +130,7 @@ fun SummaryScreen(
                         background = Color(0xFFFFF7DD)
                     )
                     StatCard(
+                        index = 1,
                         icon = {
                             Icon(
                                 Icons.Filled.CheckCircle, null,
@@ -138,6 +143,7 @@ fun SummaryScreen(
                         background = BrandGreenPale
                     )
                     StatCard(
+                        index = 2,
                         icon = {
                             Icon(
                                 Icons.Filled.LocalFireDepartment, null,
@@ -184,14 +190,24 @@ private fun lessonHeadline(result: LessonResult): String = when {
 
 @Composable
 private fun RowScope.StatCard(
+    index: Int,
     icon: @Composable () -> Unit,
     label: String,
     value: String,
     background: Color
 ) {
+    val appear = remember { Animatable(0f) }
+    LaunchedEffect(Unit) {
+        delay(index * 90L)
+        appear.animateTo(1f, tween(350, easing = androidx.compose.animation.core.FastOutSlowInEasing))
+    }
     Column(
         modifier = Modifier
             .weight(1f)
+            .graphicsLayer {
+                alpha = appear.value
+                translationY = (1f - appear.value) * 40f
+            }
             .clip(RoundedCornerShape(16.dp))
             .background(background)
             .padding(vertical = 14.dp),
@@ -199,7 +215,18 @@ private fun RowScope.StatCard(
     ) {
         icon()
         Spacer(Modifier.height(6.dp))
-        Text(value, style = MaterialTheme.typography.titleLarge)
+        if (label == "Total XP") {
+            // XP counts up from zero; the other stats are short and read instantly.
+            val xpTarget = remember(value) { value.removePrefix("+").toIntOrNull() ?: 0 }
+            CountUpText(
+                target = xpTarget,
+                prefix = "+",
+                startFromZero = true,
+                style = MaterialTheme.typography.titleLarge
+            )
+        } else {
+            Text(value, style = MaterialTheme.typography.titleLarge)
+        }
         Text(label, style = MaterialTheme.typography.bodyMedium, color = InkMid)
     }
 }

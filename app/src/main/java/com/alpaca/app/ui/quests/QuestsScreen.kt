@@ -43,7 +43,9 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.alpaca.app.data.db.entities.QuestEntity
 import com.alpaca.app.data.db.entities.UserEntity
 import com.alpaca.app.data.repository.QuestRepository
+import com.alpaca.app.ui.components.CountUpText
 import com.alpaca.app.ui.components.EmptyStateCard
+import com.alpaca.app.ui.components.Entrance
 import com.alpaca.app.ui.components.LoadingView
 import com.alpaca.app.ui.components.PillButton
 import com.alpaca.app.ui.theme.BrandGreen
@@ -127,16 +129,18 @@ fun QuestsScreen(
                 modifier = Modifier.padding(vertical = 12.dp)
             )
         }
-        state.quests.forEach { quest ->
-            QuestCard(
-                quest = quest,
-                title = QuestRepository.specs.firstOrNull { it.questId == quest.questId }?.title
-                    ?: quest.type,
-                onClaim = {
-                    haptics?.light()
-                    viewModel.claim(quest.questId)
-                }
-            )
+        state.quests.forEachIndexed { index, quest ->
+            Entrance(index = index) {
+                QuestCard(
+                    quest = quest,
+                    title = QuestRepository.specs.firstOrNull { it.questId == quest.questId }?.title
+                        ?: quest.type,
+                    onClaim = {
+                        haptics?.light()
+                        viewModel.claim(quest.questId)
+                    }
+                )
+            }
             Spacer(Modifier.height(10.dp))
         }
 
@@ -154,33 +158,37 @@ fun QuestsScreen(
 
         Spacer(Modifier.height(12.dp))
 
-        ShopCard(
-            icon = { Icon(Icons.Filled.AcUnit, null, tint = SkyBlue, modifier = Modifier.size(32.dp)) },
-            title = "Streak Freeze",
-            subtitle = "Protects your streak for one missed day. Equips automatically.",
-            price = UserEntity.FREEZE_PRICE_GEMS,
-            owned = "Owned: ${user?.streakFreezes ?: 0}/${UserEntity.MAX_FREEZES}",
-            enabled = (user?.streakFreezes ?: 0) < UserEntity.MAX_FREEZES &&
-                (user?.gems ?: 0) >= UserEntity.FREEZE_PRICE_GEMS,
-            onBuy = {
-                haptics?.light()
-                viewModel.buyStreakFreeze()
-            }
-        )
+        Entrance(index = 1) {
+            ShopCard(
+                icon = { Icon(Icons.Filled.AcUnit, null, tint = SkyBlue, modifier = Modifier.size(32.dp)) },
+                title = "Streak Freeze",
+                subtitle = "Protects your streak for one missed day. Equips automatically.",
+                price = UserEntity.FREEZE_PRICE_GEMS,
+                owned = "Owned: ${user?.streakFreezes ?: 0}/${UserEntity.MAX_FREEZES}",
+                enabled = (user?.streakFreezes ?: 0) < UserEntity.MAX_FREEZES &&
+                    (user?.gems ?: 0) >= UserEntity.FREEZE_PRICE_GEMS,
+                onBuy = {
+                    haptics?.light()
+                    viewModel.buyStreakFreeze()
+                }
+            )
+        }
         Spacer(Modifier.height(10.dp))
-        ShopCard(
-            icon = { Icon(Icons.Filled.Bolt, null, tint = SunYellow, modifier = Modifier.size(32.dp)) },
-            title = "Fleece Refill",
-            subtitle = "Instantly refills all 5 fleece hearts. No waiting.",
-            price = UserEntity.REFILL_PRICE_GEMS,
-            owned = "Fleece: ${user?.fleeceEnergy ?: 0}/${UserEntity.MAX_ENERGY}",
-            enabled = (user?.fleeceEnergy ?: 0) < UserEntity.MAX_ENERGY &&
-                (user?.gems ?: 0) >= UserEntity.REFILL_PRICE_GEMS,
-            onBuy = {
-                haptics?.light()
-                viewModel.buyEnergyRefill()
-            }
-        )
+        Entrance(index = 2) {
+            ShopCard(
+                icon = { Icon(Icons.Filled.Bolt, null, tint = SunYellow, modifier = Modifier.size(32.dp)) },
+                title = "Fleece Refill",
+                subtitle = "Instantly refills all 5 fleece hearts. No waiting.",
+                price = UserEntity.REFILL_PRICE_GEMS,
+                owned = "Fleece: ${user?.fleeceEnergy ?: 0}/${UserEntity.MAX_ENERGY}",
+                enabled = (user?.fleeceEnergy ?: 0) < UserEntity.MAX_ENERGY &&
+                    (user?.gems ?: 0) >= UserEntity.REFILL_PRICE_GEMS,
+                onBuy = {
+                    haptics?.light()
+                    viewModel.buyEnergyRefill()
+                }
+            )
+        }
 
         Spacer(Modifier.height(32.dp))
     }
@@ -203,7 +211,7 @@ private fun GemsChip(gems: Int) {
                 .background(GemPurple)
         )
         Spacer(Modifier.width(6.dp))
-        Text("$gems", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.ExtraBold)
+        CountUpText(target = gems, style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.ExtraBold))
     }
 }
 

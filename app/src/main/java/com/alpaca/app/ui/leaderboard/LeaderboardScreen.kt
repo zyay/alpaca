@@ -35,7 +35,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.alpaca.app.ui.components.CountUpText
 import com.alpaca.app.ui.components.EmptyStateCard
+import com.alpaca.app.ui.components.Entrance
 import com.alpaca.app.ui.components.LoadingView
 import com.alpaca.app.ui.components.PillButton
 import com.alpaca.app.ui.theme.BrandGreen
@@ -134,10 +136,11 @@ fun LeaderboardScreen(
             itemsIndexed(state.entries) { index, row ->
                 val rank = index + 1
                 val inPromotion = state.online && rank <= PROMOTION_ZONE
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .clip(RoundedCornerShape(14.dp))
+                Entrance(index = index) {
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .clip(RoundedCornerShape(14.dp))
                         .background(
                             when {
                                 row.isYou -> BrandGreenPale
@@ -190,11 +193,13 @@ fun LeaderboardScreen(
                         modifier = Modifier.weight(1f),
                         maxLines = 1
                     )
-                    Text(
-                        "${row.xp} XP",
+                    CountUpText(
+                        target = row.xp,
+                        suffix = " XP",
                         style = MaterialTheme.typography.titleMedium,
                         color = InkMid
                     )
+                }
                 }
             }
             item {

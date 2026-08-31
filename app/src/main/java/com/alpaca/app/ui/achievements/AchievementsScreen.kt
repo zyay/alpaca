@@ -1,7 +1,10 @@
 package com.alpaca.app.ui.achievements
 
+import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -16,7 +19,7 @@ import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.foundation.lazy.grid.itemsIndexed
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
@@ -34,6 +37,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.alpaca.app.ui.components.Entrance
+import com.alpaca.app.ui.components.badgeShine
 import com.alpaca.app.ui.theme.CloudGray
 import com.alpaca.app.ui.theme.InkMid
 import com.alpaca.app.ui.theme.BrandGreenPale
@@ -66,8 +71,10 @@ fun AchievementsScreen(
             contentPadding = PaddingValues(bottom = 24.dp),
             modifier = Modifier.fillMaxSize()
         ) {
-            items(state.badges) { badge ->
-                BadgeCard(badge)
+            itemsIndexed(state.badges) { index, badge ->
+                Entrance(index = index) {
+                    BadgeCard(badge)
+                }
             }
         }
     }
@@ -75,6 +82,18 @@ fun AchievementsScreen(
 
 @Composable
 private fun BadgeCard(badge: Badge) {
+    // Progress strings look like "3/5"; unparseable ones skip the bar.
+    val parts = badge.progress.split("/").mapNotNull { it.trim().toIntOrNull() }
+    val progressFraction = if (!badge.unlocked && parts.size == 2 && parts[1] > 0) {
+        (parts[0].toFloat() / parts[1]).coerceIn(0f, 1f)
+    } else {
+        null
+    }
+    val animatedProgress by animateFloatAsState(
+        targetValue = progressFraction ?: 0f,
+        animationSpec = tween(600),
+        label = "badge-progress"
+    )
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -82,6 +101,7 @@ private fun BadgeCard(badge: Badge) {
             .clip(RoundedCornerShape(18.dp))
             .background(if (badge.unlocked) BrandGreenPale else CloudGray.copy(alpha = 0.4f))
             .alpha(if (badge.unlocked) 1f else 0.7f)
+            .badgeShineIf(badge.unlocked)
             .padding(14.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -102,6 +122,24 @@ private fun BadgeCard(badge: Badge) {
             color = InkMid,
             textAlign = TextAlign.Center
         )
+        if (progressFraction != null) {
+            Spacer(Modifier.height(8.dp))
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(8.dp)
+                    .clip(RoundedCornerShape(100.dp))
+                    .background(Color.White)
+            ) {
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth(animatedProgress)
+                        .height(8.dp)
+                        .clip(RoundedCornerShape(100.dp))
+                        .background(com.alpaca.app.ui.theme.BrandGreen)
+                )
+            }
+        }
         Spacer(Modifier.height(8.dp))
         Text(
             text = if (badge.unlocked) "¡Desbloqueado!" else badge.progress,
@@ -114,3 +152,7 @@ private fun BadgeCard(badge: Badge) {
         )
     }
 }
+
+@Composable
+private fun Modifier.badgeShineIf(enabled: Boolean): Modifier =
+    if (enabled) this.badgeShine() else this

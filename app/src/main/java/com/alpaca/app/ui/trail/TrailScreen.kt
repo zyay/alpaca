@@ -63,6 +63,7 @@ import com.alpaca.app.data.db.entities.LessonStatus
 import com.alpaca.app.data.db.entities.UserEntity
 import com.alpaca.app.ui.components.EnergyHearts
 import com.alpaca.app.ui.components.PillButton
+import com.alpaca.app.ui.components.PopOnChange
 import com.alpaca.app.ui.update.UpdateBanner
 import com.alpaca.app.ui.theme.BrandGreen
 import com.alpaca.app.ui.theme.CloudGray
@@ -189,37 +190,43 @@ fun TrailScreen(
                     },
                     value = "${user?.streakDays ?: 0}"
                 )
-                StatChip(
-                    icon = {
-                        Icon(
-                            Icons.Filled.Stars, null,
-                            tint = SunYellow, modifier = Modifier.size(20.dp)
-                        )
-                    },
-                    value = "${user?.coins ?: 0}"
-                )
-                StatChip(
-                    icon = {
-                        Icon(
-                            Icons.Filled.Diamond, null,
-                            tint = GemPurple, modifier = Modifier.size(20.dp)
-                        )
-                    },
-                    value = "${user?.gems ?: 0}",
-                    onClick = {
-                        haptics?.light()
-                        onOpenQuests()
-                    }
-                )
-                StatChip(
-                    icon = {
-                        Icon(
-                            Icons.AutoMirrored.Filled.ArrowForward, null,
-                            tint = SkyBlue, modifier = Modifier.size(20.dp)
-                        )
-                    },
-                    value = "${user?.xp ?: 0} XP"
-                )
+                PopOnChange(value = user?.coins ?: 0) {
+                    StatChip(
+                        icon = {
+                            Icon(
+                                Icons.Filled.Stars, null,
+                                tint = SunYellow, modifier = Modifier.size(20.dp)
+                            )
+                        },
+                        value = "${user?.coins ?: 0}"
+                    )
+                }
+                PopOnChange(value = user?.gems ?: 0) {
+                    StatChip(
+                        icon = {
+                            Icon(
+                                Icons.Filled.Diamond, null,
+                                tint = GemPurple, modifier = Modifier.size(20.dp)
+                            )
+                        },
+                        value = "${user?.gems ?: 0}",
+                        onClick = {
+                            haptics?.light()
+                            onOpenQuests()
+                        }
+                    )
+                }
+                PopOnChange(value = user?.xp ?: 0) {
+                    StatChip(
+                        icon = {
+                            Icon(
+                                Icons.AutoMirrored.Filled.ArrowForward, null,
+                                tint = SkyBlue, modifier = Modifier.size(20.dp)
+                            )
+                        },
+                        value = "${user?.xp ?: 0} XP"
+                    )
+                }
                 Box(
                     modifier = Modifier
                         .clip(RoundedCornerShape(100.dp))

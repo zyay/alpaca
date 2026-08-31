@@ -10,7 +10,7 @@ When you slip up, a droplet splatters the screen, a red ✗ stamps in, and it
 clears to reveal the correct answer with a one-line explanation of *why*.
 No characters, no fluff — just the physics.
 
-## What's inside v0.7.0
+## What's inside v0.8.0
 
 | Feature | Details |
 |---|---|
@@ -22,6 +22,7 @@ No characters, no fluff — just the physics.
 | 🎚️ **Difficulty levels & voices** | Beginner / Confident / Advanced personas (vocabulary, pace, correction style) and 4 tutor voices — persisted per device |
 | 🧠 **Post-call AI coach** | After each call the transcript goes to a Gemini text model that returns strengths, 3 concrete improvements and vocabulary to remember — with a graceful fallback when the backend is unavailable |
 | 🔄 **Self-updater** | Checks GitHub releases for a newer version (max every 6 h), shows an update banner on the trail and a version card in Settings, then downloads the new APK via the system DownloadManager and hands it to the Android installer — sideloaded installs stay current with zero fuss |
+| ✨ **Motion everywhere** | Duolingo-grade physics: count-up XP/gems/coins, spring-pop stat chips on change, staggered card entrances on quests/leaderboard/achievements, progress bars that fill on open, gloss sweeps over unlocked badges — plus confetti, pulsing nodes, hearts, and slide+fade screen transitions |
 | 👤 **Accounts (optional)** | Email + password sign-up/log-in via the Vercel backend — scrypt-hashed passwords, opaque 30-day sessions; signed-in users race leagues under their account identity, guests stay anonymous |
 | 💎 **Gems & daily quests** | 3 deterministic quests per day (XP / lessons / coins); claim gems, spend them in the gem shop |
 | ❄️ **Streak Freeze** | Buy up to 2 freezes (200 gems) — a missed day no longer kills your streak; or refill all fleece hearts for 350 gems |

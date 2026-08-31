@@ -25,6 +25,18 @@ export async function redisPipeline(rest, commands) {
   return data.map((entry) => (entry && "result" in entry ? entry.result : null));
 }
 
+// HGETALL comes back as an object on Vercel KV but a flat [k,v,...] array on
+// the Upstash-backed proxy — normalize both to a plain object.
+export function toHash(row) {
+  if (!row) return {};
+  if (Array.isArray(row)) {
+    const out = {};
+    for (let i = 0; i + 1 < row.length; i += 2) out[row[i]] = row[i + 1];
+    return out;
+  }
+  return row;
+}
+
 // --- password hashing: scrypt with per-user random salt ---
 const SCRYPT = { N: 16384, r: 8, p: 1 };
 
@@ -79,8 +91,9 @@ export async function createUser(rest, email, passHash, name) {
 
 export async function getUser(rest, userId) {
   const [user] = await redisPipeline(rest, [["hgetall", `user:${userId}`]]);
-  if (!user || !user.email) return null;
-  return user;
+  const hash = toHash(user);
+  if (!hash.email) return null;
+  return hash;
 }
 
 // --- sessions ---

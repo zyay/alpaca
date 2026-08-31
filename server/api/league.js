@@ -16,7 +16,7 @@
 //   POST /api/league { deviceId, name, xp }   → add XP to the current week
 
 import {
-  restEnv, redisPipeline, resolveSession, getUser,
+  restEnv, redisPipeline, toHash, resolveSession, getUser,
 } from "./_lib/store.js";
 
 const WEEK_TTL_SECONDS = 8 * 24 * 60 * 60; // keys self-clean after the week ends
@@ -102,10 +102,11 @@ export default async function handler(req, res) {
       ]);
 
       const entries = [];
+      const nameMap = toHash(names);
       for (let i = 0; i < (top || []).length; i += 2) {
         entries.push({
           id: top[i],
-          name: (names && names[top[i]]) || "Anonymous",
+          name: nameMap[top[i]] || "Anonymous",
           xp: Math.round(Number(top[i + 1]) || 0),
         });
       }

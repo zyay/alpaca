@@ -10,13 +10,14 @@ When you slip up, a droplet splatters the screen, a red ✗ stamps in, and it
 clears to reveal the correct answer with a one-line explanation of *why*.
 No characters, no fluff — just the physics.
 
-## What's inside v0.4.0
+## What's inside v0.5.0
 
 | Feature | Details |
 |---|---|
 | 🌍 **5 courses** | **Spanish** (5 units), **French** (2), **German** (2), **Italian** (2), **Portuguese** (2) — switch courses from the trail or Settings; Japanese is *coming soon* |
 | 🗺️ **The trail** | Winding gamified lesson path — **13 regions, 65 lessons, ~650 exercises** with sequential unit unlocking per course |
 | 📚 **5 exercise types** | multiple choice · match pairs · fill-in-the-blank · listening (TTS) · pronunciation — every wrong-answer exercise carries a one-line grammar explanation |
+| 👤 **Accounts (optional)** | Email + password sign-up/log-in via the Vercel backend — scrypt-hashed passwords, opaque 30-day sessions; signed-in users race leagues under their account identity, guests stay anonymous |
 | 💎 **Gems & daily quests** | 3 deterministic quests per day (XP / lessons / coins); claim gems, spend them in the gem shop |
 | ❄️ **Streak Freeze** | Buy up to 2 freezes (200 gems) — a missed day no longer kills your streak; or refill all fleece hearts for 350 gems |
 | 🏟️ **Real online leagues** | Anonymous weekly XP race on a Redis-backed Vercel endpoint — top 30 standings, your live rank, promotion zone, resets Monday 00:00 UTC; offline builds fall back to a local practice herd |
@@ -41,7 +42,9 @@ model trained on [Mozilla Common Voice](https://commonvoice.mozilla.org/).
 
 Grab `app-debug.apk` from the
 [latest release](https://github.com/zyay/alpaca/releases/latest) and install it.
-Everything except live voice chat works out of the box.
+Everything except live voice chat works out of the box; the app is fully usable
+as a guest — accounts and online leagues light up once the backend has Redis
+(see below).
 
 ### Voice calls — the safe path (recommended)
 
@@ -105,9 +108,9 @@ app/src/main/java/com/alpaca/app/
 ├── gemini/      Gemini Live WebSocket client + ephemeral-token client
 ├── audio/       AudioEngine, TTS, pronunciation grader, sound effects
 ├── billing/     Play Billing manager (Alpaca Max subscription)
-├── data/        Room, DataStore, leagues, quests, mistake log, content models + bundled JSON
-└── ui/          onboarding · trail · lesson · summary · voice · quests · achievements · leaderboard · settings · languages
-server/api/      Vercel functions: ephemeral token minting + weekly league (Redis REST)
+├── data/        Room, DataStore, auth client, leagues, quests, mistake log, content models + bundled JSON
+└── ui/          onboarding · trail · lesson · summary · voice · quests · achievements · leaderboard · auth · settings · languages
+server/api/      Vercel functions: ephemeral token minting + accounts (email/password) + weekly league (Redis REST)
 docs/            Play Store listing draft + privacy policy
 ```
 
@@ -123,6 +126,18 @@ REST instance (Vercel KV or Upstash — same protocol). Configure either pair of
 env vars on the project and the leaderboard goes live; without them the
 endpoint reports `{ available: false }` and the app shows its offline
 practice-herd preview. Week windows are ISO weeks, Monday 00:00 UTC.
+
+## Accounts backend
+
+The same Redis REST instance powers optional email + password accounts:
+`POST /api/auth/signup`, `POST /api/auth/login`, `GET /api/auth/me`,
+`POST /api/auth/logout`. Passwords are hashed with Node's `scrypt` (16-byte
+salt, timing-safe verification) — plaintext never touches the server. Sessions
+are opaque 32-byte tokens stored in Redis with a 30-day TTL; the app keeps the
+token in DataStore and sends it as a bearer header on league calls, so a
+signed-in user keeps one league identity across devices and reinstalls.
+Without Redis configured every auth endpoint degrades to
+`{ available: false }` and the app stays in guest mode.
 
 ## Roadmap
 

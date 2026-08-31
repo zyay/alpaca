@@ -1,4 +1,4 @@
-// Alpaca weekly leagues — anonymous, Redis-backed XP race.
+// Alpaca weekly leagues — XP race with optional account identity.
 //
 // Storage: any Redis REST endpoint. Vercel KV (marketplace) and Upstash both
 // speak the same REST protocol; set these env vars:
@@ -7,20 +7,21 @@
 // Without them the API reports { available: false } and the app falls back
 // to its offline preview — nothing crashes, nothing is stored.
 //
+// Identity: signed-in players send `Authorization: Bearer <session token>`
+// (minted by /api/auth/login|signup) and race under their account id with the
+// account name. Everyone else races anonymously under their device id.
+//
 // Endpoints (single handler):
 //   GET  /api/league?deviceId=<id>            → standings (top 30 + your rank)
 //   POST /api/league { deviceId, name, xp }   → add XP to the current week
 
+import {
+  restEnv, redisPipeline, resolveSession, getUser,
+} from "./_lib/store.js";
+
 const WEEK_TTL_SECONDS = 8 * 24 * 60 * 60; // keys self-clean after the week ends
 const TOP_N = 30;
 const MAX_XP_PER_REPORT = 500;
-
-function restEnv() {
-  const url = process.env.KV_REST_API_URL || process.env.UPSTASH_REDIS_REST_URL;
-  const token = process.env.KV_REST_API_TOKEN || process.env.UPSTASH_REDIS_REST_TOKEN;
-  if (!url || !token) return null;
-  return { url: url.replace(/\/+$/, ""), token };
-}
 
 // ISO-8601 week id (e.g. "2026-W36"); leagues run Monday 00:00 UTC → Sunday.
 function isoWeekId(date = new Date()) {
@@ -41,18 +42,16 @@ function msUntilReset(date = new Date()) {
   return nextMonday.getTime() - date.getTime();
 }
 
-async function redisPipeline(rest, commands) {
-  const resp = await fetch(`${rest.url}/pipeline`, {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${rest.token}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(commands),
-  });
-  if (!resp.ok) throw new Error(`Redis REST ${resp.status}`);
-  const data = await resp.json();
-  return data.map((entry) => (entry && "result" in entry ? entry.result : null));
+/** Resolves the racing identity: account id when signed in, else device id. */
+async function resolveIdentity(rest, req, fallbackDeviceId, fallbackName) {
+  const userId = await resolveSession(rest, req);
+  if (userId) {
+    const user = await getUser(rest, userId);
+    if (user) return { id: userId, name: user.name || fallbackName || "Learner" };
+  }
+  const deviceId = String(fallbackDeviceId || "").trim().slice(0, 64);
+  if (!deviceId) return null;
+  return { id: deviceId, name: String(fallbackName || "").trim().slice(0, 24) || "Anonymous" };
 }
 
 export default async function handler(req, res) {
@@ -71,23 +70,21 @@ export default async function handler(req, res) {
   try {
     if (req.method === "POST") {
       const body = typeof req.body === "string" ? JSON.parse(req.body) : req.body || {};
-      const deviceId = String(body.deviceId || "").trim().slice(0, 64);
-      const name = String(body.name || "").trim().slice(0, 24) || "Anonymous";
       const xp = Math.floor(Number(body.xp) || 0);
-
-      if (!deviceId) {
-        res.status(400).json({ error: "deviceId required" });
-        return;
-      }
       if (xp <= 0 || xp > MAX_XP_PER_REPORT) {
         res.status(400).json({ error: `xp must be 1..${MAX_XP_PER_REPORT}` });
         return;
       }
+      const identity = await resolveIdentity(rest, req, body.deviceId, body.name);
+      if (!identity) {
+        res.status(400).json({ error: "deviceId required" });
+        return;
+      }
 
       await redisPipeline(rest, [
-        ["zincrby", xpKey, xp, deviceId],
+        ["zincrby", xpKey, xp, identity.id],
         ["expire", xpKey, WEEK_TTL_SECONDS],
-        ["hset", namesKey, deviceId, name],
+        ["hset", namesKey, identity.id, identity.name],
         ["expire", namesKey, WEEK_TTL_SECONDS],
       ]);
       res.status(200).json({ available: true, week: weekId });
@@ -95,12 +92,13 @@ export default async function handler(req, res) {
     }
 
     if (req.method === "GET") {
-      const deviceId = String(req.query.deviceId || "").trim().slice(0, 64);
+      const body = { deviceId: req.query.deviceId };
+      const identity = await resolveIdentity(rest, req, body.deviceId, null);
       const [top, names, rank, score] = await redisPipeline(rest, [
         ["zrevrange", xpKey, 0, TOP_N - 1, "WITHSCORES"],
         ["hgetall", namesKey],
-        deviceId ? ["zrevrank", xpKey, deviceId] : ["ping"],
-        deviceId ? ["zscore", xpKey, deviceId] : ["ping"],
+        identity ? ["zrevrank", xpKey, identity.id] : ["ping"],
+        identity ? ["zscore", xpKey, identity.id] : ["ping"],
       ]);
 
       const entries = [];

@@ -2,6 +2,7 @@ package com.alpaca.app.ui.settings
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -9,9 +10,11 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
@@ -34,6 +37,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.alpaca.app.BuildConfig
 import com.alpaca.app.data.content.CourseLanguage
 import com.alpaca.app.ui.components.PillButton
+import com.alpaca.app.ui.theme.CloudGray
 import com.alpaca.app.ui.theme.InkFaint
 import com.alpaca.app.ui.theme.InkMid
 import com.alpaca.app.ui.theme.BrandGreen
@@ -45,6 +49,7 @@ fun SettingsScreen(
     viewModel: SettingsViewModel,
     onOpenCourses: () -> Unit,
     onOpenAchievements: () -> Unit,
+    onOpenAccount: () -> Unit,
     onBack: () -> Unit
 ) {
     val prefs by viewModel.prefs.collectAsStateWithLifecycle()
@@ -74,6 +79,69 @@ fun SettingsScreen(
                 prefs.dynamicColor,
                 viewModel::setDynamicColor
             )
+        }
+
+        Spacer(Modifier.height(14.dp))
+
+        SettingsCard {
+            if (prefs.signedIn) {
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Box(
+                        modifier = Modifier
+                            .size(40.dp)
+                            .clip(CircleShape)
+                            .background(BrandGreen),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Text(
+                            text = (prefs.authName.ifBlank { "L" }).take(1).uppercase(),
+                            style = MaterialTheme.typography.titleMedium,
+                            color = Color.White
+                        )
+                    }
+                    Spacer(Modifier.width(12.dp))
+                    Column(Modifier.weight(1f)) {
+                        Text(
+                            text = prefs.authName.ifBlank { "Learner" },
+                            style = MaterialTheme.typography.titleMedium
+                        )
+                        Text(
+                            text = prefs.authEmail,
+                            style = MaterialTheme.typography.bodySmall,
+                            color = InkMid
+                        )
+                    }
+                }
+                Spacer(Modifier.height(12.dp))
+                PillButton(
+                    text = "Log out",
+                    onClick = viewModel::signOut,
+                    color = CloudGray,
+                    textColor = InkMid
+                )
+            } else {
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .clickable(onClick = onOpenAccount)
+                        .padding(vertical = 6.dp)
+                ) {
+                    Column(Modifier.weight(1f)) {
+                        Text("Account", style = MaterialTheme.typography.titleMedium)
+                        Text(
+                            "Sign in or create one — keeps your league identity",
+                            style = MaterialTheme.typography.bodySmall,
+                            color = InkMid
+                        )
+                    }
+                    Icon(
+                        Icons.AutoMirrored.Filled.ArrowForward,
+                        contentDescription = "Open account",
+                        tint = InkMid
+                    )
+                }
+            }
         }
 
         Spacer(Modifier.height(14.dp))
@@ -188,7 +256,7 @@ fun SettingsScreen(
 
         Spacer(Modifier.height(24.dp))
         Text(
-            text = "Alpaca v0.4.0 · Learn loud. Travel far.",
+            text = "Alpaca v0.5.0 · Learn loud. Travel far.",
             style = MaterialTheme.typography.bodyMedium,
             color = InkMid
         )

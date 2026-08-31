@@ -3,12 +3,14 @@ package com.alpaca.app.ui.settings
 import android.app.Activity
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.alpaca.app.BuildConfig
 import com.alpaca.app.billing.BillingManager
 import com.alpaca.app.data.datastore.UserPrefs
 import com.alpaca.app.di.AppContainer
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
@@ -49,4 +51,16 @@ class SettingsViewModel(private val container: AppContainer) : ViewModel() {
         }
 
     fun restorePurchases() = container.billingManager.restorePurchases()
+
+    fun signOut() = viewModelScope.launch {
+        val prefs = container.prefs.prefs.first()
+        if (prefs.authToken.isNotEmpty() && BuildConfig.VERCEL_BASE_URL.isNotBlank()) {
+            runCatching {
+                container.authClient.logout(
+                    BuildConfig.VERCEL_BASE_URL, prefs.authToken
+                ).getOrThrow()
+            }
+        }
+        container.prefs.clearSession()
+    }
 }

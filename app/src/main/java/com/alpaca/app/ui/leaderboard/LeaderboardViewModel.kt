@@ -48,11 +48,12 @@ class LeaderboardViewModel(private val container: AppContainer) : ViewModel() {
         viewModelScope.launch {
             val baseUrl = BuildConfig.VERCEL_BASE_URL
             val deviceId = container.prefs.ensureDeviceId()
+            val prefs = container.prefs.prefs.first()
             if (baseUrl.isBlank()) {
                 offlinePreview(deviceId, reason = null)
                 return@launch
             }
-            container.leagueClient.standings(baseUrl, deviceId).fold(
+            container.leagueClient.standings(baseUrl, deviceId, prefs.authToken).fold(
                 onSuccess = { standings ->
                     if (!standings.available) {
                         offlinePreview(
@@ -60,12 +61,12 @@ class LeaderboardViewModel(private val container: AppContainer) : ViewModel() {
                             reason = standings.reason ?: "League backend not configured"
                         )
                     } else {
-                        val prefs = container.prefs.prefs.first()
+                        val myId = prefs.authUserId.ifBlank { deviceId }
                         val rows = standings.entries.map { entry ->
-                            EntryUi(entry.id, entry.name, entry.xp, entry.id == deviceId)
+                            EntryUi(entry.id, entry.name, entry.xp, entry.id == myId)
                         }
                         val merged = if (rows.any { it.isYou }) rows else rows + EntryUi(
-                            deviceId, prefs.displayName, standings.yourXp ?: 0, true
+                            myId, prefs.displayName, standings.yourXp ?: 0, true
                         )
                         val sorted = merged.sortedByDescending { it.xp }
                         _state.value = UiState(

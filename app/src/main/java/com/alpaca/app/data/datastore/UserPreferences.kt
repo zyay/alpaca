@@ -25,8 +25,14 @@ data class UserPrefs(
     val callsMade: Int = 0,
     val dynamicColor: Boolean = false,
     val currentLanguage: String = "es",
-    val deviceId: String = ""
-)
+    val deviceId: String = "",
+    val authToken: String = "",
+    val authUserId: String = "",
+    val authEmail: String = "",
+    val authName: String = ""
+) {
+    val signedIn: Boolean get() = authToken.isNotEmpty()
+}
 
 class UserPreferencesStore(private val context: Context) {
     private object Keys {
@@ -40,6 +46,10 @@ class UserPreferencesStore(private val context: Context) {
         val DYNAMIC_COLOR = booleanPreferencesKey("dynamic_color")
         val LANGUAGE = stringPreferencesKey("current_language")
         val DEVICE_ID = stringPreferencesKey("device_id")
+        val AUTH_TOKEN = stringPreferencesKey("auth_token")
+        val AUTH_USER_ID = stringPreferencesKey("auth_user_id")
+        val AUTH_EMAIL = stringPreferencesKey("auth_email")
+        val AUTH_NAME = stringPreferencesKey("auth_name")
     }
 
     val prefs: Flow<UserPrefs> = context.dataStore.data.map { p ->
@@ -53,7 +63,11 @@ class UserPreferencesStore(private val context: Context) {
             callsMade = p[Keys.CALLS] ?: 0,
             dynamicColor = p[Keys.DYNAMIC_COLOR] ?: false,
             currentLanguage = p[Keys.LANGUAGE] ?: "es",
-            deviceId = p[Keys.DEVICE_ID] ?: ""
+            deviceId = p[Keys.DEVICE_ID] ?: "",
+            authToken = p[Keys.AUTH_TOKEN] ?: "",
+            authUserId = p[Keys.AUTH_USER_ID] ?: "",
+            authEmail = p[Keys.AUTH_EMAIL] ?: "",
+            authName = p[Keys.AUTH_NAME] ?: ""
         )
     }
 
@@ -81,5 +95,23 @@ class UserPreferencesStore(private val context: Context) {
             prefs[Keys.DEVICE_ID] = prefs[Keys.DEVICE_ID] ?: fresh
         }
         return fresh
+    }
+
+    suspend fun setSession(token: String, userId: String, email: String, name: String) {
+        context.dataStore.edit {
+            it[Keys.AUTH_TOKEN] = token
+            it[Keys.AUTH_USER_ID] = userId
+            it[Keys.AUTH_EMAIL] = email
+            it[Keys.AUTH_NAME] = name
+        }
+    }
+
+    suspend fun clearSession() {
+        context.dataStore.edit {
+            it.remove(Keys.AUTH_TOKEN)
+            it.remove(Keys.AUTH_USER_ID)
+            it.remove(Keys.AUTH_EMAIL)
+            it.remove(Keys.AUTH_NAME)
+        }
     }
 }

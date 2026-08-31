@@ -11,6 +11,8 @@ import com.alpaca.app.AlpacaApp
 import com.alpaca.app.di.LocalViewModelFactory
 import com.alpaca.app.ui.achievements.AchievementsScreen
 import com.alpaca.app.ui.achievements.AchievementsViewModel
+import com.alpaca.app.ui.auth.AuthScreen
+import com.alpaca.app.ui.auth.AuthViewModel
 import com.alpaca.app.ui.leaderboard.LeaderboardScreen
 import com.alpaca.app.ui.leaderboard.LeaderboardViewModel
 import com.alpaca.app.ui.languages.LanguagePickerScreen
@@ -59,6 +61,9 @@ data object CoursesRoute
 
 @Serializable
 data object QuestsRoute
+
+@Serializable
+data object AuthRoute
 
 @Composable
 fun AppNavHost(
@@ -148,6 +153,7 @@ fun AppNavHost(
                 viewModel = viewModel,
                 onOpenCourses = { navController.navigate(CoursesRoute) },
                 onOpenAchievements = { navController.navigate(AchievementsRoute) },
+                onOpenAccount = { navController.navigate(AuthRoute) },
                 onBack = { navController.popBackStack() }
             )
         }
@@ -163,6 +169,14 @@ fun AppNavHost(
                 viewModel = viewModel,
                 onBack = { navController.popBackStack() },
                 haptics = haptics
+            )
+        }
+
+        composable<AuthRoute> {
+            val viewModel: AuthViewModel = viewModel(factory = factory)
+            AuthScreen(
+                viewModel = viewModel,
+                onBack = { navController.popBackStack() }
             )
         }
     }

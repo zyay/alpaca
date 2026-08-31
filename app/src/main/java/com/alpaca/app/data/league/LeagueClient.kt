@@ -44,11 +44,13 @@ class LeagueClient {
         baseUrl: String,
         deviceId: String,
         name: String,
-        xpGained: Int
+        xpGained: Int,
+        authToken: String? = null
     ): Result<Unit> = kotlin.runCatching {
         val request = Request.Builder()
             .url(baseUrl.trimEnd('/') + "/api/league")
             .post(json.encodeToString(ReportRequest(deviceId, name, xpGained)).toRequestBody(jsonType))
+            .apply { if (!authToken.isNullOrBlank()) header("Authorization", "Bearer $authToken") }
             .build()
         client.newCall(request).execute().use { response ->
             val body = response.body?.string().orEmpty()
@@ -58,11 +60,12 @@ class LeagueClient {
         }
     }
 
-    suspend fun standings(baseUrl: String, deviceId: String): Result<LeagueStandings> =
+    suspend fun standings(baseUrl: String, deviceId: String, authToken: String? = null): Result<LeagueStandings> =
         kotlin.runCatching {
             val request = Request.Builder()
                 .url(baseUrl.trimEnd('/') + "/api/league?deviceId=" + deviceId)
                 .get()
+                .apply { if (!authToken.isNullOrBlank()) header("Authorization", "Bearer $authToken") }
                 .build()
             client.newCall(request).execute().use { response ->
                 val body = response.body?.string().orEmpty()

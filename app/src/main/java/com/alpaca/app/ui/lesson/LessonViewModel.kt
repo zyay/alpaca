@@ -149,7 +149,9 @@ class LessonViewModel(private val container: AppContainer) : ViewModel() {
             runCatching {
                 val deviceId = container.prefs.ensureDeviceId()
                 val name = prefs.value.displayName
-                container.leagueClient.reportXp(baseUrl, deviceId, name, xp).getOrThrow()
+                container.leagueClient.reportXp(
+                    baseUrl, deviceId, name, xp, prefs.value.authToken
+                ).getOrThrow()
             }
         }
     }

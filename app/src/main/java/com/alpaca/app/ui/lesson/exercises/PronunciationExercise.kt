@@ -38,8 +38,8 @@ import androidx.compose.ui.unit.dp
 import com.alpaca.app.audio.PronunciationGrader
 import com.alpaca.app.data.content.PronunciationExercise
 import com.alpaca.app.ui.components.PillButton
+import com.alpaca.app.ui.theme.alpacaSecondaryText
 import com.alpaca.app.ui.theme.DangerRed
-import com.alpaca.app.ui.theme.InkMid
 import com.alpaca.app.ui.theme.BrandGreen
 import com.alpaca.app.ui.theme.PaperWhite
 import com.alpaca.app.ui.theme.SkyBlue
@@ -101,7 +101,7 @@ fun PronunciationUi(
         Text(
             text = exercise.translation,
             style = MaterialTheme.typography.bodyMedium,
-            color = InkMid
+            color = alpacaSecondaryText()
         )
         Spacer(Modifier.height(24.dp))
 
@@ -111,7 +111,7 @@ fun PronunciationUi(
                 Text(
                     text = "Tap the mic and say the phrase",
                     style = MaterialTheme.typography.bodyMedium,
-                    color = InkMid,
+                    color = alpacaSecondaryText(),
                     modifier = Modifier.padding(top = 16.dp)
                 )
             }
@@ -136,7 +136,7 @@ fun PronunciationUi(
                 Text(
                     text = "You said: \"${p.recognized ?: "…"}\"  ·  match ${(p.score * 100).toInt()}%",
                     style = MaterialTheme.typography.bodyMedium,
-                    color = InkMid,
+                    color = alpacaSecondaryText(),
                     textAlign = TextAlign.Center,
                     modifier = Modifier.padding(top = 8.dp)
                 )
@@ -157,7 +157,7 @@ fun PronunciationUi(
                     Text(
                         text = "Green words were clear — focus on the red ones.",
                         style = MaterialTheme.typography.bodySmall,
-                        color = InkMid,
+                        color = alpacaSecondaryText(),
                         modifier = Modifier.padding(top = 4.dp)
                     )
                 }
@@ -189,7 +189,7 @@ fun PronunciationUi(
                 Text(
                     text = "Speech recognition isn't available on this device.",
                     style = MaterialTheme.typography.bodyMedium,
-                    color = InkMid,
+                    color = alpacaSecondaryText(),
                     textAlign = TextAlign.Center
                 )
                 Spacer(Modifier.height(16.dp))

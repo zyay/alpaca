@@ -10,7 +10,7 @@ When you slip up, a droplet splatters the screen, a red ✗ stamps in, and it
 clears to reveal the correct answer with a one-line explanation of *why*.
 No characters, no fluff — just the physics.
 
-## What's inside v0.8.0
+## What's inside v0.9.0
 
 | Feature | Details |
 |---|---|
@@ -34,7 +34,7 @@ No characters, no fluff — just the physics.
 | 🔊 **Sound design** | Zero-asset sound effects via platform `ToneGenerator` (correct/wrong/select/finish), gated by the sound preference |
 | 👋 **Onboarding** | Rotating seven-language hero, floating flags, learns your name, then drops you on the trail |
 | 🔐 **Key-less distribution** | Voice calls authenticate with **short-lived ephemeral tokens** minted by a Vercel serverless function — the raw API key never ships in the APK |
-| 🎨 **Design** | Duolingo-grade design system: `#58cc02` brand green, weight-800 headings, pill buttons with hard 3D edges, gradient-orb voice avatar, **full dark palette**, adaptive launcher icon (speech-bubble wordmark, monochrome-ready), branded splash screen, slide+fade navigation transitions |
+| 🎨 **Design** | Duolingo-grade design system: `#58cc02` brand green, weight-800 headings, pill buttons with hard 3D edges, gradient-orb voice avatar, **true dark mode on every screen (cards, borders, text adapt automatically)**, adaptive launcher icon (speech-bubble wordmark, monochrome-ready), branded splash screen, slide+fade navigation transitions |
 
 **Voice-chat latency architecture:** `AudioRecord` (16 kHz PCM) → OkHttp
 WebSocket → Gemini Live → `AudioTrack` (24 kHz PCM), all behind an `AudioEngine`

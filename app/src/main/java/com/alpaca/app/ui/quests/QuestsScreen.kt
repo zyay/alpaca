@@ -49,13 +49,13 @@ import com.alpaca.app.ui.components.Entrance
 import com.alpaca.app.ui.components.LoadingView
 import com.alpaca.app.ui.components.PillButton
 import com.alpaca.app.ui.theme.BrandGreen
-import com.alpaca.app.ui.theme.CloudGray
 import com.alpaca.app.ui.theme.GemPurple
-import com.alpaca.app.ui.theme.InkFaint
-import com.alpaca.app.ui.theme.InkMid
 import com.alpaca.app.ui.theme.SkyBlue
 import com.alpaca.app.ui.theme.StreakOrange
 import com.alpaca.app.ui.theme.SunYellow
+import com.alpaca.app.ui.theme.alpacaCard
+import com.alpaca.app.ui.theme.alpacaCardBorder
+import com.alpaca.app.ui.theme.alpacaSecondaryText
 import com.alpaca.app.util.HapticPlayer
 
 @Composable
@@ -199,8 +199,8 @@ private fun GemsChip(gems: Int) {
     Row(
         modifier = Modifier
             .clip(RoundedCornerShape(100.dp))
-            .background(Color.White)
-            .border(2.dp, CloudGray, RoundedCornerShape(100.dp))
+            .background(alpacaCard())
+            .border(2.dp, alpacaCardBorder(), RoundedCornerShape(100.dp))
             .padding(horizontal = 12.dp, vertical = 6.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
@@ -227,8 +227,8 @@ private fun QuestCard(quest: QuestEntity, title: String, onClaim: () -> Unit) {
         modifier = Modifier
             .fillMaxWidth()
             .clip(RoundedCornerShape(16.dp))
-            .background(Color.White)
-            .border(2.dp, CloudGray, RoundedCornerShape(16.dp))
+            .background(alpacaCard())
+            .border(2.dp, alpacaCardBorder(), RoundedCornerShape(16.dp))
             .padding(16.dp)
     ) {
         Row(verticalAlignment = Alignment.CenterVertically) {
@@ -242,7 +242,7 @@ private fun QuestCard(quest: QuestEntity, title: String, onClaim: () -> Unit) {
                     text = if (quest.claimed) "Claimed" else
                         "${quest.progress.coerceAtMost(quest.target)}/${quest.target}",
                     style = MaterialTheme.typography.bodyMedium,
-                    color = if (quest.claimed) BrandGreen else InkMid,
+                    color = if (quest.claimed) BrandGreen else alpacaSecondaryText(),
                     fontWeight = if (quest.claimed) FontWeight.Bold else FontWeight.Normal
                 )
             }
@@ -256,7 +256,7 @@ private fun QuestCard(quest: QuestEntity, title: String, onClaim: () -> Unit) {
                 .fillMaxWidth()
                 .height(14.dp)
                 .clip(RoundedCornerShape(100.dp))
-                .background(CloudGray)
+                .background(alpacaCardBorder())
         ) {
             Box(
                 modifier = Modifier
@@ -294,7 +294,7 @@ private fun RewardPill(gems: Int, claimed: Boolean) {
         Text(
             text = "$gems",
             style = MaterialTheme.typography.titleSmall,
-            color = InkMid,
+            color = alpacaSecondaryText(),
             fontWeight = FontWeight.ExtraBold
         )
         if (claimed) {
@@ -318,8 +318,8 @@ private fun ShopCard(
         modifier = Modifier
             .fillMaxWidth()
             .clip(RoundedCornerShape(16.dp))
-            .background(Color.White)
-            .border(2.dp, CloudGray, RoundedCornerShape(16.dp))
+            .background(alpacaCard())
+            .border(2.dp, alpacaCardBorder(), RoundedCornerShape(16.dp))
             .padding(16.dp)
     ) {
         Row(verticalAlignment = Alignment.CenterVertically) {
@@ -340,7 +340,7 @@ private fun ShopCard(
                 Text(
                     text = owned,
                     style = MaterialTheme.typography.bodySmall,
-                    color = InkMid
+                    color = alpacaSecondaryText()
                 )
             }
             Row(verticalAlignment = Alignment.CenterVertically) {

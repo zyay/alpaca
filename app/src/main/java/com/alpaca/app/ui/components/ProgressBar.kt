@@ -15,7 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import com.alpaca.app.ui.theme.CloudGray
+import com.alpaca.app.ui.theme.alpacaCardBorder
 import com.alpaca.app.ui.theme.SkyBlue
 
 @Composable
@@ -35,7 +35,7 @@ fun LessonProgressBar(
             .fillMaxWidth()
             .height(16.dp)
             .clip(shape)
-            .background(CloudGray)
+            .background(alpacaCardBorder())
     ) {
         Box(
             modifier = Modifier

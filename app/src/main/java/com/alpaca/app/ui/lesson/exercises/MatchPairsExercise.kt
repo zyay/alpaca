@@ -26,7 +26,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.alpaca.app.data.content.MatchPairsExercise
-import com.alpaca.app.ui.theme.CloudGray
+import com.alpaca.app.ui.theme.alpacaCardBorder
 import com.alpaca.app.ui.theme.DangerRed
 import com.alpaca.app.ui.theme.BrandGreen
 import com.alpaca.app.ui.theme.BrandGreenPale
@@ -136,7 +136,7 @@ private fun PairTile(
             wrong -> DangerRed
             matched -> BrandGreen
             selected -> SkyBlue
-            else -> CloudGray
+            else -> alpacaCardBorder()
         },
         label = "tile-border"
     )

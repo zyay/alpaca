@@ -14,7 +14,7 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.unit.dp
-import com.alpaca.app.ui.theme.CloudGray
+import com.alpaca.app.ui.theme.alpacaCardBorder
 import com.alpaca.app.ui.theme.HeartPink
 
 /**
@@ -40,7 +40,7 @@ fun EnergyHearts(
                 ),
                 label = "fleece-$index"
             )
-            val tuftColor = if (filled) HeartPink else CloudGray
+            val tuftColor = if (filled) HeartPink else alpacaCardBorder()
             Canvas(modifier = Modifier.size(26.dp)) {
                 val s = size.minDimension * scale
                 val cx = size.width / 2f

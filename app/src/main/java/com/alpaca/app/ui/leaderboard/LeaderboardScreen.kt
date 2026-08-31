@@ -40,13 +40,14 @@ import com.alpaca.app.ui.components.EmptyStateCard
 import com.alpaca.app.ui.components.Entrance
 import com.alpaca.app.ui.components.LoadingView
 import com.alpaca.app.ui.components.PillButton
+import com.alpaca.app.ui.theme.alpacaFaintText
 import com.alpaca.app.ui.theme.BrandGreen
-import com.alpaca.app.ui.theme.BrandGreenPale
-import com.alpaca.app.ui.theme.CloudGray
-import com.alpaca.app.ui.theme.InkFaint
-import com.alpaca.app.ui.theme.InkMid
 import com.alpaca.app.ui.theme.SkyBlue
 import com.alpaca.app.ui.theme.SunYellow
+import com.alpaca.app.ui.theme.alpacaCard
+import com.alpaca.app.ui.theme.alpacaCardBorder
+import com.alpaca.app.ui.theme.alpacaGreenTint
+import com.alpaca.app.ui.theme.alpacaSecondaryText
 
 private const val PROMOTION_ZONE = 5
 
@@ -82,7 +83,7 @@ fun LeaderboardScreen(
                 .fillMaxWidth()
                 .padding(vertical = 12.dp)
                 .clip(RoundedCornerShape(16.dp))
-                .background(BrandGreenPale)
+                .background(alpacaGreenTint())
                 .padding(16.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
@@ -100,7 +101,7 @@ fun LeaderboardScreen(
                         "Local preview · offline herd"
                     },
                     style = MaterialTheme.typography.bodyMedium,
-                    color = InkMid
+                    color = alpacaSecondaryText()
                 )
             }
         }
@@ -109,7 +110,7 @@ fun LeaderboardScreen(
             Text(
                 text = "Online league unavailable (${state.errorMessage}). Playing the practice herd instead.",
                 style = MaterialTheme.typography.bodySmall,
-                color = InkFaint
+                color = alpacaFaintText()
             )
             Spacer(Modifier.height(8.dp))
         }
@@ -143,9 +144,9 @@ fun LeaderboardScreen(
                             .clip(RoundedCornerShape(14.dp))
                         .background(
                             when {
-                                row.isYou -> BrandGreenPale
+                                row.isYou -> alpacaGreenTint()
                                 inPromotion -> BrandGreen.copy(alpha = 0.06f)
-                                else -> Color.White
+                                else -> alpacaCard()
                             }
                         )
                         .border(
@@ -153,7 +154,7 @@ fun LeaderboardScreen(
                             when {
                                 row.isYou -> BrandGreen
                                 inPromotion -> BrandGreen.copy(alpha = 0.35f)
-                                else -> CloudGray
+                                else -> alpacaCardBorder()
                             },
                             RoundedCornerShape(14.dp)
                         )
@@ -169,7 +170,7 @@ fun LeaderboardScreen(
                     Text(
                         text = "$rank",
                         style = MaterialTheme.typography.titleMedium,
-                        color = if (rank <= 3) SunYellow else InkMid,
+                        color = if (rank <= 3) SunYellow else alpacaSecondaryText(),
                         fontWeight = FontWeight.ExtraBold,
                         modifier = Modifier.width(30.dp)
                     )
@@ -177,13 +178,13 @@ fun LeaderboardScreen(
                         modifier = Modifier
                             .size(34.dp)
                             .clip(CircleShape)
-                            .background(if (row.isYou) BrandGreen else Color(0xFFEDEDED)),
+                            .background(if (row.isYou) BrandGreen else alpacaCardBorder()),
                         contentAlignment = Alignment.Center
                     ) {
                         Text(
                             text = row.name.take(1).uppercase(),
                             style = MaterialTheme.typography.titleMedium,
-                            color = if (row.isYou) Color.White else InkMid
+                            color = if (row.isYou) Color.White else alpacaSecondaryText()
                         )
                     }
                     Spacer(Modifier.width(12.dp))
@@ -197,7 +198,7 @@ fun LeaderboardScreen(
                         target = row.xp,
                         suffix = " XP",
                         style = MaterialTheme.typography.titleMedium,
-                        color = InkMid
+                        color = alpacaSecondaryText()
                     )
                 }
                 }
@@ -210,7 +211,7 @@ fun LeaderboardScreen(
                         "Set VERCEL_BASE_URL + Redis on the backend to race real learners."
                     },
                     style = MaterialTheme.typography.bodyMedium,
-                    color = InkMid,
+                    color = alpacaSecondaryText(),
                     modifier = Modifier.padding(vertical = 16.dp)
                 )
             }

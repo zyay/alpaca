@@ -35,9 +35,10 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.alpaca.app.ui.components.PillButton
+import com.alpaca.app.ui.theme.alpacaCard
+import com.alpaca.app.ui.theme.alpacaSecondaryText
 import com.alpaca.app.ui.theme.BrandGreen
 import com.alpaca.app.ui.theme.DangerRed
-import com.alpaca.app.ui.theme.InkMid
 
 @Composable
 fun AuthScreen(
@@ -76,7 +77,7 @@ fun AuthScreen(
             modifier = Modifier
                 .fillMaxWidth()
                 .clip(RoundedCornerShape(100.dp))
-                .background(Color.White)
+                .background(alpacaCard())
                 .padding(4.dp)
         ) {
             ModeChip(
@@ -99,7 +100,7 @@ fun AuthScreen(
             modifier = Modifier
                 .fillMaxWidth()
                 .clip(RoundedCornerShape(16.dp))
-                .background(Color.White)
+                .background(alpacaCard())
                 .padding(16.dp)
         ) {
             if (state.mode == AuthViewModel.Mode.SIGN_UP) {
@@ -160,7 +161,7 @@ fun AuthScreen(
             text = "Your account keeps your league identity and display name " +
                 "across devices. Lessons, progress and gems stay on this device.",
             style = MaterialTheme.typography.bodySmall,
-            color = InkMid
+            color = alpacaSecondaryText()
         )
         Spacer(Modifier.height(32.dp))
     }
@@ -180,7 +181,7 @@ private fun ModeChip(label: String, selected: Boolean, onClick: () -> Unit, modi
             text = label,
             style = MaterialTheme.typography.titleSmall,
             fontWeight = FontWeight.ExtraBold,
-            color = if (selected) Color.White else InkMid
+            color = if (selected) Color.White else alpacaSecondaryText()
         )
     }
 }

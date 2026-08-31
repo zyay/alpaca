@@ -50,8 +50,9 @@ import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.alpaca.app.data.db.entities.LessonStatus
+import com.alpaca.app.ui.theme.alpacaCardBorder
+import com.alpaca.app.ui.theme.alpacaSecondaryText
 import com.alpaca.app.ui.theme.CloudGray
-import com.alpaca.app.ui.theme.InkMid
 import com.alpaca.app.ui.theme.BrandGreen
 import com.alpaca.app.ui.theme.BrandGreenDeep
 import com.alpaca.app.ui.theme.PaperWhite
@@ -85,6 +86,7 @@ fun TrailMap(
 
         Box(modifier = Modifier.fillMaxWidth().height(height)) {
             // Connector path behind the nodes.
+            val pathColor = alpacaCardBorder()
             Canvas(modifier = Modifier.fillMaxSize()) {
                 val pts = nodes.indices.map { i ->
                     Offset(centerX(i).toPx(), centerY(i).toPx())
@@ -101,7 +103,7 @@ fun TrailMap(
                     }
                 }
 
-                drawPath(segment(pts.size - 1), CloudGray, style = Stroke(width = 14f))
+                drawPath(segment(pts.size - 1), pathColor, style = Stroke(width = 14f))
                 if (firstIncomplete > 0) {
                     drawPath(segment(firstIncomplete - 1), BrandGreen, style = Stroke(width = 14f))
                 }
@@ -135,7 +137,7 @@ fun TrailMap(
                         modifier = Modifier
                             .matchParentSize()
                             .clip(CircleShape)
-                            .background(if (isLocked) CloudGray else BrandGreen),
+                            .background(if (isLocked) alpacaCardBorder() else BrandGreen),
                         contentAlignment = Alignment.Center
                     ) {
                         when (node.status) {
@@ -149,7 +151,7 @@ fun TrailMap(
                             )
                             LessonStatus.LOCKED -> Icon(
                                 Icons.Filled.Lock, "Locked",
-                                tint = InkMid, modifier = Modifier.size(28.dp)
+                                tint = alpacaSecondaryText(), modifier = Modifier.size(28.dp)
                             )
                         }
                     }
@@ -159,7 +161,7 @@ fun TrailMap(
                 Text(
                     text = node.title,
                     style = MaterialTheme.typography.titleMedium,
-                    color = if (node.status == LessonStatus.LOCKED) InkMid
+                    color = if (node.status == LessonStatus.LOCKED) alpacaSecondaryText()
                     else MaterialTheme.colorScheme.onBackground,
                     textAlign = TextAlign.Center,
                     maxLines = 1,

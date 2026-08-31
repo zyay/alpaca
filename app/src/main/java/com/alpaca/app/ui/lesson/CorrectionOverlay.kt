@@ -40,9 +40,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.alpaca.app.ui.components.PillButton
 import com.alpaca.app.ui.components.UnlockEasing
+import com.alpaca.app.ui.theme.alpacaCard
+import com.alpaca.app.ui.theme.alpacaSecondaryText
 import com.alpaca.app.ui.theme.DangerRed
 import com.alpaca.app.ui.theme.DangerRedDark
-import com.alpaca.app.ui.theme.InkMid
 import com.alpaca.app.ui.theme.BrandGreen
 import com.alpaca.app.ui.theme.BrandGreenPale
 import com.alpaca.app.ui.theme.PaperWhite
@@ -71,7 +72,7 @@ fun CorrectionOverlay(
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.White)
+            .background(alpacaCard())
             .statusBarsPadding()
     ) {
         Column(
@@ -120,7 +121,7 @@ fun CorrectionOverlay(
                     Text(
                         text = "Correct answer",
                         style = MaterialTheme.typography.labelLarge,
-                        color = InkMid
+                        color = alpacaSecondaryText()
                     )
                     Box(
                         modifier = Modifier

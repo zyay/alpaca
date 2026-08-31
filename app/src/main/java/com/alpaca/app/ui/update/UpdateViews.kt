@@ -28,9 +28,9 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.alpaca.app.ui.components.PillButton
+import com.alpaca.app.ui.theme.alpacaCardBorder
+import com.alpaca.app.ui.theme.alpacaSecondaryText
 import com.alpaca.app.ui.theme.BrandGreen
-import com.alpaca.app.ui.theme.CloudGray
-import com.alpaca.app.ui.theme.InkMid
 import com.alpaca.app.ui.theme.SkyBlue
 
 @Composable
@@ -97,7 +97,7 @@ private fun CompactBanner(
             Text(
                 text = subtitle,
                 style = MaterialTheme.typography.bodySmall,
-                color = InkMid,
+                color = alpacaSecondaryText(),
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis
             )
@@ -125,7 +125,7 @@ fun UpdateSettingsSection(viewModel: UpdateViewModel) {
             Text(
                 text = "v${com.alpaca.app.BuildConfig.VERSION_NAME}",
                 style = MaterialTheme.typography.bodyMedium,
-                color = InkMid
+                color = alpacaSecondaryText()
             )
         }
         Spacer(Modifier.height(10.dp))
@@ -134,12 +134,12 @@ fun UpdateSettingsSection(viewModel: UpdateViewModel) {
             UpdateViewModel.UpdateState.Idle, UpdateViewModel.UpdateState.Checking -> Text(
                 text = "Checking for updates…",
                 style = MaterialTheme.typography.bodySmall,
-                color = InkMid
+                color = alpacaSecondaryText()
             )
             UpdateViewModel.UpdateState.UpToDate -> Text(
                 text = "You're on the latest version.",
                 style = MaterialTheme.typography.bodySmall,
-                color = InkMid
+                color = alpacaSecondaryText()
             )
             is UpdateViewModel.UpdateState.Available -> {
                 Text(
@@ -151,7 +151,7 @@ fun UpdateSettingsSection(viewModel: UpdateViewModel) {
                     Text(
                         text = notes.lineFirst(),
                         style = MaterialTheme.typography.bodySmall,
-                        color = InkMid,
+                        color = alpacaSecondaryText(),
                         maxLines = 3,
                         overflow = TextOverflow.Ellipsis
                     )
@@ -167,7 +167,7 @@ fun UpdateSettingsSection(viewModel: UpdateViewModel) {
                 Text(
                     text = "Downloading… ${s.percent}%",
                     style = MaterialTheme.typography.bodySmall,
-                    color = InkMid
+                    color = alpacaSecondaryText()
                 )
                 Spacer(Modifier.height(8.dp))
                 LinearProgressIndicator(
@@ -199,7 +199,7 @@ fun UpdateSettingsSection(viewModel: UpdateViewModel) {
                     PillButton(
                         text = "Check again",
                         onClick = { viewModel.check(manual = true) },
-                        color = CloudGray,
+                        color = alpacaCardBorder(),
                         fillWidth = false
                     )
                     if (s.release != null) {

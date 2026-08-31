@@ -21,8 +21,8 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import com.alpaca.app.ui.theme.alpacaSecondaryText
 import com.alpaca.app.ui.theme.BrandGreen
-import com.alpaca.app.ui.theme.InkMid
 
 @Composable
 fun LoadingView(message: String, modifier: Modifier = Modifier) {
@@ -33,7 +33,7 @@ fun LoadingView(message: String, modifier: Modifier = Modifier) {
     ) {
         CircularProgressIndicator(color = BrandGreen, modifier = Modifier.size(22.dp), strokeWidth = 2.5.dp)
         Spacer(Modifier.width(12.dp))
-        Text(message, style = MaterialTheme.typography.bodyMedium, color = InkMid)
+        Text(message, style = MaterialTheme.typography.bodyMedium, color = alpacaSecondaryText())
     }
 }
 
@@ -64,7 +64,7 @@ fun EmptyStateCard(
         Text(
             text = blurb,
             style = MaterialTheme.typography.bodyMedium,
-            color = InkMid,
+            color = alpacaSecondaryText(),
             textAlign = TextAlign.Center
         )
     }

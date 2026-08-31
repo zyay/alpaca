@@ -38,9 +38,10 @@ import com.alpaca.app.BuildConfig
 import com.alpaca.app.data.content.CourseLanguage
 import com.alpaca.app.ui.components.PillButton
 import com.alpaca.app.ui.update.UpdateSettingsSection
-import com.alpaca.app.ui.theme.CloudGray
-import com.alpaca.app.ui.theme.InkFaint
-import com.alpaca.app.ui.theme.InkMid
+import com.alpaca.app.ui.theme.alpacaCardBorder
+import com.alpaca.app.ui.theme.alpacaCard
+import com.alpaca.app.ui.theme.alpacaFaintText
+import com.alpaca.app.ui.theme.alpacaSecondaryText
 import com.alpaca.app.ui.theme.BrandGreen
 import com.alpaca.app.ui.theme.SunYellow
 import android.app.Activity
@@ -110,7 +111,7 @@ fun SettingsScreen(
                         Text(
                             text = prefs.authEmail,
                             style = MaterialTheme.typography.bodySmall,
-                            color = InkMid
+                            color = alpacaSecondaryText()
                         )
                     }
                 }
@@ -118,8 +119,8 @@ fun SettingsScreen(
                 PillButton(
                     text = "Log out",
                     onClick = viewModel::signOut,
-                    color = CloudGray,
-                    textColor = InkMid
+                    color = alpacaCardBorder(),
+                    textColor = alpacaSecondaryText()
                 )
             } else {
                 Row(
@@ -134,13 +135,13 @@ fun SettingsScreen(
                         Text(
                             "Sign in or create one — keeps your league identity",
                             style = MaterialTheme.typography.bodySmall,
-                            color = InkMid
+                            color = alpacaSecondaryText()
                         )
                     }
                     Icon(
                         Icons.AutoMirrored.Filled.ArrowForward,
                         contentDescription = "Open account",
-                        tint = InkMid
+                        tint = alpacaSecondaryText()
                     )
                 }
             }
@@ -169,7 +170,7 @@ fun SettingsScreen(
                 Icon(
                     Icons.AutoMirrored.Filled.ArrowForward,
                     contentDescription = "Open achievements",
-                    tint = InkMid
+                    tint = alpacaSecondaryText()
                 )
             }
             Spacer(Modifier.height(6.dp))
@@ -193,7 +194,7 @@ fun SettingsScreen(
                 Icon(
                     Icons.AutoMirrored.Filled.ArrowForward,
                     contentDescription = "Change course",
-                    tint = InkMid
+                    tint = alpacaSecondaryText()
                 )
             }
         }
@@ -211,7 +212,7 @@ fun SettingsScreen(
                             "Unlimited fleece energy — never wait for hearts again."
                         },
                         style = MaterialTheme.typography.bodyMedium,
-                        color = InkMid
+                        color = alpacaSecondaryText()
                     )
                 }
                 if (BuildConfig.DEBUG) {
@@ -251,7 +252,7 @@ fun SettingsScreen(
                 Text(
                     text = "Debug build: the toggle previews Max without billing.",
                     style = MaterialTheme.typography.bodySmall,
-                    color = InkFaint
+                    color = alpacaFaintText()
                 )
             }
         }
@@ -264,9 +265,9 @@ fun SettingsScreen(
 
         Spacer(Modifier.height(24.dp))
         Text(
-            text = "Alpaca v0.8.0 · Learn loud. Travel far.",
+            text = "Alpaca v0.9.0 · Learn loud. Travel far.",
             style = MaterialTheme.typography.bodyMedium,
-            color = InkMid
+            color = alpacaSecondaryText()
         )
     }
 }
@@ -277,7 +278,7 @@ private fun SettingsCard(content: @Composable () -> Unit) {
         modifier = Modifier
             .fillMaxWidth()
             .clip(RoundedCornerShape(16.dp))
-            .background(Color.White)
+            .background(alpacaCard())
             .padding(16.dp),
         content = { content() }
     )

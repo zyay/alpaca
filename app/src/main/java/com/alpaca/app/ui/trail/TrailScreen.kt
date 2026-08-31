@@ -66,11 +66,12 @@ import com.alpaca.app.ui.components.PillButton
 import com.alpaca.app.ui.components.PopOnChange
 import com.alpaca.app.ui.update.UpdateBanner
 import com.alpaca.app.ui.theme.BrandGreen
-import com.alpaca.app.ui.theme.CloudGray
+import com.alpaca.app.ui.theme.alpacaCard
+import com.alpaca.app.ui.theme.alpacaCardBorder
+import com.alpaca.app.ui.theme.alpacaSecondaryText
+import com.alpaca.app.ui.theme.alpacaFaintText
 import com.alpaca.app.ui.theme.GemPurple
 import com.alpaca.app.ui.theme.HeartPink
-import com.alpaca.app.ui.theme.InkFaint
-import com.alpaca.app.ui.theme.InkMid
 import com.alpaca.app.ui.theme.SkyBlue
 import com.alpaca.app.ui.theme.StreakOrange
 import com.alpaca.app.ui.theme.SunYellow
@@ -230,7 +231,7 @@ fun TrailScreen(
                 Box(
                     modifier = Modifier
                         .clip(RoundedCornerShape(100.dp))
-                        .background(Color.White)
+                        .background(alpacaCard())
                         .padding(horizontal = 12.dp, vertical = 8.dp)
                 ) {
                     EnergyHearts(energy = user?.fleeceEnergy ?: 5)
@@ -355,8 +356,8 @@ private fun TrailBottomBar(
             .padding(bottom = 10.dp)
             .fillMaxWidth()
             .clip(RoundedCornerShape(24.dp))
-            .background(Color.White)
-            .border(2.dp, CloudGray, RoundedCornerShape(24.dp))
+            .background(alpacaCard())
+            .border(2.dp, alpacaCardBorder(), RoundedCornerShape(24.dp))
             .padding(horizontal = 6.dp, vertical = 8.dp),
         horizontalArrangement = Arrangement.SpaceEvenly
     ) {
@@ -400,7 +401,7 @@ private fun BottomNavItem(
     active: Boolean,
     onClick: () -> Unit
 ) {
-    val tint = if (active) BrandGreen else InkMid
+    val tint = if (active) BrandGreen else alpacaSecondaryText()
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier
@@ -473,13 +474,13 @@ private fun StreakWeekDots(user: UserEntity?, modifier: Modifier = Modifier) {
                         .size(14.dp)
                         .alpha(if (lit) 1f else 0.25f)
                         .clip(CircleShape)
-                        .background(if (lit) StreakOrange else CloudGray)
+                        .background(if (lit) StreakOrange else alpacaCardBorder())
                 )
                 Spacer(Modifier.height(2.dp))
                 Text(
                     text = label,
                     fontSize = 10.sp,
-                    color = if (lit) StreakOrange else InkFaint,
+                    color = if (lit) StreakOrange else alpacaFaintText(),
                     fontWeight = FontWeight.Bold
                 )
             }
@@ -520,20 +521,20 @@ private fun UnitChip(tab: TrailViewModel.UnitTab, selected: Boolean, onClick: ()
     Row(
         modifier = Modifier
             .clip(shape)
-            .background(if (selected) com.alpaca.app.ui.theme.BrandGreen else Color.White)
+            .background(if (selected) com.alpaca.app.ui.theme.BrandGreen else alpacaCard())
             .clickable(enabled = tab.unlocked) { onClick() }
             .padding(horizontal = 14.dp, vertical = 9.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
         if (!tab.unlocked) {
-            Icon(Icons.Filled.Lock, "Locked", tint = InkMid, modifier = Modifier.size(14.dp))
+            Icon(Icons.Filled.Lock, "Locked", tint = alpacaSecondaryText(), modifier = Modifier.size(14.dp))
         }
         Spacer(Modifier.width(4.dp))
         Text(
             text = tab.title,
             style = MaterialTheme.typography.titleMedium,
             fontWeight = if (selected) FontWeight.ExtraBold else FontWeight.Bold,
-            color = if (selected) Color.White else if (tab.unlocked) InkMid else InkMid.copy(alpha = 0.6f)
+            color = if (selected) Color.White else if (tab.unlocked) alpacaSecondaryText() else alpacaSecondaryText().copy(alpha = 0.6f)
         )
     }
 }
@@ -543,7 +544,7 @@ private fun StatChip(icon: @Composable () -> Unit, value: String, onClick: (() -
     Row(
         modifier = Modifier
             .clip(RoundedCornerShape(100.dp))
-            .background(Color.White)
+            .background(alpacaCard())
             .then(
                 if (onClick != null) Modifier.clickable(onClick = onClick) else Modifier
             )
@@ -568,8 +569,8 @@ private fun QuestBanner(
         modifier = modifier
             .fillMaxWidth()
             .clip(RoundedCornerShape(16.dp))
-            .background(Color.White)
-            .border(2.dp, if (claimable > 0) BrandGreen else CloudGray, RoundedCornerShape(16.dp))
+            .background(alpacaCard())
+            .border(2.dp, if (claimable > 0) BrandGreen else alpacaCardBorder(), RoundedCornerShape(16.dp))
             .clickable(onClick = onClick)
             .padding(horizontal = 14.dp, vertical = 12.dp),
         verticalAlignment = Alignment.CenterVertically
@@ -589,14 +590,14 @@ private fun QuestBanner(
                     "Every day brings new gem rewards"
                 },
                 style = MaterialTheme.typography.bodySmall,
-                color = if (claimable > 0) BrandGreen else InkMid
+                color = if (claimable > 0) BrandGreen else alpacaSecondaryText()
             )
         }
         Text(
             text = "$claimed/$total",
             style = MaterialTheme.typography.titleSmall,
             fontWeight = FontWeight.ExtraBold,
-            color = InkFaint
+            color = alpacaFaintText()
         )
     }
 }

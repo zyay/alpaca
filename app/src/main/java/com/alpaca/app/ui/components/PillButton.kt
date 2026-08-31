@@ -23,8 +23,8 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import com.alpaca.app.ui.theme.CloudGray
-import com.alpaca.app.ui.theme.InkFaint
+import com.alpaca.app.ui.theme.alpacaCardBorder
+import com.alpaca.app.ui.theme.alpacaFaintText
 import com.alpaca.app.ui.theme.BrandGreen
 import com.alpaca.app.ui.theme.PaperWhite
 
@@ -46,7 +46,7 @@ fun PillButton(
     val pressed by interactionSource.collectIsPressedAsState()
     val shape = RoundedCornerShape(16.dp)
 
-    val face = if (enabled) color else CloudGray
+    val face = if (enabled) color else alpacaCardBorder()
     val edge = if (enabled) color.darkened() else Color(0xFFD0D0D0)
     val pressOffset by animateDpAsState(
         if (pressed && enabled) 4.dp else 0.dp,
@@ -84,7 +84,7 @@ fun PillButton(
             Text(
                 text = text.uppercase(),
                 style = MaterialTheme.typography.labelLarge,
-                color = if (enabled) textColor else InkFaint,
+                color = if (enabled) textColor else alpacaFaintText(),
                 textAlign = TextAlign.Center
             )
         }

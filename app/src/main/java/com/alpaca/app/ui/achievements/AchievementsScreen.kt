@@ -39,9 +39,10 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.alpaca.app.ui.components.Entrance
 import com.alpaca.app.ui.components.badgeShine
-import com.alpaca.app.ui.theme.CloudGray
-import com.alpaca.app.ui.theme.InkMid
-import com.alpaca.app.ui.theme.BrandGreenPale
+import com.alpaca.app.ui.theme.alpacaCard
+import com.alpaca.app.ui.theme.alpacaCardBorder
+import com.alpaca.app.ui.theme.alpacaGreenTint
+import com.alpaca.app.ui.theme.alpacaSecondaryText
 
 @Composable
 fun AchievementsScreen(
@@ -99,7 +100,7 @@ private fun BadgeCard(badge: Badge) {
             .fillMaxWidth()
             .aspectRatio(0.85f)
             .clip(RoundedCornerShape(18.dp))
-            .background(if (badge.unlocked) BrandGreenPale else CloudGray.copy(alpha = 0.4f))
+            .background(if (badge.unlocked) alpacaGreenTint() else alpacaCardBorder().copy(alpha = 0.4f))
             .alpha(if (badge.unlocked) 1f else 0.7f)
             .badgeShineIf(badge.unlocked)
             .padding(14.dp),
@@ -119,7 +120,7 @@ private fun BadgeCard(badge: Badge) {
         Text(
             text = badge.description,
             style = MaterialTheme.typography.bodyMedium,
-            color = InkMid,
+            color = alpacaSecondaryText(),
             textAlign = TextAlign.Center
         )
         if (progressFraction != null) {
@@ -129,7 +130,7 @@ private fun BadgeCard(badge: Badge) {
                     .fillMaxWidth()
                     .height(8.dp)
                     .clip(RoundedCornerShape(100.dp))
-                    .background(Color.White)
+                    .background(alpacaCard())
             ) {
                 Box(
                     modifier = Modifier
@@ -144,10 +145,10 @@ private fun BadgeCard(badge: Badge) {
         Text(
             text = if (badge.unlocked) "¡Desbloqueado!" else badge.progress,
             style = MaterialTheme.typography.labelLarge,
-            color = if (badge.unlocked) com.alpaca.app.ui.theme.BrandGreen else InkMid,
+            color = if (badge.unlocked) com.alpaca.app.ui.theme.BrandGreen else alpacaSecondaryText(),
             modifier = Modifier
                 .clip(RoundedCornerShape(100.dp))
-                .background(Color.White)
+                .background(alpacaCard())
                 .padding(horizontal = 10.dp, vertical = 4.dp)
         )
     }

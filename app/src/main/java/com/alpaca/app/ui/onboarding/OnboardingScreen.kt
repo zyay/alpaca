@@ -45,8 +45,8 @@ import androidx.compose.ui.unit.sp
 import com.alpaca.app.di.AppContainer
 import com.alpaca.app.ui.components.GreetingWordmark
 import com.alpaca.app.ui.components.PillButton
-import com.alpaca.app.ui.theme.CloudGray
-import com.alpaca.app.ui.theme.InkMid
+import com.alpaca.app.ui.theme.alpacaCardBorder
+import com.alpaca.app.ui.theme.alpacaSecondaryText
 import com.alpaca.app.ui.theme.BrandGreen
 import com.alpaca.app.ui.theme.SunYellow
 import kotlinx.coroutines.launch
@@ -94,7 +94,7 @@ fun OnboardingScreen(
         Text(
             text = hello,
             style = MaterialTheme.typography.bodyLarge,
-            color = InkMid,
+            color = alpacaSecondaryText(),
             textAlign = TextAlign.Center
         )
         Spacer(Modifier.height(24.dp))
@@ -108,7 +108,7 @@ fun OnboardingScreen(
             Text(
                 text = "Slip up and a splash shows you exactly why — so the fix sticks on the spot.",
                 style = MaterialTheme.typography.bodyMedium,
-                color = InkMid,
+                color = alpacaSecondaryText(),
                 textAlign = TextAlign.Center,
                 modifier = Modifier.fillMaxWidth()
             )
@@ -125,7 +125,7 @@ fun OnboardingScreen(
                 focusedContainerColor = Color.White,
                 unfocusedContainerColor = Color.White,
                 focusedIndicatorColor = BrandGreen,
-                unfocusedIndicatorColor = CloudGray
+                unfocusedIndicatorColor = alpacaCardBorder()
             ),
             shape = RoundedCornerShape(14.dp),
             textStyle = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold),

@@ -60,9 +60,10 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.alpaca.app.data.coach.CoachClient
 import com.alpaca.app.gemini.VoiceSessionState
 import com.alpaca.app.ui.components.PillButton
-import com.alpaca.app.ui.theme.CloudGray
+import com.alpaca.app.ui.theme.alpacaCardBorder
+import com.alpaca.app.ui.theme.alpacaCard
+import com.alpaca.app.ui.theme.alpacaSecondaryText
 import com.alpaca.app.ui.theme.DangerRed
-import com.alpaca.app.ui.theme.InkMid
 import com.alpaca.app.ui.theme.BrandGreen
 import com.alpaca.app.ui.theme.BrandGreenPale
 import com.alpaca.app.ui.theme.PaperWhite
@@ -168,7 +169,7 @@ private fun ScenarioPicker(
         Text(
             text = "Call a character and practice speaking. Play everyone — interrupt any time!",
             style = MaterialTheme.typography.bodyMedium,
-            color = InkMid
+            color = alpacaSecondaryText()
         )
 
         Spacer(Modifier.height(16.dp))
@@ -181,10 +182,10 @@ private fun ScenarioPicker(
                     modifier = Modifier
                         .weight(1f)
                         .clip(RoundedCornerShape(14.dp))
-                        .background(if (selected) BrandGreen else Color.White)
+                        .background(if (selected) BrandGreen else alpacaCard())
                         .border(
                             2.dp,
-                            if (selected) BrandGreen else CloudGray,
+                            if (selected) BrandGreen else alpacaCardBorder(),
                             RoundedCornerShape(14.dp)
                         )
                         .clickable { onPickLevel(level) }
@@ -194,7 +195,7 @@ private fun ScenarioPicker(
                     Text(
                         text = level.label,
                         style = MaterialTheme.typography.labelLarge,
-                        color = if (selected) PaperWhite else InkMid
+                        color = if (selected) PaperWhite else alpacaSecondaryText()
                     )
                 }
             }
@@ -202,7 +203,7 @@ private fun ScenarioPicker(
         Text(
             text = VoiceCallViewModel.Level.fromId(settings.voiceLevel).blurb,
             style = MaterialTheme.typography.bodySmall,
-            color = InkMid,
+            color = alpacaSecondaryText(),
             modifier = Modifier.padding(top = 6.dp)
         )
 
@@ -216,10 +217,10 @@ private fun ScenarioPicker(
                     modifier = Modifier
                         .weight(1f)
                         .clip(RoundedCornerShape(14.dp))
-                        .background(if (selected) SkyBlue else Color.White)
+                        .background(if (selected) SkyBlue else alpacaCard())
                         .border(
                             2.dp,
-                            if (selected) SkyBlue else CloudGray,
+                            if (selected) SkyBlue else alpacaCardBorder(),
                             RoundedCornerShape(14.dp)
                         )
                         .clickable { onPickVoice(voice) }
@@ -229,7 +230,7 @@ private fun ScenarioPicker(
                     Text(
                         text = voice,
                         style = MaterialTheme.typography.labelLarge,
-                        color = if (selected) PaperWhite else InkMid
+                        color = if (selected) PaperWhite else alpacaSecondaryText()
                     )
                 }
             }
@@ -242,8 +243,8 @@ private fun ScenarioPicker(
                     .fillMaxWidth()
                     .padding(vertical = 7.dp)
                     .clip(RoundedCornerShape(18.dp))
-                    .background(Color.White)
-                    .border(2.dp, CloudGray, RoundedCornerShape(18.dp))
+                    .background(alpacaCard())
+                    .border(2.dp, alpacaCardBorder(), RoundedCornerShape(18.dp))
                     .clickable { onPick(scenario) }
                     .padding(18.dp)
             ) {
@@ -255,7 +256,7 @@ private fun ScenarioPicker(
                         Text(
                             scenario.blurb,
                             style = MaterialTheme.typography.bodyMedium,
-                            color = InkMid
+                            color = alpacaSecondaryText()
                         )
                     }
                 }
@@ -266,7 +267,7 @@ private fun ScenarioPicker(
             text = "Calls run through the Gemini Live API with short-lived backend tokens. " +
                 "After each call your AI coach reviews the transcript.",
             style = MaterialTheme.typography.bodyMedium,
-            color = InkMid,
+            color = alpacaSecondaryText(),
             textAlign = TextAlign.Center,
             modifier = Modifier.fillMaxWidth()
         )
@@ -496,7 +497,7 @@ private fun PostCallFeedback(
         Text(
             text = "Your AI coach reviewed the conversation.",
             style = MaterialTheme.typography.bodyMedium,
-            color = InkMid
+            color = alpacaSecondaryText()
         )
         Spacer(Modifier.height(20.dp))
 
@@ -512,7 +513,7 @@ private fun PostCallFeedback(
                 Text(
                     text = "Listening back to your call…",
                     style = MaterialTheme.typography.bodyMedium,
-                    color = InkMid,
+                    color = alpacaSecondaryText(),
                     textAlign = TextAlign.Center,
                     modifier = Modifier.fillMaxWidth().padding(top = 16.dp)
                 )
@@ -533,7 +534,7 @@ private fun PostCallFeedback(
                             Text(
                                 text = strength,
                                 style = MaterialTheme.typography.bodyMedium,
-                                color = InkMid
+                                color = alpacaSecondaryText()
                             )
                         }
                     }
@@ -559,7 +560,7 @@ private fun PostCallFeedback(
                             Text(
                                 text = tip.tip,
                                 style = MaterialTheme.typography.bodyMedium,
-                                color = InkMid
+                                color = alpacaSecondaryText()
                             )
                         }
                     }
@@ -579,7 +580,7 @@ private fun PostCallFeedback(
                             Text(
                                 text = item.translation,
                                 style = MaterialTheme.typography.bodyMedium,
-                                color = InkMid
+                                color = alpacaSecondaryText()
                             )
                         }
                     }
@@ -590,7 +591,7 @@ private fun PostCallFeedback(
                     text = "Coaching is unavailable right now — the debrief service needs the " +
                         "Alpaca backend with a Gemini key, and the call needs a few spoken lines.",
                     style = MaterialTheme.typography.bodyMedium,
-                    color = InkMid
+                    color = alpacaSecondaryText()
                 )
             }
         }
@@ -603,7 +604,7 @@ private fun PostCallFeedback(
             modifier = Modifier
                 .fillMaxWidth()
                 .clip(RoundedCornerShape(100.dp))
-                .background(CloudGray.copy(alpha = 0.35f))
+                .background(alpacaCardBorder().copy(alpha = 0.35f))
                 .clickable { onDone() }
                 .padding(vertical = 14.dp),
             contentAlignment = Alignment.Center

@@ -49,7 +49,8 @@ import com.alpaca.app.ui.components.ConfettiOverlay
 import com.alpaca.app.ui.components.CountUpText
 import com.alpaca.app.ui.components.GreetingWordmark
 import com.alpaca.app.ui.components.PillButton
-import com.alpaca.app.ui.theme.InkMid
+import com.alpaca.app.ui.theme.alpacaCard
+import com.alpaca.app.ui.theme.alpacaSecondaryText
 import com.alpaca.app.ui.theme.BrandGreen
 import com.alpaca.app.ui.theme.BrandGreenPale
 import com.alpaca.app.ui.theme.SunYellow
@@ -109,7 +110,7 @@ fun SummaryScreen(
                     result.lessonTitle
                 },
                 style = MaterialTheme.typography.bodyLarge,
-                color = InkMid,
+                color = alpacaSecondaryText(),
                 textAlign = TextAlign.Center
             )
 
@@ -196,6 +197,7 @@ private fun RowScope.StatCard(
     value: String,
     background: Color
 ) {
+    val dark = androidx.compose.foundation.isSystemInDarkTheme()
     val appear = remember { Animatable(0f) }
     LaunchedEffect(Unit) {
         delay(index * 90L)
@@ -209,7 +211,7 @@ private fun RowScope.StatCard(
                 translationY = (1f - appear.value) * 40f
             }
             .clip(RoundedCornerShape(16.dp))
-            .background(background)
+            .background(if (dark) background.copy(alpha = 0.18f) else background)
             .padding(vertical = 14.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -227,7 +229,7 @@ private fun RowScope.StatCard(
         } else {
             Text(value, style = MaterialTheme.typography.titleLarge)
         }
-        Text(label, style = MaterialTheme.typography.bodyMedium, color = InkMid)
+        Text(label, style = MaterialTheme.typography.bodyMedium, color = alpacaSecondaryText())
     }
 }
 
@@ -241,7 +243,13 @@ private fun CoinsEarnedRow(coins: Int) {
         modifier = Modifier
             .fillMaxWidth()
             .clip(RoundedCornerShape(16.dp))
-            .background(Color(0xFFEFF8FF))
+            .background(
+                if (androidx.compose.foundation.isSystemInDarkTheme()) {
+                    Color(0xFFEFF8FF).copy(alpha = 0.18f)
+                } else {
+                    Color(0xFFEFF8FF)
+                }
+            )
             .padding(16.dp),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.Center
@@ -266,7 +274,7 @@ private fun ReviewCard(
         modifier = Modifier
             .fillMaxWidth()
             .clip(RoundedCornerShape(16.dp))
-            .background(Color.White)
+            .background(com.alpaca.app.ui.theme.alpacaCard())
             .padding(16.dp)
     ) {
         Text(title, style = MaterialTheme.typography.titleMedium)
@@ -278,7 +286,7 @@ private fun ReviewCard(
             ) {
                 Icon(icon, null, tint = iconTint, modifier = Modifier.size(18.dp))
                 Spacer(Modifier.size(8.dp))
-                Text(item, style = MaterialTheme.typography.bodyMedium, color = InkMid)
+                Text(item, style = MaterialTheme.typography.bodyMedium, color = com.alpaca.app.ui.theme.alpacaSecondaryText())
             }
         }
     }

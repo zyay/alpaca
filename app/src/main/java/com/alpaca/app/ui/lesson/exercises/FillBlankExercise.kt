@@ -25,8 +25,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.alpaca.app.data.content.FillBlankExercise
-import com.alpaca.app.ui.theme.CloudGray
-import com.alpaca.app.ui.theme.InkFaint
+import com.alpaca.app.ui.theme.alpacaCardBorder
+import com.alpaca.app.ui.theme.alpacaCard
+import com.alpaca.app.ui.theme.alpacaFaintText
 import com.alpaca.app.ui.theme.SkyBlue
 
 @OptIn(ExperimentalLayoutApi::class)
@@ -67,10 +68,10 @@ fun FillBlankUi(
         Box(
             modifier = Modifier
                 .clip(RoundedCornerShape(12.dp))
-                .background(if (picked != null) Color(0xFFDDF1FF) else Color.White)
+                .background(if (picked != null) Color(0xFFDDF1FF) else alpacaCard())
                 .border(
                     2.dp,
-                    if (picked != null) SkyBlue else CloudGray,
+                    if (picked != null) SkyBlue else alpacaCardBorder(),
                     RoundedCornerShape(12.dp)
                 )
                 .padding(horizontal = 28.dp, vertical = 8.dp),
@@ -80,7 +81,7 @@ fun FillBlankUi(
                 text = picked ?: "•••",
                 style = sentenceStyle,
                 fontWeight = FontWeight.Bold,
-                color = if (picked != null) SkyBlue else InkFaint
+                color = if (picked != null) SkyBlue else alpacaFaintText()
             )
         }
         Text(
@@ -103,10 +104,10 @@ fun FillBlankUi(
                     color = if (isPicked) Color.White else MaterialTheme.colorScheme.onSurface,
                     modifier = Modifier
                         .clip(RoundedCornerShape(14.dp))
-                        .background(if (isPicked) SkyBlue else Color.White)
+                        .background(if (isPicked) SkyBlue else alpacaCard())
                         .border(
                             2.dp,
-                            if (isPicked) SkyBlue else CloudGray,
+                            if (isPicked) SkyBlue else alpacaCardBorder(),
                             RoundedCornerShape(14.dp)
                         )
                         .clickable(

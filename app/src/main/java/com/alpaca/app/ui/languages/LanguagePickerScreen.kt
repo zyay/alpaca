@@ -35,10 +35,11 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.alpaca.app.ui.theme.alpacaCardBorder
+import com.alpaca.app.ui.theme.alpacaCard
+import com.alpaca.app.ui.theme.alpacaFaintText
+import com.alpaca.app.ui.theme.alpacaSecondaryText
 import com.alpaca.app.ui.theme.BrandGreen
-import com.alpaca.app.ui.theme.CloudGray
-import com.alpaca.app.ui.theme.InkFaint
-import com.alpaca.app.ui.theme.InkMid
 
 @Composable
 fun LanguagePickerScreen(
@@ -63,7 +64,7 @@ fun LanguagePickerScreen(
         Text(
             "Switch course any time. Your streak and XP are shared across languages.",
             style = MaterialTheme.typography.bodyMedium,
-            color = InkMid,
+            color = alpacaSecondaryText(),
             modifier = Modifier.padding(horizontal = 4.dp)
         )
         Spacer(Modifier.height(16.dp))
@@ -111,7 +112,7 @@ private fun LanguageCard(
         modifier = Modifier
             .fillMaxWidth()
             .clip(RoundedCornerShape(16.dp))
-            .background(Color.White)
+            .background(alpacaCard())
             .then(
                 if (selected) Modifier.border(
                     BorderStroke(3.dp, BrandGreen),
@@ -125,7 +126,7 @@ private fun LanguageCard(
             modifier = Modifier
                 .size(52.dp)
                 .clip(RoundedCornerShape(14.dp))
-                .background(CloudGray),
+                .background(alpacaCardBorder()),
             contentAlignment = Alignment.Center
         ) {
             Text(flag, style = MaterialTheme.typography.headlineMedium)
@@ -136,10 +137,10 @@ private fun LanguageCard(
                 nativeName,
                 style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.ExtraBold)
             )
-            Text(displayName, style = MaterialTheme.typography.bodyMedium, color = InkMid)
+            Text(displayName, style = MaterialTheme.typography.bodyMedium, color = alpacaSecondaryText())
         }
         if (locked) {
-            Icon(Icons.Filled.Lock, "Locked", tint = InkFaint)
+            Icon(Icons.Filled.Lock, "Locked", tint = alpacaFaintText())
         } else if (selected) {
             Text(
                 "LEARNING",

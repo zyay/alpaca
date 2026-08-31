@@ -20,7 +20,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.alpaca.app.ui.components.PillButton
-import com.alpaca.app.ui.theme.CloudGray
+import com.alpaca.app.ui.theme.alpacaCardBorder
 import com.alpaca.app.ui.theme.SkyBlue
 
 /** Exercise layout: scrollable content on top, CHECK pill pinned at the bottom. */
@@ -66,7 +66,7 @@ fun OptionCard(
     modifier: Modifier = Modifier
 ) {
     val shape = RoundedCornerShape(14.dp)
-    val borderColor = if (selected) SkyBlue else CloudGray
+    val borderColor = if (selected) SkyBlue else alpacaCardBorder()
     val background = if (selected) Color(0xFFDDF1FF) else Color.White
     Column(
         modifier = modifier
